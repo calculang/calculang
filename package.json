@@ -1,0 +1,40 @@
+{
+  "name": "calculang",
+  "description": "monorepo, see packages/*",
+  "license": "AGPL-3.0-only",
+  "private": true,
+  "repository": "https://github.com/calculang/calculang.git",
+  "author": "Declan Naughton",
+  "keywords": [
+    "calculang",
+    "calculations",
+    "numbers",
+    "models",
+    "modeling",
+    "modelling"
+  ],
+  "workspaces": [
+    "./packages/*"
+  ],
+  "scripts": {
+    "bootstrap": "lerna bootstrap",
+    "prebuild": "echo OFF yarn clean",
+    "build": "lerna run build",
+    "test": "jest --reporters=default --runInBand",
+    "test:update": "jest --reporters=default --runInBand --updateSnapshot",
+    "publish:monorepo": "yarn build && lerna version --conventional-prerelease && lerna publish from-git",
+    "publish:dncommand": "lerna version prerelease && lerna publish from-git"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "projects": ["<rootDir>/packages/*"],
+    "transform": {"\\.[jt]sx?$": "babel-jest"}
+  },
+  "devDependencies": {
+    "lerna": "^4.0.0",
+    "@babel/core": "^7.15.8",
+    "@babel/preset-env": "^7.15.8",
+    "babel-jest": "^27.2.5",
+    "jest": "^27.2.5"
+  }
+}

@@ -102,11 +102,11 @@ All developers to get feedback/discuss/think re implementations or changes leadi
 
 ## more motivation
 
-I'm not the first person to consider the opportunity from making models more accessible. Bret Victor included points around this in a blog post about climate change.
+I'm not the only person to consider the opportunity from making models more accessible. Bret Victor included points around this in a blog post about climate change.
 
 [What can a technologist do about Climate Change (a personal view)](http://worrydream.com/ClimateChange) by Bret Victor, particularly relevant at: [Media for Understanding Situations](http://worrydream.com/ClimateChange/#media).
 
-Also good regarding interfaces to models: [Explorable Explanations](http://worrydream.com/#!/ExplorableExplanations), also by Bret Victor.
+Also good by Bret Victor, regarding interfaces to models: [Explorable Explanations](http://worrydream.com/#!/ExplorableExplanations).
 
 Many ideas along different lines of interaction with models become clearer when we separate concerns in the way that a language for calculations proposes.
 

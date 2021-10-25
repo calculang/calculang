@@ -1,0 +1,48 @@
+{
+  "name": "@calculang/calculang-js",
+  "version": "0.1.0-alpha.1",
+  "bin": {
+    "cul-js": "./bin/index.js"
+  },
+  "main": "dist/compiler.js",
+  "license": "AGPL-3.0-only",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/calculang/calculang.git",
+    "directory": "packages/calculang-js"
+  },
+  "homepage": "https://github.com/calculang/calculang/tree/main/packages/calculang-js",
+  "author": "Declan Naughton",
+  "keywords": [
+    "calculang",
+    "calculations",
+    "numbers",
+    "models",
+    "modeling",
+    "modelling"
+  ],
+  "scripts": {
+    "build": "babel src --out-dir dist",
+    "test": "jest",
+    "test:update": "jest --updateSnapshot"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "snapshotSerializers": ["./tests/serializer"]
+  },
+  "devDependencies": {
+    "babel-jest": "^27.2.5",
+    "jest": "^27.2.5"
+  },
+  "dependencies": {
+    "@babel/cli": "^7.15.7",
+    "commander": "^8.2.0",
+    "@calculang/introspection-api": "0.1.0-alpha.1",
+    "webpack": "^4.46.0",
+    "memfs": "^3.3.0",
+    "graphlib": "^2.1.8",
+    "@babel/core": "^7.15.8",
+    "@babel/preset-env": "^7.15.8", 
+    "loader-utils": "^2.0.0"
+  }
+}

@@ -78,6 +78,8 @@ Further, the overriden functionality can be defined in terms of the child functi
 
 In calculang-js implementation calculang models can interact with Javascript. You should keep Javascript-specific code in separate .js files/packages.
 
+This interaction, done carefully, opens up many usecases. Not least, integration and co-ordination with (and of) other systems.
+
 ## roadmap
 
 v0.1.0-alpha1+ : some mini releases to introduce developed/proposed features, tests, cleanup code
@@ -86,7 +88,7 @@ v0.1+.0 : more tests, examples, integrations, documentation, logo, community foc
 
 Post: alt. implementations? e.g. Rust?
 
-In parallel to the public roadmap, I will probably have a private/applications roadmap. Get in touch if you want me to consider your own modelling proposal/s and how they can fit into this roadmap.
+In parallel to the public roadmap, I will probably have a private/applications roadmap. Feel free to get in touch if you want me to consider your own modelling proposal/s and how they can fit into this roadmap.
 
 ## help wanted
 
@@ -97,6 +99,16 @@ Frontend developers for blog/websites and community model frontends.
 Community models and web apps, vizualisations/explorables (calculang.party?).
 
 All developers to get feedback/discuss/think re implementations or changes leading to better scalability.
+
+## more motivation
+
+I'm not the only person to consider the opportunity from making models more accessible. Bret Victor included points around this in a blog post about climate change.
+
+[What can a technologist do about Climate Change (a personal view)](http://worrydream.com/ClimateChange) by Bret Victor, particularly relevant at: [Media for Understanding Situations](http://worrydream.com/ClimateChange/#media).
+
+Also good by Bret Victor, regarding interfaces to models: [Explorable Explanations](http://worrydream.com/#!/ExplorableExplanations).
+
+Many ideas along different lines of interaction with models become clearer when we separate concerns in the way that a language for calculations proposes.
 
 ## contributing
 

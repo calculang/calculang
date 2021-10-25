@@ -20,7 +20,7 @@ For an overview of all packages, see the [calculang `/packages` folder](/package
 
 ## on licensing, for contributions/pull requests
 
-Please see [inbound=outbound](https://docs.github.com/en/github/site-policy/github-terms-of-service#6-contributions-under-repository-license) clause of GitHub Terms of Service and [license](./LICENSE.md) (AGPLv3).
+Please see [inbound=outbound](https://docs.github.com/en/github/site-policy/github-terms-of-service#6-contributions-under-repository-license) clause of GitHub Terms of Service and [project license](./LICENSE.md) (AGPLv3).
 
 Please talk to me if there are any doubts about the rights to your contribution, or about the project license.
 

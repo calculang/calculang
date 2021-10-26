@@ -1,0 +1,24 @@
+{
+  "name": "@calculang/calculang-testcase-models",
+  "version": "0.1.0-alpha.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/calculang/calculang.git",
+    "directory": "packages/calculang-models"
+  },
+  "homepage": "https://github.com/calculang/calculang/tree/main/packages/calculang-testcase-models",
+  "author": "Declan Naughton working for DCN Consulting",
+  "keywords": [
+    "calculang",
+    "calculations",
+    "numbers",
+    "models",
+    "modeling",
+    "modelling"
+  ],
+  "dependencies": {
+    "date-fns": "^2.25.0",
+    "lru-memoize": "^1.1.0",
+    "underscore": "^1.13.1"
+  }
+}

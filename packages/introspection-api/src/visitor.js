@@ -1,3 +1,19 @@
+/*
+Copyright (C) 2021  DCN Consulting Ltd (incorporated in Ireland)
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License version 3,
+as published by the Free Software Foundation.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
+*/
+
 // this visitor processes calculang files and collects information in global_state
 // it doesn't modify code except where necessary, notably to get scoping logic correct (see cul_scope_id logic under ImportDeclaration), also rename logic (but I can remove this?)
 // there is a note on scoping logic for calculang in ./index.js

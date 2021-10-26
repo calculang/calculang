@@ -1,3 +1,19 @@
+/*
+Copyright (C) 2021  DCN Consulting Ltd (incorporated in Ireland)
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU Affero General Public License version 3,
+as published by the Free Software Foundation.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Affero General Public License for more details.
+
+You should have received a copy of the GNU Affero General Public License
+along with this program.  If not, see <https://www.gnu.org/licenses/>.
+*/
+
 // compiler is implemented as a call to webpack v4 (atm) api with a loader setup to transform source code (via babel with a custom loader: calculang-transform-loader).
 // The output is a Javascript bundle and sourcemap created by webpack, according to configuration below.
 // pre-processed calculang information is needed to complete the compile, this comes from the introspection api call below, where results are passed to calculang-transform-loader via options.

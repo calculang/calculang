@@ -23,3 +23,7 @@ cul_links, a Set of links in relationship graph, is also output, along with `dot
 cul_scope_id_counter and cul_parent_scope_id are for internal use.
 
 More details on Map/Set objects in [global_state.js](./src/global_state.js)
+
+## internals
+
+[`./src/index.js`](./src/index.js) contains some technical information in comments.

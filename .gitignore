@@ -1,2 +1,4 @@
 node_modules
 temp.svg
+packages/calculang-js/dist
+packages/introspection-api/dist

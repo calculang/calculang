@@ -1,0 +1,1080 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`manufacturing/base 1`] = `
+Object {
+  "bundle": "(function webpackUniversalModuleDefinition(root, factory) {
+	if(typeof exports === 'object' && typeof module === 'object')
+		module.exports = factory();
+	else if(typeof define === 'function' && define.amd)
+		define([], factory);
+	else {
+		var a = factory();
+		for(var i in a) (typeof exports === 'object' ? exports : root)[i] = a[i];
+	}
+})(this, function() {
+return /******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = function(exports) {
+/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		}
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// create a fake namespace object
+/******/ 	// mode & 1: value is a module id, require it
+/******/ 	// mode & 2: merge all properties of value into the ns
+/******/ 	// mode & 4: return value when already ns object
+/******/ 	// mode & 8|1: behave like require
+/******/ 	__webpack_require__.t = function(value, mode) {
+/******/ 		if(mode & 1) value = __webpack_require__(value);
+/******/ 		if(mode & 8) return value;
+/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+/******/ 		var ns = Object.create(null);
+/******/ 		__webpack_require__.r(ns);
+/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+/******/ 		return ns;
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = \\"\\";
+/******/
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+\\"use strict\\";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \\"revenue\\", function() { return revenue; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \\"costs\\", function() { return costs; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \\"profit\\", function() { return profit; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \\"units\\", function() { return units; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \\"price\\", function() { return price; });
+const revenue = ({
+  units_in,
+  price_in
+}) => {
+  return units({
+    units_in
+  }) * price({
+    price_in
+  });
+}; // variable costs only, OK for testing
+
+const costs = ({
+  units_in
+}) => 100 * units({
+  units_in
+});
+const profit = ({
+  units_in,
+  price_in
+}) => revenue({
+  units_in,
+  price_in
+}) - costs({
+  units_in
+}); // inputs
+
+const units = ({
+  units_in
+}) => units_in;
+const price = ({
+  price_in
+}) => price_in; // ?? what if an explicit import in base referred back to A or B?
+
+/***/ })
+/******/ ]);
+});
+//# sourceMappingURL=base.js.map",
+  "sourcemap": "{\\"version\\":3,\\"sources\\":[\\"webpack:///webpack/universalModuleDefinition\\",\\"webpack:///webpack/bootstrap\\",\\"webpack:///base.cul.js\\"],\\"names\\":[\\"revenue\\",\\"units\\",\\"price\\",\\"costs\\",\\"profit\\",\\"units_in\\",\\"price_in\\"],\\"mappings\\":\\"AAAA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA,CAAC;AACD,O;QCVA;QACA;;QAEA;QACA;;QAEA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;;QAEA;QACA;;QAEA;QACA;;QAEA;QACA;QACA;;;QAGA;QACA;;QAEA;QACA;;QAEA;QACA;QACA;QACA,0CAA0C,gCAAgC;QAC1E;QACA;;QAEA;QACA;QACA;QACA,wDAAwD,kBAAkB;QAC1E;QACA,iDAAiD,cAAc;QAC/D;;QAEA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA,yCAAyC,iCAAiC;QAC1E,gHAAgH,mBAAmB,EAAE;QACrI;QACA;;QAEA;QACA;QACA;QACA,2BAA2B,0BAA0B,EAAE;QACvD,iCAAiC,eAAe;QAChD;QACA;QACA;;QAEA;QACA,sDAAsD,+DAA+D;;QAErH;QACA;;;QAGA;QACA;;;;;;;;AClFA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAO,MAAMA,OAAO,GAAG;AAAA;AAAA;AAAA,MAAM;AAC3B,SAAOC,KAAK;AAAA;AAAA,IAAL,GAAUC,KAAK;AAAA;AAAA,IAAtB;AACD,CAFM,C,CAIP;;AACO,MAAMC,KAAK,GAAG;AAAA;AAAA,MAAM,MAAMF,KAAK;AAAA;AAAA,EAA/B;AAEA,MAAMG,MAAM,GAAG;AAAA;AAAA;AAAA,MAAMJ,OAAO;AAAA;AAAA;AAAA,EAAP,GAAYG,KAAK;AAAA;AAAA,EAAtC,C,CAEP;;AACO,MAAMF,KAAK,GAAG;AAAA;AAAA,MAAMI,QAApB;AACA,MAAMH,KAAK,GAAG;AAAA;AAAA,MAAMI,QAApB,C,CAEP,iE\\",\\"file\\":\\"base.js\\",\\"sourcesContent\\":[\\"(function webpackUniversalModuleDefinition(root, factory) {\\\\n\\\\tif(typeof exports === 'object' && typeof module === 'object')\\\\n\\\\t\\\\tmodule.exports = factory();\\\\n\\\\telse if(typeof define === 'function' && define.amd)\\\\n\\\\t\\\\tdefine([], factory);\\\\n\\\\telse {\\\\n\\\\t\\\\tvar a = factory();\\\\n\\\\t\\\\tfor(var i in a) (typeof exports === 'object' ? exports : root)[i] = a[i];\\\\n\\\\t}\\\\n})(this, function() {\\\\nreturn \\",\\" \\\\t// The module cache\\\\n \\\\tvar installedModules = {};\\\\n\\\\n \\\\t// The require function\\\\n \\\\tfunction __webpack_require__(moduleId) {\\\\n\\\\n \\\\t\\\\t// Check if module is in cache\\\\n \\\\t\\\\tif(installedModules[moduleId]) {\\\\n \\\\t\\\\t\\\\treturn installedModules[moduleId].exports;\\\\n \\\\t\\\\t}\\\\n \\\\t\\\\t// Create a new module (and put it into the cache)\\\\n \\\\t\\\\tvar module = installedModules[moduleId] = {\\\\n \\\\t\\\\t\\\\ti: moduleId,\\\\n \\\\t\\\\t\\\\tl: false,\\\\n \\\\t\\\\t\\\\texports: {}\\\\n \\\\t\\\\t};\\\\n\\\\n \\\\t\\\\t// Execute the module function\\\\n \\\\t\\\\tmodules[moduleId].call(module.exports, module, module.exports, __webpack_require__);\\\\n\\\\n \\\\t\\\\t// Flag the module as loaded\\\\n \\\\t\\\\tmodule.l = true;\\\\n\\\\n \\\\t\\\\t// Return the exports of the module\\\\n \\\\t\\\\treturn module.exports;\\\\n \\\\t}\\\\n\\\\n\\\\n \\\\t// expose the modules object (__webpack_modules__)\\\\n \\\\t__webpack_require__.m = modules;\\\\n\\\\n \\\\t// expose the module cache\\\\n \\\\t__webpack_require__.c = installedModules;\\\\n\\\\n \\\\t// define getter function for harmony exports\\\\n \\\\t__webpack_require__.d = function(exports, name, getter) {\\\\n \\\\t\\\\tif(!__webpack_require__.o(exports, name)) {\\\\n \\\\t\\\\t\\\\tObject.defineProperty(exports, name, { enumerable: true, get: getter });\\\\n \\\\t\\\\t}\\\\n \\\\t};\\\\n\\\\n \\\\t// define __esModule on exports\\\\n \\\\t__webpack_require__.r = function(exports) {\\\\n \\\\t\\\\tif(typeof Symbol !== 'undefined' && Symbol.toStringTag) {\\\\n \\\\t\\\\t\\\\tObject.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });\\\\n \\\\t\\\\t}\\\\n \\\\t\\\\tObject.defineProperty(exports, '__esModule', { value: true });\\\\n \\\\t};\\\\n\\\\n \\\\t// create a fake namespace object\\\\n \\\\t// mode & 1: value is a module id, require it\\\\n \\\\t// mode & 2: merge all properties of value into the ns\\\\n \\\\t// mode & 4: return value when already ns object\\\\n \\\\t// mode & 8|1: behave like require\\\\n \\\\t__webpack_require__.t = function(value, mode) {\\\\n \\\\t\\\\tif(mode & 1) value = __webpack_require__(value);\\\\n \\\\t\\\\tif(mode & 8) return value;\\\\n \\\\t\\\\tif((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;\\\\n \\\\t\\\\tvar ns = Object.create(null);\\\\n \\\\t\\\\t__webpack_require__.r(ns);\\\\n \\\\t\\\\tObject.defineProperty(ns, 'default', { enumerable: true, value: value });\\\\n \\\\t\\\\tif(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));\\\\n \\\\t\\\\treturn ns;\\\\n \\\\t};\\\\n\\\\n \\\\t// getDefaultExport function for compatibility with non-harmony modules\\\\n \\\\t__webpack_require__.n = function(module) {\\\\n \\\\t\\\\tvar getter = module && module.__esModule ?\\\\n \\\\t\\\\t\\\\tfunction getDefault() { return module['default']; } :\\\\n \\\\t\\\\t\\\\tfunction getModuleExports() { return module; };\\\\n \\\\t\\\\t__webpack_require__.d(getter, 'a', getter);\\\\n \\\\t\\\\treturn getter;\\\\n \\\\t};\\\\n\\\\n \\\\t// Object.prototype.hasOwnProperty.call\\\\n \\\\t__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };\\\\n\\\\n \\\\t// __webpack_public_path__\\\\n \\\\t__webpack_require__.p = \\\\\\"\\\\\\";\\\\n\\\\n\\\\n \\\\t// Load entry module and return exports\\\\n \\\\treturn __webpack_require__(__webpack_require__.s = 0);\\\\n\\",\\"export const revenue = () => {\\\\r\\\\n  return units() * price();\\\\r\\\\n};\\\\r\\\\n\\\\r\\\\n// variable costs only, OK for testing\\\\r\\\\nexport const costs = () => 100 * units();\\\\r\\\\n\\\\r\\\\nexport const profit = () => revenue() - costs();\\\\r\\\\n\\\\r\\\\n// inputs\\\\r\\\\nexport const units = () => units_in;\\\\r\\\\nexport const price = () => price_in;\\\\r\\\\n\\\\r\\\\n// ?? what if an explicit import in base referred back to A or B?\\\\r\\\\n\\"],\\"sourceRoot\\":\\"\\"}",
+}
+`;
+
+exports[`manufacturing/price-change-reconciliation 1`] = `
+Object {
+  "bundle": "(function webpackUniversalModuleDefinition(root, factory) {
+	if(typeof exports === 'object' && typeof module === 'object')
+		module.exports = factory();
+	else if(typeof define === 'function' && define.amd)
+		define([], factory);
+	else {
+		var a = factory();
+		for(var i in a) (typeof exports === 'object' ? exports : root)[i] = a[i];
+	}
+})(this, function() {
+return /******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = function(exports) {
+/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		}
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// create a fake namespace object
+/******/ 	// mode & 1: value is a module id, require it
+/******/ 	// mode & 2: merge all properties of value into the ns
+/******/ 	// mode & 4: return value when already ns object
+/******/ 	// mode & 8|1: behave like require
+/******/ 	__webpack_require__.t = function(value, mode) {
+/******/ 		if(mode & 1) value = __webpack_require__(value);
+/******/ 		if(mode & 8) return value;
+/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+/******/ 		var ns = Object.create(null);
+/******/ 		__webpack_require__.r(ns);
+/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+/******/ 		return ns;
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = \\"\\";
+/******/
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+\\"use strict\\";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \\"units\\", function() { return units; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \\"price\\", function() { return price; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \\"price_multiplier\\", function() { return price_multiplier; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \\"step\\", function() { return step; });
+/* harmony import */ var _base_cul_cul_scope_id_1_cul_parent_scope_id_0__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \\"revenue\\", function() { return _base_cul_cul_scope_id_1_cul_parent_scope_id_0__WEBPACK_IMPORTED_MODULE_0__[\\"b\\"]; });
+
+// this model takes inputs base price and units, and a price_multiplier.
+// it derives a proposed price by applying the multiplier and derives consequent units, constrained to the demand curve below.
+// via an additional input step_in it provides a mini reconciliation (if you can call it that) feature, moving units from the amount reflecting the update to the demand curve (when step_in is 0)
+// back to the base unit value (when step_in is 1) i.e. giving results without the demand curve impact.
+// both revenue and units are impacted by the step input (as well as profit, any other potential units-dependent functions throughout the complete model)
+// 'mini' is because price is already updated throughout the steps - step is really just acting like a switch here.
+// A real reconciliation should move through all the inputs, and should be structured more logically (as in a model-of- a more general model which is separate), but this is just for testing
+// this tests some key language features of calculang and demos their technical motivations
+
+ // import { all } from './base.cul.js'; TODO use this in place of above when I fix issue #13
+// export { all };
+
+const units = ({
+  step_in,
+  units_in,
+  price_in,
+  price_multiplier_in
+}) => step({
+  step_in
+}) >= 1 ? Object(_base_cul_cul_scope_id_1_cul_parent_scope_id_0__WEBPACK_IMPORTED_MODULE_0__[/* units_ */ \\"c\\"])({
+  units_in
+}) + (price({
+  price_in,
+  price_multiplier_in
+}) - Object(_base_cul_cul_scope_id_1_cul_parent_scope_id_0__WEBPACK_IMPORTED_MODULE_0__[/* price_ */ \\"a\\"])({
+  price_in
+})) * -0.005 : Object(_base_cul_cul_scope_id_1_cul_parent_scope_id_0__WEBPACK_IMPORTED_MODULE_0__[/* units_ */ \\"c\\"])({
+  units_in
+});
+const price = ({
+  price_in,
+  price_multiplier_in
+}) => Object(_base_cul_cul_scope_id_1_cul_parent_scope_id_0__WEBPACK_IMPORTED_MODULE_0__[/* price_ */ \\"a\\"])({
+  price_in
+}) * price_multiplier({
+  price_multiplier_in
+}); // new inputs
+
+const price_multiplier = ({
+  price_multiplier_in
+}) => price_multiplier_in;
+const step = ({
+  step_in
+}) => step_in;
+
+/***/ }),
+/* 1 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+\\"use strict\\";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \\"b\\", function() { return revenue; });
+/* unused harmony export costs */
+/* unused harmony export profit */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \\"c\\", function() { return units_; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \\"a\\", function() { return price_; });
+/* harmony import */ var _price_change_reconciliation_cul_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(0);
+
+
+
+
+const revenue = ({
+  step_in,
+  units_in,
+  price_in,
+  price_multiplier_in
+}) => {
+  return Object(_price_change_reconciliation_cul_js__WEBPACK_IMPORTED_MODULE_0__[\\"units\\"])({
+    step_in,
+    units_in,
+    price_in,
+    price_multiplier_in
+  }) * Object(_price_change_reconciliation_cul_js__WEBPACK_IMPORTED_MODULE_0__[\\"price\\"])({
+    price_in,
+    price_multiplier_in
+  });
+}; // variable costs only, OK for testing
+
+const costs = ({
+  step_in,
+  units_in,
+  price_in,
+  price_multiplier_in
+}) => 100 * Object(_price_change_reconciliation_cul_js__WEBPACK_IMPORTED_MODULE_0__[\\"units\\"])({
+  step_in,
+  units_in,
+  price_in,
+  price_multiplier_in
+});
+const profit = ({
+  step_in,
+  units_in,
+  price_in,
+  price_multiplier_in
+}) => revenue({
+  step_in,
+  units_in,
+  price_in,
+  price_multiplier_in
+}) - costs({
+  step_in,
+  units_in,
+  price_in,
+  price_multiplier_in
+}); // inputs
+
+const units_ = ({
+  units_in
+}) => units_in;
+const price_ = ({
+  price_in
+}) => price_in; // ?? what if an explicit import in base referred back to A or B?
+
+/***/ })
+/******/ ]);
+});
+//# sourceMappingURL=price-change-reconciliation.js.map",
+  "sourcemap": "{\\"version\\":3,\\"sources\\":[\\"webpack:///webpack/universalModuleDefinition\\",\\"webpack:///webpack/bootstrap\\",\\"webpack:///price-change-reconciliation.cul.js\\",\\"webpack:///base.cul.js\\"],\\"names\\":[\\"units\\",\\"step\\",\\"units_\\",\\"price\\",\\"price_\\",\\"price_multiplier\\",\\"price_multiplier_in\\",\\"step_in\\",\\"revenue\\",\\"costs\\",\\"profit\\",\\"units_in\\",\\"price_in\\"],\\"mappings\\":\\"AAAA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA,CAAC;AACD,O;QCVA;QACA;;QAEA;QACA;;QAEA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;;QAEA;QACA;;QAEA;QACA;;QAEA;QACA;QACA;;;QAGA;QACA;;QAEA;QACA;;QAEA;QACA;QACA;QACA,0CAA0C,gCAAgC;QAC1E;QACA;;QAEA;QACA;QACA;QACA,wDAAwD,kBAAkB;QAC1E;QACA,iDAAiD,cAAc;QAC/D;;QAEA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA,yCAAyC,iCAAiC;QAC1E,gHAAgH,mBAAmB,EAAE;QACrI;QACA;;QAEA;QACA;QACA;QACA,2BAA2B,0BAA0B,EAAE;QACvD,iCAAiC,eAAe;QAChD;QACA;QACA;;QAEA;QACA,sDAAsD,+DAA+D;;QAErH;QACA;;;QAGA;QACA;;;;;;;;AClFA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AACA;AAEA;AACA;AAEA;AAEA;AACA;AAEA;AAEA;CAGA;AACA;;AAEO,MAAMA,KAAK,GAAG;AAAA;AAAA;AAAA;AAAA;AAAA,MACnBC,IAAI;AAAA;AAAA,EAAJ,IAAU,CAAV,GAAcC,qGAAM;AAAA;AAAA,EAAN,GAAW,CAACC,KAAK;AAAA;AAAA;AAAA,EAAL,GAAUC,qGAAM;AAAA;AAAA,EAAjB,IAAuB,CAAC,KAAjD,GAAyDF,qGAAM;AAAA;AAAA,EAD1D;AAEA,MAAMC,KAAK,GAAG;AAAA;AAAA;AAAA,MAAMC,qGAAM;AAAA;AAAA,EAAN,GAAWC,gBAAgB;AAAA;AAAA,EAA/C,C,CAEP;;AACO,MAAMA,gBAAgB,GAAG;AAAA;AAAA,MAAMC,mBAA/B;AACA,MAAML,IAAI,GAAG;AAAA;AAAA,MAAMM,OAAnB,C;;;;;;;;;;;;;;;;;ACzBA,MAAMC,OAAO,GAAG;AAAA;AAAA;AAAA;AAAA;AAAA,MAAM;AAC3B,SAAOR,iFAAK;AAAA;AAAA;AAAA;AAAA;AAAA,IAAL,GAAUG,iFAAK;AAAA;AAAA;AAAA,IAAtB;AACD,CAFM,C,CAIP;;AACO,MAAMM,KAAK,GAAG;AAAA;AAAA;AAAA;AAAA;AAAA,MAAM,MAAMT,iFAAK;AAAA;AAAA;AAAA;AAAA;AAAA,EAA/B;AAEA,MAAMU,MAAM,GAAG;AAAA;AAAA;AAAA;AAAA;AAAA,MAAMF,OAAO;AAAA;AAAA;AAAA;AAAA;AAAA,EAAP,GAAYC,KAAK;AAAA;AAAA;AAAA;AAAA;AAAA,EAAtC,C,CAEP;;AACO,MAAMT,MAAK,GAAG;AAAA;AAAA,MAAMW,QAApB;AACA,MAAMR,MAAK,GAAG;AAAA;AAAA,MAAMS,QAApB,C,CAEP,iE\\",\\"file\\":\\"price-change-reconciliation.js\\",\\"sourcesContent\\":[\\"(function webpackUniversalModuleDefinition(root, factory) {\\\\n\\\\tif(typeof exports === 'object' && typeof module === 'object')\\\\n\\\\t\\\\tmodule.exports = factory();\\\\n\\\\telse if(typeof define === 'function' && define.amd)\\\\n\\\\t\\\\tdefine([], factory);\\\\n\\\\telse {\\\\n\\\\t\\\\tvar a = factory();\\\\n\\\\t\\\\tfor(var i in a) (typeof exports === 'object' ? exports : root)[i] = a[i];\\\\n\\\\t}\\\\n})(this, function() {\\\\nreturn \\",\\" \\\\t// The module cache\\\\n \\\\tvar installedModules = {};\\\\n\\\\n \\\\t// The require function\\\\n \\\\tfunction __webpack_require__(moduleId) {\\\\n\\\\n \\\\t\\\\t// Check if module is in cache\\\\n \\\\t\\\\tif(installedModules[moduleId]) {\\\\n \\\\t\\\\t\\\\treturn installedModules[moduleId].exports;\\\\n \\\\t\\\\t}\\\\n \\\\t\\\\t// Create a new module (and put it into the cache)\\\\n \\\\t\\\\tvar module = installedModules[moduleId] = {\\\\n \\\\t\\\\t\\\\ti: moduleId,\\\\n \\\\t\\\\t\\\\tl: false,\\\\n \\\\t\\\\t\\\\texports: {}\\\\n \\\\t\\\\t};\\\\n\\\\n \\\\t\\\\t// Execute the module function\\\\n \\\\t\\\\tmodules[moduleId].call(module.exports, module, module.exports, __webpack_require__);\\\\n\\\\n \\\\t\\\\t// Flag the module as loaded\\\\n \\\\t\\\\tmodule.l = true;\\\\n\\\\n \\\\t\\\\t// Return the exports of the module\\\\n \\\\t\\\\treturn module.exports;\\\\n \\\\t}\\\\n\\\\n\\\\n \\\\t// expose the modules object (__webpack_modules__)\\\\n \\\\t__webpack_require__.m = modules;\\\\n\\\\n \\\\t// expose the module cache\\\\n \\\\t__webpack_require__.c = installedModules;\\\\n\\\\n \\\\t// define getter function for harmony exports\\\\n \\\\t__webpack_require__.d = function(exports, name, getter) {\\\\n \\\\t\\\\tif(!__webpack_require__.o(exports, name)) {\\\\n \\\\t\\\\t\\\\tObject.defineProperty(exports, name, { enumerable: true, get: getter });\\\\n \\\\t\\\\t}\\\\n \\\\t};\\\\n\\\\n \\\\t// define __esModule on exports\\\\n \\\\t__webpack_require__.r = function(exports) {\\\\n \\\\t\\\\tif(typeof Symbol !== 'undefined' && Symbol.toStringTag) {\\\\n \\\\t\\\\t\\\\tObject.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });\\\\n \\\\t\\\\t}\\\\n \\\\t\\\\tObject.defineProperty(exports, '__esModule', { value: true });\\\\n \\\\t};\\\\n\\\\n \\\\t// create a fake namespace object\\\\n \\\\t// mode & 1: value is a module id, require it\\\\n \\\\t// mode & 2: merge all properties of value into the ns\\\\n \\\\t// mode & 4: return value when already ns object\\\\n \\\\t// mode & 8|1: behave like require\\\\n \\\\t__webpack_require__.t = function(value, mode) {\\\\n \\\\t\\\\tif(mode & 1) value = __webpack_require__(value);\\\\n \\\\t\\\\tif(mode & 8) return value;\\\\n \\\\t\\\\tif((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;\\\\n \\\\t\\\\tvar ns = Object.create(null);\\\\n \\\\t\\\\t__webpack_require__.r(ns);\\\\n \\\\t\\\\tObject.defineProperty(ns, 'default', { enumerable: true, value: value });\\\\n \\\\t\\\\tif(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));\\\\n \\\\t\\\\treturn ns;\\\\n \\\\t};\\\\n\\\\n \\\\t// getDefaultExport function for compatibility with non-harmony modules\\\\n \\\\t__webpack_require__.n = function(module) {\\\\n \\\\t\\\\tvar getter = module && module.__esModule ?\\\\n \\\\t\\\\t\\\\tfunction getDefault() { return module['default']; } :\\\\n \\\\t\\\\t\\\\tfunction getModuleExports() { return module; };\\\\n \\\\t\\\\t__webpack_require__.d(getter, 'a', getter);\\\\n \\\\t\\\\treturn getter;\\\\n \\\\t};\\\\n\\\\n \\\\t// Object.prototype.hasOwnProperty.call\\\\n \\\\t__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };\\\\n\\\\n \\\\t// __webpack_public_path__\\\\n \\\\t__webpack_require__.p = \\\\\\"\\\\\\";\\\\n\\\\n\\\\n \\\\t// Load entry module and return exports\\\\n \\\\treturn __webpack_require__(__webpack_require__.s = 0);\\\\n\\",\\"// this model takes inputs base price and units, and a price_multiplier.\\\\r\\\\n// it derives a proposed price by applying the multiplier and derives consequent units, constrained to the demand curve below.\\\\r\\\\n\\\\r\\\\n// via an additional input step_in it provides a mini reconciliation (if you can call it that) feature, moving units from the amount reflecting the update to the demand curve (when step_in is 0)\\\\r\\\\n// back to the base unit value (when step_in is 1) i.e. giving results without the demand curve impact.\\\\r\\\\n\\\\r\\\\n// both revenue and units are impacted by the step input (as well as profit, any other potential units-dependent functions throughout the complete model)\\\\r\\\\n\\\\r\\\\n// 'mini' is because price is already updated throughout the steps - step is really just acting like a switch here.\\\\r\\\\n// A real reconciliation should move through all the inputs, and should be structured more logically (as in a model-of- a more general model which is separate), but this is just for testing\\\\r\\\\n\\\\r\\\\n// this tests some key language features of calculang and demos their technical motivations\\\\r\\\\n\\\\r\\\\nimport { revenue, units_, price_ } from './base.cul';\\\\r\\\\nexport { revenue };\\\\r\\\\n\\\\r\\\\n// import { all } from './base.cul.js'; TODO use this in place of above when I fix issue #13\\\\r\\\\n// export { all };\\\\r\\\\n\\\\r\\\\nexport const units = () =>\\\\r\\\\n  step() >= 1 ? units_() + (price() - price_()) * -0.005 : units_();\\\\r\\\\nexport const price = () => price_() * price_multiplier();\\\\r\\\\n\\\\r\\\\n// new inputs\\\\r\\\\nexport const price_multiplier = () => price_multiplier_in;\\\\r\\\\nexport const step = () => step_in;\\\\r\\\\n\\",\\"export const revenue = () => {\\\\r\\\\n  return units() * price();\\\\r\\\\n};\\\\r\\\\n\\\\r\\\\n// variable costs only, OK for testing\\\\r\\\\nexport const costs = () => 100 * units();\\\\r\\\\n\\\\r\\\\nexport const profit = () => revenue() - costs();\\\\r\\\\n\\\\r\\\\n// inputs\\\\r\\\\nexport const units = () => units_in;\\\\r\\\\nexport const price = () => price_in;\\\\r\\\\n\\\\r\\\\n// ?? what if an explicit import in base referred back to A or B?\\\\r\\\\n\\"],\\"sourceRoot\\":\\"\\"}",
+}
+`;
+
+exports[`manufacturing/revenue-fixed-inputs 1`] = `
+Object {
+  "bundle": "(function webpackUniversalModuleDefinition(root, factory) {
+	if(typeof exports === 'object' && typeof module === 'object')
+		module.exports = factory();
+	else if(typeof define === 'function' && define.amd)
+		define([], factory);
+	else {
+		var a = factory();
+		for(var i in a) (typeof exports === 'object' ? exports : root)[i] = a[i];
+	}
+})(this, function() {
+return /******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = function(exports) {
+/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		}
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// create a fake namespace object
+/******/ 	// mode & 1: value is a module id, require it
+/******/ 	// mode & 2: merge all properties of value into the ns
+/******/ 	// mode & 4: return value when already ns object
+/******/ 	// mode & 8|1: behave like require
+/******/ 	__webpack_require__.t = function(value, mode) {
+/******/ 		if(mode & 1) value = __webpack_require__(value);
+/******/ 		if(mode & 8) return value;
+/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+/******/ 		var ns = Object.create(null);
+/******/ 		__webpack_require__.r(ns);
+/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+/******/ 		return ns;
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = \\"\\";
+/******/
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+\\"use strict\\";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \\"units\\", function() { return units; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \\"price\\", function() { return price; });
+/* harmony import */ var _base_cul_cul_scope_id_1_cul_parent_scope_id_0__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \\"revenue\\", function() { return _base_cul_cul_scope_id_1_cul_parent_scope_id_0__WEBPACK_IMPORTED_MODULE_0__[\\"a\\"]; });
+
+
+
+const units = ({}) => 100;
+const price = ({}) => 500; // this fixes (or constrains) the 2 inputs in base, so that this model is independent of inputs
+// e.g. revenue() and profit() can be called without inputs and the values specified above are used
+
+/***/ }),
+/* 1 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+\\"use strict\\";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \\"a\\", function() { return revenue; });
+/* unused harmony export costs */
+/* unused harmony export profit */
+/* unused harmony export units_ */
+/* unused harmony export price_ */
+/* harmony import */ var _revenue_fixed_inputs_cul_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(0);
+
+
+const revenue = ({}) => {
+  return Object(_revenue_fixed_inputs_cul_js__WEBPACK_IMPORTED_MODULE_0__[\\"units\\"])({}) * Object(_revenue_fixed_inputs_cul_js__WEBPACK_IMPORTED_MODULE_0__[\\"price\\"])({});
+}; // variable costs only, OK for testing
+
+const costs = ({}) => 100 * Object(_revenue_fixed_inputs_cul_js__WEBPACK_IMPORTED_MODULE_0__[\\"units\\"])({});
+const profit = ({}) => revenue({}) - costs({}); // inputs
+
+const units_ = ({
+  units_in
+}) => units_in;
+const price_ = ({
+  price_in
+}) => price_in; // ?? what if an explicit import in base referred back to A or B?
+
+/***/ })
+/******/ ]);
+});
+//# sourceMappingURL=revenue-fixed-inputs.js.map",
+  "sourcemap": "{\\"version\\":3,\\"sources\\":[\\"webpack:///webpack/universalModuleDefinition\\",\\"webpack:///webpack/bootstrap\\",\\"webpack:///revenue-fixed-inputs.cul.js\\",\\"webpack:///base.cul.js\\"],\\"names\\":[\\"units\\",\\"price\\",\\"revenue\\",\\"costs\\",\\"profit\\",\\"units_in\\",\\"price_in\\"],\\"mappings\\":\\"AAAA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA,CAAC;AACD,O;QCVA;QACA;;QAEA;QACA;;QAEA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;;QAEA;QACA;;QAEA;QACA;;QAEA;QACA;QACA;;;QAGA;QACA;;QAEA;QACA;;QAEA;QACA;QACA;QACA,0CAA0C,gCAAgC;QAC1E;QACA;;QAEA;QACA;QACA;QACA,wDAAwD,kBAAkB;QAC1E;QACA,iDAAiD,cAAc;QAC/D;;QAEA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA,yCAAyC,iCAAiC;QAC1E,gHAAgH,mBAAmB,EAAE;QACrI;QACA;;QAEA;QACA;QACA;QACA,2BAA2B,0BAA0B,EAAE;QACvD,iCAAiC,eAAe;QAChD;QACA;QACA;;QAEA;QACA,sDAAsD,+DAA+D;;QAErH;QACA;;;QAGA;QACA;;;;;;;;AClFA;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA;AACA;AAEO,MAAMA,KAAK,GAAG,QAAM,GAApB;AACA,MAAMC,KAAK,GAAG,QAAM,GAApB,C,CAEP;AACA,mG;;;;;;;;;;;;;;;ACPO,MAAMC,OAAO,GAAG,QAAM;AAC3B,SAAOF,0EAAK,IAAL,GAAUC,0EAAK,IAAtB;AACD,CAFM,C,CAIP;;AACO,MAAME,KAAK,GAAG,QAAM,MAAMH,0EAAK,IAA/B;AAEA,MAAMI,MAAM,GAAG,QAAMF,OAAO,IAAP,GAAYC,KAAK,IAAtC,C,CAEP;;AACO,MAAMH,MAAK,GAAG;AAAA;AAAA,MAAMK,QAApB;AACA,MAAMJ,MAAK,GAAG;AAAA;AAAA,MAAMK,QAApB,C,CAEP,iE\\",\\"file\\":\\"revenue-fixed-inputs.js\\",\\"sourcesContent\\":[\\"(function webpackUniversalModuleDefinition(root, factory) {\\\\n\\\\tif(typeof exports === 'object' && typeof module === 'object')\\\\n\\\\t\\\\tmodule.exports = factory();\\\\n\\\\telse if(typeof define === 'function' && define.amd)\\\\n\\\\t\\\\tdefine([], factory);\\\\n\\\\telse {\\\\n\\\\t\\\\tvar a = factory();\\\\n\\\\t\\\\tfor(var i in a) (typeof exports === 'object' ? exports : root)[i] = a[i];\\\\n\\\\t}\\\\n})(this, function() {\\\\nreturn \\",\\" \\\\t// The module cache\\\\n \\\\tvar installedModules = {};\\\\n\\\\n \\\\t// The require function\\\\n \\\\tfunction __webpack_require__(moduleId) {\\\\n\\\\n \\\\t\\\\t// Check if module is in cache\\\\n \\\\t\\\\tif(installedModules[moduleId]) {\\\\n \\\\t\\\\t\\\\treturn installedModules[moduleId].exports;\\\\n \\\\t\\\\t}\\\\n \\\\t\\\\t// Create a new module (and put it into the cache)\\\\n \\\\t\\\\tvar module = installedModules[moduleId] = {\\\\n \\\\t\\\\t\\\\ti: moduleId,\\\\n \\\\t\\\\t\\\\tl: false,\\\\n \\\\t\\\\t\\\\texports: {}\\\\n \\\\t\\\\t};\\\\n\\\\n \\\\t\\\\t// Execute the module function\\\\n \\\\t\\\\tmodules[moduleId].call(module.exports, module, module.exports, __webpack_require__);\\\\n\\\\n \\\\t\\\\t// Flag the module as loaded\\\\n \\\\t\\\\tmodule.l = true;\\\\n\\\\n \\\\t\\\\t// Return the exports of the module\\\\n \\\\t\\\\treturn module.exports;\\\\n \\\\t}\\\\n\\\\n\\\\n \\\\t// expose the modules object (__webpack_modules__)\\\\n \\\\t__webpack_require__.m = modules;\\\\n\\\\n \\\\t// expose the module cache\\\\n \\\\t__webpack_require__.c = installedModules;\\\\n\\\\n \\\\t// define getter function for harmony exports\\\\n \\\\t__webpack_require__.d = function(exports, name, getter) {\\\\n \\\\t\\\\tif(!__webpack_require__.o(exports, name)) {\\\\n \\\\t\\\\t\\\\tObject.defineProperty(exports, name, { enumerable: true, get: getter });\\\\n \\\\t\\\\t}\\\\n \\\\t};\\\\n\\\\n \\\\t// define __esModule on exports\\\\n \\\\t__webpack_require__.r = function(exports) {\\\\n \\\\t\\\\tif(typeof Symbol !== 'undefined' && Symbol.toStringTag) {\\\\n \\\\t\\\\t\\\\tObject.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });\\\\n \\\\t\\\\t}\\\\n \\\\t\\\\tObject.defineProperty(exports, '__esModule', { value: true });\\\\n \\\\t};\\\\n\\\\n \\\\t// create a fake namespace object\\\\n \\\\t// mode & 1: value is a module id, require it\\\\n \\\\t// mode & 2: merge all properties of value into the ns\\\\n \\\\t// mode & 4: return value when already ns object\\\\n \\\\t// mode & 8|1: behave like require\\\\n \\\\t__webpack_require__.t = function(value, mode) {\\\\n \\\\t\\\\tif(mode & 1) value = __webpack_require__(value);\\\\n \\\\t\\\\tif(mode & 8) return value;\\\\n \\\\t\\\\tif((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;\\\\n \\\\t\\\\tvar ns = Object.create(null);\\\\n \\\\t\\\\t__webpack_require__.r(ns);\\\\n \\\\t\\\\tObject.defineProperty(ns, 'default', { enumerable: true, value: value });\\\\n \\\\t\\\\tif(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));\\\\n \\\\t\\\\treturn ns;\\\\n \\\\t};\\\\n\\\\n \\\\t// getDefaultExport function for compatibility with non-harmony modules\\\\n \\\\t__webpack_require__.n = function(module) {\\\\n \\\\t\\\\tvar getter = module && module.__esModule ?\\\\n \\\\t\\\\t\\\\tfunction getDefault() { return module['default']; } :\\\\n \\\\t\\\\t\\\\tfunction getModuleExports() { return module; };\\\\n \\\\t\\\\t__webpack_require__.d(getter, 'a', getter);\\\\n \\\\t\\\\treturn getter;\\\\n \\\\t};\\\\n\\\\n \\\\t// Object.prototype.hasOwnProperty.call\\\\n \\\\t__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };\\\\n\\\\n \\\\t// __webpack_public_path__\\\\n \\\\t__webpack_require__.p = \\\\\\"\\\\\\";\\\\n\\\\n\\\\n \\\\t// Load entry module and return exports\\\\n \\\\treturn __webpack_require__(__webpack_require__.s = 0);\\\\n\\",\\"import { revenue } from './base.cul';\\\\r\\\\nexport { revenue };\\\\r\\\\n\\\\r\\\\nexport const units = () => 100;\\\\r\\\\nexport const price = () => 500;\\\\r\\\\n\\\\r\\\\n// this fixes (or constrains) the 2 inputs in base, so that this model is independent of inputs\\\\r\\\\n// e.g. revenue() and profit() can be called without inputs and the values specified above are used\\\\r\\\\n\\",\\"export const revenue = () => {\\\\r\\\\n  return units() * price();\\\\r\\\\n};\\\\r\\\\n\\\\r\\\\n// variable costs only, OK for testing\\\\r\\\\nexport const costs = () => 100 * units();\\\\r\\\\n\\\\r\\\\nexport const profit = () => revenue() - costs();\\\\r\\\\n\\\\r\\\\n// inputs\\\\r\\\\nexport const units = () => units_in;\\\\r\\\\nexport const price = () => price_in;\\\\r\\\\n\\\\r\\\\n// ?? what if an explicit import in base referred back to A or B?\\\\r\\\\n\\"],\\"sourceRoot\\":\\"\\"}",
+}
+`;
+
+exports[`manufacturing/revenue-with-demand-curve 1`] = `
+Object {
+  "bundle": "(function webpackUniversalModuleDefinition(root, factory) {
+	if(typeof exports === 'object' && typeof module === 'object')
+		module.exports = factory();
+	else if(typeof define === 'function' && define.amd)
+		define([], factory);
+	else {
+		var a = factory();
+		for(var i in a) (typeof exports === 'object' ? exports : root)[i] = a[i];
+	}
+})(this, function() {
+return /******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = function(exports) {
+/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		}
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// create a fake namespace object
+/******/ 	// mode & 1: value is a module id, require it
+/******/ 	// mode & 2: merge all properties of value into the ns
+/******/ 	// mode & 4: return value when already ns object
+/******/ 	// mode & 8|1: behave like require
+/******/ 	__webpack_require__.t = function(value, mode) {
+/******/ 		if(mode & 1) value = __webpack_require__(value);
+/******/ 		if(mode & 8) return value;
+/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+/******/ 		var ns = Object.create(null);
+/******/ 		__webpack_require__.r(ns);
+/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+/******/ 		return ns;
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = \\"\\";
+/******/
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+\\"use strict\\";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \\"units\\", function() { return units; });
+/* harmony import */ var _base_cul_cul_scope_id_1_cul_parent_scope_id_0__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \\"revenue\\", function() { return _base_cul_cul_scope_id_1_cul_parent_scope_id_0__WEBPACK_IMPORTED_MODULE_0__[\\"a\\"]; });
+
+
+ // demand-curve constraint:
+
+const units = ({}) => 1000 - 200 * price(); // this model has a constraint on units so that price is the only model input, and units are derived from the price input
+
+/***/ }),
+/* 1 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+\\"use strict\\";
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \\"a\\", function() { return revenue; });
+/* unused harmony export costs */
+/* unused harmony export profit */
+/* unused harmony export units_ */
+/* unused harmony export price */
+/* harmony import */ var _revenue_with_demand_curve_cul_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(0);
+
+const revenue = ({
+  price_in
+}) => {
+  return Object(_revenue_with_demand_curve_cul_js__WEBPACK_IMPORTED_MODULE_0__[\\"units\\"])({}) * price({
+    price_in
+  });
+}; // variable costs only, OK for testing
+
+const costs = ({}) => 100 * Object(_revenue_with_demand_curve_cul_js__WEBPACK_IMPORTED_MODULE_0__[\\"units\\"])({});
+const profit = ({
+  price_in
+}) => revenue({
+  price_in
+}) - costs({}); // inputs
+
+const units_ = ({
+  units_in
+}) => units_in;
+const price = ({
+  price_in
+}) => price_in; // ?? what if an explicit import in base referred back to A or B?
+
+/***/ })
+/******/ ]);
+});
+//# sourceMappingURL=revenue-with-demand-curve.js.map",
+  "sourcemap": "{\\"version\\":3,\\"sources\\":[\\"webpack:///webpack/universalModuleDefinition\\",\\"webpack:///webpack/bootstrap\\",\\"webpack:///revenue-with-demand-curve.cul.js\\",\\"webpack:///base.cul.js\\"],\\"names\\":[\\"units\\",\\"price\\",\\"revenue\\",\\"costs\\",\\"profit\\",\\"units_in\\",\\"price_in\\"],\\"mappings\\":\\"AAAA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA,CAAC;AACD,O;QCVA;QACA;;QAEA;QACA;;QAEA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;;QAEA;QACA;;QAEA;QACA;;QAEA;QACA;QACA;;;QAGA;QACA;;QAEA;QACA;;QAEA;QACA;QACA;QACA,0CAA0C,gCAAgC;QAC1E;QACA;;QAEA;QACA;QACA;QACA,wDAAwD,kBAAkB;QAC1E;QACA,iDAAiD,cAAc;QAC/D;;QAEA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA,yCAAyC,iCAAiC;QAC1E,gHAAgH,mBAAmB,EAAE;QACrI;QACA;;QAEA;QACA;QACA;QACA,2BAA2B,0BAA0B,EAAE;QACvD,iCAAiC,eAAe;QAChD;QACA;QACA;;QAEA;QACA,sDAAsD,+DAA+D;;QAErH;QACA;;;QAGA;QACA;;;;;;;;AClFA;AAAA;AAAA;AAAA;AAAA;AAAA;CAGA;;AACO,MAAMA,KAAK,GAAG,QAAM,OAAO,MAAMC,KAAK,EAAtC,C,CAEP,yH;;;;;;;;;;;;;;ACNO,MAAMC,OAAO,GAAG;AAAA;AAAA,MAAM;AAC3B,SAAOF,+EAAK,IAAL,GAAUC,KAAK;AAAA;AAAA,IAAtB;AACD,CAFM,C,CAIP;;AACO,MAAME,KAAK,GAAG,QAAM,MAAMH,+EAAK,IAA/B;AAEA,MAAMI,MAAM,GAAG;AAAA;AAAA,MAAMF,OAAO;AAAA;AAAA,EAAP,GAAYC,KAAK,IAAtC,C,CAEP;;AACO,MAAMH,MAAK,GAAG;AAAA;AAAA,MAAMK,QAApB;AACA,MAAMJ,KAAK,GAAG;AAAA;AAAA,MAAMK,QAApB,C,CAEP,iE\\",\\"file\\":\\"revenue-with-demand-curve.js\\",\\"sourcesContent\\":[\\"(function webpackUniversalModuleDefinition(root, factory) {\\\\n\\\\tif(typeof exports === 'object' && typeof module === 'object')\\\\n\\\\t\\\\tmodule.exports = factory();\\\\n\\\\telse if(typeof define === 'function' && define.amd)\\\\n\\\\t\\\\tdefine([], factory);\\\\n\\\\telse {\\\\n\\\\t\\\\tvar a = factory();\\\\n\\\\t\\\\tfor(var i in a) (typeof exports === 'object' ? exports : root)[i] = a[i];\\\\n\\\\t}\\\\n})(this, function() {\\\\nreturn \\",\\" \\\\t// The module cache\\\\n \\\\tvar installedModules = {};\\\\n\\\\n \\\\t// The require function\\\\n \\\\tfunction __webpack_require__(moduleId) {\\\\n\\\\n \\\\t\\\\t// Check if module is in cache\\\\n \\\\t\\\\tif(installedModules[moduleId]) {\\\\n \\\\t\\\\t\\\\treturn installedModules[moduleId].exports;\\\\n \\\\t\\\\t}\\\\n \\\\t\\\\t// Create a new module (and put it into the cache)\\\\n \\\\t\\\\tvar module = installedModules[moduleId] = {\\\\n \\\\t\\\\t\\\\ti: moduleId,\\\\n \\\\t\\\\t\\\\tl: false,\\\\n \\\\t\\\\t\\\\texports: {}\\\\n \\\\t\\\\t};\\\\n\\\\n \\\\t\\\\t// Execute the module function\\\\n \\\\t\\\\tmodules[moduleId].call(module.exports, module, module.exports, __webpack_require__);\\\\n\\\\n \\\\t\\\\t// Flag the module as loaded\\\\n \\\\t\\\\tmodule.l = true;\\\\n\\\\n \\\\t\\\\t// Return the exports of the module\\\\n \\\\t\\\\treturn module.exports;\\\\n \\\\t}\\\\n\\\\n\\\\n \\\\t// expose the modules object (__webpack_modules__)\\\\n \\\\t__webpack_require__.m = modules;\\\\n\\\\n \\\\t// expose the module cache\\\\n \\\\t__webpack_require__.c = installedModules;\\\\n\\\\n \\\\t// define getter function for harmony exports\\\\n \\\\t__webpack_require__.d = function(exports, name, getter) {\\\\n \\\\t\\\\tif(!__webpack_require__.o(exports, name)) {\\\\n \\\\t\\\\t\\\\tObject.defineProperty(exports, name, { enumerable: true, get: getter });\\\\n \\\\t\\\\t}\\\\n \\\\t};\\\\n\\\\n \\\\t// define __esModule on exports\\\\n \\\\t__webpack_require__.r = function(exports) {\\\\n \\\\t\\\\tif(typeof Symbol !== 'undefined' && Symbol.toStringTag) {\\\\n \\\\t\\\\t\\\\tObject.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });\\\\n \\\\t\\\\t}\\\\n \\\\t\\\\tObject.defineProperty(exports, '__esModule', { value: true });\\\\n \\\\t};\\\\n\\\\n \\\\t// create a fake namespace object\\\\n \\\\t// mode & 1: value is a module id, require it\\\\n \\\\t// mode & 2: merge all properties of value into the ns\\\\n \\\\t// mode & 4: return value when already ns object\\\\n \\\\t// mode & 8|1: behave like require\\\\n \\\\t__webpack_require__.t = function(value, mode) {\\\\n \\\\t\\\\tif(mode & 1) value = __webpack_require__(value);\\\\n \\\\t\\\\tif(mode & 8) return value;\\\\n \\\\t\\\\tif((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;\\\\n \\\\t\\\\tvar ns = Object.create(null);\\\\n \\\\t\\\\t__webpack_require__.r(ns);\\\\n \\\\t\\\\tObject.defineProperty(ns, 'default', { enumerable: true, value: value });\\\\n \\\\t\\\\tif(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));\\\\n \\\\t\\\\treturn ns;\\\\n \\\\t};\\\\n\\\\n \\\\t// getDefaultExport function for compatibility with non-harmony modules\\\\n \\\\t__webpack_require__.n = function(module) {\\\\n \\\\t\\\\tvar getter = module && module.__esModule ?\\\\n \\\\t\\\\t\\\\tfunction getDefault() { return module['default']; } :\\\\n \\\\t\\\\t\\\\tfunction getModuleExports() { return module; };\\\\n \\\\t\\\\t__webpack_require__.d(getter, 'a', getter);\\\\n \\\\t\\\\treturn getter;\\\\n \\\\t};\\\\n\\\\n \\\\t// Object.prototype.hasOwnProperty.call\\\\n \\\\t__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };\\\\n\\\\n \\\\t// __webpack_public_path__\\\\n \\\\t__webpack_require__.p = \\\\\\"\\\\\\";\\\\n\\\\n\\\\n \\\\t// Load entry module and return exports\\\\n \\\\treturn __webpack_require__(__webpack_require__.s = 0);\\\\n\\",\\"import { revenue } from './base.cul';\\\\r\\\\nexport { revenue };\\\\r\\\\n\\\\r\\\\n// demand-curve constraint:\\\\r\\\\nexport const units = () => 1000 - 200 * price();\\\\r\\\\n\\\\r\\\\n// this model has a constraint on units so that price is the only model input, and units are derived from the price input\\\\r\\\\n\\",\\"export const revenue = () => {\\\\r\\\\n  return units() * price();\\\\r\\\\n};\\\\r\\\\n\\\\r\\\\n// variable costs only, OK for testing\\\\r\\\\nexport const costs = () => 100 * units();\\\\r\\\\n\\\\r\\\\nexport const profit = () => revenue() - costs();\\\\r\\\\n\\\\r\\\\n// inputs\\\\r\\\\nexport const units = () => units_in;\\\\r\\\\nexport const price = () => price_in;\\\\r\\\\n\\\\r\\\\n// ?? what if an explicit import in base referred back to A or B?\\\\r\\\\n\\"],\\"sourceRoot\\":\\"\\"}",
+}
+`;
+
+exports[`manufacturing/simple-neg-A 1`] = `
+Object {
+  "bundle": "(function webpackUniversalModuleDefinition(root, factory) {
+	if(typeof exports === 'object' && typeof module === 'object')
+		module.exports = factory();
+	else if(typeof define === 'function' && define.amd)
+		define([], factory);
+	else {
+		var a = factory();
+		for(var i in a) (typeof exports === 'object' ? exports : root)[i] = a[i];
+	}
+})(this, function() {
+return /******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = function(exports) {
+/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		}
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// create a fake namespace object
+/******/ 	// mode & 1: value is a module id, require it
+/******/ 	// mode & 2: merge all properties of value into the ns
+/******/ 	// mode & 4: return value when already ns object
+/******/ 	// mode & 8|1: behave like require
+/******/ 	__webpack_require__.t = function(value, mode) {
+/******/ 		if(mode & 1) value = __webpack_require__(value);
+/******/ 		if(mode & 8) return value;
+/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+/******/ 		var ns = Object.create(null);
+/******/ 		__webpack_require__.r(ns);
+/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+/******/ 		return ns;
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = \\"\\";
+/******/
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+\\"use strict\\";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \\"sales_by_product\\", function() { return sales_by_product; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \\"product\\", function() { return product; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \\"sales_total\\", function() { return sales_total; });
+// 'neg' logic is the most delicate of all the logic in calculang
+// I had more testcases in development, and need to add more
+const sales_by_product = ({
+  product_in
+}) => product({
+  product_in
+}) == 1 ? 100 : 50;
+const product = ({
+  product_in
+}) => product_in;
+const sales_total = ({
+  product_in
+}) => sales_by_product({
+  product_in: 0
+}) + sales_by_product({
+  product_in
+}); // => sales_total NOT independent of product_in (this is coded to add some products sales to product 0 sales : bad, but legit from calculang perspective)
+
+/***/ })
+/******/ ]);
+});
+//# sourceMappingURL=simple-neg-A.js.map",
+  "sourcemap": "{\\"version\\":3,\\"sources\\":[\\"webpack:///webpack/universalModuleDefinition\\",\\"webpack:///webpack/bootstrap\\",\\"webpack:///simple-neg-A.cul.js\\"],\\"names\\":[\\"sales_by_product\\",\\"product\\",\\"product_in\\",\\"sales_total\\"],\\"mappings\\":\\"AAAA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA,CAAC;AACD,O;QCVA;QACA;;QAEA;QACA;;QAEA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;;QAEA;QACA;;QAEA;QACA;;QAEA;QACA;QACA;;;QAGA;QACA;;QAEA;QACA;;QAEA;QACA;QACA;QACA,0CAA0C,gCAAgC;QAC1E;QACA;;QAEA;QACA;QACA;QACA,wDAAwD,kBAAkB;QAC1E;QACA,iDAAiD,cAAc;QAC/D;;QAEA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA,yCAAyC,iCAAiC;QAC1E,gHAAgH,mBAAmB,EAAE;QACrI;QACA;;QAEA;QACA;QACA;QACA,2BAA2B,0BAA0B,EAAE;QACvD,iCAAiC,eAAe;QAChD;QACA;QACA;;QAEA;QACA,sDAAsD,+DAA+D;;QAErH;QACA;;;QAGA;QACA;;;;;;;;AClFA;AAAA;AAAA;AAAA;AAAA;AACA;AAEO,MAAMA,gBAAgB,GAAG;AAAA;AAAA,MAAOC,OAAO;AAAA;AAAA,EAAP,IAAa,CAAb,GAAiB,GAAjB,GAAuB,EAAvD;AACA,MAAMA,OAAO,GAAG;AAAA;AAAA,MAAMC,UAAtB;AACA,MAAMC,WAAW,GAAG;AAAA;AAAA,MACzBH,gBAAgB;AAAGE,YAAU,EAAE;AAAf,EAAhB,GAAsCF,gBAAgB;AAAA;AAAA,EADjD,C,CACuD,yJ\\",\\"file\\":\\"simple-neg-A.js\\",\\"sourcesContent\\":[\\"(function webpackUniversalModuleDefinition(root, factory) {\\\\n\\\\tif(typeof exports === 'object' && typeof module === 'object')\\\\n\\\\t\\\\tmodule.exports = factory();\\\\n\\\\telse if(typeof define === 'function' && define.amd)\\\\n\\\\t\\\\tdefine([], factory);\\\\n\\\\telse {\\\\n\\\\t\\\\tvar a = factory();\\\\n\\\\t\\\\tfor(var i in a) (typeof exports === 'object' ? exports : root)[i] = a[i];\\\\n\\\\t}\\\\n})(this, function() {\\\\nreturn \\",\\" \\\\t// The module cache\\\\n \\\\tvar installedModules = {};\\\\n\\\\n \\\\t// The require function\\\\n \\\\tfunction __webpack_require__(moduleId) {\\\\n\\\\n \\\\t\\\\t// Check if module is in cache\\\\n \\\\t\\\\tif(installedModules[moduleId]) {\\\\n \\\\t\\\\t\\\\treturn installedModules[moduleId].exports;\\\\n \\\\t\\\\t}\\\\n \\\\t\\\\t// Create a new module (and put it into the cache)\\\\n \\\\t\\\\tvar module = installedModules[moduleId] = {\\\\n \\\\t\\\\t\\\\ti: moduleId,\\\\n \\\\t\\\\t\\\\tl: false,\\\\n \\\\t\\\\t\\\\texports: {}\\\\n \\\\t\\\\t};\\\\n\\\\n \\\\t\\\\t// Execute the module function\\\\n \\\\t\\\\tmodules[moduleId].call(module.exports, module, module.exports, __webpack_require__);\\\\n\\\\n \\\\t\\\\t// Flag the module as loaded\\\\n \\\\t\\\\tmodule.l = true;\\\\n\\\\n \\\\t\\\\t// Return the exports of the module\\\\n \\\\t\\\\treturn module.exports;\\\\n \\\\t}\\\\n\\\\n\\\\n \\\\t// expose the modules object (__webpack_modules__)\\\\n \\\\t__webpack_require__.m = modules;\\\\n\\\\n \\\\t// expose the module cache\\\\n \\\\t__webpack_require__.c = installedModules;\\\\n\\\\n \\\\t// define getter function for harmony exports\\\\n \\\\t__webpack_require__.d = function(exports, name, getter) {\\\\n \\\\t\\\\tif(!__webpack_require__.o(exports, name)) {\\\\n \\\\t\\\\t\\\\tObject.defineProperty(exports, name, { enumerable: true, get: getter });\\\\n \\\\t\\\\t}\\\\n \\\\t};\\\\n\\\\n \\\\t// define __esModule on exports\\\\n \\\\t__webpack_require__.r = function(exports) {\\\\n \\\\t\\\\tif(typeof Symbol !== 'undefined' && Symbol.toStringTag) {\\\\n \\\\t\\\\t\\\\tObject.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });\\\\n \\\\t\\\\t}\\\\n \\\\t\\\\tObject.defineProperty(exports, '__esModule', { value: true });\\\\n \\\\t};\\\\n\\\\n \\\\t// create a fake namespace object\\\\n \\\\t// mode & 1: value is a module id, require it\\\\n \\\\t// mode & 2: merge all properties of value into the ns\\\\n \\\\t// mode & 4: return value when already ns object\\\\n \\\\t// mode & 8|1: behave like require\\\\n \\\\t__webpack_require__.t = function(value, mode) {\\\\n \\\\t\\\\tif(mode & 1) value = __webpack_require__(value);\\\\n \\\\t\\\\tif(mode & 8) return value;\\\\n \\\\t\\\\tif((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;\\\\n \\\\t\\\\tvar ns = Object.create(null);\\\\n \\\\t\\\\t__webpack_require__.r(ns);\\\\n \\\\t\\\\tObject.defineProperty(ns, 'default', { enumerable: true, value: value });\\\\n \\\\t\\\\tif(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));\\\\n \\\\t\\\\treturn ns;\\\\n \\\\t};\\\\n\\\\n \\\\t// getDefaultExport function for compatibility with non-harmony modules\\\\n \\\\t__webpack_require__.n = function(module) {\\\\n \\\\t\\\\tvar getter = module && module.__esModule ?\\\\n \\\\t\\\\t\\\\tfunction getDefault() { return module['default']; } :\\\\n \\\\t\\\\t\\\\tfunction getModuleExports() { return module; };\\\\n \\\\t\\\\t__webpack_require__.d(getter, 'a', getter);\\\\n \\\\t\\\\treturn getter;\\\\n \\\\t};\\\\n\\\\n \\\\t// Object.prototype.hasOwnProperty.call\\\\n \\\\t__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };\\\\n\\\\n \\\\t// __webpack_public_path__\\\\n \\\\t__webpack_require__.p = \\\\\\"\\\\\\";\\\\n\\\\n\\\\n \\\\t// Load entry module and return exports\\\\n \\\\treturn __webpack_require__(__webpack_require__.s = 0);\\\\n\\",\\"// 'neg' logic is the most delicate of all the logic in calculang\\\\r\\\\n// I had more testcases in development, and need to add more\\\\r\\\\n\\\\r\\\\nexport const sales_by_product = () => (product() == 1 ? 100 : 50);\\\\r\\\\nexport const product = () => product_in;\\\\r\\\\nexport const sales_total = () =>\\\\r\\\\n  sales_by_product({ product_in: 0 }) + sales_by_product({}); // => sales_total NOT independent of product_in (this is coded to add some products sales to product 0 sales : bad, but legit from calculang perspective)\\\\r\\\\n\\"],\\"sourceRoot\\":\\"\\"}",
+}
+`;
+
+exports[`manufacturing/simple-neg-B 1`] = `
+Object {
+  "bundle": "(function webpackUniversalModuleDefinition(root, factory) {
+	if(typeof exports === 'object' && typeof module === 'object')
+		module.exports = factory();
+	else if(typeof define === 'function' && define.amd)
+		define([], factory);
+	else {
+		var a = factory();
+		for(var i in a) (typeof exports === 'object' ? exports : root)[i] = a[i];
+	}
+})(this, function() {
+return /******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = function(exports) {
+/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		}
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// create a fake namespace object
+/******/ 	// mode & 1: value is a module id, require it
+/******/ 	// mode & 2: merge all properties of value into the ns
+/******/ 	// mode & 4: return value when already ns object
+/******/ 	// mode & 8|1: behave like require
+/******/ 	__webpack_require__.t = function(value, mode) {
+/******/ 		if(mode & 1) value = __webpack_require__(value);
+/******/ 		if(mode & 8) return value;
+/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+/******/ 		var ns = Object.create(null);
+/******/ 		__webpack_require__.r(ns);
+/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+/******/ 		return ns;
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = \\"\\";
+/******/
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+\\"use strict\\";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \\"sales_by_product\\", function() { return sales_by_product; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \\"product\\", function() { return product; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \\"sales_total\\", function() { return sales_total; });
+// 'neg' logic is the most delicate of all the logic in calculang
+// I had more testcases in development, and need to add more
+const sales_by_product = ({
+  product_in
+}) => product({
+  product_in
+}) == 1 ? 100 : 50;
+const product = ({
+  product_in
+}) => product_in;
+const sales_total = ({}) => sales_by_product({
+  product_in: 0
+}) + sales_by_product({
+  product_in: 1
+}); // => sales_total IS independent of product_in
+
+/***/ })
+/******/ ]);
+});
+//# sourceMappingURL=simple-neg-B.js.map",
+  "sourcemap": "{\\"version\\":3,\\"sources\\":[\\"webpack:///webpack/universalModuleDefinition\\",\\"webpack:///webpack/bootstrap\\",\\"webpack:///simple-neg-B.cul.js\\"],\\"names\\":[\\"sales_by_product\\",\\"product\\",\\"product_in\\",\\"sales_total\\"],\\"mappings\\":\\"AAAA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA,CAAC;AACD,O;QCVA;QACA;;QAEA;QACA;;QAEA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;;QAEA;QACA;;QAEA;QACA;;QAEA;QACA;QACA;;;QAGA;QACA;;QAEA;QACA;;QAEA;QACA;QACA;QACA,0CAA0C,gCAAgC;QAC1E;QACA;;QAEA;QACA;QACA;QACA,wDAAwD,kBAAkB;QAC1E;QACA,iDAAiD,cAAc;QAC/D;;QAEA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA,yCAAyC,iCAAiC;QAC1E,gHAAgH,mBAAmB,EAAE;QACrI;QACA;;QAEA;QACA;QACA;QACA,2BAA2B,0BAA0B,EAAE;QACvD,iCAAiC,eAAe;QAChD;QACA;QACA;;QAEA;QACA,sDAAsD,+DAA+D;;QAErH;QACA;;;QAGA;QACA;;;;;;;;AClFA;AAAA;AAAA;AAAA;AAAA;AACA;AAEO,MAAMA,gBAAgB,GAAG;AAAA;AAAA,MAAOC,OAAO;AAAA;AAAA,EAAP,IAAa,CAAb,GAAiB,GAAjB,GAAuB,EAAvD;AACA,MAAMA,OAAO,GAAG;AAAA;AAAA,MAAMC,UAAtB;AACA,MAAMC,WAAW,GAAG,QACzBH,gBAAgB;AAAGE,YAAU,EAAE;AAAf,EAAhB,GAAsCF,gBAAgB;AAAGE,YAAU,EAAE;AAAf,EADjD,C,CACsE,8C\\",\\"file\\":\\"simple-neg-B.js\\",\\"sourcesContent\\":[\\"(function webpackUniversalModuleDefinition(root, factory) {\\\\n\\\\tif(typeof exports === 'object' && typeof module === 'object')\\\\n\\\\t\\\\tmodule.exports = factory();\\\\n\\\\telse if(typeof define === 'function' && define.amd)\\\\n\\\\t\\\\tdefine([], factory);\\\\n\\\\telse {\\\\n\\\\t\\\\tvar a = factory();\\\\n\\\\t\\\\tfor(var i in a) (typeof exports === 'object' ? exports : root)[i] = a[i];\\\\n\\\\t}\\\\n})(this, function() {\\\\nreturn \\",\\" \\\\t// The module cache\\\\n \\\\tvar installedModules = {};\\\\n\\\\n \\\\t// The require function\\\\n \\\\tfunction __webpack_require__(moduleId) {\\\\n\\\\n \\\\t\\\\t// Check if module is in cache\\\\n \\\\t\\\\tif(installedModules[moduleId]) {\\\\n \\\\t\\\\t\\\\treturn installedModules[moduleId].exports;\\\\n \\\\t\\\\t}\\\\n \\\\t\\\\t// Create a new module (and put it into the cache)\\\\n \\\\t\\\\tvar module = installedModules[moduleId] = {\\\\n \\\\t\\\\t\\\\ti: moduleId,\\\\n \\\\t\\\\t\\\\tl: false,\\\\n \\\\t\\\\t\\\\texports: {}\\\\n \\\\t\\\\t};\\\\n\\\\n \\\\t\\\\t// Execute the module function\\\\n \\\\t\\\\tmodules[moduleId].call(module.exports, module, module.exports, __webpack_require__);\\\\n\\\\n \\\\t\\\\t// Flag the module as loaded\\\\n \\\\t\\\\tmodule.l = true;\\\\n\\\\n \\\\t\\\\t// Return the exports of the module\\\\n \\\\t\\\\treturn module.exports;\\\\n \\\\t}\\\\n\\\\n\\\\n \\\\t// expose the modules object (__webpack_modules__)\\\\n \\\\t__webpack_require__.m = modules;\\\\n\\\\n \\\\t// expose the module cache\\\\n \\\\t__webpack_require__.c = installedModules;\\\\n\\\\n \\\\t// define getter function for harmony exports\\\\n \\\\t__webpack_require__.d = function(exports, name, getter) {\\\\n \\\\t\\\\tif(!__webpack_require__.o(exports, name)) {\\\\n \\\\t\\\\t\\\\tObject.defineProperty(exports, name, { enumerable: true, get: getter });\\\\n \\\\t\\\\t}\\\\n \\\\t};\\\\n\\\\n \\\\t// define __esModule on exports\\\\n \\\\t__webpack_require__.r = function(exports) {\\\\n \\\\t\\\\tif(typeof Symbol !== 'undefined' && Symbol.toStringTag) {\\\\n \\\\t\\\\t\\\\tObject.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });\\\\n \\\\t\\\\t}\\\\n \\\\t\\\\tObject.defineProperty(exports, '__esModule', { value: true });\\\\n \\\\t};\\\\n\\\\n \\\\t// create a fake namespace object\\\\n \\\\t// mode & 1: value is a module id, require it\\\\n \\\\t// mode & 2: merge all properties of value into the ns\\\\n \\\\t// mode & 4: return value when already ns object\\\\n \\\\t// mode & 8|1: behave like require\\\\n \\\\t__webpack_require__.t = function(value, mode) {\\\\n \\\\t\\\\tif(mode & 1) value = __webpack_require__(value);\\\\n \\\\t\\\\tif(mode & 8) return value;\\\\n \\\\t\\\\tif((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;\\\\n \\\\t\\\\tvar ns = Object.create(null);\\\\n \\\\t\\\\t__webpack_require__.r(ns);\\\\n \\\\t\\\\tObject.defineProperty(ns, 'default', { enumerable: true, value: value });\\\\n \\\\t\\\\tif(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));\\\\n \\\\t\\\\treturn ns;\\\\n \\\\t};\\\\n\\\\n \\\\t// getDefaultExport function for compatibility with non-harmony modules\\\\n \\\\t__webpack_require__.n = function(module) {\\\\n \\\\t\\\\tvar getter = module && module.__esModule ?\\\\n \\\\t\\\\t\\\\tfunction getDefault() { return module['default']; } :\\\\n \\\\t\\\\t\\\\tfunction getModuleExports() { return module; };\\\\n \\\\t\\\\t__webpack_require__.d(getter, 'a', getter);\\\\n \\\\t\\\\treturn getter;\\\\n \\\\t};\\\\n\\\\n \\\\t// Object.prototype.hasOwnProperty.call\\\\n \\\\t__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };\\\\n\\\\n \\\\t// __webpack_public_path__\\\\n \\\\t__webpack_require__.p = \\\\\\"\\\\\\";\\\\n\\\\n\\\\n \\\\t// Load entry module and return exports\\\\n \\\\treturn __webpack_require__(__webpack_require__.s = 0);\\\\n\\",\\"// 'neg' logic is the most delicate of all the logic in calculang\\\\r\\\\n// I had more testcases in development, and need to add more\\\\r\\\\n\\\\r\\\\nexport const sales_by_product = () => (product() == 1 ? 100 : 50);\\\\r\\\\nexport const product = () => product_in;\\\\r\\\\nexport const sales_total = () =>\\\\r\\\\n  sales_by_product({ product_in: 0 }) + sales_by_product({ product_in: 1 }); // => sales_total IS independent of product_in\\\\r\\\\n\\"],\\"sourceRoot\\":\\"\\"}",
+}
+`;
+
+exports[`manufacturing/simple-neg-C 1`] = `
+Object {
+  "bundle": "(function webpackUniversalModuleDefinition(root, factory) {
+	if(typeof exports === 'object' && typeof module === 'object')
+		module.exports = factory();
+	else if(typeof define === 'function' && define.amd)
+		define([], factory);
+	else {
+		var a = factory();
+		for(var i in a) (typeof exports === 'object' ? exports : root)[i] = a[i];
+	}
+})(this, function() {
+return /******/ (function(modules) { // webpackBootstrap
+/******/ 	// The module cache
+/******/ 	var installedModules = {};
+/******/
+/******/ 	// The require function
+/******/ 	function __webpack_require__(moduleId) {
+/******/
+/******/ 		// Check if module is in cache
+/******/ 		if(installedModules[moduleId]) {
+/******/ 			return installedModules[moduleId].exports;
+/******/ 		}
+/******/ 		// Create a new module (and put it into the cache)
+/******/ 		var module = installedModules[moduleId] = {
+/******/ 			i: moduleId,
+/******/ 			l: false,
+/******/ 			exports: {}
+/******/ 		};
+/******/
+/******/ 		// Execute the module function
+/******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
+/******/
+/******/ 		// Flag the module as loaded
+/******/ 		module.l = true;
+/******/
+/******/ 		// Return the exports of the module
+/******/ 		return module.exports;
+/******/ 	}
+/******/
+/******/
+/******/ 	// expose the modules object (__webpack_modules__)
+/******/ 	__webpack_require__.m = modules;
+/******/
+/******/ 	// expose the module cache
+/******/ 	__webpack_require__.c = installedModules;
+/******/
+/******/ 	// define getter function for harmony exports
+/******/ 	__webpack_require__.d = function(exports, name, getter) {
+/******/ 		if(!__webpack_require__.o(exports, name)) {
+/******/ 			Object.defineProperty(exports, name, { enumerable: true, get: getter });
+/******/ 		}
+/******/ 	};
+/******/
+/******/ 	// define __esModule on exports
+/******/ 	__webpack_require__.r = function(exports) {
+/******/ 		if(typeof Symbol !== 'undefined' && Symbol.toStringTag) {
+/******/ 			Object.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });
+/******/ 		}
+/******/ 		Object.defineProperty(exports, '__esModule', { value: true });
+/******/ 	};
+/******/
+/******/ 	// create a fake namespace object
+/******/ 	// mode & 1: value is a module id, require it
+/******/ 	// mode & 2: merge all properties of value into the ns
+/******/ 	// mode & 4: return value when already ns object
+/******/ 	// mode & 8|1: behave like require
+/******/ 	__webpack_require__.t = function(value, mode) {
+/******/ 		if(mode & 1) value = __webpack_require__(value);
+/******/ 		if(mode & 8) return value;
+/******/ 		if((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;
+/******/ 		var ns = Object.create(null);
+/******/ 		__webpack_require__.r(ns);
+/******/ 		Object.defineProperty(ns, 'default', { enumerable: true, value: value });
+/******/ 		if(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));
+/******/ 		return ns;
+/******/ 	};
+/******/
+/******/ 	// getDefaultExport function for compatibility with non-harmony modules
+/******/ 	__webpack_require__.n = function(module) {
+/******/ 		var getter = module && module.__esModule ?
+/******/ 			function getDefault() { return module['default']; } :
+/******/ 			function getModuleExports() { return module; };
+/******/ 		__webpack_require__.d(getter, 'a', getter);
+/******/ 		return getter;
+/******/ 	};
+/******/
+/******/ 	// Object.prototype.hasOwnProperty.call
+/******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
+/******/
+/******/ 	// __webpack_public_path__
+/******/ 	__webpack_require__.p = \\"\\";
+/******/
+/******/
+/******/ 	// Load entry module and return exports
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ })
+/************************************************************************/
+/******/ ([
+/* 0 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+\\"use strict\\";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \\"sales_by_product\\", function() { return sales_by_product; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \\"product\\", function() { return product; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \\"sales_total\\", function() { return sales_total; });
+// 'neg' logic is the most delicate of all the logic in calculang
+// I had more testcases in development, and need to add more
+const sales_by_product = ({
+  product_in
+}) => product({
+  product_in
+}) == 1 ? 100 : 50;
+const product = ({
+  product_in
+}) => product_in;
+const sales_total = ({}) => [0, 1].reduce((acc, product_in) => sales_by_product({
+  product_in
+})); // product_in is defined in each call, so that sales_total IS independent of product_in
+
+/***/ })
+/******/ ]);
+});
+//# sourceMappingURL=simple-neg-C.js.map",
+  "sourcemap": "{\\"version\\":3,\\"sources\\":[\\"webpack:///webpack/universalModuleDefinition\\",\\"webpack:///webpack/bootstrap\\",\\"webpack:///simple-neg-C.cul.js\\"],\\"names\\":[\\"sales_by_product\\",\\"product\\",\\"product_in\\",\\"sales_total\\",\\"reduce\\",\\"acc\\"],\\"mappings\\":\\"AAAA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA;AACA,CAAC;AACD,O;QCVA;QACA;;QAEA;QACA;;QAEA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;;QAEA;QACA;;QAEA;QACA;;QAEA;QACA;QACA;;;QAGA;QACA;;QAEA;QACA;;QAEA;QACA;QACA;QACA,0CAA0C,gCAAgC;QAC1E;QACA;;QAEA;QACA;QACA;QACA,wDAAwD,kBAAkB;QAC1E;QACA,iDAAiD,cAAc;QAC/D;;QAEA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA;QACA,yCAAyC,iCAAiC;QAC1E,gHAAgH,mBAAmB,EAAE;QACrI;QACA;;QAEA;QACA;QACA;QACA,2BAA2B,0BAA0B,EAAE;QACvD,iCAAiC,eAAe;QAChD;QACA;QACA;;QAEA;QACA,sDAAsD,+DAA+D;;QAErH;QACA;;;QAGA;QACA;;;;;;;;AClFA;AAAA;AAAA;AAAA;AAAA;AACA;AAEO,MAAMA,gBAAgB,GAAG;AAAA;AAAA,MAAOC,OAAO;AAAA;AAAA,EAAP,IAAa,CAAb,GAAiB,GAAjB,GAAuB,EAAvD;AACA,MAAMA,OAAO,GAAG;AAAA;AAAA,MAAMC,UAAtB;AACA,MAAMC,WAAW,GAAG,QACzB,CAAC,CAAD,EAAI,CAAJ,EAAOC,MAAP,CAAc,CAACC,GAAD,EAAMH,UAAN,KAAqBF,gBAAgB;AAAA;AAAA,EAAnD,CADK,C,CACmD,uF\\",\\"file\\":\\"simple-neg-C.js\\",\\"sourcesContent\\":[\\"(function webpackUniversalModuleDefinition(root, factory) {\\\\n\\\\tif(typeof exports === 'object' && typeof module === 'object')\\\\n\\\\t\\\\tmodule.exports = factory();\\\\n\\\\telse if(typeof define === 'function' && define.amd)\\\\n\\\\t\\\\tdefine([], factory);\\\\n\\\\telse {\\\\n\\\\t\\\\tvar a = factory();\\\\n\\\\t\\\\tfor(var i in a) (typeof exports === 'object' ? exports : root)[i] = a[i];\\\\n\\\\t}\\\\n})(this, function() {\\\\nreturn \\",\\" \\\\t// The module cache\\\\n \\\\tvar installedModules = {};\\\\n\\\\n \\\\t// The require function\\\\n \\\\tfunction __webpack_require__(moduleId) {\\\\n\\\\n \\\\t\\\\t// Check if module is in cache\\\\n \\\\t\\\\tif(installedModules[moduleId]) {\\\\n \\\\t\\\\t\\\\treturn installedModules[moduleId].exports;\\\\n \\\\t\\\\t}\\\\n \\\\t\\\\t// Create a new module (and put it into the cache)\\\\n \\\\t\\\\tvar module = installedModules[moduleId] = {\\\\n \\\\t\\\\t\\\\ti: moduleId,\\\\n \\\\t\\\\t\\\\tl: false,\\\\n \\\\t\\\\t\\\\texports: {}\\\\n \\\\t\\\\t};\\\\n\\\\n \\\\t\\\\t// Execute the module function\\\\n \\\\t\\\\tmodules[moduleId].call(module.exports, module, module.exports, __webpack_require__);\\\\n\\\\n \\\\t\\\\t// Flag the module as loaded\\\\n \\\\t\\\\tmodule.l = true;\\\\n\\\\n \\\\t\\\\t// Return the exports of the module\\\\n \\\\t\\\\treturn module.exports;\\\\n \\\\t}\\\\n\\\\n\\\\n \\\\t// expose the modules object (__webpack_modules__)\\\\n \\\\t__webpack_require__.m = modules;\\\\n\\\\n \\\\t// expose the module cache\\\\n \\\\t__webpack_require__.c = installedModules;\\\\n\\\\n \\\\t// define getter function for harmony exports\\\\n \\\\t__webpack_require__.d = function(exports, name, getter) {\\\\n \\\\t\\\\tif(!__webpack_require__.o(exports, name)) {\\\\n \\\\t\\\\t\\\\tObject.defineProperty(exports, name, { enumerable: true, get: getter });\\\\n \\\\t\\\\t}\\\\n \\\\t};\\\\n\\\\n \\\\t// define __esModule on exports\\\\n \\\\t__webpack_require__.r = function(exports) {\\\\n \\\\t\\\\tif(typeof Symbol !== 'undefined' && Symbol.toStringTag) {\\\\n \\\\t\\\\t\\\\tObject.defineProperty(exports, Symbol.toStringTag, { value: 'Module' });\\\\n \\\\t\\\\t}\\\\n \\\\t\\\\tObject.defineProperty(exports, '__esModule', { value: true });\\\\n \\\\t};\\\\n\\\\n \\\\t// create a fake namespace object\\\\n \\\\t// mode & 1: value is a module id, require it\\\\n \\\\t// mode & 2: merge all properties of value into the ns\\\\n \\\\t// mode & 4: return value when already ns object\\\\n \\\\t// mode & 8|1: behave like require\\\\n \\\\t__webpack_require__.t = function(value, mode) {\\\\n \\\\t\\\\tif(mode & 1) value = __webpack_require__(value);\\\\n \\\\t\\\\tif(mode & 8) return value;\\\\n \\\\t\\\\tif((mode & 4) && typeof value === 'object' && value && value.__esModule) return value;\\\\n \\\\t\\\\tvar ns = Object.create(null);\\\\n \\\\t\\\\t__webpack_require__.r(ns);\\\\n \\\\t\\\\tObject.defineProperty(ns, 'default', { enumerable: true, value: value });\\\\n \\\\t\\\\tif(mode & 2 && typeof value != 'string') for(var key in value) __webpack_require__.d(ns, key, function(key) { return value[key]; }.bind(null, key));\\\\n \\\\t\\\\treturn ns;\\\\n \\\\t};\\\\n\\\\n \\\\t// getDefaultExport function for compatibility with non-harmony modules\\\\n \\\\t__webpack_require__.n = function(module) {\\\\n \\\\t\\\\tvar getter = module && module.__esModule ?\\\\n \\\\t\\\\t\\\\tfunction getDefault() { return module['default']; } :\\\\n \\\\t\\\\t\\\\tfunction getModuleExports() { return module; };\\\\n \\\\t\\\\t__webpack_require__.d(getter, 'a', getter);\\\\n \\\\t\\\\treturn getter;\\\\n \\\\t};\\\\n\\\\n \\\\t// Object.prototype.hasOwnProperty.call\\\\n \\\\t__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };\\\\n\\\\n \\\\t// __webpack_public_path__\\\\n \\\\t__webpack_require__.p = \\\\\\"\\\\\\";\\\\n\\\\n\\\\n \\\\t// Load entry module and return exports\\\\n \\\\treturn __webpack_require__(__webpack_require__.s = 0);\\\\n\\",\\"// 'neg' logic is the most delicate of all the logic in calculang\\\\r\\\\n// I had more testcases in development, and need to add more\\\\r\\\\n\\\\r\\\\nexport const sales_by_product = () => (product() == 1 ? 100 : 50);\\\\r\\\\nexport const product = () => product_in;\\\\r\\\\nexport const sales_total = () =>\\\\r\\\\n  [0, 1].reduce((acc, product_in) => sales_by_product()); // product_in is defined in each call, so that sales_total IS independent of product_in\\\\r\\\\n\\"],\\"sourceRoot\\":\\"\\"}",
+}
+`;

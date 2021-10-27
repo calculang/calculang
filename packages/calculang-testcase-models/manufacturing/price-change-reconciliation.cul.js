@@ -1,15 +1,15 @@
-// this model takes input base price and units, and a price_multiplier.
-// it derives a proposed price by applying the multiplier and derives consequent units, constrained by the demand curve below.
+// this model takes inputs base price and units, and a price_multiplier.
+// it derives a proposed price by applying the multiplier and derives consequent units, constrained to the demand curve below.
 
-// via an additional input step_in it provides a mini reconciliation, moving units from the amount reflecting the update to the demand curve (when step_in is 0)
-// back to the base unit value (when step_in is 1)
+// via an additional input step_in it provides a mini reconciliation (if you can call it that) feature, moving units from the amount reflecting the update to the demand curve (when step_in is 0)
+// back to the base unit value (when step_in is 1) i.e. giving results without the demand curve impact.
 
-// both revenue and units are impacted by the step input (as well as any other potential units-dependent functions throughout this/higher-level models)
+// both revenue and units are impacted by the step input (as well as profit, any other potential units-dependent functions throughout the complete model)
 
-// 'mini' is because price is already updated throughout the steps.
-// A real reconciliation should move through all the inputs.
+// 'mini' is because price is already updated throughout the steps - step is really just acting like a switch here.
+// A real reconciliation should move through all the inputs, and should be structured more logically (as in a model-of- a more general model which is separate), but this is just for testing
 
-// this demos some key language features of calculang and their technical motivations.
+// this tests some key language features of calculang and demos their technical motivations
 
 import { revenue, units_, price_ } from './base.cul';
 export { revenue };

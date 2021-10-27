@@ -27,8 +27,7 @@
     "test:update:bounce": "jest -t='bounce' --updateSnapshot"
   },
   "jest": {
-    "testEnvironment": "node",
-    "snapshotSerializers": ["./tests/serializer"]
+    "testEnvironment": "node"
   },
   "devDependencies": {
     "@babel/cli": "^7.15.7",

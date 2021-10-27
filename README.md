@@ -88,7 +88,7 @@ v0.1+.0 : more tests, examples, integrations, documentation, logo, community foc
 
 Post: alt. implementations? e.g. Rust?
 
-In parallel to the public roadmap, I will probably have a private/applications roadmap. Feel free to get in touch if you want me to consider your own modelling proposal/s and how they can fit into this roadmap.
+In parallel to the public roadmap, I will probably have a private/applications roadmap. Feel free to get in touch if you want me to consider your own modelling project/s and how they can fit into this roadmap.
 
 ## help wanted
 

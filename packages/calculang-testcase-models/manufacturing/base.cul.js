@@ -2,8 +2,12 @@ export const revenue = () => {
   return units() * price();
 };
 
-// TODO add costs etc. - do we want these to feed into all tests though?
+// variable costs only, OK for testing
+export const costs = () => 100 * units();
 
+export const profit = () => revenue() - costs();
+
+// inputs
 export const units = () => units_in;
 export const price = () => price_in;
 

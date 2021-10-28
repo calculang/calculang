@@ -17,7 +17,7 @@ See also references under 'more motivation' below.
 
 ## usage
 
-**Note: Not released to npm => must use build instructions in [CONTRIBUTING](./CONTRIBUTING.md).**
+**Note: Not released to npm => must use developer build instructions in [CONTRIBUTING](./CONTRIBUTING.md).**
 
 Installation:
 

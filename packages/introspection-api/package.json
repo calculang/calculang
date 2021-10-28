@@ -21,10 +21,7 @@
   "scripts": {
     "build": "babel src --out-dir dist",
     "test": "jest",
-    "test:bounce": "jest -t='bounce'",
-    "test:insurance": "jest -t='insurance'",
-    "test:update": "jest --updateSnapshot",
-    "test:update:bounce": "jest -t='bounce' --updateSnapshot"
+    "test:update": "jest --updateSnapshot"
   },
   "jest": {
     "testEnvironment": "node"

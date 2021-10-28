@@ -20,5 +20,8 @@ test.each([
     {}
   );
 
-  expect(output).toMatchSnapshot();
+  expect({
+    bundle: output.bundle,
+    sourcemap: output.sourcemap.replace(/\\r/g, ''), // remove carriage returns
+  }).toMatchSnapshot();
 });

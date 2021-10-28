@@ -70,7 +70,7 @@ This reduces code boilerplate, but more fundamentally it promotes recycling of m
 
 In modular development, calculang gives precedence for a given function call to functions defined closer to the entrypoint or model root, rather than closer to the call.
 
-This is how "parent" models can 'override' the functionality in "child" models, and supports recycling of very general models.
+In this way "parent" models can override the functionality of "child" models, and this supports recycling of very general models.
 
 Further, the overriden functionality can be defined in terms of the child function (using an '_' modifier). e.g. to inflate the price in a model might involve `price = price_() * 1.1`.
 

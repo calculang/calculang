@@ -34,6 +34,4 @@ Please open a public discussion via a GitHub Issue first. Please include if you 
 
 ## continuous integration (CI)
 
-todo setup automated jest tests via GitHub Actions, so that pull requests are tested automatically and reported in PR.
-
-Of course, contributions should include new tests where relevant and be checked by developer to pass. But I will setup CI just in case 😏 (or because of humans :smile_cat:).
+Contributions should include new tests where relevant and be checked to pass. GitHub Actions will run tests on PRs (once approved).

@@ -64,13 +64,13 @@ Models-of-models is a useful concept in considering model design. A design sugge
 
 Inputs to function calls in calculang are inferred by the compiler, based on a graph of inputs and functions in the complete model being compiled.
 
-This reduces code boilerplate, but more fundamentally it promotes recycling of models: we shouldn't code the wiring between inputs manually because it will change from one usecase to the next.
+This reduces code boilerplate, but more fundamentally it promotes recycling of models: we shouldn't code the wiring between functions manually because it will change from one usecase to the next.
 
 **Inheritence of parent functions**:
 
 In modular development, calculang gives precedence for a given function call to functions defined closer to the entrypoint or model root, rather than closer to the call.
 
-This is how "parent" models can 'override' the functionality in "child" models, and supports recycling of very general models.
+In this way "parent" models can override the functionality of "child" models, and this supports recycling of very general models.
 
 Further, the overriden functionality can be defined in terms of the child function (using an '_' modifier). e.g. to inflate the price in a model might involve `price = price_() * 1.1`.
 
@@ -104,7 +104,7 @@ All developers to get feedback/discuss/think re implementations or changes leadi
 
 I'm not the only person to consider the opportunity from making models more accessible. Bret Victor included points around this in a blog post about climate change.
 
-[What can a technologist do about Climate Change (a personal view)](http://worrydream.com/ClimateChange) by Bret Victor, particularly relevant at: [Media for Understanding Situations](http://worrydream.com/ClimateChange/#media).
+[What can a technologist do about Climate Change (a personal view)](http://worrydream.com/ClimateChange) by Bret Victor, particularly relevant at [Media for Understanding Situations](http://worrydream.com/ClimateChange/#media).
 
 Also good by Bret Victor, regarding interfaces to models: [Explorable Explanations](http://worrydream.com/#!/ExplorableExplanations).
 

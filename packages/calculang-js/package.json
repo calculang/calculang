@@ -1,6 +1,6 @@
 {
   "name": "@calculang/calculang-js",
-  "version": "0.1.0-alpha.0",
+  "version": "0.1.0-alpha.1",
   "bin": {
     "cul-js": "./bin/index.js"
   },
@@ -40,13 +40,13 @@
     "jest": "^27.2.5"
   },
   "dependencies": {
-    "commander": "^8.2.0",
-    "@calculang/introspection-api": "0.1.0-alpha.1",
-    "webpack": "^4.46.0",
-    "memfs": "^3.3.0",
-    "graphlib": "^2.1.8",
     "@babel/core": "^7.15.8",
-    "@babel/preset-env": "^7.15.8", 
-    "loader-utils": "^2.0.0"
+    "@babel/preset-env": "^7.15.8",
+    "@calculang/introspection-api": "0.1.0-alpha.1",
+    "commander": "^8.2.0",
+    "graphlib": "^2.1.8",
+    "loader-utils": "^2.0.0",
+    "memfs": "^3.3.0",
+    "webpack": "^4.46.0"
   }
 }

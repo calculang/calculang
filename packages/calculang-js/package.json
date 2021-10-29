@@ -17,9 +17,14 @@
     "calculang",
     "calculations",
     "numbers",
+    "math",
+    "mathematics",
     "models",
     "modeling",
-    "modelling"
+    "modelling",
+    "functional",
+    "functional programming",
+    "fp"
   ],
   "scripts": {
     "build": "babel src --out-dir dist",
@@ -30,11 +35,11 @@
     "testEnvironment": "node"
   },
   "devDependencies": {
+    "@babel/cli": "^7.15.7",
     "babel-jest": "^27.2.5",
     "jest": "^27.2.5"
   },
   "dependencies": {
-    "@babel/cli": "^7.15.7",
     "commander": "^8.2.0",
     "@calculang/introspection-api": "0.1.0-alpha.1",
     "webpack": "^4.46.0",

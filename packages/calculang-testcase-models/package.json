@@ -1,6 +1,7 @@
 {
   "name": "@calculang/calculang-testcase-models",
   "version": "0.1.0-alpha.1",
+  "private": true,
   "repository": {
     "type": "git",
     "url": "https://github.com/calculang/calculang.git",
@@ -12,9 +13,14 @@
     "calculang",
     "calculations",
     "numbers",
+    "math",
+    "mathematics",
     "models",
     "modeling",
-    "modelling"
+    "modelling",
+    "functional",
+    "functional programming",
+    "fp"
   ],
   "dependencies": {
     "date-fns": "^2.25.0",

@@ -11,7 +11,10 @@
     "numbers",
     "models",
     "modeling",
-    "modelling"
+    "modelling",
+    "functional",
+    "functional programming",
+    "fp"
   ],
   "workspaces": [
     "./packages/*"

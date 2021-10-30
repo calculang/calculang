@@ -14,6 +14,7 @@ test.each([
   'manufacturing/simple-neg-A',
   'manufacturing/simple-neg-B',
   'manufacturing/simple-neg-C',
+  'manufacturing/memo-test',
 ])('%s', async (d) => {
   const output = await introspection(
     `./packages/calculang-testcase-models/${d}.cul.js`,

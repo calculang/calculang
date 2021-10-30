@@ -20,6 +20,7 @@ import { transformSync } from '@babel/core';
 
 // PROBLEM, will this work with existing override stuff, or do i need to replicate rename logic (poor)?
 // maybe it works as an update on what developer wrote, for example?
+// calling introspection-api is another option
 export default function loader(content, map, meta) {
   //debugger;
   var pq = parseQuery;

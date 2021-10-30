@@ -143,6 +143,236 @@ Object {
 }
 `;
 
+exports[`manufacturing/memo-test 1`] = `
+Object {
+  "cul_functions": Map {
+    "0_units_" => Object {
+      "cul_scope_id": 0,
+      "cul_source_scope_id": 1,
+      "inputs": Array [],
+      "name": "units_",
+      "reason": "explicit import",
+    },
+    "0_revenue_" => Object {
+      "cul_scope_id": 0,
+      "cul_source_scope_id": 1,
+      "inputs": Array [
+        "units_in",
+        "price_in",
+      ],
+      "name": "revenue_",
+      "reason": "explicit import",
+    },
+    "0_price_" => Object {
+      "cul_scope_id": 0,
+      "cul_source_scope_id": 1,
+      "inputs": Array [],
+      "name": "price_",
+      "reason": "explicit import",
+    },
+    "0_revenue" => Object {
+      "cul_scope_id": 0,
+      "cul_source_scope_id": 0,
+      "inputs": Array [
+        "units_in",
+        "price_in",
+      ],
+      "name": "revenue",
+      "reason": "definition",
+    },
+    "1_revenue" => Object {
+      "cul_scope_id": 1,
+      "cul_source_scope_id": 0,
+      "inputs": Array [
+        "units_in",
+        "price_in",
+      ],
+      "name": "revenue",
+      "reason": "implicit import",
+    },
+    "1_revenue_" => Object {
+      "cul_scope_id": 1,
+      "cul_source_scope_id": 1,
+      "inputs": Array [
+        "units_in",
+        "price_in",
+      ],
+      "name": "revenue_",
+      "reason": "definition (renamed)",
+    },
+    "1_costs" => Object {
+      "cul_scope_id": 1,
+      "cul_source_scope_id": 1,
+      "inputs": Array [
+        "units_in",
+      ],
+      "name": "costs",
+      "reason": "definition",
+    },
+    "1_profit" => Object {
+      "cul_scope_id": 1,
+      "cul_source_scope_id": 1,
+      "inputs": Array [
+        "units_in",
+        "price_in",
+      ],
+      "name": "profit",
+      "reason": "definition",
+    },
+    "1_units" => Object {
+      "cul_scope_id": 1,
+      "cul_source_scope_id": 1,
+      "inputs": Array [
+        "units_in",
+      ],
+      "name": "units",
+      "reason": "definition",
+    },
+    "1_units_in" => Object {
+      "cul_scope_id": 1,
+      "cul_source_scope_id": 1,
+      "inputs": Array [
+        "units_in",
+      ],
+      "name": "units_in",
+      "reason": "input definition",
+    },
+    "1_price" => Object {
+      "cul_scope_id": 1,
+      "cul_source_scope_id": 1,
+      "inputs": Array [
+        "price_in",
+      ],
+      "name": "price",
+      "reason": "definition",
+    },
+    "1_price_in" => Object {
+      "cul_scope_id": 1,
+      "cul_source_scope_id": 1,
+      "inputs": Array [
+        "price_in",
+      ],
+      "name": "price_in",
+      "reason": "input definition",
+    },
+  },
+  "cul_input_map": Map {
+    "0_units_" => Set {},
+    "0_revenue_" => Set {
+      "units_in",
+      "price_in",
+    },
+    "0_price_" => Set {},
+    "0_revenue" => Set {
+      "units_in",
+      "price_in",
+    },
+    "1_revenue" => Set {
+      "units_in",
+      "price_in",
+    },
+    "1_revenue_" => Set {
+      "units_in",
+      "price_in",
+    },
+    "1_costs" => Set {
+      "units_in",
+    },
+    "1_profit" => Set {
+      "units_in",
+      "price_in",
+    },
+    "1_units" => Set {
+      "units_in",
+    },
+    "1_units_in" => Set {
+      "units_in",
+    },
+    "1_price" => Set {
+      "price_in",
+    },
+    "1_price_in" => Set {
+      "price_in",
+    },
+  },
+  "cul_links": Set {
+    Object {
+      "from": "1_units_",
+      "reason": "explicit import",
+      "to": "0_units_",
+    },
+    Object {
+      "from": "1_revenue_",
+      "reason": "explicit import",
+      "to": "0_revenue_",
+    },
+    Object {
+      "from": "1_price_",
+      "reason": "explicit import",
+      "to": "0_price_",
+    },
+    Object {
+      "from": "0_revenue_",
+      "negs": Array [],
+      "reason": "call",
+      "to": "0_revenue",
+    },
+    Object {
+      "from": "0_revenue",
+      "reason": "implicit import",
+      "to": "1_revenue",
+    },
+    Object {
+      "from": "1_units",
+      "negs": Array [],
+      "reason": "call",
+      "to": "1_revenue_",
+    },
+    Object {
+      "from": "1_price",
+      "negs": Array [],
+      "reason": "call",
+      "to": "1_revenue_",
+    },
+    Object {
+      "from": "1_units",
+      "negs": Array [],
+      "reason": "call",
+      "to": "1_costs",
+    },
+    Object {
+      "from": "1_revenue",
+      "negs": Array [],
+      "reason": "call",
+      "to": "1_profit",
+    },
+    Object {
+      "from": "1_costs",
+      "negs": Array [],
+      "reason": "call",
+      "to": "1_profit",
+    },
+    Object {
+      "from": "1_units_in",
+      "reason": "input",
+      "to": "1_units",
+    },
+    Object {
+      "from": "1_price_in",
+      "reason": "input",
+      "to": "1_price",
+    },
+  },
+  "cul_scope_ids_to_resource": Map {
+    0 => "./memo-test.cul.js",
+    1 => "./base.cul?cul_scope_id=1&cul_parent_scope_id=0",
+  },
+  "import_sources_to_resource": Map {
+    "0_./base.cul" => "./base.cul?cul_scope_id=1&cul_parent_scope_id=0",
+  },
+}
+`;
+
 exports[`manufacturing/price-change-reconciliation 1`] = `
 Object {
   "cul_functions": Map {

@@ -39,6 +39,14 @@ export default async (entrypoint, options = {}) => {
       filename: path.basename(entrypoint, '.cul.js') + '.js', // gets rid of .cul
       libraryTarget: 'umd', // for most of dev was commonjs2, but didn't work well for browser? And I don't want sep. browser/nodejs bundles. Is ESM an eventual solution here?
       globalObject: 'this', // for UMD in browser,node
+
+      // https://github.com/webpack/webpack/issues/3603#issuecomment-357664819 useful discussion
+      devtoolModuleFilenameTemplate(info) {
+        return `webpack:///${path.relative(
+          __dirname,
+          info.absoluteResourcePath
+        )}`; // do I need to add info.loaders?
+      },
     },
     optimization: {
       minimize: false,

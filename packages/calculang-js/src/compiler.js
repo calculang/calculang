@@ -42,10 +42,10 @@ export default async (entrypoint, options = {}) => {
 
       // https://github.com/webpack/webpack/issues/3603#issuecomment-357664819 useful discussion
       devtoolModuleFilenameTemplate(info) {
-        return `webpack:///${path.relative(
-          __dirname,
-          info.absoluteResourcePath
-        )}`; // do I need to add info.loaders?
+        // replaceAll below requires node 15.x => upgrading (ex- tests STALLED!!) polyfill vs bin compatability?
+        return `webpack:///${path
+          .relative(__dirname, info.absoluteResourcePath)
+          .replaceAll(/\\/g, '/')}`; // do I need to add info.loaders?
       },
     },
     optimization: {

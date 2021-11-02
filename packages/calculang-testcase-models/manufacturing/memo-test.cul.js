@@ -1,6 +1,8 @@
-import { units_, revenue_, price_ } from './base.cul';
+// this is also the only test which uses JS from npm:
 import memoize from 'lru-memoize';
 import { isEqual } from 'underscore'; // TODO poor tree shaking support, or why is this impact so massive? Move to lodash/lodash-es?
+
+import { units_, revenue_, price_ } from './base.cul';
 
 // Javascript
 const revenue_m = memoize(999999, isEqual)(revenue_);

@@ -14,6 +14,8 @@ You should have received a copy of the GNU Affero General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+import path from 'path';
+
 import { getOptions, parseQuery } from 'loader-utils';
 
 import introspection from './index.js';
@@ -21,7 +23,6 @@ import introspection from './index.js';
 import { transformSync } from '@babel/core';
 
 export default async function loader(content, map, meta) {
-  debugger;
   if (this.resourceQuery != '' && parseQuery(this.resourceQuery).memoed)
     // see use of +memoed added to query below
     return content;
@@ -51,13 +52,17 @@ export const ${d.name} = (a) => {
       )
       .join('');
 
+    debugger;
+    // todo remove base ref below!
     return `
     import memoize from 'lru-memoize';
     import { isEqual } from 'underscore'; // TODO poor tree shaking support, or why is this impact so massive? Move to lodash/lodash-es?
     
     import { ${to_memo
       .map((d) => `${d.name}_`)
-      .join(', ')} } from './base.cul?+memoed';
+      .join(', ')} } from './${path.relative(this.context, this.resourcePath)}${
+      this.resourceQuery == '' ? '?' : this.resourceQuery + '?'
+    }+memoed';
     
     ${generated}
     `;

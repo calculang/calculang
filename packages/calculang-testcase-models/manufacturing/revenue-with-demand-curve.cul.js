@@ -1,4 +1,4 @@
-import { revenue } from './base.cul';
+import { revenue, price } from './base.cul';
 export { revenue };
 
 // demand-curve constraint:

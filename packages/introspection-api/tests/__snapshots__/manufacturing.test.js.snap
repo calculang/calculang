@@ -995,17 +995,30 @@ Object {
       "name": "revenue",
       "reason": "explicit import",
     },
+    "0_price" => Object {
+      "cul_scope_id": 0,
+      "cul_source_scope_id": 1,
+      "inputs": Array [
+        "price_in",
+      ],
+      "name": "price",
+      "reason": "explicit import",
+    },
     "0_units" => Object {
       "cul_scope_id": 0,
       "cul_source_scope_id": 0,
-      "inputs": Array [],
+      "inputs": Array [
+        "price_in",
+      ],
       "name": "units",
       "reason": "definition",
     },
     "1_units" => Object {
       "cul_scope_id": 1,
       "cul_source_scope_id": 0,
-      "inputs": Array [],
+      "inputs": Array [
+        "price_in",
+      ],
       "name": "units",
       "reason": "implicit import",
     },
@@ -1021,7 +1034,9 @@ Object {
     "1_costs" => Object {
       "cul_scope_id": 1,
       "cul_source_scope_id": 1,
-      "inputs": Array [],
+      "inputs": Array [
+        "price_in",
+      ],
       "name": "costs",
       "reason": "definition",
     },
@@ -1075,12 +1090,21 @@ Object {
     "0_revenue" => Set {
       "price_in",
     },
-    "0_units" => Set {},
-    "1_units" => Set {},
+    "0_price" => Set {
+      "price_in",
+    },
+    "0_units" => Set {
+      "price_in",
+    },
+    "1_units" => Set {
+      "price_in",
+    },
     "1_revenue" => Set {
       "price_in",
     },
-    "1_costs" => Set {},
+    "1_costs" => Set {
+      "price_in",
+    },
     "1_profit" => Set {
       "price_in",
     },
@@ -1102,6 +1126,11 @@ Object {
       "from": "1_revenue",
       "reason": "explicit import",
       "to": "0_revenue",
+    },
+    Object {
+      "from": "1_price",
+      "reason": "explicit import",
+      "to": "0_price",
     },
     Object {
       "from": "0_price",

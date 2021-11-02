@@ -25,4 +25,6 @@ test.each([
     bundle: output.bundle,
     sourcemap: output.sourcemap.replace(/\\r/g, ''), // remove carriage returns
   }).toMatchSnapshot();
+
+  // memo test is that base, with memoization on, should match memo-test with memoization off (excepting filename refs!)
 });

@@ -28,4 +28,6 @@ test.each([
     cul_functions: output.cul_functions,
     cul_links: output.cul_links,
   }).toMatchSnapshot();
+
+  // memo test is that base, with memoization on, should match memo-test with memoization off
 });

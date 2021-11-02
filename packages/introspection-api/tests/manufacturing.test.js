@@ -28,6 +28,19 @@ test.each([
     cul_functions: output.cul_functions,
     cul_links: output.cul_links,
   }).toMatchSnapshot();
+});
 
-  // memo test is that base, with memoization on, should match memo-test with memoization off
+// memo test is that base, with memoization on, should match memo-test with memoization off
+
+test('introspection of base with memo on matches memo-test with memo off', async () => {
+  const base_memo_on = await introspection(
+    `./packages/calculang-testcase-models/manufacturing/base.cul.js`,
+    { memo: true }
+  );
+  const test_memo_off = await introspection(
+    `./packages/calculang-testcase-models/manufacturing/memo-test.cul.js`,
+    { memo: false }
+  );
+
+  expect(base_memo_on.cul_links).toEqual(test_memo_off.cul_links);
 });

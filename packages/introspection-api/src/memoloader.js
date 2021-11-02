@@ -20,21 +20,15 @@ import introspection from './index.js';
 
 import { transformSync } from '@babel/core';
 
-// PROBLEM, will this work with existing override stuff, or do i need to replicate rename logic (poor)?
-// maybe it works as an update on what developer wrote, for example?
-// calling introspection-api is another option
 export default async function loader(content, map, meta) {
-  //debugger;
-  var pq = parseQuery;
+  debugger;
   if (this.resourceQuery != '' && parseQuery(this.resourceQuery).memoed)
+    // see use of +memoed added to query below
     return content;
-  // do this logic based on a loop through content Functions? Exports?
-  // TODO generate below using output from introspection API call!
   else {
-    const child_introspection = await introspection(
-      './packages/calculang-testcase-models/manufacturing/base.cul.js',
-      {}
-    );
+    const child_introspection = await introspection(this.resourcePath, {
+      memo: false,
+    });
 
     const to_memo = [...child_introspection.cul_functions.values()].filter(
       (d) => d.reason != 'input definition' && d.cul_scope_id == 0

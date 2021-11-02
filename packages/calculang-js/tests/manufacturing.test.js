@@ -28,3 +28,19 @@ test.each([
 
   // memo test is that base, with memoization on, should match memo-test with memoization off (excepting filename refs!)
 });
+
+// memo tests
+test.each(['manufacturing/base'])(
+  '%s with memo on matches snapshot',
+  async (d) => {
+    const output = await compiler(
+      `./packages/calculang-testcase-models/${d}.cul.js`,
+      { memo: true }
+    );
+
+    expect({
+      bundle: output.bundle,
+      sourcemap: output.sourcemap.replace(/\\r/g, ''), // remove carriage returns
+    }).toMatchSnapshot();
+  }
+);

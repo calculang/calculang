@@ -23,7 +23,6 @@ import webpack from 'webpack';
 import { createFsFromVolume, Volume } from 'memfs';
 
 import introspection from '@calculang/introspection-api';
-import memoloader from '@calculang/introspection-api/src/memoloader.js'; // src vs dist?
 
 export default async (entrypoint, options = {}) => {
   const introspection_info = await introspection(entrypoint, options);

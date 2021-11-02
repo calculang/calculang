@@ -39,7 +39,7 @@ test('introspection of base with memo on matches memo-test with memo off', async
   );
   const test_memo_off = await introspection(
     `./packages/calculang-testcase-models/manufacturing/memo-test.cul.js`,
-    { memo: false }
+    {}
   );
 
   expect(base_memo_on.cul_links).toEqual(test_memo_off.cul_links);

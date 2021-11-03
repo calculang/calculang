@@ -1,10 +1,7 @@
-/**
- * @jest-environment node
- */
-
 import introspection from '@calculang/introspection-api';
 
-jest.setTimeout(20000);
+//jest.setTimeout(20000);
+jest.setTimeout(2000000); // for debug!
 
 test.each([
   'manufacturing/base',
@@ -45,6 +42,16 @@ test('introspection of base with memo on matches memo-test with memo off', async
   expect(base_memo_on.cul_links).toEqual(test_memo_off.cul_links);
 });
 
+test('introspection of revenue-fixed-inputs with memo on', async () => {
+  const base_memo_on = await introspection(
+    `./packages/calculang-testcase-models/manufacturing/revenue-fixed-inputs.cul.js`,
+    { memo: true }
+  );
+
+  expect(base_memo_on).toMatchSnapshot();
+});
+
+// this is affected by a lot of things, including overrides-of-overrides problem
 test('introspection of price-change-reconciliation with memo on', async () => {
   const base_memo_on = await introspection(
     `./packages/calculang-testcase-models/manufacturing/price-change-reconciliation.cul.js`,

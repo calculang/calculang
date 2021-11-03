@@ -51,7 +51,7 @@ export default ({ types: t }) => ({
             .filter(
               (d) =>
                 d.cul_scope_id == state.opts.cul_parent_scope_id &&
-                d.cul_source_scope_id != state.opts.cul_scope_id &&
+                d.cul_source_scope_id != state.opts.cul_scope_id && // this should become graph logic? Or source_scope_id needs to be maintained in 'as' imports? Fut can have multiple sources ....
                 d.reason != 'input definition' &&
                 d.reason != 'definition (renamed)'
             )
@@ -198,7 +198,7 @@ export default ({ types: t }) => ({
         global_state.cul_functions.set(`${opts.cul_scope_id}_${d.local.name}`, {
           cul_scope_id: opts.cul_scope_id,
           name: d.local.name,
-          cul_source_scope_id: global_state.cul_scope_id_counter,
+          cul_source_scope_id: global_state.cul_scope_id_counter, // maybe this is wrong in 'as' case? no, E sep. definition...
           reason: 'explicit import',
         });
         // and create link

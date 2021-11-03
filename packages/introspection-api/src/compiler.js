@@ -85,6 +85,8 @@ export default (entrypoint, options = {}) => {
       if (err) reject(err);
       if (stats.hasErrors()) reject(stats.toJson().errors);
 
+      debugger;
+
       // can I do import all logic here, and namespaces?
       // import all logic should import all things, ignoring? overwritten stuff (not explicitally exported?)
 

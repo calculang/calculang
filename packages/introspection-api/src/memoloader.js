@@ -23,6 +23,8 @@ import introspection from './index.js';
 import { transformSync } from '@babel/core';
 
 export default async function loader(content, map, meta) {
+  debugger; // memoloader
+
   if (this.resourceQuery != '' && parseQuery(this.resourceQuery).memoed)
     // see use of +memoed added to query below, TODO validate # executions given updated logic
     return content;
@@ -38,7 +40,6 @@ export default async function loader(content, map, meta) {
         d.name.charAt(d.name.length - 1) != '$' // don't memo the memo. Alt: don't create cul_function for it?
     );
 
-    debugger;
     const generated = to_memo
       .map(
         (d) =>
@@ -56,7 +57,6 @@ export const ${d.name} = (a) => {
       )
       .join('');
 
-    debugger;
     // todo remove base ref below!
     return `
     import memoize from 'lru-memoize';

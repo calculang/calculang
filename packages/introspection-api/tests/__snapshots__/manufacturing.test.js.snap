@@ -1,5 +1,415 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`introspection of price-change-reconciliation 1`] = `
+Set {
+  Object {
+    "from": "1_revenue_",
+    "reason": "explicit import",
+    "to": "2_revenue$",
+  },
+  Object {
+    "from": "1_units__",
+    "reason": "explicit import",
+    "to": "2_units_$",
+  },
+  Object {
+    "from": "1_price__",
+    "reason": "explicit import",
+    "to": "2_price_$",
+  },
+  Object {
+    "from": "1_units_",
+    "reason": "explicit import",
+    "to": "2_units$",
+  },
+  Object {
+    "from": "1_price_",
+    "reason": "explicit import",
+    "to": "2_price$",
+  },
+  Object {
+    "from": "1_price_multiplier_",
+    "reason": "explicit import",
+    "to": "2_price_multiplier$",
+  },
+  Object {
+    "from": "1_step_",
+    "reason": "explicit import",
+    "to": "2_step$",
+  },
+  Object {
+    "from": "1_revenue__",
+    "reason": "explicit import",
+    "to": "2_revenue_$",
+  },
+  Object {
+    "from": "1_costs_",
+    "reason": "explicit import",
+    "to": "2_costs$",
+  },
+  Object {
+    "from": "1_profit_",
+    "reason": "explicit import",
+    "to": "2_profit$",
+  },
+  Object {
+    "from": "2_revenue$",
+    "negs": Array [],
+    "reason": "call",
+    "to": "2_revenue",
+  },
+  Object {
+    "from": "2_units_$",
+    "negs": Array [],
+    "reason": "call",
+    "to": "2_units_",
+  },
+  Object {
+    "from": "2_price_$",
+    "negs": Array [],
+    "reason": "call",
+    "to": "2_price_",
+  },
+  Object {
+    "from": "2_units$",
+    "negs": Array [],
+    "reason": "call",
+    "to": "2_units",
+  },
+  Object {
+    "from": "2_price$",
+    "negs": Array [],
+    "reason": "call",
+    "to": "2_price",
+  },
+  Object {
+    "from": "2_price_multiplier$",
+    "negs": Array [],
+    "reason": "call",
+    "to": "2_price_multiplier",
+  },
+  Object {
+    "from": "2_step$",
+    "negs": Array [],
+    "reason": "call",
+    "to": "2_step",
+  },
+  Object {
+    "from": "2_revenue_$",
+    "negs": Array [],
+    "reason": "call",
+    "to": "2_revenue_",
+  },
+  Object {
+    "from": "2_costs$",
+    "negs": Array [],
+    "reason": "call",
+    "to": "2_costs",
+  },
+  Object {
+    "from": "2_profit$",
+    "negs": Array [],
+    "reason": "call",
+    "to": "2_profit",
+  },
+  Object {
+    "from": "2_revenue",
+    "reason": "implicit import",
+    "to": "1_revenue",
+  },
+  Object {
+    "from": "2_units_",
+    "reason": "implicit import",
+    "to": "1_units_",
+  },
+  Object {
+    "from": "2_price_",
+    "reason": "implicit import",
+    "to": "1_price_",
+  },
+  Object {
+    "from": "2_units",
+    "reason": "implicit import",
+    "to": "1_units",
+  },
+  Object {
+    "from": "2_price",
+    "reason": "implicit import",
+    "to": "1_price",
+  },
+  Object {
+    "from": "2_price_multiplier",
+    "reason": "implicit import",
+    "to": "1_price_multiplier",
+  },
+  Object {
+    "from": "2_step",
+    "reason": "implicit import",
+    "to": "1_step",
+  },
+  Object {
+    "from": "2_revenue_",
+    "reason": "implicit import",
+    "to": "1_revenue_",
+  },
+  Object {
+    "from": "2_costs",
+    "reason": "implicit import",
+    "to": "1_costs",
+  },
+  Object {
+    "from": "2_profit",
+    "reason": "implicit import",
+    "to": "1_profit",
+  },
+  Object {
+    "from": "1_units",
+    "negs": Array [],
+    "reason": "call",
+    "to": "1_revenue_",
+  },
+  Object {
+    "from": "1_price",
+    "negs": Array [],
+    "reason": "call",
+    "to": "1_revenue_",
+  },
+  Object {
+    "from": "1_units",
+    "negs": Array [],
+    "reason": "call",
+    "to": "1_costs_",
+  },
+  Object {
+    "from": "1_revenue",
+    "negs": Array [],
+    "reason": "call",
+    "to": "1_profit_",
+  },
+  Object {
+    "from": "1_costs",
+    "negs": Array [],
+    "reason": "call",
+    "to": "1_profit_",
+  },
+  Object {
+    "from": "1_units_in",
+    "reason": "input",
+    "to": "1_units_",
+  },
+  Object {
+    "from": "1_price_in",
+    "reason": "input",
+    "to": "1_price_",
+  },
+}
+`;
+
+exports[`introspection of price-change-reconciliation with memo on 1`] = `
+Set {
+  Object {
+    "from": "1_revenue_",
+    "reason": "explicit import",
+    "to": "2_revenue$",
+  },
+  Object {
+    "from": "1_units__",
+    "reason": "explicit import",
+    "to": "2_units_$",
+  },
+  Object {
+    "from": "1_price__",
+    "reason": "explicit import",
+    "to": "2_price_$",
+  },
+  Object {
+    "from": "1_units_",
+    "reason": "explicit import",
+    "to": "2_units$",
+  },
+  Object {
+    "from": "1_price_",
+    "reason": "explicit import",
+    "to": "2_price$",
+  },
+  Object {
+    "from": "1_price_multiplier_",
+    "reason": "explicit import",
+    "to": "2_price_multiplier$",
+  },
+  Object {
+    "from": "1_step_",
+    "reason": "explicit import",
+    "to": "2_step$",
+  },
+  Object {
+    "from": "1_revenue__",
+    "reason": "explicit import",
+    "to": "2_revenue_$",
+  },
+  Object {
+    "from": "1_costs_",
+    "reason": "explicit import",
+    "to": "2_costs$",
+  },
+  Object {
+    "from": "1_profit_",
+    "reason": "explicit import",
+    "to": "2_profit$",
+  },
+  Object {
+    "from": "2_revenue$",
+    "negs": Array [],
+    "reason": "call",
+    "to": "2_revenue",
+  },
+  Object {
+    "from": "2_units_$",
+    "negs": Array [],
+    "reason": "call",
+    "to": "2_units_",
+  },
+  Object {
+    "from": "2_price_$",
+    "negs": Array [],
+    "reason": "call",
+    "to": "2_price_",
+  },
+  Object {
+    "from": "2_units$",
+    "negs": Array [],
+    "reason": "call",
+    "to": "2_units",
+  },
+  Object {
+    "from": "2_price$",
+    "negs": Array [],
+    "reason": "call",
+    "to": "2_price",
+  },
+  Object {
+    "from": "2_price_multiplier$",
+    "negs": Array [],
+    "reason": "call",
+    "to": "2_price_multiplier",
+  },
+  Object {
+    "from": "2_step$",
+    "negs": Array [],
+    "reason": "call",
+    "to": "2_step",
+  },
+  Object {
+    "from": "2_revenue_$",
+    "negs": Array [],
+    "reason": "call",
+    "to": "2_revenue_",
+  },
+  Object {
+    "from": "2_costs$",
+    "negs": Array [],
+    "reason": "call",
+    "to": "2_costs",
+  },
+  Object {
+    "from": "2_profit$",
+    "negs": Array [],
+    "reason": "call",
+    "to": "2_profit",
+  },
+  Object {
+    "from": "2_revenue",
+    "reason": "implicit import",
+    "to": "1_revenue",
+  },
+  Object {
+    "from": "2_units_",
+    "reason": "implicit import",
+    "to": "1_units_",
+  },
+  Object {
+    "from": "2_price_",
+    "reason": "implicit import",
+    "to": "1_price_",
+  },
+  Object {
+    "from": "2_units",
+    "reason": "implicit import",
+    "to": "1_units",
+  },
+  Object {
+    "from": "2_price",
+    "reason": "implicit import",
+    "to": "1_price",
+  },
+  Object {
+    "from": "2_price_multiplier",
+    "reason": "implicit import",
+    "to": "1_price_multiplier",
+  },
+  Object {
+    "from": "2_step",
+    "reason": "implicit import",
+    "to": "1_step",
+  },
+  Object {
+    "from": "2_revenue_",
+    "reason": "implicit import",
+    "to": "1_revenue_",
+  },
+  Object {
+    "from": "2_costs",
+    "reason": "implicit import",
+    "to": "1_costs",
+  },
+  Object {
+    "from": "2_profit",
+    "reason": "implicit import",
+    "to": "1_profit",
+  },
+  Object {
+    "from": "1_units",
+    "negs": Array [],
+    "reason": "call",
+    "to": "1_revenue_",
+  },
+  Object {
+    "from": "1_price",
+    "negs": Array [],
+    "reason": "call",
+    "to": "1_revenue_",
+  },
+  Object {
+    "from": "1_units",
+    "negs": Array [],
+    "reason": "call",
+    "to": "1_costs_",
+  },
+  Object {
+    "from": "1_revenue",
+    "negs": Array [],
+    "reason": "call",
+    "to": "1_profit_",
+  },
+  Object {
+    "from": "1_costs",
+    "negs": Array [],
+    "reason": "call",
+    "to": "1_profit_",
+  },
+  Object {
+    "from": "1_units_in",
+    "reason": "input",
+    "to": "1_units_",
+  },
+  Object {
+    "from": "1_price_in",
+    "reason": "input",
+    "to": "1_price_",
+  },
+}
+`;
+
 exports[`manufacturing/base 1`] = `
 Object {
   "cul_functions": Map {

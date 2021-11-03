@@ -44,3 +44,12 @@ test('introspection of base with memo on matches memo-test with memo off', async
 
   expect(base_memo_on.cul_links).toEqual(test_memo_off.cul_links);
 });
+
+test('introspection of price-change-reconciliation with memo on', async () => {
+  const base_memo_on = await introspection(
+    `./packages/calculang-testcase-models/manufacturing/price-change-reconciliation.cul.js`,
+    { memo: true }
+  );
+
+  expect(base_memo_on.cul_links).toMatchSnapshot();
+});

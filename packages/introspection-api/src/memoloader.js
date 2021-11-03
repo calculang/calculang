@@ -34,10 +34,11 @@ export default async function loader(content, map, meta) {
     const to_memo = [...child_introspection.cul_functions.values()].filter(
       (d) =>
         d.reason != 'input definition' &&
-        //d.cul_scope_id == 0 &&
+        d.cul_scope_id == 0 && // referring to child introspection call
         d.name.charAt(d.name.length - 1) != '$' // don't memo the memo. Alt: don't create cul_function for it?
     );
 
+    debugger;
     const generated = to_memo
       .map(
         (d) =>

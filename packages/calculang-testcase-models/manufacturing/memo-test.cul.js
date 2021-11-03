@@ -2,35 +2,41 @@
 import memoize from 'lru-memoize';
 import { isEqual } from 'underscore'; // TODO poor tree shaking support, or why is this impact so massive? Move to lodash/lodash-es?
 
-import { units_, revenue_, price_, costs_, profit_ } from './base.cul';
+import {
+  units_ as units$,
+  revenue_ as revenue$,
+  price_ as price$,
+  costs_ as costs$,
+  profit_ as profit$,
+} from './base.cul';
 
 // Javascript
-const revenue_m = memoize(999999, isEqual)(revenue_);
-const price_m = memoize(999999, isEqual)(price_);
-const units_m = memoize(999999, isEqual)(units_);
-const costs_m = memoize(999999, isEqual)(costs_);
-const profit_m = memoize(999999, isEqual)(profit_);
+const revenue$m = memoize(999999, isEqual)(revenue$);
+const price$m = memoize(999999, isEqual)(price$);
+const units$m = memoize(999999, isEqual)(units$);
+const costs$m = memoize(999999, isEqual)(costs$);
+const profit$m = memoize(999999, isEqual)(profit$);
 
 // calculang
 export const revenue = (a) => {
-  return revenue_m(a);
-  revenue_(); // never run, but here to "trick" calculang graph logic
+  return revenue$m(a);
+  revenue$(); // never run, but here to "trick" calculang graph logic
 };
 export const price = (a) => {
-  return price_m(a);
-  price_(); // never run, but here to "trick" calculang graph logic
+  return price$m(a);
+  price$(); // never run, but here to "trick" calculang graph logic
 };
 export const units = (a) => {
-  return units_m(a);
-  units_(); // never run, but here to "trick" calculang graph logic
+  return units$m(a);
+  units$(); // never run, but here to "trick" calculang graph logic
 };
 export const costs = (a) => {
-  return costs_m(a);
-  costs_(); // never run, but here to "trick" calculang graph logic
+  return costs$m(a);
+  costs$(); // never run, but here to "trick" calculang graph logic
 };
 export const profit = (a) => {
-  return profit_m(a);
-  profit_(); // never run, but here to "trick" calculang graph logic
+  return profit$m(a);
+  profit$(); // never run, but here to "trick" calculang graph logic
 };
 
 // note: this pattern is included in testing because this logic

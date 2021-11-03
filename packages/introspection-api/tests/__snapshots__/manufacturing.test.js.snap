@@ -146,51 +146,51 @@ Object {
 exports[`manufacturing/memo-test 1`] = `
 Object {
   "cul_functions": Map {
-    "0_units_" => Object {
+    "0_units$" => Object {
       "cul_scope_id": 0,
       "cul_source_scope_id": 1,
       "inputs": Array [
         "units_in",
       ],
-      "name": "units_",
+      "name": "units$",
       "reason": "explicit import",
     },
-    "0_revenue_" => Object {
-      "cul_scope_id": 0,
-      "cul_source_scope_id": 1,
-      "inputs": Array [
-        "units_in",
-        "price_in",
-      ],
-      "name": "revenue_",
-      "reason": "explicit import",
-    },
-    "0_price_" => Object {
-      "cul_scope_id": 0,
-      "cul_source_scope_id": 1,
-      "inputs": Array [
-        "price_in",
-      ],
-      "name": "price_",
-      "reason": "explicit import",
-    },
-    "0_costs_" => Object {
-      "cul_scope_id": 0,
-      "cul_source_scope_id": 1,
-      "inputs": Array [
-        "units_in",
-      ],
-      "name": "costs_",
-      "reason": "explicit import",
-    },
-    "0_profit_" => Object {
+    "0_revenue$" => Object {
       "cul_scope_id": 0,
       "cul_source_scope_id": 1,
       "inputs": Array [
         "units_in",
         "price_in",
       ],
-      "name": "profit_",
+      "name": "revenue$",
+      "reason": "explicit import",
+    },
+    "0_price$" => Object {
+      "cul_scope_id": 0,
+      "cul_source_scope_id": 1,
+      "inputs": Array [
+        "price_in",
+      ],
+      "name": "price$",
+      "reason": "explicit import",
+    },
+    "0_costs$" => Object {
+      "cul_scope_id": 0,
+      "cul_source_scope_id": 1,
+      "inputs": Array [
+        "units_in",
+      ],
+      "name": "costs$",
+      "reason": "explicit import",
+    },
+    "0_profit$" => Object {
+      "cul_scope_id": 0,
+      "cul_source_scope_id": 1,
+      "inputs": Array [
+        "units_in",
+        "price_in",
+      ],
+      "name": "profit$",
       "reason": "explicit import",
     },
     "0_revenue" => Object {
@@ -354,20 +354,20 @@ Object {
     },
   },
   "cul_input_map": Map {
-    "0_units_" => Set {
+    "0_units$" => Set {
       "units_in",
     },
-    "0_revenue_" => Set {
+    "0_revenue$" => Set {
       "units_in",
       "price_in",
     },
-    "0_price_" => Set {
+    "0_price$" => Set {
       "price_in",
     },
-    "0_costs_" => Set {
+    "0_costs$" => Set {
       "units_in",
     },
-    "0_profit_" => Set {
+    "0_profit$" => Set {
       "units_in",
       "price_in",
     },
@@ -433,54 +433,54 @@ Object {
     Object {
       "from": "1_units_",
       "reason": "explicit import",
-      "to": "0_units_",
+      "to": "0_units$",
     },
     Object {
       "from": "1_revenue_",
       "reason": "explicit import",
-      "to": "0_revenue_",
+      "to": "0_revenue$",
     },
     Object {
       "from": "1_price_",
       "reason": "explicit import",
-      "to": "0_price_",
+      "to": "0_price$",
     },
     Object {
       "from": "1_costs_",
       "reason": "explicit import",
-      "to": "0_costs_",
+      "to": "0_costs$",
     },
     Object {
       "from": "1_profit_",
       "reason": "explicit import",
-      "to": "0_profit_",
+      "to": "0_profit$",
     },
     Object {
-      "from": "0_revenue_",
+      "from": "0_revenue$",
       "negs": Array [],
       "reason": "call",
       "to": "0_revenue",
     },
     Object {
-      "from": "0_price_",
+      "from": "0_price$",
       "negs": Array [],
       "reason": "call",
       "to": "0_price",
     },
     Object {
-      "from": "0_units_",
+      "from": "0_units$",
       "negs": Array [],
       "reason": "call",
       "to": "0_units",
     },
     Object {
-      "from": "0_costs_",
+      "from": "0_costs$",
       "negs": Array [],
       "reason": "call",
       "to": "0_costs",
     },
     Object {
-      "from": "0_profit_",
+      "from": "0_profit$",
       "negs": Array [],
       "reason": "call",
       "to": "0_profit",

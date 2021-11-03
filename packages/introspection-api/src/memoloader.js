@@ -24,7 +24,7 @@ import { transformSync } from '@babel/core';
 
 export default async function loader(content, map, meta) {
   if (this.resourceQuery != '' && parseQuery(this.resourceQuery).memoed)
-    // see use of +memoed added to query below
+    // see use of +memoed added to query below, TODO validate # executions given updated logic
     return content;
   else {
     const child_introspection = await introspection(this.resourcePath, {
@@ -32,7 +32,10 @@ export default async function loader(content, map, meta) {
     });
 
     const to_memo = [...child_introspection.cul_functions.values()].filter(
-      (d) => d.reason != 'input definition' && d.cul_scope_id == 0
+      (d) =>
+        d.reason != 'input definition' &&
+        //d.cul_scope_id == 0 &&
+        d.name.charAt(d.name.length - 1) != '$' // don't memo the memo. Alt: don't create cul_function for it?
     );
 
     const generated = to_memo
@@ -41,10 +44,10 @@ export default async function loader(content, map, meta) {
           `
 
 ////////// start ${d.name} memo-loader code //////////
-const ${d.name}_m = memoize(999999, isEqual)(${d.name}_);
+const ${d.name}$m = memoize(999999, isEqual)(${d.name}$);
 export const ${d.name} = (a) => {
-  return ${d.name}_m(a);
-  ${d.name}_(); // never run, but here to "trick" calculang graph logic
+  return ${d.name}$m(a);
+  ${d.name}$(); // never run, but here to "trick" calculang graph logic
 };
 ////////// end ${d.name} memo-loader code //////////
 
@@ -59,9 +62,9 @@ export const ${d.name} = (a) => {
     import { isEqual } from 'underscore'; // TODO poor tree shaking support, or why is this impact so massive? Move to lodash/lodash-es?
     
     import { ${to_memo
-      .map((d) => `${d.name}_`)
+      .map((d) => `${d.name}_ as ${d.name}$`) // as needed because of _ overlaps
       .join(', ')} } from './${path.relative(this.context, this.resourcePath)}${
-      this.resourceQuery == '' ? '?' : this.resourceQuery + '?'
+      this.resourceQuery == '' ? '?' : this.resourceQuery + '&'
     }+memoed';
     
     ${generated}

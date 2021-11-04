@@ -12,7 +12,7 @@
 // this tests some key language features of calculang and demos their technical motivations
 
 import { revenue, units_, price_ } from './base.cul';
-export { revenue, units_, price_ }; // problem in memo loader because 'name' in cul_functions doesn't get renamed...
+export { revenue, units_, price_ };
 
 // import { all } from './base.cul.js'; TODO use this in place of above when I fix issue #13
 // export { all };

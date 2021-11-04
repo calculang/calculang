@@ -91,8 +91,6 @@ export default ({ types: t }) => ({
 
         // rename already-scoped definitions (merged from a parent scope)
 
-        if (`${opts.cul_scope_id}_${name}` == '2_units') debugger;
-
         // still needed
         if (global_state.cul_functions.get(`${opts.cul_scope_id}_${name}`)) {
           path.parent.id.name += '_';

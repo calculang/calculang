@@ -51,7 +51,9 @@ export default ({ types: t }) => ({
             .filter(
               (d) =>
                 d.cul_scope_id == state.opts.cul_parent_scope_id &&
-                d.cul_source_scope_id != state.opts.cul_scope_id && // this should become graph logic? Or source_scope_id needs to be maintained in 'as' imports? Fut can have multiple sources ....
+                d.cul_source_scope_id != state.opts.cul_scope_id /*||
+                  d.cul_source_scope_id != state.opts.cul_parent_scope_id*/ && // this should become graph logic? Or source_scope_id needs to be maintained in 'as' imports? Fut can have multiple sources ....
+                // these can get inherited multiple-deep...
                 d.reason != 'input definition' &&
                 d.reason != 'definition (renamed)'
             )
@@ -88,6 +90,8 @@ export default ({ types: t }) => ({
         parentfnOrig = name || 'bug_name';
 
         // rename already-scoped definitions (merged from a parent scope)
+
+        if (`${opts.cul_scope_id}_${name}` == '2_units') debugger;
 
         // still needed
         if (global_state.cul_functions.get(`${opts.cul_scope_id}_${name}`)) {
@@ -156,16 +160,24 @@ export default ({ types: t }) => ({
 
       // cul[_parent]_scope_id logic added here:
       // A note on calculang scoping logic is in ./index.js
-      debugger;
       var q = `${
         path.node.source.value.includes('?') ? '&' : '?'
       }cul_scope_id=${++global_state.cul_scope_id_counter}&cul_parent_scope_id=${
         opts.cul_scope_id
       }`;
 
+      // I need to remove any cul_scope_id, cul_parent_scope_id already present in path.node.source.value (without removing +memo etc.)
+      // Not removing &/? I still get e.g. ./base.cul.js?&&+memoed&cul_scope_id=3&cul_parent_scope_id=2
+      // refactor to above?
+
       global_state.cul_scope_ids_to_resource.set(
         global_state.cul_scope_id_counter,
-        urlToRequest(path.node.source.value, state.filename) + q // TODO does this work for node modules?, this could be path.node.source.value + q ?
+        urlToRequest(
+          path.node.source.value
+            .replace(/cul_scope_id=\d+/, '')
+            .replace(/cul_parent_scope_id=\d+/, ''),
+          state.filename
+        ) + q // TODO does this work for node modules?, this could be path.node.source.value + q ?
       );
       // """we always add a cul_scope_id, even though import may be javascript and not cul""" this is no longer true
       // but javascript won't be followed up on, as won't run in cul loader => won't get a cul_scope_ids_to_resource entry, and rewriter must not manipulate // TODO (partially out of date comment) ?
@@ -179,9 +191,14 @@ export default ({ types: t }) => ({
       else {
         global_state.import_sources_to_resource.set(
           `${opts.cul_scope_id}_${path.node.source.value}`,
-          path.node.source.value + q
+          path.node.source.value
+            .replace(/cul_scope_id=\d+/, '')
+            .replace(/cul_parent_scope_id=\d+/, '') + q
         );
-        path.node.source.value += q;
+        path.node.source.value =
+          path.node.source.value
+            .replace(/cul_scope_id=\d+/, '')
+            .replace(/cul_parent_scope_id=\d+/, '') + q;
       }
 
       // TODO ImportNamespaceSpecifier => hint that at graph build populate all defns (include 'as')

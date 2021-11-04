@@ -74,8 +74,6 @@ export default ({ types: t }) => ({
     },
 
     Function(path, state) {
-      if (path.node.params.length != 0) return; // memoization case export const y = (a) => {
-
       let name = path.parent.id?.name;
 
       var def_ = state.opts.cul_functions.get(
@@ -86,6 +84,8 @@ export default ({ types: t }) => ({
         name += '_';
         path.parent.id.name += '_';
       }
+
+      if (path.node.params.length != 0) return; // memoization case export const y = (a) => {   dont replace a with {}
 
       const ins = [
         ...state.opts.cul_input_map.get(

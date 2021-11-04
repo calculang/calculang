@@ -84,7 +84,6 @@ var global_state_stack = [];
 var global_state_before = {};
 
 export default async (entrypoint, options = {}) => {
-  debugger;
   global_state_stack.push(global_state);
 
   global_state_before.cul_functions = global_state.cul_functions;

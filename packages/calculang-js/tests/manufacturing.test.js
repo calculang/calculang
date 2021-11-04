@@ -1,10 +1,6 @@
-/**
- * @jest-environment node
- */
-
 import compiler from '@calculang/calculang-js';
 
-jest.setTimeout(20000);
+jest.setTimeout(2000000);
 
 test.each([
   'manufacturing/base',
@@ -44,3 +40,12 @@ test.each(['manufacturing/base'])(
     }).toMatchSnapshot();
   }
 );
+
+test('compilation of revenue-fixed-inputs with memo on', async () => {
+  const base_memo_on = await compiler(
+    `./packages/calculang-testcase-models/manufacturing/revenue-fixed-inputs.cul.js`,
+    { memo: true }
+  );
+
+  expect(base_memo_on).toMatchSnapshot();
+});

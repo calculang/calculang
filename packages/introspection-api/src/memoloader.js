@@ -23,7 +23,7 @@ import introspection from './index.js';
 import { transformSync } from '@babel/core';
 
 export default async function loader(content, map, meta) {
-  debugger; // memoloader
+  //debugger; // memoloader
 
   if (this.resourceQuery != '' && parseQuery(this.resourceQuery).memoed)
     // see use of +memoed added to query below, TODO validate # executions given updated logic

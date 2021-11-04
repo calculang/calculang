@@ -156,6 +156,7 @@ export default ({ types: t }) => ({
 
       // cul[_parent]_scope_id logic added here:
       // A note on calculang scoping logic is in ./index.js
+      debugger;
       var q = `${
         path.node.source.value.includes('?') ? '&' : '?'
       }cul_scope_id=${++global_state.cul_scope_id_counter}&cul_parent_scope_id=${

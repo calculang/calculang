@@ -919,7 +919,7 @@ Object {
   "import_sources_to_resource": Map {
     "0_./revenue-fixed-inputs.cul.js?+memoed" => "./revenue-fixed-inputs.cul.js?+memoed&cul_scope_id=1&cul_parent_scope_id=0",
     "1_./base.cul" => "./base.cul?cul_scope_id=2&cul_parent_scope_id=1",
-    "2_./base.cul.js?cul_scope_id=2&cul_parent_scope_id=1&+memoed" => "./base.cul.js?cul_scope_id=2&cul_parent_scope_id=1&+memoed&cul_scope_id=3&cul_parent_scope_id=2",
+    "2_./base.cul.js?cul_scope_id=2&cul_parent_scope_id=1&+memoed" => "./base.cul.js?&&+memoed&cul_scope_id=3&cul_parent_scope_id=2",
   },
 }
 `;

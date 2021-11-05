@@ -43,6 +43,10 @@ export default function loader(content, map, meta) {
     sourceMaps: true,
   });
 
+  console.log(`cul_scope_id = ${options.params.cul_scope_id}`);
+  console.log('==================================');
+  console.log(transformed.code);
+
   this.callback(null, transformed.code, transformed.map, meta);
   return; // "always return undefined when calling callback()" https://v4.webpack.js.org/api/loaders/
 }

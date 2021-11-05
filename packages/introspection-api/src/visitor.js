@@ -34,6 +34,7 @@ export default ({ types: t }) => ({
   visitor: {
     Program: {
       enter(path, state) {
+        // over of pop of imports must be consistent with calculang-js visitor, for import_sources_to...
         if (state.opts.cul_scope_id == 0) {
           // entry point, => set resource to filename
           global_state.cul_scope_ids_to_resource.set(
@@ -77,6 +78,9 @@ export default ({ types: t }) => ({
             });
         }
       },
+      exit() {
+        
+      }
     },
     Function: {
       enter(path, { opts }) {
@@ -148,7 +152,16 @@ export default ({ types: t }) => ({
           global_state.cul_links.add(link);
       }
     },
+
+    ExportSpecifier(path, { opts, ...state }) {
+      var renamed = global_state.cul_functions.has(
+        `${opts.cul_scope_id}_${path.node.local.name}_` // isn't this limited?
+      );
+      if (renamed) path.node.local.name += '_';
+    },
     ImportDeclaration(path, { opts, ...state }) {
+      // I think that below is overwriting revenues implicit import, rather than doing a rename!
+
       // I need to return for any parent... or not run for implicits merged
       //if (path.node.source.value.includes(gs.cul_scope_ids_to_resource.get(0)))
       //return;
@@ -210,12 +223,20 @@ export default ({ types: t }) => ({
       // for each import (specifier cases), create a definition in current scope, and link to source (explicit imports)
       // TODO ImportNamespaceSpecifier/all_cul case create hint instead and do this in graph build
       path.node.specifiers.forEach((d) => {
+        // is rename here necessary given its in calculang-js that it matters?
+        //d.local.name = 'hello_world';
+        if (d.local.name == 'revenue') debugger;
+        const rename = global_state.cul_functions.has(
+          // ImportDeclaration runs BEFORE Function :( => this needs to be done separately?
+          `${opts.cul_scope_id}_${d.local.name}`
+        ); // this is false despite revenue now being an implicit import from EP
+        if (rename) d.local.name += '_'; // change local without changing imported, but can d be modified here??
         // create definition
         global_state.cul_functions.set(`${opts.cul_scope_id}_${d.local.name}`, {
           cul_scope_id: opts.cul_scope_id,
           name: d.local.name,
           cul_source_scope_id: global_state.cul_scope_id_counter, // maybe this is wrong in 'as' case? no, E sep. definition...
-          reason: 'explicit import',
+          reason: `explicit import${rename ? ' (renamed)' : ''}`,
         });
         // and create link
         global_state.cul_links.add({

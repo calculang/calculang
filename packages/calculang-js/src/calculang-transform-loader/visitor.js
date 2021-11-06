@@ -138,7 +138,7 @@ export default ({ types: t }) => ({
       );
       if (renamed) {
         path.node.local.name += '_';
-        path.node.imported.name += '_';
+        //path.node.imported.name += '_'; // what is logic behind changing both?
       }
     },
     ImportDeclaration(path, { opts, ...state }) {

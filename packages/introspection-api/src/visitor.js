@@ -48,6 +48,7 @@ export default ({ types: t }) => ({
         if (state.opts.cul_scope_id != 0) {
           // don't do entrypoint, todo also don't do on namespace import case
           // merge definitions in parent scope which aren't sourced in current scope
+          debugger; // why doesn't 1_revenue appear below? in 0_revenue it looks like an explicit import, not a definition
           [...global_state.cul_functions.values()]
             .filter(
               (d) =>
@@ -55,8 +56,8 @@ export default ({ types: t }) => ({
                 d.cul_source_scope_id != state.opts.cul_scope_id /*||
                   d.cul_source_scope_id != state.opts.cul_parent_scope_id*/ && // this should become graph logic? Or source_scope_id needs to be maintained in 'as' imports? Fut can have multiple sources ....
                 // these can get inherited multiple-deep...
-                d.reason != 'input definition' &&
-                d.reason != 'definition (renamed)'
+                d.reason != 'input definition' /*&&
+                d.reason != 'definition (renamed)'*/
             )
             .forEach((d) => {
               // create definition in current scope
@@ -78,9 +79,7 @@ export default ({ types: t }) => ({
             });
         }
       },
-      exit() {
-        
-      }
+      exit() {},
     },
     Function: {
       enter(path, { opts }) {
@@ -225,12 +224,20 @@ export default ({ types: t }) => ({
       path.node.specifiers.forEach((d) => {
         // is rename here necessary given its in calculang-js that it matters?
         //d.local.name = 'hello_world';
-        if (d.local.name == 'revenue') debugger;
-        const rename = global_state.cul_functions.has(
+        var p = path;
+        if (d.local.name.indexOf('revenue') > -1) debugger;
+        const rename1 = global_state.cul_functions.get(
+          // PROBLEM HERE FOR 1_units__
           // ImportDeclaration runs BEFORE Function :( => this needs to be done separately?
+
+          // 1_revenue DOES get created
           `${opts.cul_scope_id}_${d.local.name}`
         ); // this is false despite revenue now being an implicit import from EP
-        if (rename) d.local.name += '_'; // change local without changing imported, but can d be modified here??
+        const rename = rename1; //&& rename1.reason.indexOf('renamed') != -1;
+        if (rename) {
+          d.local.name += '_';
+          //d.imported.name += '_'; // why? This should be conditional on the _ or not in the child 111 but That should be a new indept update => move to ImportSpecifier traversal with sep import/export logic
+        } // change local without changing imported, but can d be modified here??
         // create definition
         global_state.cul_functions.set(`${opts.cul_scope_id}_${d.local.name}`, {
           cul_scope_id: opts.cul_scope_id,

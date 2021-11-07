@@ -60,6 +60,8 @@ export default ({ types: t }) => ({
                 d.reason != 'definition (renamed)'*/
             )
             .forEach((d) => {
+              if (`${state.opts.cul_scope_id}_${d.name}` == '3_units_')
+                debugger;
               // create definition in current scope
               global_state.cul_functions.set(
                 `${state.opts.cul_scope_id}_${d.name}`,
@@ -99,16 +101,29 @@ export default ({ types: t }) => ({
           path.parent.id.name += '_';
           parentfn += '_'; // update this one, not Orig
           reason = 'definition (renamed)';
-          debugger;
+          //debugger;
           // now references to the function need to be updated
           [...global_state.cul_functions.values()]
             .filter(
               (d) =>
-                d.name /* I need imported here */ == name &&
+                d.imported /* I need imported here */ == name &&
                 d.reason.indexOf('explicit import') != -1
             )
-            .forEach(() => {
-              debugger;
+            .forEach((d) => {
+              //debugger;
+              global_state.cul_functions.set(`${d.cul_scope_id}_${d.name}`, {
+                ...d,
+                imported: d.imported + '_',
+              });
+              global_state.cul_links.forEach((dd) => {
+                if (
+                  dd.to == `${d.cul_scope_id}_${d.name}` &&
+                  //dd.from == '2_revenue' &&
+                  dd.reason == 'explicit import' // -> indexOf?
+                )
+                  dd.from += '_';
+              });
+              // cul_links update?>
             }); // do I need local and imported in cul_functions? Yes: for now just set imported (name=>local)
         }
 
@@ -233,6 +248,8 @@ export default ({ types: t }) => ({
       // for each import (specifier cases), create a definition in current scope, and link to source (explicit imports)
       // TODO ImportNamespaceSpecifier/all_cul case create hint instead and do this in graph build
       path.node.specifiers.forEach((d) => {
+        // surely I need an exclusion here for implicits? Maybe not because not added?
+
         // is rename here necessary given its in calculang-js that it matters?
         //d.local.name = 'hello_world';
         var p = path;
@@ -253,6 +270,7 @@ export default ({ types: t }) => ({
         global_state.cul_functions.set(`${opts.cul_scope_id}_${d.local.name}`, {
           cul_scope_id: opts.cul_scope_id,
           name: d.local.name,
+          imported: d.imported.name,
           cul_source_scope_id: global_state.cul_scope_id_counter, // maybe this is wrong in 'as' case? no, E sep. definition...
           reason: `explicit import${rename ? ' (renamed)' : ''}`,
         });

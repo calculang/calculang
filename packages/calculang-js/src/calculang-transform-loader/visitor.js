@@ -140,6 +140,11 @@ export default ({ types: t }) => ({
         path.node.local.name += '_';
         //path.node.imported.name += '_'; // what is logic behind changing both?
       }
+
+      path.node.imported.name =
+        opts.cul_functions.get(
+          `${opts.params.cul_scope_id}_${path.node.local.name}` // isn't this limited? Affd rec?
+        )?.imported || path.node.imported.name; // isEqual etc.
     },
     ImportDeclaration(path, { opts, ...state }) {
       /* if (

@@ -48,7 +48,7 @@ export default ({ types: t }) => ({
         if (state.opts.cul_scope_id != 0) {
           // don't do entrypoint, todo also don't do on namespace import case
           // merge definitions in parent scope which aren't sourced in current scope
-          debugger; // why doesn't 1_revenue appear below? in 0_revenue it looks like an explicit import, not a definition
+          //debugger; // why doesn't 1_revenue appear below? in 0_revenue it looks like an explicit import, not a definition
           [...global_state.cul_functions.values()]
             .filter(
               (d) =>
@@ -99,6 +99,17 @@ export default ({ types: t }) => ({
           path.parent.id.name += '_';
           parentfn += '_'; // update this one, not Orig
           reason = 'definition (renamed)';
+          debugger;
+          // now references to the function need to be updated
+          [...global_state.cul_functions.values()]
+            .filter(
+              (d) =>
+                d.name /* I need imported here */ == name &&
+                d.reason.indexOf('explicit import') != -1
+            )
+            .forEach(() => {
+              debugger;
+            }); // do I need local and imported in cul_functions? Yes: for now just set imported (name=>local)
         }
 
         // create definition
@@ -225,7 +236,7 @@ export default ({ types: t }) => ({
         // is rename here necessary given its in calculang-js that it matters?
         //d.local.name = 'hello_world';
         var p = path;
-        if (d.local.name.indexOf('revenue') > -1) debugger;
+        //if (d.local.name.indexOf('revenue') > -1) debugger;
         const rename1 = global_state.cul_functions.get(
           // PROBLEM HERE FOR 1_units__
           // ImportDeclaration runs BEFORE Function :( => this needs to be done separately?
@@ -236,7 +247,7 @@ export default ({ types: t }) => ({
         const rename = rename1; //&& rename1.reason.indexOf('renamed') != -1;
         if (rename) {
           d.local.name += '_';
-          //d.imported.name += '_'; // why? This should be conditional on the _ or not in the child 111 but That should be a new indept update => move to ImportSpecifier traversal with sep import/export logic
+          //d.imported.name += '_'; // why? This should be conditional on the _ or not in the child 111 but That should be a new indept update => move to ImportSpecifier traversal with sep import/export logic // DO THIS LOGIC WHERE THE RENAME ACTUALLY HAPPENS
         } // change local without changing imported, but can d be modified here??
         // create definition
         global_state.cul_functions.set(`${opts.cul_scope_id}_${d.local.name}`, {

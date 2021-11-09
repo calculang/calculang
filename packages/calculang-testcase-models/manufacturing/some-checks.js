@@ -26,3 +26,23 @@ const revenue_with_demand_curve = require('./revenue-with-demand-curve');
 
 console.log(revenue_with_demand_curve.revenue({ price_in: 3 }));
 console.log(revenue_with_demand_curve.revenue({ price_in: 3.5 }));
+
+const impactsAB = require('./impactsAB.js');
+
+console.log(impactsAB.A_revenue({}));
+console.log(
+  impactsAB.B_revenue({
+    units_in: 10,
+    price_in: 10,
+    price_multiplier_in: 1.1,
+    step_in: 1,
+  })
+);
+console.log(
+  impactsAB.revenue_impact({
+    units_in: 10,
+    price_in: 10,
+    price_multiplier_in: 1.1,
+    step_in: 1,
+  })
+);

@@ -53,15 +53,24 @@ export default ({ types: t }) => ({
             .filter(
               (d) =>
                 d.cul_scope_id == state.opts.cul_parent_scope_id &&
-                d.cul_source_scope_id != state.opts.cul_scope_id /*||
-                  d.cul_source_scope_id != state.opts.cul_parent_scope_id*/ && // this should become graph logic? Or source_scope_id needs to be maintained in 'as' imports? Fut can have multiple sources ....
-                // these can get inherited multiple-deep...
+                d.cul_source_scope_id != state.opts.cul_scope_id && // make this a chk for no explicit import with name in the parent scope? // this should become graph logic? Or source_scope_id needs to be maintained in 'as' imports? Fut can have multiple sources ....
+                /*||
+                  d.cul_source_scope_id != state.opts.cul_parent_scope_id*/ // these can get inherited multiple-deep...
                 d.reason != 'input definition' /*&&
                 d.reason != 'definition (renamed)'*/
             )
             .forEach((d) => {
               if (`${state.opts.cul_scope_id}_${d.name}` == '3_units_')
                 debugger;
+              if (
+                [...global_state.cul_functions.values()].filter(
+                  (dd) =>
+                    dd.imported == d.name &&
+                    dd.cul_scope_id == state.opts.cul_parent_scope_id &&
+                    dd.reason.indexOf('explicit import') != -1
+                ).length
+              )
+                return;
               // create definition in current scope
               global_state.cul_functions.set(
                 `${state.opts.cul_scope_id}_${d.name}`,
@@ -84,7 +93,7 @@ export default ({ types: t }) => ({
       exit() {},
     },
     Function: {
-      enter(path, { opts }) {
+      enter(path, { opts, ...state }) {
         // TODO ignore annon fns ?
 
         var name = path.parent.id?.name;
@@ -97,10 +106,34 @@ export default ({ types: t }) => ({
         // rename already-scoped definitions (merged from a parent scope)
 
         // still needed
-        if (global_state.cul_functions.get(`${opts.cul_scope_id}_${name}`)) {
+        const explicit_imported = [
+          ...global_state.cul_functions.values(),
+        ].filter(
+          (dd) =>
+            dd.imported == name + '_' &&
+            dd.cul_scope_id == opts.cul_parent_scope_id &&
+            dd.reason.indexOf('explicit import') != -1
+        ).length;
+
+        //if (name == 'revenue') debugger;
+
+        if (explicit_imported) {
+          // revenue doesn't get here in cul_scope_id=1 because it is import/exported, not a defn!
+          //debugger;
           path.parent.id.name += '_';
           parentfn += '_'; // update this one, not Orig
           reason = 'definition (renamed)';
+        }
+
+        if (
+          global_state.cul_functions.get(`${opts.cul_scope_id}_${name}`) ||
+          0
+        ) {
+          if (!explicit_imported) {
+            path.parent.id.name += '_';
+            parentfn += '_'; // update this one, not Orig
+            reason = 'definition (renamed)'; // do this even when implicit import was blocked? or where E explicit import in parent for _
+          }
           //debugger;
           // now references to the function need to be updated
           [...global_state.cul_functions.values()]
@@ -250,6 +283,25 @@ export default ({ types: t }) => ({
       path.node.specifiers.forEach((d) => {
         // surely I need an exclusion here for implicits? Maybe not because not added?
 
+        const explicit_imported = [
+          ...global_state.cul_functions.values(),
+        ].filter(
+          (dd) =>
+            dd.imported == d.local.name + '_' &&
+            dd.cul_scope_id == opts.cul_parent_scope_id &&
+            dd.reason.indexOf('explicit import') != -1
+        ).length;
+
+        if (d.local.name == 'revenue') debugger;
+
+        /*if (explicit_imported) {
+          // revenue doesn't get here in cul_scope_id=1 because it is import/exported, not a defn!
+          debugger;
+          path.parent.id.name += '_';
+          parentfn += '_'; // update this one, not Orig
+          reason = 'definition (renamed)';
+        }*/
+
         // is rename here necessary given its in calculang-js that it matters?
         //d.local.name = 'hello_world';
         var p = path;
@@ -262,7 +314,7 @@ export default ({ types: t }) => ({
           `${opts.cul_scope_id}_${d.local.name}`
         ); // this is false despite revenue now being an implicit import from EP
         const rename = rename1; //&& rename1.reason.indexOf('renamed') != -1;
-        if (rename) {
+        if (rename || explicit_imported) {
           d.local.name += '_';
           //d.imported.name += '_'; // why? This should be conditional on the _ or not in the child 111 but That should be a new indept update => move to ImportSpecifier traversal with sep import/export logic // DO THIS LOGIC WHERE THE RENAME ACTUALLY HAPPENS
         } // change local without changing imported, but can d be modified here??
@@ -275,6 +327,8 @@ export default ({ types: t }) => ({
           reason: `explicit import${rename ? ' (renamed)' : ''}`,
         });
         // and create link
+        if (d.local.name.indexOf('revenue') != -1 && opts.cul_scope_id == 2)
+          debugger;
         global_state.cul_links.add({
           to: `${opts.cul_scope_id}_${d.local.name}`,
           from: `${global_state.cul_scope_id_counter}_${d.imported.name}`, // ? fails on import addMonths from 'date-fns/esm/addMonths' ?

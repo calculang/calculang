@@ -47,41 +47,31 @@ pad by looking up callee(?) in input map.Don't need parentfn logic          | NO
 
 */
 
-// adding on program exit
-var implicits_added;
-
 export default ({ types: t }) => ({
   name: 'calculang-js-transform-loader-visitor',
   visitor: {
     //Program:
     //filter cul_functions for cul_scope_id & 'implicit import': ADD IMPORTS
-    Program: {
-      /*enter() {
-        implicits_added = false;
-      },*/
-      enter(path, state) {
-        implicits_added = true;
-        let implicit_imports = [...state.opts.cul_functions.values()].filter(
-          (d) =>
-            d.cul_scope_id == state.opts.params.cul_scope_id &&
-            d.reason == 'implicit import'
-        );
+    Program(path, state) {
+      let implicit_imports = [...state.opts.cul_functions.values()].filter(
+        (d) =>
+          d.cul_scope_id == state.opts.params.cul_scope_id &&
+          d.reason == 'implicit import'
+      );
 
-        // copied from initial visitor
-        implicit_imports.forEach((d) => {
-          path.unshiftContainer(
-            'body',
-            t.importDeclaration(
-              [t.importSpecifier(t.identifier(d.name), t.identifier(d.name))],
-              t.stringLiteral(
-                state.opts.cul_scope_ids_to_resource.get(d.cul_source_scope_id) // BUG here because the path should not always be the same, will be issue in non-trivial directory structures
-              )
+      // copied from initial visitor
+      implicit_imports.forEach((d) => {
+        path.unshiftContainer(
+          'body',
+          t.importDeclaration(
+            [t.importSpecifier(t.identifier(d.name), t.identifier(d.name))],
+            t.stringLiteral(
+              state.opts.cul_scope_ids_to_resource.get(d.cul_source_scope_id) // BUG here because the path should not always be the same, will be issue in non-trivial directory structures
             )
-            //.leadingComment('implicit_import')
-          );
-          path.node.body[0].cul_implicit_import = true; // not sure if this is a supported trick! //trailingCommments
-        });
-      },
+          )
+        );
+        path.node.body[0].cul_implicit_import = true; // not sure if this is a supported trick! but it works. modifying leading/trailingCommments is an alt
+      });
     },
 
     Function(path, state) {
@@ -123,23 +113,12 @@ export default ({ types: t }) => ({
       }
     },
     ImportSpecifier(path, { opts, ...state }) {
-      //debugger;
-      // node.leadingComments/innerComments ?
-      /*if (
-        [...opts.cul_scope_ids_to_resource.values()].indexOf(
-          `${path.parent.source.value}`
-        ) > -1 // I need a better criteria !!
-      )*/
-
-      debugger;
       if (path.parent.cul_implicit_import) return; // don't do this for implicits
+
       var renamed = opts.cul_functions.get(
         `${opts.params.cul_scope_id}_${path.node.local.name}_` // isn't this limited? Affd rec?
       );
-      if (renamed) {
-        path.node.local.name += '_';
-        //path.node.imported.name += '_'; // what is logic behind changing both?
-      }
+      if (renamed) path.node.local.name += '_';
 
       path.node.imported.name =
         opts.cul_functions.get(
@@ -159,16 +138,9 @@ export default ({ types: t }) => ({
           `${opts.params.cul_scope_id}_${path.node.specifiers[0].local.name}`
         )
       )
-        return;
-      //debugger;
-      //if (path.node.specifiers) {
-      //  var def = opts.cul_functions.get(
-      //    `${opts.params.cul_scope_id}_${path.node.specifiers[0].local.name}`
-      //  );
-      //  if (def == undefined || def?.reason == 'implicit import') return; // 1_revenue is recognised as an implicit import. But 1_revenue_ should be checked
-      //}
+        return; // ignore non-calculang functions
 
-      //debugger;
+      // set the source based on calculang scoping etc logic
       path.node.source.value = opts.import_sources_to_resource.get(
         `${opts.params.cul_scope_id}_${path.node.source.value}`
       );

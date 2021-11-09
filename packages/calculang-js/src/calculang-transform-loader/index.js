@@ -43,7 +43,8 @@ export default function loader(content, map, meta) {
     sourceMaps: true,
   });
 
-  console.log(`cul_scope_id = ${options.params.cul_scope_id}`);
+  // keeping because helpful, but needs to be done smarter, issue #34 filed
+  console.log(`\n\n\ncul_scope_id = ${options.params.cul_scope_id}`);
   console.log('==================================');
   console.log(transformed.code);
 

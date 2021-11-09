@@ -116,7 +116,7 @@ Set {
   },
   Object {
     "from": "2_revenue_",
-    "reason": "explicit import",
+    "reason": "explicit import (renamed)",
     "to": "1_revenue_",
   },
   Object {
@@ -753,7 +753,7 @@ Object {
     },
     Object {
       "from": "2_revenue_",
-      "reason": "explicit import",
+      "reason": "explicit import (renamed)",
       "to": "1_revenue_",
     },
     Object {
@@ -947,7 +947,7 @@ Object {
   \\"0_revenue\\" -> \\"1_revenue\\" [value=\\"[object Object]\\",label=\\"implicit import\\"]
   \\"0_units\\" -> \\"1_units\\" [value=\\"[object Object]\\",label=\\"implicit import\\"]
   \\"0_price\\" -> \\"1_price\\" [value=\\"[object Object]\\",label=\\"implicit import\\"]
-  \\"2_revenue_\\" -> \\"1_revenue_\\" [value=\\"[object Object]\\",label=\\"explicit import\\"]
+  \\"2_revenue_\\" -> \\"1_revenue_\\" [value=\\"[object Object]\\",label=\\"explicit import (renamed)\\"]
   \\"0_revenue\\" -> \\"2_revenue\\" [value=\\"[object Object]\\",label=\\"implicit import\\"]
   \\"0_units\\" -> \\"2_units\\" [value=\\"[object Object]\\",label=\\"implicit import\\"]
   \\"0_price\\" -> \\"2_price\\" [value=\\"[object Object]\\",label=\\"implicit import\\"]

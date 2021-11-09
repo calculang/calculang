@@ -56,13 +56,14 @@ export default ({ types: t }) => ({
                 d.cul_source_scope_id != state.opts.cul_scope_id && // make this a chk for no explicit import with name in the parent scope? // this should become graph logic? Or source_scope_id needs to be maintained in 'as' imports? Fut can have multiple sources ....
                 /*||
                   d.cul_source_scope_id != state.opts.cul_parent_scope_id*/ // these can get inherited multiple-deep...
-                d.reason != 'input definition' /*&&
-                d.reason != 'definition (renamed)'*/
+                d.reason != 'input definition' // this is a bad exclusion? /*&&
+              //d.reason != 'definition (renamed)'*/
             )
             .forEach((d) => {
-              if (`${state.opts.cul_scope_id}_${d.name}` == '3_units_')
-                debugger;
+              //if (`${state.opts.cul_scope_id}_${d.name}` == '3_units_')
+              //  debugger;
               if (
+                0 &&
                 [...global_state.cul_functions.values()].filter(
                   (dd) =>
                     dd.imported == d.name &&
@@ -71,6 +72,7 @@ export default ({ types: t }) => ({
                 ).length
               )
                 return;
+              if (d.name[d.name.length - 1] == '_') return;
               // create definition in current scope
               global_state.cul_functions.set(
                 `${state.opts.cul_scope_id}_${d.name}`,
@@ -106,14 +108,14 @@ export default ({ types: t }) => ({
         // rename already-scoped definitions (merged from a parent scope)
 
         // still needed
-        const explicit_imported = [
-          ...global_state.cul_functions.values(),
-        ].filter(
-          (dd) =>
-            dd.imported == name + '_' &&
-            dd.cul_scope_id == opts.cul_parent_scope_id &&
-            dd.reason.indexOf('explicit import') != -1
-        ).length;
+        const explicit_imported =
+          0 *
+          [...global_state.cul_functions.values()].filter(
+            (dd) =>
+              dd.imported == name + '_' &&
+              dd.cul_scope_id == opts.cul_parent_scope_id &&
+              dd.reason.indexOf('explicit import') != -1
+          ).length;
 
         //if (name == 'revenue') debugger;
 
@@ -154,7 +156,7 @@ export default ({ types: t }) => ({
                   //dd.from == '2_revenue' &&
                   dd.reason == 'explicit import' // -> indexOf?
                 )
-                  dd.from += '_';
+                  dd.from += '_'; // add (renamed)?
               });
               // cul_links update?>
             }); // do I need local and imported in cul_functions? Yes: for now just set imported (name=>local)
@@ -283,14 +285,14 @@ export default ({ types: t }) => ({
       path.node.specifiers.forEach((d) => {
         // surely I need an exclusion here for implicits? Maybe not because not added?
 
-        const explicit_imported = [
-          ...global_state.cul_functions.values(),
-        ].filter(
-          (dd) =>
-            dd.imported == d.local.name + '_' &&
-            dd.cul_scope_id == opts.cul_parent_scope_id &&
-            dd.reason.indexOf('explicit import') != -1
-        ).length;
+        const explicit_imported =
+          0 *
+          [...global_state.cul_functions.values()].filter(
+            (dd) =>
+              dd.imported == d.local.name + '_' &&
+              dd.cul_scope_id == opts.cul_parent_scope_id &&
+              dd.reason.indexOf('explicit import') != -1
+          ).length;
 
         if (d.local.name == 'revenue') debugger;
 

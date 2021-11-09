@@ -26,37 +26,3 @@ test.each([
     cul_links: output.cul_links,
   }).toMatchSnapshot();
 });
-
-// memo test is that base, with memoization on, should match memo-test with memoization off
-
-test('introspection of base with memo on matches memo-test with memo off', async () => {
-  const base_memo_on = await introspection(
-    `./packages/calculang-testcase-models/manufacturing/base.cul.js`,
-    { memo: true }
-  );
-  const test_memo_off = await introspection(
-    `./packages/calculang-testcase-models/manufacturing/memo-test.cul.js`,
-    {}
-  );
-
-  expect(base_memo_on.cul_links).toEqual(test_memo_off.cul_links);
-});
-
-test('introspection of revenue-fixed-inputs with memo on', async () => {
-  const base_memo_on = await introspection(
-    `./packages/calculang-testcase-models/manufacturing/revenue-fixed-inputs.cul.js`,
-    { memo: true }
-  );
-
-  expect(base_memo_on).toMatchSnapshot();
-});
-
-// this is affected by a lot of things, including overrides-of-overrides problem
-test('introspection of price-change-reconciliation with memo on', async () => {
-  const base_memo_on = await introspection(
-    `./packages/calculang-testcase-models/manufacturing/price-change-reconciliation.cul.js`,
-    { memo: true }
-  );
-
-  expect(base_memo_on.cul_links).toMatchSnapshot();
-});

@@ -7,6 +7,7 @@ test.each([
   'manufacturing/base',
   'manufacturing/price-change-reconciliation',
   'manufacturing/revenue-fixed-inputs',
+  'manufacturing/impactsAB',
   'manufacturing/revenue-with-demand-curve',
   'manufacturing/simple-neg-A',
   'manufacturing/simple-neg-B',

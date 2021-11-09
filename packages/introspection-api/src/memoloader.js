@@ -20,11 +20,7 @@ import { getOptions, parseQuery } from 'loader-utils';
 
 import introspection from './index.js';
 
-import { transformSync } from '@babel/core';
-
 export default async function loader(content, map, meta) {
-  //debugger; // memoloader
-
   if (this.resourceQuery != '' && parseQuery(this.resourceQuery).memoed)
     // see use of +memoed added to query below, TODO validate # executions given updated logic
     return content;
@@ -35,9 +31,9 @@ export default async function loader(content, map, meta) {
 
     const to_memo = [...child_introspection.cul_functions.values()].filter(
       (d) =>
-        d.reason != 'input definition' &&
+        d.reason != 'input definition' && // bring this in?
         d.cul_scope_id == 0 && // referring to child introspection call
-        d.name.charAt(d.name.length - 1) != '$' // don't memo the memo. Alt: don't create cul_function for it?
+        d.name.charAt(d.name.length - 1) != '$' // don't memo the memo. Alt: don't create cul_function for it? <-- prob never matters
     );
 
     const generated = to_memo
@@ -63,7 +59,7 @@ export const ${d.name} = (a) => {
     import { isEqual } from 'underscore'; // TODO poor tree shaking support, or why is this impact so massive? Move to lodash/lodash-es?
     
     import { ${to_memo
-      .map((d) => `${d.name}_ as ${d.name}$`) // as needed because of _ overlaps
+      .map((d) => `${d.name}_ as ${d.name}$`) // don't pollute the _ modifier (=> use as)
       .join(', ')} } from './${path.relative(this.context, this.resourcePath)}${
       this.resourceQuery == '' ? '?' : this.resourceQuery + '&'
     }+memoed';

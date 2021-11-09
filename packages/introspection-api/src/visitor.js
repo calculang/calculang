@@ -48,31 +48,16 @@ export default ({ types: t }) => ({
         if (state.opts.cul_scope_id != 0) {
           // don't do entrypoint, todo also don't do on namespace import case
           // merge definitions in parent scope which aren't sourced in current scope
-          //debugger; // why doesn't 1_revenue appear below? in 0_revenue it looks like an explicit import, not a definition
           [...global_state.cul_functions.values()]
             .filter(
               (d) =>
                 d.cul_scope_id == state.opts.cul_parent_scope_id &&
-                d.cul_source_scope_id != state.opts.cul_scope_id && // make this a chk for no explicit import with name in the parent scope? // this should become graph logic? Or source_scope_id needs to be maintained in 'as' imports? Fut can have multiple sources ....
-                /*||
-                  d.cul_source_scope_id != state.opts.cul_parent_scope_id*/ // these can get inherited multiple-deep...
-                d.reason != 'input definition' // this is a bad exclusion? /*&&
+                d.cul_source_scope_id != state.opts.cul_scope_id &&
+                d.name[d.name.length - 1] != '_' && // don't inherit modified fns
+                d.reason != 'input definition' // is this a bad exclusion? /*&&
               //d.reason != 'definition (renamed)'*/
             )
             .forEach((d) => {
-              //if (`${state.opts.cul_scope_id}_${d.name}` == '3_units_')
-              //  debugger;
-              if (
-                0 &&
-                [...global_state.cul_functions.values()].filter(
-                  (dd) =>
-                    dd.imported == d.name &&
-                    dd.cul_scope_id == state.opts.cul_parent_scope_id &&
-                    dd.reason.indexOf('explicit import') != -1
-                ).length
-              )
-                return;
-              if (d.name[d.name.length - 1] == '_') return;
               // create definition in current scope
               global_state.cul_functions.set(
                 `${state.opts.cul_scope_id}_${d.name}`,

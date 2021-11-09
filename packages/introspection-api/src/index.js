@@ -80,12 +80,9 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 import compiler from './compiler.js';
 import global_state from './global_state.js';
 
-var global_state_stack = [];
-var global_state_before = {};
+var global_state_before = {}; // need to save/restore global_state because introspection can call itself recursively e.g. in memoloader
 
 export default async (entrypoint, options = {}) => {
-  global_state_stack.push(global_state);
-
   global_state_before.cul_functions = global_state.cul_functions;
   global_state_before.cul_links = global_state.cul_links;
   global_state_before.cul_scope_id_counter = global_state.cul_scope_id_counter;
@@ -110,28 +107,16 @@ export default async (entrypoint, options = {}) => {
 
   const output = { ...global_state };
 
-  const new_global_state = global_state_before; //global_state_stack.pop();
-
-  global_state.cul_functions = new_global_state.cul_functions;
-  global_state.cul_links = new_global_state.cul_links;
-  global_state.cul_scope_id_counter = new_global_state.cul_scope_id_counter;
-  global_state.cul_parent_scope_id = new_global_state.cul_parent_scope_id;
+  global_state.cul_functions = global_state_before.cul_functions;
+  global_state.cul_links = global_state_before.cul_links;
+  global_state.cul_scope_id_counter = global_state_before.cul_scope_id_counter;
+  global_state.cul_parent_scope_id = global_state_before.cul_parent_scope_id;
   global_state.cul_scope_ids_to_resource =
-    new_global_state.cul_scope_ids_to_resource;
+    global_state_before.cul_scope_ids_to_resource;
   global_state.import_sources_to_resource =
-    new_global_state.import_sources_to_resource;
-  global_state.cul_input_map = new_global_state.cul_input_map;
-  global_state.dot = new_global_state.dot;
-
-  // reset global_state
-  /*global_state.cul_functions = new Map();
-  global_state.cul_links = new Set();
-  global_state.cul_scope_id_counter = 0;
-  global_state.cul_parent_scope_id = 0;
-  global_state.cul_scope_ids_to_resource = new Map();
-  global_state.import_sources_to_resource = new Map();
-  global_state.cul_input_map = new Map();
-  global_state.dot = '';*/
+    global_state_before.import_sources_to_resource;
+  global_state.cul_input_map = global_state_before.cul_input_map;
+  global_state.dot = global_state_before.dot;
 
   return output; // or/fut: reconstruct an object
 };

@@ -41,7 +41,7 @@ export default (entrypoint, options = {}) => {
   if (options.memo)
     // this is opt-in atm
     use_config.push({
-      loader: path.resolve(__dirname, './memoloader.js'),
+      loader: path.resolve(__dirname, './memoloader.js'), // chk this config in nested cases? order of nesting, loaders, etc., important to validate
       options,
     });
 

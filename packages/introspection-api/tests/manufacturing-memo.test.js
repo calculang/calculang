@@ -62,3 +62,13 @@ test('introspection of price-change-reconciliation with memo on', async () => {
 
   expect(base_memo_on.cul_links).toMatchSnapshot();
 });
+
+// dupe to facilitate debugging
+test('introspection of impactsAB with memo on', async () => {
+  const base_memo_on = await introspection(
+    `./packages/calculang-testcase-models/manufacturing/impactsAB.cul.js`,
+    { memo: true }
+  );
+
+  //expect(base_memo_on.cul_links).toMatchSnapshot();
+});

@@ -18,6 +18,8 @@ import { getOptions, parseQuery } from 'loader-utils';
 
 import { transformSync } from '@babel/core';
 
+import global_state from './global_state.js';
+
 import visitor from './visitor';
 
 // calculang files run through this loader. The logic is really in the visitor function, which below is processed on content via babel api
@@ -42,12 +44,16 @@ export default function loader(content, map, meta) {
   //HarmonyImportSpecifierDependency {module: null, weak: false, optional: false, loc: SourceLocation, request: 'date-fns/esm/differenceInMonths?cul_scope_id=3&cul_parent_scope_id=0', …}
   // module/_module loaders info not yet created..?
 
+  // loader api this.resourceQuery is carrying values into base nomemo run, how?
   var params =
-    this.resourceQuery == ''
+    this.resourceQuery == '' // find a better way to 0-ise cul_scope_id?
       ? { cul_scope_id: 0 }
       : parseQuery(this.resourceQuery);
+  if (global_state.cul_scope_id_counter == 0) params = { cul_scope_id: 0 }; // how was resourceQuery being shared??
   params.cul_scope_id = +params.cul_scope_id;
   params.cul_parent_scope_id = +params.cul_parent_scope_id;
+
+  if (params.cul_parent_scope_id >= params.cul_scope_id) debugger;
 
   //this.getLogger().log(JSON.stringify(params));
 

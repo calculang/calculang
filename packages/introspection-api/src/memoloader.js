@@ -20,11 +20,14 @@ import { getOptions, parseQuery } from 'loader-utils';
 
 import introspection from './index.js';
 
+// gets called with cul_scope_id=2&cul_parent_scope_id=1 on base, but fails
+
 export default async function loader(content, map, meta) {
   if (this.resourceQuery != '' && parseQuery(this.resourceQuery).memoed)
     // see use of +memoed added to query below, TODO validate # executions given updated logic
     return content;
   else {
+    debugger;
     const child_introspection = await introspection(this.resourcePath, {
       memo: false,
     });
@@ -35,6 +38,8 @@ export default async function loader(content, map, meta) {
         d.cul_scope_id == 0 && // referring to child introspection call
         d.name.charAt(d.name.length - 1) != '$' // don't memo the memo. Alt: don't create cul_function for it? <-- prob never matters
     );
+    // debugger; // how come some results are scope 0 with _?
+    // nothing has cul_scope_id=0 in another case, hence problem
 
     const generated = to_memo
       .map(
@@ -54,17 +59,24 @@ export const ${d.name} = (a) => {
       .join('');
 
     // todo remove base ref below!
-    return `
+
+    var return_val = `
     import memoize from 'lru-memoize';
     import { isEqual } from 'underscore'; // TODO poor tree shaking support, or why is this impact so massive? Move to lodash/lodash-es?
     
     import { ${to_memo
       .map((d) => `${d.name}_ as ${d.name}$`) // don't pollute the _ modifier (=> use as)
       .join(', ')} } from './${path.relative(this.context, this.resourcePath)}${
-      this.resourceQuery == '' ? '?' : this.resourceQuery + '&'
-    }+memoed';
+      this.resourceQuery == ''
+        ? '?'
+        : this.resourceQuery
+            .replace(/cul_scope_id=\d+/, '')
+            .replace(/cul_parent_scope_id=\d+/, '') + '&'
+    }+memoed'; // there is already-culed stuff in here, why? imports to memo loader include cul_scope_id, what logic should it apply RE passing forward? eliminate? Probably!
     
     ${generated}
     `;
+    console.log(return_val);
+    return return_val; // everything is wrong in this!!!
   }
 }

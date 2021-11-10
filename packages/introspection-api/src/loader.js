@@ -49,7 +49,11 @@ export default function loader(content, map, meta) {
     this.resourceQuery == '' // find a better way to 0-ise cul_scope_id?
       ? { cul_scope_id: 0 }
       : parseQuery(this.resourceQuery);
-  if (global_state.cul_scope_id_counter == 0) params = { cul_scope_id: 0 }; // how was resourceQuery being shared??
+  if (global_state.cul_scope_id_counter == 0)
+    params = {
+      ...parseQuery(this.resourceQuery == '' ? '?' : this.resourceQuery),
+      cul_scope_id: 0,
+    }; // how was resourceQuery being shared??
   params.cul_scope_id = +params.cul_scope_id;
   params.cul_parent_scope_id = +params.cul_parent_scope_id;
 

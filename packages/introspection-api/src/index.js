@@ -87,12 +87,16 @@ var global_state_stack2 = [];
 
 var global_state_before_map = new Map();
 
+var location = [];
+
 var i = 0;
 
 // is this where I need a stack... b/c global_state_before gets o/ren
 
 export default async (entrypoint, options = {}) => {
-  global_state_before_map.set(JSON.stringify(options) /* bad */ + entrypoint, {
+  location.push({ options, entrypoint });
+
+  global_state_before_map.set(JSON.stringify(location) /* bad */, {
     ...global_state,
   });
 
@@ -132,10 +136,9 @@ export default async (entrypoint, options = {}) => {
 
   //var new_gs = global_state_stack2.pop(); // wrong? because things run in diff orders? => popping off other before states
   var new_gs = {
-    ...global_state_before_map.get(
-      JSON.stringify(options) /* bad */ + entrypoint
-    ),
+    ...global_state_before_map.get(JSON.stringify(location) /* bad */),
   };
+  location.pop();
   // what can make the state unique?
 
   //var global_state_new = global_state_stack.pop();

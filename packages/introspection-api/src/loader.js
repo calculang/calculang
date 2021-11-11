@@ -66,6 +66,7 @@ export default function loader(content, map, meta) {
     filename: this.resourcePath, //+ this.resourceQuery, //JSON.stringify(params), // to set sourceFileName
     inputSourceMap: map,
     babelrc: false,
+    configFile: false,
     plugins: [[visitor, opts]],
     sourceMaps: true,
   });
@@ -75,6 +76,18 @@ export default function loader(content, map, meta) {
   // essential jobs of loader:
 
   //return { code: transformed.code, map: transformed.map };
+
+  console.log(`\n\n\ncul_scope_id = ${JSON.stringify(opts)}`);
+  console.log('============== going in ============');
+  console.log(
+    JSON.stringify({ path: this.resourcePath, query: this.resourceQuery })
+  );
+  console.log(content); // wtf, this is babel transformed??
+
+  // keeping because helpful, but needs to be done smarter, issue #34 filed
+  console.log(`\n\n\ncul_scope_id = ${JSON.stringify(opts)}`);
+  console.log('============ going out =========');
+  console.log(transformed.code); // wtf, this is babel transformed -> commonjs?? transformed in call to transformSync, but presumably last. Not the case in calculang-js loader apparently?
 
   this.callback(null, transformed.code, transformed.map, meta);
   return; // "always return undefined when calling callback()" https://v4.webpack.js.org/api/loaders/

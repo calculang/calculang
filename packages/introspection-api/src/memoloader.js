@@ -76,7 +76,7 @@ export const ${d.name} = (a) => {
     
     ${generated}
     `;
-    console.log(return_val);
+    // consider for issue #34 console.log(return_val);
     return return_val; // everything is wrong in this!!!
   }
 }

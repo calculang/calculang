@@ -85,7 +85,7 @@ var global_state_before = {}; // need to save/restore global_state because intro
 var global_state_stack = [];
 var global_state_stack2 = [];
 
-var global_state_before_map = new Map();
+//var global_state_before_map = new Map();
 
 var i = 0;
 
@@ -94,9 +94,25 @@ var i = 0;
 export default async (entrypoint, options = {}) => {
   global_state.location.push({ options, entrypoint });
 
-  global_state_before_map.set(JSON.stringify(global_state.location) /* bad */, {
-    ...global_state,
-  });
+  if (
+    global_state.location.length == 2 &&
+    global_state.location[1].entrypoint.indexOf('base') != -1
+  )
+    debugger;
+
+  global_state.global_state_before_map.set(
+    JSON.stringify(global_state.location) /* bad */,
+    {
+      cul_functions: global_state.cul_functions,
+      cul_links: global_state.cul_links,
+      cul_scope_id_counter: global_state.cul_scope_id_counter,
+      cul_parent_scope_id: global_state.cul_parent_scope_id,
+      cul_scope_ids_to_resource: global_state.cul_scope_ids_to_resource,
+      import_sources_to_resource: global_state.import_sources_to_resource,
+      cul_input_map: global_state.cul_input_map,
+      dot: global_state.dot,
+    }
+  );
 
   //if (!options.memo && entrypoint.indexOf('base') != -1) debugger;
 
@@ -134,7 +150,7 @@ export default async (entrypoint, options = {}) => {
 
   //var new_gs = global_state_stack2.pop(); // wrong? because things run in diff orders? => popping off other before states
   var new_gs = {
-    ...global_state_before_map.get(
+    ...global_state.global_state_before_map.get(
       JSON.stringify(global_state.location) /* bad */
     ),
   };

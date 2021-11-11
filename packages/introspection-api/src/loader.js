@@ -28,7 +28,7 @@ import visitor from './visitor';
 // not using arrow syntax b/c webpack api inserted into 'this'
 
 export default function loader(content, map, meta) {
-  if (global_state.location.length == 1) debugger;
+  //if (global_state.location.length == 1) debugger;
   this.sourceMap; // bool which I should use to make sourcemap code conditional, since its slow to generate... (or maybe not b/c transparency?)
   this.cacheable(false);
   // webpack api docs: "A cacheable loader must have a deterministic result when inputs and dependencies haven't changed. This means the loader shouldn't have dependencies other than those specified with this.addDependency."

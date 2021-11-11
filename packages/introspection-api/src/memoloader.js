@@ -27,7 +27,9 @@ import global_state from './global_state.js';
 // "./price-change-reconciliation.cul.js?cul_scope_id=3&cul_parent_scope_id=1"
 
 export default async function loader(content, map, meta) {
-  if (global_state.location.length == 1) debugger;
+  this.cacheable(false);
+  if (getOptions(this).memo == false) return content;
+  //if (global_state.location.length == 1) debugger;
   if (this.resourceQuery != '' && parseQuery(this.resourceQuery).memoed)
     // see use of +memoed added to query below, TODO validate # executions given updated logic
     return content;
@@ -65,6 +67,12 @@ export const ${d.name} = (a) => {
 
     // todo remove base ref below!
 
+    var cleaned = this.resourceQuery
+      .replace(/cul_scope_id=\d+/, '')
+      .replace(/cul_parent_scope_id=\d+/, '')
+      .replace(/&&/, '&')
+      .replace('?&', '?');
+
     var return_val = `
     import memoize from 'lru-memoize';
     import { isEqual } from 'underscore'; // TODO poor tree shaking support, or why is this impact so massive? Move to lodash/lodash-es?
@@ -72,11 +80,7 @@ export const ${d.name} = (a) => {
     import { ${to_memo
       .map((d) => `${d.name}_ as ${d.name}$`) // don't pollute the _ modifier (=> use as)
       .join(', ')} } from './${path.relative(this.context, this.resourcePath)}${
-      this.resourceQuery == ''
-        ? '?'
-        : this.resourceQuery
-            .replace(/cul_scope_id=\d+/, '')
-            .replace(/cul_parent_scope_id=\d+/, '') + '&'
+      this.resourceQuery == '' ? '?' : cleaned + '&'
     }+memoed'; // there is already-culed stuff in here, why? imports to memo loader include cul_scope_id, what logic should it apply RE passing forward? eliminate? Probably!
     
     ${generated}

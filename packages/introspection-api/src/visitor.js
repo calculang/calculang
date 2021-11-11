@@ -192,6 +192,7 @@ export default ({ types: t }) => ({
 
       // cul[_parent]_scope_id logic added here:
       // A note on calculang scoping logic is in ./index.js
+
       var q = `${
         path.node.source.value.includes('?') ? '&' : '?'
       }cul_scope_id=${++global_state.cul_scope_id_counter}&cul_parent_scope_id=${
@@ -207,6 +208,14 @@ export default ({ types: t }) => ({
 
       // counter logic breaks on memo of impactsAB case (only on memo why?)
       // and empty specifiers must indicate broken logic in memoloader.js
+      if (global_state.location.length == 1) debugger;
+
+      if (
+        global_state.cul_scope_ids_to_resource.has(
+          global_state.cul_scope_id_counter
+        )
+      )
+        debugger;
 
       global_state.cul_scope_ids_to_resource.set(
         global_state.cul_scope_id_counter,

@@ -34,7 +34,7 @@ export default ({ types: t }) => ({
   visitor: {
     Program: {
       enter(path, state) {
-        if (state.opts.cul_scope_id == 3) debugger;
+        //if (state.opts.cul_scope_id == 3) debugger;
         // over of pop of imports must be consistent with calculang-js visitor, for import_sources_to...
         if (state.opts.cul_scope_id == 0) {
           // entry point, => set resource to filename
@@ -198,8 +198,8 @@ export default ({ types: t }) => ({
         opts.cul_scope_id
       }`; // some children starting with high opts.cul_scope_id: bad
 
-      if (opts.cul_scope_id == 3 && global_state.cul_scope_id_counter == 1)
-        debugger;
+      //if (opts.cul_scope_id == 3 && global_state.cul_scope_id_counter == 1)
+      //debugger;
 
       // I need to remove any cul_scope_id, cul_parent_scope_id already present in path.node.source.value (without removing +memo etc.)
       // Not removing &/? I still get e.g. ./base.cul.js?&&+memoed&cul_scope_id=3&cul_parent_scope_id=2
@@ -243,7 +243,7 @@ export default ({ types: t }) => ({
       // TODO ImportDefaultSpecifier => " (basically/exactly the same?) NO this one is meaningless as I don't use default?
       // TODO import all_cul, where merge occurs
       // import * as xyz from... don't deal with for now, // TODO
-      if (path.node.specifiers[0] == undefined) debugger;
+      //if (path.node.specifiers[0] == undefined) debugger;
       if (path.node.specifiers[0].type == 'ImportNamespaceSpecifier') return; // local.name
       // import x from...
       if (path.node.specifiers[0].type == 'ImportDefaultSpecifier') return; // local.name

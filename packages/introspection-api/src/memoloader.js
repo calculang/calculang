@@ -19,15 +19,20 @@ import path from 'path';
 import { getOptions, parseQuery } from 'loader-utils';
 
 import introspection from './index.js';
+import global_state from './global_state.js';
 
 // gets called with cul_scope_id=2&cul_parent_scope_id=1 on base, but fails
 
+// never called for cul_scope_id=3?
+// "./price-change-reconciliation.cul.js?cul_scope_id=3&cul_parent_scope_id=1"
+
 export default async function loader(content, map, meta) {
+  if (global_state.location.length == 1) debugger;
   if (this.resourceQuery != '' && parseQuery(this.resourceQuery).memoed)
     // see use of +memoed added to query below, TODO validate # executions given updated logic
     return content;
   else {
-    debugger;
+    //debugger;
     const child_introspection = await introspection(this.resourcePath, {
       memo: false,
     });

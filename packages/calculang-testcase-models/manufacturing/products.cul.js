@@ -3,3 +3,4 @@ import products_csv from 'raw-loader!./products.csv'; // impt point that this do
 console.log(products_csv);
 
 // next -> d3-csv
+// dummy

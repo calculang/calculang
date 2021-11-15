@@ -2,7 +2,7 @@
 
 calculang is a language for calculations.
 
-:hatching_chick: check [my ObservableHQ collection](https://observablehq.com/@declann?tab=collections) for some really early calculang models.
+:hatching_chick: check [my ObservableHQ collection](https://observablehq.com/collection/@declann/calculang) for some really early calculang models.
 
 ## motivation
 

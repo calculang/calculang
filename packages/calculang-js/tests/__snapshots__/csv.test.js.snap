@@ -103,7 +103,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 \\"use strict\\";
-/* harmony default export */ __webpack_exports__[\\"a\\"] = (\\"product,price\\\\r\\\\n\\\\\\"solar panel\\\\\\",500\\\\r\\\\n\\\\\\"heat pump\\\\\\",900\\");
+/* harmony default export */ __webpack_exports__[\\"a\\"] = (\\"product,price\\\\n\\\\\\"solar panel\\\\\\",500\\\\n\\\\\\"heat pump\\\\\\",900\\");
 
 /***/ }),
 /* 1 */

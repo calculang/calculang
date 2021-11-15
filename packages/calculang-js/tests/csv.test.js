@@ -13,7 +13,7 @@ test.each(['manufacturing/products'])('%s', async (d) => {
   );
 
   expect({
-    bundle: output.bundle,
+    bundle: output.bundle.replace(/\\r/g, ''),
     sourcemap: output.sourcemap.replace(/\\r/g, ''), // remove carriage returns
   }).toMatchSnapshot();
 });

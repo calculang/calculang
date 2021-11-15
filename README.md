@@ -2,6 +2,8 @@
 
 calculang is a language for calculations.
 
+:hatching_chick: check [my ObservableHQ collection](https://observablehq.com/collection/@declann/calculang) for some really early calculang models.
+
 ## motivation
 
 - **separation of concerns**: calculations separate from general/imperative programming, models independent from applications and modular, usable for their own right with general or problem-specific interaction interfaces, specialised tooling for developers/stakeholders, calculation modelling specialism

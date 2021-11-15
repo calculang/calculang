@@ -30,6 +30,7 @@ export default {
   cul_input_map: new Map(), // map of <cul_scope_id>_<name> -> set of inputs
   dot: '', // graph of calculang model in dot notation
   global_state_before_map: new Map(),
+  opts: new Map(), // TODO
 };
 
 ////////////////////////////////////////

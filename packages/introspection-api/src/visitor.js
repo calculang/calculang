@@ -21,6 +21,8 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 import path1 from 'path';
 import global_state from './global_state.js';
 
+import md5 from 'md5';
+
 // NOTE many comments below are out-of-date, cleanup not complete !
 
 // TODO add narration on cul impacts to code
@@ -197,7 +199,7 @@ export default ({ types: t }) => ({
         path.node.source.value.includes('?') ? '&' : '?'
       }cul_scope_id=${++global_state.cul_scope_id_counter}&cul_parent_scope_id=${
         opts.cul_scope_id
-      }`; // some children starting with high opts.cul_scope_id: bad
+      }&location=${md5(JSON.stringify(global_state.location))}`; // some children starting with high opts.cul_scope_id: bad
 
       //if (opts.cul_scope_id == 3 && global_state.cul_scope_id_counter == 1)
       //debugger;

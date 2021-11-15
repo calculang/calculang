@@ -17,3 +17,5 @@ test.each(['manufacturing/products'])('%s', async (d) => {
     sourcemap: output.sourcemap.replace(/\\r/g, ''), // remove carriage returns
   }).toMatchSnapshot();
 });
+
+//

@@ -57,9 +57,26 @@ program
   .action((entrypoint, options) => {
     introspection(entrypoint, options)
       .then((d) => {
-        console.log(d);
-        console.log(process.cwd());
-        console.log('options were: ' + JSON.stringify(options));
+        console.log(
+          JSON.stringify({
+            cul_functions: Array.from(d.cul_functions.entries()),
+            cul_links: Array.from(d.cul_links.entries()),
+            cul_scope_ids_to_resource: Array.from(
+              d.cul_scope_ids_to_resource.entries()
+            ),
+            import_sources_to_resource: Array.from(
+              d.import_sources_to_resource.entries()
+            ),
+            //Array.from(
+            cul_input_map: Array.from(d.cul_input_map.entries()).map((d) => [
+              d[0],
+              Array.from(d[1].entries()),
+            ]),
+            dot: d.dot,
+          })
+        );
+        //console.log(process.cwd());
+        //console.log('options were: ' + JSON.stringify(options));
       })
       .catch((e) => {
         console.log(e);

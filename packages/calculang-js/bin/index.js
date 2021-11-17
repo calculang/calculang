@@ -57,21 +57,38 @@ program
   .action((entrypoint, options) => {
     introspection(entrypoint, options)
       .then((d) => {
+        // https://gist.github.com/lukehorvat/133e2293ba6ae96a35ba
+        let cul_functions = Array.from(d.cul_functions).reduce(
+          (obj, [key, value]) => Object.assign(obj, { [key]: value }), // Be careful! Maps can have non-String keys; object literals can't.
+          {}
+        );
+        let cul_links = [...d.cul_links.values()];
+        let cul_scope_ids_to_resource = Array.from(
+          d.cul_scope_ids_to_resource
+        ).reduce(
+          (obj, [key, value]) => Object.assign(obj, { [key]: value }), // Be careful! Maps can have non-String keys; object literals can't.
+          {}
+        );
+        let import_sources_to_resource = Array.from(
+          d.import_sources_to_resource
+        ).reduce(
+          (obj, [key, value]) => Object.assign(obj, { [key]: value }), // Be careful! Maps can have non-String keys; object literals can't.
+          {}
+        );
+
+        let cul_input_map = Array.from(d.cul_input_map).reduce(
+          (obj, [key, value]) =>
+            Object.assign(obj, { [key]: [...value.values()] }), // Be careful! Maps can have non-String keys; object literals can't.
+          {}
+        );
+
         console.log(
           JSON.stringify({
-            cul_functions: Array.from(d.cul_functions.entries()),
-            cul_links: Array.from(d.cul_links.entries()),
-            cul_scope_ids_to_resource: Array.from(
-              d.cul_scope_ids_to_resource.entries()
-            ),
-            import_sources_to_resource: Array.from(
-              d.import_sources_to_resource.entries()
-            ),
-            //Array.from(
-            cul_input_map: Array.from(d.cul_input_map.entries()).map((d) => [
-              d[0],
-              Array.from(d[1].entries()),
-            ]),
+            cul_functions,
+            cul_links,
+            cul_scope_ids_to_resource,
+            import_sources_to_resource,
+            cul_input_map,
             dot: d.dot,
           })
         );

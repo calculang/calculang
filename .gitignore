@@ -2,3 +2,7 @@ node_modules
 temp.svg
 packages/calculang-js/dist
 packages/introspection-api/dist
+packages/calculang-testcase-models
+!packages/calculang-testcase-models/**.cul.js
+!packages/calculang-testcase-models/**.csv
+*.out.js

@@ -13,8 +13,8 @@ test.each(['manufacturing/products'])('%s', async (d) => {
   );
 
   expect({
-    bundle: output.bundle.replace(/\\r/g, ''),
-    sourcemap: output.sourcemap.replace(/\\r/g, ''), // remove carriage returns
+    bundle: output.bundle.replaceAll(/\\\\r/g, '').replaceAll(/\\r/g, ''),
+    sourcemap: output.sourcemap.replaceAll(/\\\\r/g, '').replaceAll(/\\r/g, ''), // remove carriage returns. Can't remove from mappings! so change csv file to LF to run locally
   }).toMatchSnapshot();
 });
 

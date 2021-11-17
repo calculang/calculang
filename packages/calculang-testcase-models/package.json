@@ -1,6 +1,6 @@
 {
   "name": "@calculang/calculang-testcase-models",
-  "version": "0.1.0-alpha.3",
+  "version": "0.1.0-alpha.4",
   "private": true,
   "repository": {
     "type": "git",
@@ -25,7 +25,7 @@
   "dependencies": {
     "date-fns": "^2.25.0",
     "lru-memoize": "^1.1.0",
-    "underscore": "^1.13.1",
-    "raw-loader": "^4.0.2"
+    "raw-loader": "^4.0.2",
+    "underscore": "^1.13.1"
   }
 }

@@ -100,13 +100,11 @@ Frontend developers for blog/websites and community model frontends.
 
 Community models and web apps, vizualisations/explorables (calculang.party?).
 
-All developers to get feedback/discuss/think re implementations or changes leading to better scalability.
+All developers to get feedback/discuss/think re motivation, implementation and changes leading to better scalability.
 
 ## more motivation
 
-I'm not the only person to consider the opportunity from making models more accessible. Bret Victor included points around this in a blog post about climate change.
-
-[What can a technologist do about Climate Change (a personal view)](http://worrydream.com/ClimateChange) by Bret Victor, particularly relevant at [Media for Understanding Situations](http://worrydream.com/ClimateChange/#media).
+I'm not the only person to consider the opportunity from making models more accessible. Bret Victor included points around this in his blog post on [What can a technologist do about Climate Change (a personal view)](http://worrydream.com/ClimateChange), particularly relevant at [Media for Understanding Situations](http://worrydream.com/ClimateChange/#media).
 
 Also good by Bret Victor, regarding interfaces to models: [Explorable Explanations](http://worrydream.com/#!/ExplorableExplanations).
 

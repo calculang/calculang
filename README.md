@@ -19,8 +19,6 @@ See also references under 'more motivation' below.
 
 ## usage
 
-**Note: Not released to npm => must use developer build instructions in [CONTRIBUTING](./CONTRIBUTING.md).**
-
 Installation:
 
 ```shell
@@ -66,7 +64,7 @@ Models-of-models is a useful concept in considering model design. A design sugge
 
 Inputs to function calls in calculang are inferred by the compiler, based on a graph of inputs and functions in the complete model being compiled.
 
-This reduces code boilerplate, but more fundamentally it promotes recycling of models: we shouldn't code the wiring between functions manually because it will change from one usecase to the next.
+This reduces code boilerplate, but more fundamentally it promotes recycling of models: we shouldn't code the wiring between functions manually because it will differ from one usecase to the next.
 
 **Inheritence of parent functions**:
 
@@ -100,7 +98,7 @@ Frontend developers for blog/websites and community model frontends.
 
 Community models and web apps, vizualisations/explorables (calculang.party?).
 
-All developers to get feedback/discuss/think re motivation, implementation and changes leading to better scalability.
+All developers to get feedback/discuss/think re motivation and implementation/technical improvements.
 
 ## more motivation
 
@@ -112,7 +110,7 @@ Many ideas along different lines of interaction with models become clearer when 
 
 ## contributing
 
-[CONTRIBUTING.md](./CONTRIBUTING.md) contains brief development/contributing notes.
+[CONTRIBUTING.md](./CONTRIBUTING.md) contains brief development/contributing notes including build steps.
 
 ## license
 

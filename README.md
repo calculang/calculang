@@ -72,7 +72,7 @@ In modular development, calculang gives precedence for a given function call to 
 
 In this way "parent" models can override the functionality of "child" models, and this supports recycling of very general models.
 
-Further, the overriden functionality can be defined in terms of the child function (using an '_' modifier). e.g. to inflate the price in a model might involve `price = price_() * 1.1`.
+Further, the overriden functionality can be defined in terms of the child function (using an interim '_' modifier) e.g. to inflate the price in a model might involve `import { price_ as price_base } from './base.cul.js'; price = price_base() * 1.1`.
 
 **Javascript**:
 

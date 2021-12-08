@@ -23,11 +23,14 @@ export default {
   cul_links: new Set(), // calls, imports, renames go here: Set of { to, from, reason=call|explicit import|implicit import }
   cul_scope_id_counter: 0,
   cul_parent_scope_id: 0,
+  location: [],
   cul_scope_ids_to_resource: new Map(), // BUG this is used for inheritence logic ('implicit imports') & the same relative path is always used. It should depend on both the location of fn and where import goes, todo fix and dont want to trigger a circular compile ... fix later
   // alt. fix: always keep from parent? (old idea)
   import_sources_to_resource: new Map(),
   cul_input_map: new Map(), // map of <cul_scope_id>_<name> -> set of inputs
   dot: '', // graph of calculang model in dot notation
+  global_state_before_map: new Map(),
+  opts: new Map(), // TODO
 };
 
 ////////////////////////////////////////

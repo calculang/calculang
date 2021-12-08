@@ -26,8 +26,23 @@ import introspection from '@calculang/introspection-api';
 
 export default async (entrypoint, options = {}) => {
   const introspection_info = await introspection(entrypoint, options);
+  // now pass this information to loader via options in loader/use config:
 
-  // now pass this information to loader via options in loader config:
+  var use_config = [
+    {
+      loader: path.resolve(__dirname, './calculang-transform-loader/index.js'),
+      options: { ...options, outputLocation: '', ...introspection_info },
+    },
+  ];
+  if (options.memo)
+    // this is opt-in atm
+    use_config.push({
+      loader: path.resolve(
+        __dirname,
+        '../../introspection-api/dist/memoloader.js' // TODO better way to reference this?
+      ),
+      options,
+    });
 
   // run webpack code
   const compiler = webpack({
@@ -56,23 +71,11 @@ export default async (entrypoint, options = {}) => {
       rules: [
         {
           test: /\.cul/,
-          use: {
-            loader: path.resolve(
-              __dirname,
-              './calculang-transform-loader/index.js'
-            ),
-            options: { ...options, outputLocation: '', ...introspection_info }, // introspection_info is a large object, what is the cost here?
-          },
+          use: use_config,
         },
         {
           test: /\.sl/, // this was an earlier development extension (seed-lang!), keeping configured, because I still want to run my .sl files for a little while
-          use: {
-            loader: path.resolve(
-              __dirname,
-              './calculang-transform-loader/index.js'
-            ),
-            options: { ...options, outputLocation: '', ...introspection_info },
-          },
+          use: use_config,
         },
       ],
     },

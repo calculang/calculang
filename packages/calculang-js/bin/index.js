@@ -26,6 +26,7 @@ const compiler = require('@calculang/calculang-js').default;
 program
   .version(require('../package.json').version) // reveals version of calculang-js, not introspection, problem?
   .command('compile <entrypoint.cul.js>')
+  .option('--memo', 'memoization')
   .description('Compile entrypoint.cul.js to entrypoint.js')
   .action((entrypoint, options) => {
     compiler(entrypoint, options)
@@ -53,7 +54,7 @@ program
 program
   .command('introspect <entrypoint.cul.js>')
   .description('Introspect entrypoint.cul.js')
-  .option('--memo', 'memoization (not working!)')
+  .option('--memo', 'memoization')
   .action((entrypoint, options) => {
     introspection(entrypoint, options)
       .then((d) => {
@@ -103,6 +104,7 @@ program
 program
   .command('dot <entrypoint.cul.js>')
   .description('get the dot output, can be piped to dot command')
+  .option('--memo', 'memoization (you probably dont want this for dot command)')
   .action((entrypoint, options) => {
     introspection(entrypoint, options)
       .then((d) => {

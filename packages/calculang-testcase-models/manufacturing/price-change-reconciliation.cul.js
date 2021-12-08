@@ -11,15 +11,16 @@
 
 // this tests some key language features of calculang and demos their technical motivations
 
-import { revenue, units_, price_ } from './base.cul';
-export { revenue };
+import { revenue, units_ as units_1, price_ as price_1 } from './base.cul'; // don't pollute the _ modifier
+export { revenue, units_1, price_1 };
+//export { revenue, units_, price_ };
 
 // import { all } from './base.cul.js'; TODO use this in place of above when I fix issue #13
 // export { all };
 
 export const units = () =>
-  step() >= 1 ? units_() + (price() - price_()) * -0.005 : units_();
-export const price = () => price_() * price_multiplier();
+  step() >= 1 ? units_1() + (price() - price_1()) * -0.005 : units_1();
+export const price = () => price_1() * price_multiplier();
 
 // new inputs
 export const price_multiplier = () => price_multiplier_in;

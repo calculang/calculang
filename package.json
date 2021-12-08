@@ -25,30 +25,19 @@
     "build": "lerna run build",
     "test": "jest --reporters=default --runInBand",
     "test:update": "jest --reporters=default --runInBand --updateSnapshot",
-    "compileall:nomemo": "run-for-every-file --src ./packages/calculang-testcase-models/manufacturing/ --file \"**/*.cul.js\" --run \"cul-js compile {{src-file}}\"",
-    "compileall:memo": "run-for-every-file --src ./packages/calculang-testcase-models/manufacturing/ --file \"**/*.cul.js\" --run \"cul-js compile --memo {{src-file}}\"",
-    "compileall:clean": "run-for-every-file --src ./packages/calculang-testcase-models/manufacturing/ --file \"**/*.js*\" --not-file \"**/*.cul.js\" --not-file \"**/some-checks.js\" --run \"shx rm {{src-file}}\"",
-    "somechecks": "node ./packages/calculang-testcase-models/manufacturing/some-checks.js",
     "publish:monorepo": "yarn build && lerna version --conventional-prerelease && lerna publish from-git",
     "publish:dncommand": "lerna version prerelease && lerna publish from-git"
   },
   "jest": {
     "testEnvironment": "node",
-    "projects": [
-      "<rootDir>/packages/*"
-    ],
-    "transform": {
-      "\\.[jt]sx?$": "babel-jest"
-    }
+    "projects": ["<rootDir>/packages/*"],
+    "transform": {"\\.[jt]sx?$": "babel-jest"}
   },
   "devDependencies": {
+    "lerna": "^4.0.0",
     "@babel/core": "^7.15.8",
     "@babel/preset-env": "^7.15.8",
     "babel-jest": "^27.2.5",
-    "jest": "^27.2.5",
-    "lerna": "^4.0.0",
-    "rimraf": "^3.0.2",
-    "run-for-every-file": "^1.1.0",
-    "shx": "^0.3.3"
+    "jest": "^27.2.5"
   }
 }

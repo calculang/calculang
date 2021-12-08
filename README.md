@@ -66,19 +66,13 @@ Inputs to function calls in calculang are inferred by the compiler, based on a g
 
 This reduces code boilerplate, but more fundamentally it promotes recycling of models: we shouldn't code the wiring between functions manually because it will differ from one usecase to the next.
 
-**Inheritence of parent functions and overriding**:
+**Inheritence of parent functions**:
 
 In modular development, calculang gives precedence for a given function call to functions defined closer to the entrypoint or model root, rather than closer to the call.
 
 In this way "parent" models can override the functionality of "child" models, and this supports recycling of very general models.
 
-The overriden functionality can be defined in terms of the child function (using an interim '_' modifier), for example to inflate the price in a 'base' model might involve
-
-```javascript
-import { price_ as price_base } from './base.cul.js';
-
-export const price = price_base() * 1.1;
-```
+Further, the overriden functionality can be defined in terms of the child function (using an '_' modifier). e.g. to inflate the price in a model might involve `price = price_() * 1.1`.
 
 **Javascript**:
 

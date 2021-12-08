@@ -30,7 +30,7 @@
     "test:update": "jest --updateSnapshot"
   },
   "jest": {
-    "testEnvironment": "jsdom"
+    "testEnvironment": "node"
   },
   "devDependencies": {
     "@babel/cli": "^7.15.7",
@@ -43,7 +43,6 @@
     "graphlib": "^2.1.8",
     "graphlib-dot": "^0.6.4",
     "loader-utils": "^2.0.0",
-    "md5": "^2.3.0",
     "memfs": "^3.3.0",
     "webpack": "^4.46.0"
   },

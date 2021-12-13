@@ -58,9 +58,43 @@ program
   .action((entrypoint, options) => {
     introspection(entrypoint, options)
       .then((d) => {
-        console.log(d);
-        console.log(process.cwd());
-        console.log('options were: ' + JSON.stringify(options));
+        // https://gist.github.com/lukehorvat/133e2293ba6ae96a35ba
+        let cul_functions = Array.from(d.cul_functions).reduce(
+          (obj, [key, value]) => Object.assign(obj, { [key]: value }), // Be careful! Maps can have non-String keys; object literals can't.
+          {}
+        );
+        let cul_links = [...d.cul_links.values()];
+        let cul_scope_ids_to_resource = Array.from(
+          d.cul_scope_ids_to_resource
+        ).reduce(
+          (obj, [key, value]) => Object.assign(obj, { [key]: value }), // Be careful! Maps can have non-String keys; object literals can't.
+          {}
+        );
+        let import_sources_to_resource = Array.from(
+          d.import_sources_to_resource
+        ).reduce(
+          (obj, [key, value]) => Object.assign(obj, { [key]: value }), // Be careful! Maps can have non-String keys; object literals can't.
+          {}
+        );
+
+        let cul_input_map = Array.from(d.cul_input_map).reduce(
+          (obj, [key, value]) =>
+            Object.assign(obj, { [key]: [...value.values()] }), // Be careful! Maps can have non-String keys; object literals can't.
+          {}
+        );
+
+        console.log(
+          JSON.stringify({
+            cul_functions,
+            cul_links,
+            cul_scope_ids_to_resource,
+            import_sources_to_resource,
+            cul_input_map,
+            dot: d.dot,
+          })
+        );
+        //console.log(process.cwd());
+        //console.log('options were: ' + JSON.stringify(options));
       })
       .catch((e) => {
         console.log(e);

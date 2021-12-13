@@ -1,6 +1,6 @@
 {
   "name": "@calculang/introspection-api",
-  "version": "0.1.0-alpha.3",
+  "version": "0.1.0-alpha.4",
   "main": "dist/index.js",
   "license": "AGPL-3.0-only",
   "repository": {

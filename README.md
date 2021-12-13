@@ -2,6 +2,8 @@
 
 calculang is a language for calculations.
 
+:hatching_chick: check [my ObservableHQ collection](https://observablehq.com/collection/@declann/calculang) for some really early calculang models.
+
 ## motivation
 
 - **separation of concerns**: calculations separate from general/imperative programming, models independent from applications and modular, usable for their own right with general or problem-specific interaction interfaces, specialised tooling for developers/stakeholders, calculation modelling specialism
@@ -16,8 +18,6 @@ See also references under 'more motivation' below.
 `cul-js` CLI compiles calculang into Javascript and provides information about the resulting model (introspection).
 
 ## usage
-
-**Note: Not released to npm => must use developer build instructions in [CONTRIBUTING](./CONTRIBUTING.md).**
 
 Installation:
 
@@ -64,7 +64,7 @@ Models-of-models is a useful concept in considering model design. A design sugge
 
 Inputs to function calls in calculang are inferred by the compiler, based on a graph of inputs and functions in the complete model being compiled.
 
-This reduces code boilerplate, but more fundamentally it promotes recycling of models: we shouldn't code the wiring between functions manually because it will change from one usecase to the next.
+This reduces code boilerplate, but more fundamentally it promotes recycling of models: we shouldn't code the wiring between functions manually because it will differ from one usecase to the next.
 
 **Inheritence of parent functions and overriding**:
 
@@ -104,13 +104,11 @@ Frontend developers for blog/websites and community model frontends.
 
 Community models and web apps, vizualisations/explorables (calculang.party?).
 
-All developers to get feedback/discuss/think re implementations or changes leading to better scalability.
+All developers to get feedback/discuss/think re motivation and implementation/technical improvements.
 
 ## more motivation
 
-I'm not the only person to consider the opportunity from making models more accessible. Bret Victor included points around this in a blog post about climate change.
-
-[What can a technologist do about Climate Change (a personal view)](http://worrydream.com/ClimateChange) by Bret Victor, particularly relevant at [Media for Understanding Situations](http://worrydream.com/ClimateChange/#media).
+I'm not the only person to consider the opportunity from making models more accessible. Bret Victor included points around this in his blog post on [What can a technologist do about Climate Change (a personal view)](http://worrydream.com/ClimateChange), particularly relevant at [Media for Understanding Situations](http://worrydream.com/ClimateChange/#media).
 
 Also good by Bret Victor, regarding interfaces to models: [Explorable Explanations](http://worrydream.com/#!/ExplorableExplanations).
 
@@ -118,7 +116,7 @@ Many ideas along different lines of interaction with models become clearer when 
 
 ## contributing
 
-[CONTRIBUTING.md](./CONTRIBUTING.md) contains brief development/contributing notes.
+[CONTRIBUTING.md](./CONTRIBUTING.md) contains brief development/contributing notes including build steps.
 
 ## license
 

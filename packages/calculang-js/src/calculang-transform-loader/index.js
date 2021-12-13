@@ -38,6 +38,7 @@ export default function loader(content, map, meta) {
     filename: this.resourcePath, //+ this.resourceQuery, //JSON.stringify(params), // to set sourceFileName, but has no impact
     inputSourceMap: map,
     babelrc: false,
+    generatorOpts: { /*compact: true*/ retainLines: true },
     configFile: false,
     plugins: [[visitor, options]],
     sourceMaps: true,

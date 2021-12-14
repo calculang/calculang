@@ -46,6 +46,7 @@ program
           d.sourcemap
         ); // is this portable?
 
+        // todo delete existing files/folder
         var dir =
           path.dirname(entrypoint) +
           path.sep +
@@ -55,7 +56,17 @@ program
           fs.mkdirSync(dir);
         }
 
-        fs.writeFileSync(dir + path.sep + 'a', d.a);
+        d.verbose.forEach((scope) => {
+          fs.writeFileSync(
+            dir + path.sep + path.basename(scope.file),
+            scope.source
+          );
+        });
+
+        console.log(JSON.stringify(d.verbose, null, 2));
+
+        //console.log('hello ', d);
+        //fs.writeFileSync(dir + path.sep + 'a', d.a);
       })
       .catch((err) => {
         console.log(err);

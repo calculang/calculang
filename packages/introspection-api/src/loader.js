@@ -78,7 +78,7 @@ export default function loader(content, map, meta) {
 
   //return { code: transformed.code, map: transformed.map };
 
-  console.log(`\n\n\ncul_scope_id = ${JSON.stringify(opts)}`);
+  /*console.log(`\n\n\ncul_scope_id = ${JSON.stringify(opts)}`);
   console.log('============== going in ============');
   console.log(
     JSON.stringify({
@@ -88,12 +88,12 @@ export default function loader(content, map, meta) {
     })
   );
   console.log(content);
-
+*/
   // keeping because helpful, but needs to be done smarter, issue #34 filed
-  console.log(`\n\n\ncul_scope_id = ${JSON.stringify(opts)}`);
+  /*  console.log(`\n\n\ncul_scope_id = ${JSON.stringify(opts)}`);
   console.log('============ going out =========');
   console.log(transformed.code);
-
+*/
   this.callback(null, transformed.code, transformed.map, meta);
   return; // "always return undefined when calling callback()" https://v4.webpack.js.org/api/loaders/
 }

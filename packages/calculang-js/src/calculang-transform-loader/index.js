@@ -50,7 +50,8 @@ export default function loader(content, map, meta) {
   /*console.log(`\n\n\ncul_scope_id = ${options.params.cul_scope_id}`);
   console.log('==================================');
   console.log(transformed.code);*/
-  if (!chk) this.emitFile('a', transformed.code);
+  //if (!chk) this.emitFile('verbose/b', transformed.code);
+  this.emitFile(`verbose/${options.params.cul_scope_id}.js`, transformed.code); // fut also replace (link up correctly) import refs here
 
   this.callback(null, transformed.code, transformed.map, meta);
   return; // "always return undefined when calling callback()" https://v4.webpack.js.org/api/loaders/

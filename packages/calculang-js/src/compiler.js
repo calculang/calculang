@@ -91,6 +91,7 @@ export default async (entrypoint, options = {}) => {
 
       //console.log(Object.keys(stats.compilation.assets));
 
+      console.log('hello ', JSON.stringify(stats.compilation.assets, null, 2));
       resolve({
         bundle:
           stats.compilation.assets[
@@ -100,7 +101,11 @@ export default async (entrypoint, options = {}) => {
           stats.compilation.assets[
             path.basename(entrypoint, '.cul.js') + '.js.map'
           ].source(),
-        a: stats.compilation.assets['a'].source(),
+        verbose: Object.entries(stats.compilation.assets)
+          //.entries()
+          .filter(([key, value]) => key.indexOf('verbose/') != -1)
+          .map(([key, value]) => ({ file: key, source: value.source() })),
+        //a: stats.compilation.assets['a'].source(),
       });
     });
   });

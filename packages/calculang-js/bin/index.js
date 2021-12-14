@@ -48,14 +48,18 @@ const stringify_introspection_info = (d) => {
     {}
   );
 
-  return JSON.stringify({
-    cul_functions,
-    cul_links,
-    cul_scope_ids_to_resource,
-    import_sources_to_resource,
-    cul_input_map,
-    dot: d.dot,
-  });
+  return JSON.stringify(
+    {
+      cul_functions,
+      cul_links,
+      cul_scope_ids_to_resource,
+      import_sources_to_resource,
+      cul_input_map,
+      dot: d.dot,
+    },
+    null,
+    2
+  );
 };
 
 program

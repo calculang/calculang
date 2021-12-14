@@ -45,6 +45,17 @@ program
             '.js.map',
           d.sourcemap
         ); // is this portable?
+
+        var dir =
+          path.dirname(entrypoint) +
+          path.sep +
+          path.basename(entrypoint, '.cul.js') +
+          '_verbose';
+        if (!fs.existsSync(dir)) {
+          fs.mkdirSync(dir);
+        }
+
+        fs.writeFileSync(dir + path.sep + 'a', d.a);
       })
       .catch((err) => {
         console.log(err);

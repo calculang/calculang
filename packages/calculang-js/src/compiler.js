@@ -100,6 +100,7 @@ export default async (entrypoint, options = {}) => {
           stats.compilation.assets[
             path.basename(entrypoint, '.cul.js') + '.js.map'
           ].source(),
+        a: stats.compilation.assets['a'].source(),
       });
     });
   });

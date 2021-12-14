@@ -20,6 +20,8 @@ import { transformSync } from '@babel/core';
 
 import visitor from './visitor';
 
+var chk = 0;
+
 export default function loader(content, map, meta) {
   this.cacheable(false); // needed?
 
@@ -45,9 +47,10 @@ export default function loader(content, map, meta) {
   });
 
   // keeping because helpful, but needs to be done smarter, issue #34 filed
-  console.log(`\n\n\ncul_scope_id = ${options.params.cul_scope_id}`);
+  /*console.log(`\n\n\ncul_scope_id = ${options.params.cul_scope_id}`);
   console.log('==================================');
-  console.log(transformed.code);
+  console.log(transformed.code);*/
+  if (!chk) this.emitFile('a', transformed.code);
 
   this.callback(null, transformed.code, transformed.map, meta);
   return; // "always return undefined when calling callback()" https://v4.webpack.js.org/api/loaders/

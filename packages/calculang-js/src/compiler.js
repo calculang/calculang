@@ -93,6 +93,7 @@ export default async (entrypoint, options = {}) => {
 
       console.log('hello ', JSON.stringify(stats.compilation.assets, null, 2));
       resolve({
+        introspection_info,
         bundle:
           stats.compilation.assets[
             path.basename(entrypoint, '.cul.js') + '.js'

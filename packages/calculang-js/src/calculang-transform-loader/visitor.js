@@ -47,6 +47,9 @@ pad by looking up callee(?) in input map.Don't need parentfn logic          | NO
 
 */
 
+// memo loader/alpha5 introducing Import/ExportSpecifier... necessary?
+// also ImportDeclaration changes
+
 export default ({ types: t }) => ({
   name: 'calculang-js-transform-loader-visitor',
   visitor: {

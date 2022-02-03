@@ -21,9 +21,14 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 import path1 from 'path';
 import global_state from './global_state.js';
 
-import md5 from 'md5';
+//import md5 from 'md5';
 
 // NOTE many comments below are out-of-date, cleanup not complete !
+
+// in alpha 5 I am pushing code and dev commentary which should be abandoned: my efforts to get memo working for modular models,
+// which involves calling webpack recursively: unsupported.
+// but I am pushing because it is working for non-modular models and got plenty of practice,
+// but needs to be cleaned up!
 
 // TODO add narration on cul impacts to code
 
@@ -115,7 +120,6 @@ export default ({ types: t }) => ({
               global_state.cul_links.forEach((dd) => {
                 if (
                   dd.to == `${d.cul_scope_id}_${d.name}` &&
-                  //dd.from == '2_revenue' &&
                   dd.reason == 'explicit import' // -> indexOf?
                 ) {
                   dd.from += '_'; // add (renamed)?
@@ -199,10 +203,7 @@ export default ({ types: t }) => ({
         path.node.source.value.includes('?') ? '&' : '?'
       }cul_scope_id=${++global_state.cul_scope_id_counter}&cul_parent_scope_id=${
         opts.cul_scope_id
-      }&location=${md5(JSON.stringify(global_state.location))}`; // some children starting with high opts.cul_scope_id: bad
-
-      //if (opts.cul_scope_id == 3 && global_state.cul_scope_id_counter == 1)
-      //debugger;
+      }`//&location=${md5(JSON.stringify(global_state.location))}`; // some children starting with high opts.cul_scope_id: bad
 
       // I need to remove any cul_scope_id, cul_parent_scope_id already present in path.node.source.value (without removing +memo etc.)
       // Not removing &/? I still get e.g. ./base.cul.js?&&+memoed&cul_scope_id=3&cul_parent_scope_id=2

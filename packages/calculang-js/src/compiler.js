@@ -91,7 +91,7 @@ export default async (entrypoint, options = {}) => {
 
       //console.log(Object.keys(stats.compilation.assets));
 
-      console.log('hello ', JSON.stringify(stats.compilation.assets, null, 2));
+      //console.log('hello ', JSON.stringify(stats.compilation.assets, null, 2));
       resolve({
         introspection_info,
         bundle:

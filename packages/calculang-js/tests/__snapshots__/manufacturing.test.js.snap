@@ -241,8 +241,8 @@ return /******/ (function(modules) { // webpackBootstrap
 /* unused harmony export step */
 /* harmony import */ var _impactsAB_cul_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(3);
 /* harmony import */ var _revenue_fixed_inputs_cul_js_cul_scope_id_1_cul_parent_scope_id_0__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(1);
-/* harmony import */ var _base_cul_cul_scope_id_3_cul_parent_scope_id_2__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(2);
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \\"b\\", function() { return _base_cul_cul_scope_id_3_cul_parent_scope_id_2__WEBPACK_IMPORTED_MODULE_2__[\\"b\\"]; });
+/* harmony import */ var _base_cul_cul_scope_id_4_cul_parent_scope_id_2__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(2);
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \\"b\\", function() { return _base_cul_cul_scope_id_4_cul_parent_scope_id_2__WEBPACK_IMPORTED_MODULE_2__[\\"b\\"]; });
 
  // this model takes inputs base price and units, and a price_multiplier.
 // it derives a proposed price by applying the multiplier and derives consequent units, constrained to the demand curve below.
@@ -265,8 +265,8 @@ return /******/ (function(modules) { // webpackBootstrap
 // export { all };
 
 const units = ({ step_in, units_in, price_in, price_multiplier_in }) =>
-step({ step_in }) >= 1 ? Object(_base_cul_cul_scope_id_3_cul_parent_scope_id_2__WEBPACK_IMPORTED_MODULE_2__[/* units_ */ \\"c\\"])({ units_in }) + (price({ price_in, price_multiplier_in }) - Object(_base_cul_cul_scope_id_3_cul_parent_scope_id_2__WEBPACK_IMPORTED_MODULE_2__[/* price_ */ \\"a\\"])({ price_in })) * -0.005 : Object(_base_cul_cul_scope_id_3_cul_parent_scope_id_2__WEBPACK_IMPORTED_MODULE_2__[/* units_ */ \\"c\\"])({ units_in });
-const price = ({ price_in, price_multiplier_in }) => Object(_base_cul_cul_scope_id_3_cul_parent_scope_id_2__WEBPACK_IMPORTED_MODULE_2__[/* price_ */ \\"a\\"])({ price_in }) * price_multiplier({ price_multiplier_in });
+step({ step_in }) >= 1 ? Object(_base_cul_cul_scope_id_4_cul_parent_scope_id_2__WEBPACK_IMPORTED_MODULE_2__[/* units_ */ \\"c\\"])({ units_in }) + (price({ price_in, price_multiplier_in }) - Object(_base_cul_cul_scope_id_4_cul_parent_scope_id_2__WEBPACK_IMPORTED_MODULE_2__[/* price_ */ \\"a\\"])({ price_in })) * -0.005 : Object(_base_cul_cul_scope_id_4_cul_parent_scope_id_2__WEBPACK_IMPORTED_MODULE_2__[/* units_ */ \\"c\\"])({ units_in });
+const price = ({ price_in, price_multiplier_in }) => Object(_base_cul_cul_scope_id_4_cul_parent_scope_id_2__WEBPACK_IMPORTED_MODULE_2__[/* price_ */ \\"a\\"])({ price_in }) * price_multiplier({ price_multiplier_in });
 
 // new inputs
 const price_multiplier = ({ price_multiplier_in }) => price_multiplier_in;
@@ -281,8 +281,8 @@ const step = ({ step_in }) => step_in;
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, \\"a\\", function() { return price; });
 /* harmony import */ var _impactsAB_cul_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(3);
 /* harmony import */ var _price_change_reconciliation_cul_js_cul_scope_id_2_cul_parent_scope_id_0__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(0);
-/* harmony import */ var _base_cul_cul_scope_id_4_cul_parent_scope_id_1__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(4);
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \\"b\\", function() { return _base_cul_cul_scope_id_4_cul_parent_scope_id_1__WEBPACK_IMPORTED_MODULE_2__[\\"a\\"]; });
+/* harmony import */ var _base_cul_cul_scope_id_3_cul_parent_scope_id_1__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(4);
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, \\"b\\", function() { return _base_cul_cul_scope_id_3_cul_parent_scope_id_1__WEBPACK_IMPORTED_MODULE_2__[\\"a\\"]; });
 
 
 

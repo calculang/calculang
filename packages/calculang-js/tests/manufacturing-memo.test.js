@@ -25,7 +25,8 @@ test.each([
   }).toMatchSnapshot();
 });
 
-// this one should probably be disabled too ......
+// this one should probably be disabled too ...... -> disabled
+/*
 test('compilation of revenue-fixed-inputs with memo on', async () => {
   const base_memo_on = await compiler(
     `./packages/calculang-testcase-models/manufacturing/revenue-fixed-inputs.cul.js`,
@@ -34,3 +35,4 @@ test('compilation of revenue-fixed-inputs with memo on', async () => {
 
   expect(base_memo_on).toMatchSnapshot();
 });
+*/

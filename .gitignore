@@ -6,3 +6,5 @@ packages/calculang-testcase-models
 #!packages/calculang-testcase-models/**.cul.js
 #!packages/calculang-testcase-models/**.csv
 *.out.js
+temp.png
+.prettierignore

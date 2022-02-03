@@ -35,7 +35,8 @@
   "jest": {
     "testEnvironment": "node",
     "projects": [
-      "<rootDir>/packages/*"
+      "<rootDir>/packages/introspection-api",
+      "<rootDir>/packages/calculang-js"
     ],
     "transform": {
       "\\.[jt]sx?$": "babel-jest"

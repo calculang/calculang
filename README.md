@@ -2,14 +2,6 @@
 
 calculang is a language for calculations.
 
-## 🐣 early calculang highlights ⚡
-
-- [some SaaS cashflows 💸](https://observablehq.com/@declann/some-cashflows?collection=@declann/calculang)
-- [loan validator 🕵️ (dev 📓)](https://observablehq.com/@declann/loan-validator-dev?collection=@declann/calculang)
-- more on [my ObservableHQ collection](https://observablehq.com/collection/@declann/calculang)
-
-📫 for calculang updates, follow [@calculang](https://twitter.com/calculang) on Twitter.
-
 ## separation of concerns: motivation
 
 calculang is domain-specific to calculations and it proposes a separation of concerns: **calculations separate from general programming**.
@@ -17,6 +9,14 @@ calculang is domain-specific to calculations and it proposes a separation of con
 This makes it easier to reason about calculations, empowers specialised tooling, and enables **frictionless transparency and certainty** about calculations.
 
 A language specific to calculations also generalises better than more rigid systems or tools, enabling **unity of calculations and process** to boot.
+
+## 🐣 early calculang highlights ⚡
+
+- [some SaaS cashflows 💸](https://observablehq.com/@declann/some-cashflows?collection=@declann/calculang)
+- [loan validator 🕵️ (dev 📓)](https://observablehq.com/@declann/loan-validator-dev?collection=@declann/calculang)
+- more on [my ObservableHQ collection](https://observablehq.com/collection/@declann/calculang)
+
+📫 for calculang updates, follow [@calculang](https://twitter.com/calculang) on Twitter.
 
 ## compiler
 

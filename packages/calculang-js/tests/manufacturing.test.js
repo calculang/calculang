@@ -4,6 +4,7 @@ jest.setTimeout(2000000); // for debug
 
 test.each([
   'manufacturing/base',
+  'manufacturing/base-constants', // test a constant
   'manufacturing/price-change-reconciliation',
   'manufacturing/revenue-fixed-inputs',
   'manufacturing/impactsAB',

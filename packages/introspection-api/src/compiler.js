@@ -32,6 +32,19 @@ import { alg } from 'graphlib';
 import dot from 'graphlib-dot';
 
 export default (entrypoint, options = {}) => {
+  var use_config = [
+    {
+      loader: path.resolve(__dirname, './loader.js'),
+      options: { ...options, outputLocation: '' },
+    },
+  ];
+  if (options.memo)
+    // this is opt-in atm
+    use_config.push({
+      loader: path.resolve(__dirname, './memoloader.js'), // chk this config in nested cases? order of nesting, loaders, etc., important to validate
+      options,
+    });
+
   const compiler = webpack({
     context: __dirname,
     entry: `${path.resolve(entrypoint)}`,
@@ -49,29 +62,11 @@ export default (entrypoint, options = {}) => {
       rules: [
         {
           test: /\.cul/,
-          use: [
-            {
-              loader: path.resolve(__dirname, './loader.js'),
-              options: { ...options, outputLocation: '' },
-            } /*,
-            {
-              loader: path.resolve(__dirname, './memoloader.js'),
-              options: { ...options, outputLocation: '' },
-            },*/,
-          ],
+          use: use_config,
         },
         {
           test: /\.sl/, // this was an earlier development extension (seed-lang!), but keeping configured, because I still want to run my .sl files for a little while
-          use: [
-            {
-              loader: path.resolve(__dirname, './loader.js'),
-              options: { ...options, outputLocation: '' },
-            } /*,
-            {
-              loader: path.resolve(__dirname, './memoloader.js'),
-              options: { ...options, outputLocation: '' },
-            },*/,
-          ],
+          use: use_config,
         },
       ],
     },
@@ -89,7 +84,7 @@ export default (entrypoint, options = {}) => {
     compiler.run((err, stats) => {
       if (err) reject(err);
       if (stats.hasErrors()) reject(stats.toJson().errors);
-
+      //
       // can I do import all logic here, and namespaces?
       // import all logic should import all things, ignoring? overwritten stuff (not explicitally exported?)
 

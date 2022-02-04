@@ -8,7 +8,7 @@ calculang is domain-specific to calculations and it proposes a separation of con
 
 This makes it easier to reason about calculations, empowers specialised tooling, and enables **frictionless transparency and certainty** about calculations.
 
-A language specific to calculations also generalises better than more rigid systems or tools, enabling **unity of calculations and process** to boot (end-to-end), and also integrates freely with established best-practice **controls and other tooling** for languages.
+A language for calculations also generalises better than more rigid systems or tools, enabling **unity of calculations and process** (end-to-end), and can integrate freely with established best-practice **controls and other tooling** for languages.
 
 ## 🐣 early calculang highlights ⚡
 

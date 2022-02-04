@@ -4,14 +4,13 @@ calculang is a language for calculations.
 
 :hatching_chick: check [my ObservableHQ collection](https://observablehq.com/collection/@declann/calculang) for some really early calculang models.
 
-## motivation
+## separation of concerns: motivation
 
-- **separation of concerns**: calculations separate from general/imperative programming, models independent from applications and modular, usable for their own right with general or problem-specific interaction interfaces, specialised tooling for developers/stakeholders, calculation modelling specialism
-- **unity**: unity of related calculations across applications/systems, streamlining of calculations and processes, no number is an island
-- **transparency**: number stakeholders have transparency expectations, deliver this in a streamlined, standard way
-- **democratisation of numbers**: number stakeholders start with customers, audience, citizens. Bank accounts, loans, government spending, public health projections, public statistics, policy basis documents, journalism, education, ...
+calculang is domain-specific to calculations and it proposes a separation of concerns: **calculations separate from general programming**.
 
-See also references under 'more motivation' below.
+This makes it easier to reason about calculations, empowers specialised tooling, and enables **frictionless transparency and certainty** about calculations.
+
+Language specific to calculations generalises better than any more rigid system or tool, empowering **unity of calculations and process** (end-to-end).
 
 ## compiler
 
@@ -108,7 +107,7 @@ All developers to get feedback/discuss/think re motivation and implementation/te
 
 ## more motivation
 
-I'm not the only person to consider the opportunity from making models more accessible. Bret Victor included points around this in his blog post on [What can a technologist do about Climate Change (a personal view)](http://worrydream.com/ClimateChange), particularly relevant at [Media for Understanding Situations](http://worrydream.com/ClimateChange/#media).
+calculang is motivated to make models: the workings of numbers, more accessible. Bret Victor included points around this in his blog post on [What can a technologist do about Climate Change (a personal view)](http://worrydream.com/ClimateChange), particularly relevant at [Media for Understanding Situations](http://worrydream.com/ClimateChange/#media).
 
 Also good by Bret Victor, regarding interfaces to models: [Explorable Explanations](http://worrydream.com/#!/ExplorableExplanations).
 

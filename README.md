@@ -38,7 +38,7 @@ cul-js compile entrypoint.cul.js --no-implicit-input-functions --no-memo --targe
 
 This creates `entrypoint.js` (alongside entrypoint.cul.js). This is a UMD Javascript bundle, with sourcemap `entrypoint.js.map`.
 
-Change `--no-memo` to `--memo` to turn on memoization - but this breaks for modular models now.
+Change `--no-memo` to `--memo` to turn on memoization. Memoization typically **dramatically** helps execution of models - but is only designed for non-modular models now.
 
 Introspection:
 

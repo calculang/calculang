@@ -65,8 +65,8 @@ const stringify_introspection_info = (d) => {
 program
   .version(require('../package.json').version) // reveals version of calculang-js, not introspection, problem?
   .command('compile <entrypoint.cul.js>')
-  .option('--memo', 'memoization')
-  .description('Compile entrypoint.cul.js to entrypoint.js')
+  .option('--memo', 'memoization (only designed for non-modular models now)')
+  .description('compile entrypoint.cul.js to entrypoint.js')
   .action((entrypoint, options) => {
     compiler(entrypoint, options)
       .then((d) => {
@@ -124,8 +124,8 @@ program
 
 program
   .command('introspect <entrypoint.cul.js>')
-  .description('Introspect entrypoint.cul.js')
-  .option('--memo', 'memoization')
+  .description('introspect entrypoint.cul.js')
+  .option('--memo', 'memoization (only designed for non-modular models now)')
   .action((entrypoint, options) => {
     introspection(entrypoint, options)
       .then((d) => {

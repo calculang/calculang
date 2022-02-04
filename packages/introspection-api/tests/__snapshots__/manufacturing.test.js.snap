@@ -143,873 +143,31 @@ Object {
 }
 `;
 
-exports[`manufacturing/impactsAB 1`] = `
-Object {
-  "cul_functions": Map {
-    "0_A_revenue" => Object {
-      "cul_scope_id": 0,
-      "cul_source_scope_id": 1,
-      "imported": "revenue",
-      "inputs": Array [],
-      "name": "A_revenue",
-      "reason": "explicit import",
-    },
-    "0_B_revenue" => Object {
-      "cul_scope_id": 0,
-      "cul_source_scope_id": 2,
-      "imported": "revenue",
-      "inputs": Array [
-        "step_in",
-        "units_in",
-        "price_in",
-        "price_multiplier_in",
-      ],
-      "name": "B_revenue",
-      "reason": "explicit import",
-    },
-    "0_revenue_impact" => Object {
-      "cul_scope_id": 0,
-      "cul_source_scope_id": 0,
-      "inputs": Array [
-        "step_in",
-        "units_in",
-        "price_in",
-        "price_multiplier_in",
-      ],
-      "name": "revenue_impact",
-      "reason": "definition",
-    },
-    "1_B_revenue" => Object {
-      "cul_scope_id": 1,
-      "cul_source_scope_id": 2,
-      "inputs": Array [],
-      "name": "B_revenue",
-      "reason": "implicit import",
-    },
-    "1_revenue_impact" => Object {
-      "cul_scope_id": 1,
-      "cul_source_scope_id": 0,
-      "inputs": Array [
-        "step_in",
-        "units_in",
-        "price_in",
-        "price_multiplier_in",
-      ],
-      "name": "revenue_impact",
-      "reason": "implicit import",
-    },
-    "1_revenue" => Object {
-      "cul_scope_id": 1,
-      "cul_source_scope_id": 3,
-      "imported": "revenue",
-      "inputs": Array [],
-      "name": "revenue",
-      "reason": "explicit import",
-    },
-    "1_units" => Object {
-      "cul_scope_id": 1,
-      "cul_source_scope_id": 1,
-      "inputs": Array [],
-      "name": "units",
-      "reason": "definition",
-    },
-    "1_price" => Object {
-      "cul_scope_id": 1,
-      "cul_source_scope_id": 1,
-      "inputs": Array [],
-      "name": "price",
-      "reason": "definition",
-    },
-    "2_A_revenue" => Object {
-      "cul_scope_id": 2,
-      "cul_source_scope_id": 1,
-      "inputs": Array [],
-      "name": "A_revenue",
-      "reason": "implicit import",
-    },
-    "2_revenue_impact" => Object {
-      "cul_scope_id": 2,
-      "cul_source_scope_id": 0,
-      "inputs": Array [
-        "step_in",
-        "units_in",
-        "price_in",
-        "price_multiplier_in",
-      ],
-      "name": "revenue_impact",
-      "reason": "implicit import",
-    },
-    "2_revenue" => Object {
-      "cul_scope_id": 2,
-      "cul_source_scope_id": 4,
-      "imported": "revenue",
-      "inputs": Array [
-        "step_in",
-        "units_in",
-        "price_in",
-        "price_multiplier_in",
-      ],
-      "name": "revenue",
-      "reason": "explicit import",
-    },
-    "2_units_1" => Object {
-      "cul_scope_id": 2,
-      "cul_source_scope_id": 4,
-      "imported": "units_",
-      "inputs": Array [
-        "units_in",
-      ],
-      "name": "units_1",
-      "reason": "explicit import",
-    },
-    "2_price_1" => Object {
-      "cul_scope_id": 2,
-      "cul_source_scope_id": 4,
-      "imported": "price_",
-      "inputs": Array [
-        "price_in",
-      ],
-      "name": "price_1",
-      "reason": "explicit import",
-    },
-    "2_units" => Object {
-      "cul_scope_id": 2,
-      "cul_source_scope_id": 2,
-      "inputs": Array [
-        "step_in",
-        "units_in",
-        "price_in",
-        "price_multiplier_in",
-      ],
-      "name": "units",
-      "reason": "definition",
-    },
-    "2_price" => Object {
-      "cul_scope_id": 2,
-      "cul_source_scope_id": 2,
-      "inputs": Array [
-        "price_in",
-        "price_multiplier_in",
-      ],
-      "name": "price",
-      "reason": "definition",
-    },
-    "2_price_multiplier" => Object {
-      "cul_scope_id": 2,
-      "cul_source_scope_id": 2,
-      "inputs": Array [
-        "price_multiplier_in",
-      ],
-      "name": "price_multiplier",
-      "reason": "definition",
-    },
-    "2_price_multiplier_in" => Object {
-      "cul_scope_id": 2,
-      "cul_source_scope_id": 2,
-      "inputs": Array [
-        "price_multiplier_in",
-      ],
-      "name": "price_multiplier_in",
-      "reason": "input definition",
-    },
-    "2_step" => Object {
-      "cul_scope_id": 2,
-      "cul_source_scope_id": 2,
-      "inputs": Array [
-        "step_in",
-      ],
-      "name": "step",
-      "reason": "definition",
-    },
-    "2_step_in" => Object {
-      "cul_scope_id": 2,
-      "cul_source_scope_id": 2,
-      "inputs": Array [
-        "step_in",
-      ],
-      "name": "step_in",
-      "reason": "input definition",
-    },
-    "3_B_revenue" => Object {
-      "cul_scope_id": 3,
-      "cul_source_scope_id": 2,
-      "inputs": Array [],
-      "name": "B_revenue",
-      "reason": "implicit import",
-    },
-    "3_revenue_impact" => Object {
-      "cul_scope_id": 3,
-      "cul_source_scope_id": 0,
-      "inputs": Array [
-        "step_in",
-        "units_in",
-        "price_in",
-        "price_multiplier_in",
-      ],
-      "name": "revenue_impact",
-      "reason": "implicit import",
-    },
-    "3_units" => Object {
-      "cul_scope_id": 3,
-      "cul_source_scope_id": 1,
-      "inputs": Array [],
-      "name": "units",
-      "reason": "implicit import",
-    },
-    "3_price" => Object {
-      "cul_scope_id": 3,
-      "cul_source_scope_id": 1,
-      "inputs": Array [],
-      "name": "price",
-      "reason": "implicit import",
-    },
-    "3_revenue" => Object {
-      "cul_scope_id": 3,
-      "cul_source_scope_id": 3,
-      "inputs": Array [],
-      "name": "revenue",
-      "reason": "definition",
-    },
-    "3_costs" => Object {
-      "cul_scope_id": 3,
-      "cul_source_scope_id": 3,
-      "inputs": Array [],
-      "name": "costs",
-      "reason": "definition",
-    },
-    "3_profit" => Object {
-      "cul_scope_id": 3,
-      "cul_source_scope_id": 3,
-      "inputs": Array [],
-      "name": "profit",
-      "reason": "definition",
-    },
-    "3_units_" => Object {
-      "cul_scope_id": 3,
-      "cul_source_scope_id": 3,
-      "inputs": Array [
-        "units_in",
-      ],
-      "name": "units_",
-      "reason": "definition (renamed)",
-    },
-    "3_units_in" => Object {
-      "cul_scope_id": 3,
-      "cul_source_scope_id": 3,
-      "inputs": Array [
-        "units_in",
-      ],
-      "name": "units_in",
-      "reason": "input definition",
-    },
-    "3_price_" => Object {
-      "cul_scope_id": 3,
-      "cul_source_scope_id": 3,
-      "inputs": Array [
-        "price_in",
-      ],
-      "name": "price_",
-      "reason": "definition (renamed)",
-    },
-    "3_price_in" => Object {
-      "cul_scope_id": 3,
-      "cul_source_scope_id": 3,
-      "inputs": Array [
-        "price_in",
-      ],
-      "name": "price_in",
-      "reason": "input definition",
-    },
-    "4_A_revenue" => Object {
-      "cul_scope_id": 4,
-      "cul_source_scope_id": 1,
-      "inputs": Array [],
-      "name": "A_revenue",
-      "reason": "implicit import",
-    },
-    "4_revenue_impact" => Object {
-      "cul_scope_id": 4,
-      "cul_source_scope_id": 0,
-      "inputs": Array [
-        "step_in",
-        "units_in",
-        "price_in",
-        "price_multiplier_in",
-      ],
-      "name": "revenue_impact",
-      "reason": "implicit import",
-    },
-    "4_units" => Object {
-      "cul_scope_id": 4,
-      "cul_source_scope_id": 2,
-      "inputs": Array [
-        "step_in",
-        "units_in",
-        "price_in",
-        "price_multiplier_in",
-      ],
-      "name": "units",
-      "reason": "implicit import",
-    },
-    "4_price" => Object {
-      "cul_scope_id": 4,
-      "cul_source_scope_id": 2,
-      "inputs": Array [
-        "price_in",
-        "price_multiplier_in",
-      ],
-      "name": "price",
-      "reason": "implicit import",
-    },
-    "4_price_multiplier" => Object {
-      "cul_scope_id": 4,
-      "cul_source_scope_id": 2,
-      "inputs": Array [
-        "price_multiplier_in",
-      ],
-      "name": "price_multiplier",
-      "reason": "implicit import",
-    },
-    "4_step" => Object {
-      "cul_scope_id": 4,
-      "cul_source_scope_id": 2,
-      "inputs": Array [
-        "step_in",
-      ],
-      "name": "step",
-      "reason": "implicit import",
-    },
-    "4_revenue" => Object {
-      "cul_scope_id": 4,
-      "cul_source_scope_id": 4,
-      "inputs": Array [
-        "step_in",
-        "units_in",
-        "price_in",
-        "price_multiplier_in",
-      ],
-      "name": "revenue",
-      "reason": "definition",
-    },
-    "4_costs" => Object {
-      "cul_scope_id": 4,
-      "cul_source_scope_id": 4,
-      "inputs": Array [
-        "step_in",
-        "units_in",
-        "price_in",
-        "price_multiplier_in",
-      ],
-      "name": "costs",
-      "reason": "definition",
-    },
-    "4_profit" => Object {
-      "cul_scope_id": 4,
-      "cul_source_scope_id": 4,
-      "inputs": Array [
-        "step_in",
-        "units_in",
-        "price_in",
-        "price_multiplier_in",
-      ],
-      "name": "profit",
-      "reason": "definition",
-    },
-    "4_units_" => Object {
-      "cul_scope_id": 4,
-      "cul_source_scope_id": 4,
-      "inputs": Array [
-        "units_in",
-      ],
-      "name": "units_",
-      "reason": "definition (renamed)",
-    },
-    "4_units_in" => Object {
-      "cul_scope_id": 4,
-      "cul_source_scope_id": 4,
-      "inputs": Array [
-        "units_in",
-      ],
-      "name": "units_in",
-      "reason": "input definition",
-    },
-    "4_price_" => Object {
-      "cul_scope_id": 4,
-      "cul_source_scope_id": 4,
-      "inputs": Array [
-        "price_in",
-      ],
-      "name": "price_",
-      "reason": "definition (renamed)",
-    },
-    "4_price_in" => Object {
-      "cul_scope_id": 4,
-      "cul_source_scope_id": 4,
-      "inputs": Array [
-        "price_in",
-      ],
-      "name": "price_in",
-      "reason": "input definition",
-    },
-  },
-  "cul_input_map": Map {
-    "0_A_revenue" => Set {},
-    "0_B_revenue" => Set {
-      "step_in",
-      "units_in",
-      "price_in",
-      "price_multiplier_in",
-    },
-    "0_revenue_impact" => Set {
-      "step_in",
-      "units_in",
-      "price_in",
-      "price_multiplier_in",
-    },
-    "1_B_revenue" => Set {},
-    "1_revenue_impact" => Set {
-      "step_in",
-      "units_in",
-      "price_in",
-      "price_multiplier_in",
-    },
-    "1_revenue" => Set {},
-    "1_units" => Set {},
-    "1_price" => Set {},
-    "2_A_revenue" => Set {},
-    "2_revenue_impact" => Set {
-      "step_in",
-      "units_in",
-      "price_in",
-      "price_multiplier_in",
-    },
-    "2_revenue" => Set {
-      "step_in",
-      "units_in",
-      "price_in",
-      "price_multiplier_in",
-    },
-    "2_units_1" => Set {
-      "units_in",
-    },
-    "2_price_1" => Set {
-      "price_in",
-    },
-    "2_units" => Set {
-      "step_in",
-      "units_in",
-      "price_in",
-      "price_multiplier_in",
-    },
-    "2_price" => Set {
-      "price_in",
-      "price_multiplier_in",
-    },
-    "2_price_multiplier" => Set {
-      "price_multiplier_in",
-    },
-    "2_price_multiplier_in" => Set {
-      "price_multiplier_in",
-    },
-    "2_step" => Set {
-      "step_in",
-    },
-    "2_step_in" => Set {
-      "step_in",
-    },
-    "3_B_revenue" => Set {},
-    "3_revenue_impact" => Set {
-      "step_in",
-      "units_in",
-      "price_in",
-      "price_multiplier_in",
-    },
-    "3_units" => Set {},
-    "3_price" => Set {},
-    "3_revenue" => Set {},
-    "3_costs" => Set {},
-    "3_profit" => Set {},
-    "3_units_" => Set {
-      "units_in",
-    },
-    "3_units_in" => Set {
-      "units_in",
-    },
-    "3_price_" => Set {
-      "price_in",
-    },
-    "3_price_in" => Set {
-      "price_in",
-    },
-    "4_A_revenue" => Set {},
-    "4_revenue_impact" => Set {
-      "step_in",
-      "units_in",
-      "price_in",
-      "price_multiplier_in",
-    },
-    "4_units" => Set {
-      "step_in",
-      "units_in",
-      "price_in",
-      "price_multiplier_in",
-    },
-    "4_price" => Set {
-      "price_in",
-      "price_multiplier_in",
-    },
-    "4_price_multiplier" => Set {
-      "price_multiplier_in",
-    },
-    "4_step" => Set {
-      "step_in",
-    },
-    "4_revenue" => Set {
-      "step_in",
-      "units_in",
-      "price_in",
-      "price_multiplier_in",
-    },
-    "4_costs" => Set {
-      "step_in",
-      "units_in",
-      "price_in",
-      "price_multiplier_in",
-    },
-    "4_profit" => Set {
-      "step_in",
-      "units_in",
-      "price_in",
-      "price_multiplier_in",
-    },
-    "4_units_" => Set {
-      "units_in",
-    },
-    "4_units_in" => Set {
-      "units_in",
-    },
-    "4_price_" => Set {
-      "price_in",
-    },
-    "4_price_in" => Set {
-      "price_in",
-    },
-  },
-  "cul_links": Set {
-    Object {
-      "from": "1_revenue",
-      "reason": "explicit import",
-      "to": "0_A_revenue",
-    },
-    Object {
-      "from": "2_revenue",
-      "reason": "explicit import",
-      "to": "0_B_revenue",
-    },
-    Object {
-      "from": "0_A_revenue",
-      "negs": Array [],
-      "reason": "call",
-      "to": "0_revenue_impact",
-    },
-    Object {
-      "from": "0_B_revenue",
-      "negs": Array [],
-      "reason": "call",
-      "to": "0_revenue_impact",
-    },
-    Object {
-      "from": "2_B_revenue",
-      "reason": "implicit import",
-      "to": "1_B_revenue",
-    },
-    Object {
-      "from": "0_revenue_impact",
-      "reason": "implicit import",
-      "to": "1_revenue_impact",
-    },
-    Object {
-      "from": "3_revenue",
-      "reason": "explicit import",
-      "to": "1_revenue",
-    },
-    Object {
-      "from": "1_A_revenue",
-      "reason": "implicit import",
-      "to": "2_A_revenue",
-    },
-    Object {
-      "from": "0_revenue_impact",
-      "reason": "implicit import",
-      "to": "2_revenue_impact",
-    },
-    Object {
-      "from": "4_revenue",
-      "reason": "explicit import",
-      "to": "2_revenue",
-    },
-    Object {
-      "from": "4_units_",
-      "reason": "explicit import",
-      "to": "2_units_1",
-    },
-    Object {
-      "from": "4_price_",
-      "reason": "explicit import",
-      "to": "2_price_1",
-    },
-    Object {
-      "from": "2_step",
-      "negs": Array [],
-      "reason": "call",
-      "to": "2_units",
-    },
-    Object {
-      "from": "2_units_1",
-      "negs": Array [],
-      "reason": "call",
-      "to": "2_units",
-    },
-    Object {
-      "from": "2_price",
-      "negs": Array [],
-      "reason": "call",
-      "to": "2_units",
-    },
-    Object {
-      "from": "2_price_1",
-      "negs": Array [],
-      "reason": "call",
-      "to": "2_units",
-    },
-    Object {
-      "from": "2_units_1",
-      "negs": Array [],
-      "reason": "call",
-      "to": "2_units",
-    },
-    Object {
-      "from": "2_price_1",
-      "negs": Array [],
-      "reason": "call",
-      "to": "2_price",
-    },
-    Object {
-      "from": "2_price_multiplier",
-      "negs": Array [],
-      "reason": "call",
-      "to": "2_price",
-    },
-    Object {
-      "from": "2_price_multiplier_in",
-      "reason": "input",
-      "to": "2_price_multiplier",
-    },
-    Object {
-      "from": "2_step_in",
-      "reason": "input",
-      "to": "2_step",
-    },
-    Object {
-      "from": "2_B_revenue",
-      "reason": "implicit import",
-      "to": "3_B_revenue",
-    },
-    Object {
-      "from": "0_revenue_impact",
-      "reason": "implicit import",
-      "to": "3_revenue_impact",
-    },
-    Object {
-      "from": "1_units",
-      "reason": "implicit import",
-      "to": "3_units",
-    },
-    Object {
-      "from": "1_price",
-      "reason": "implicit import",
-      "to": "3_price",
-    },
-    Object {
-      "from": "3_units",
-      "negs": Array [],
-      "reason": "call",
-      "to": "3_revenue",
-    },
-    Object {
-      "from": "3_price",
-      "negs": Array [],
-      "reason": "call",
-      "to": "3_revenue",
-    },
-    Object {
-      "from": "3_units",
-      "negs": Array [],
-      "reason": "call",
-      "to": "3_costs",
-    },
-    Object {
-      "from": "3_revenue",
-      "negs": Array [],
-      "reason": "call",
-      "to": "3_profit",
-    },
-    Object {
-      "from": "3_costs",
-      "negs": Array [],
-      "reason": "call",
-      "to": "3_profit",
-    },
-    Object {
-      "from": "3_units_in",
-      "reason": "input",
-      "to": "3_units_",
-    },
-    Object {
-      "from": "3_price_in",
-      "reason": "input",
-      "to": "3_price_",
-    },
-    Object {
-      "from": "1_A_revenue",
-      "reason": "implicit import",
-      "to": "4_A_revenue",
-    },
-    Object {
-      "from": "0_revenue_impact",
-      "reason": "implicit import",
-      "to": "4_revenue_impact",
-    },
-    Object {
-      "from": "2_units",
-      "reason": "implicit import",
-      "to": "4_units",
-    },
-    Object {
-      "from": "2_price",
-      "reason": "implicit import",
-      "to": "4_price",
-    },
-    Object {
-      "from": "2_price_multiplier",
-      "reason": "implicit import",
-      "to": "4_price_multiplier",
-    },
-    Object {
-      "from": "2_step",
-      "reason": "implicit import",
-      "to": "4_step",
-    },
-    Object {
-      "from": "4_units",
-      "negs": Array [],
-      "reason": "call",
-      "to": "4_revenue",
-    },
-    Object {
-      "from": "4_price",
-      "negs": Array [],
-      "reason": "call",
-      "to": "4_revenue",
-    },
-    Object {
-      "from": "4_units",
-      "negs": Array [],
-      "reason": "call",
-      "to": "4_costs",
-    },
-    Object {
-      "from": "4_revenue",
-      "negs": Array [],
-      "reason": "call",
-      "to": "4_profit",
-    },
-    Object {
-      "from": "4_costs",
-      "negs": Array [],
-      "reason": "call",
-      "to": "4_profit",
-    },
-    Object {
-      "from": "4_units_in",
-      "reason": "input",
-      "to": "4_units_",
-    },
-    Object {
-      "from": "4_price_in",
-      "reason": "input",
-      "to": "4_price_",
-    },
-  },
-  "cul_scope_ids_to_resource": Map {
-    0 => "./impactsAB.cul.js",
-    1 => "./revenue-fixed-inputs.cul.js?cul_scope_id=1&cul_parent_scope_id=0",
-    2 => "./price-change-reconciliation.cul.js?cul_scope_id=2&cul_parent_scope_id=0",
-    3 => "./base.cul?cul_scope_id=3&cul_parent_scope_id=1",
-    4 => "./base.cul?cul_scope_id=4&cul_parent_scope_id=2",
-  },
-  "import_sources_to_resource": Map {
-    "0_./revenue-fixed-inputs.cul.js" => "./revenue-fixed-inputs.cul.js?cul_scope_id=1&cul_parent_scope_id=0",
-    "0_./price-change-reconciliation.cul.js" => "./price-change-reconciliation.cul.js?cul_scope_id=2&cul_parent_scope_id=0",
-    "1_./base.cul" => "./base.cul?cul_scope_id=3&cul_parent_scope_id=1",
-    "2_./base.cul" => "./base.cul?cul_scope_id=4&cul_parent_scope_id=2",
-  },
-}
-`;
-
 exports[`manufacturing/memo-test 1`] = `
 Object {
   "cul_functions": Map {
-    "0_units$" => Object {
+    "0_units_" => Object {
       "cul_scope_id": 0,
       "cul_source_scope_id": 1,
-      "imported": "units_",
-      "inputs": Array [
-        "units_in",
-      ],
-      "name": "units$",
+      "inputs": Array [],
+      "name": "units_",
       "reason": "explicit import",
     },
-    "0_revenue$" => Object {
+    "0_revenue_" => Object {
       "cul_scope_id": 0,
       "cul_source_scope_id": 1,
-      "imported": "revenue_",
       "inputs": Array [
         "units_in",
         "price_in",
       ],
-      "name": "revenue$",
+      "name": "revenue_",
       "reason": "explicit import",
     },
-    "0_price$" => Object {
+    "0_price_" => Object {
       "cul_scope_id": 0,
       "cul_source_scope_id": 1,
-      "imported": "price_",
-      "inputs": Array [
-        "price_in",
-      ],
-      "name": "price$",
-      "reason": "explicit import",
-    },
-    "0_costs$" => Object {
-      "cul_scope_id": 0,
-      "cul_source_scope_id": 1,
-      "imported": "costs_",
-      "inputs": Array [
-        "units_in",
-      ],
-      "name": "costs$",
-      "reason": "explicit import",
-    },
-    "0_profit$" => Object {
-      "cul_scope_id": 0,
-      "cul_source_scope_id": 1,
-      "imported": "profit_",
-      "inputs": Array [
-        "units_in",
-        "price_in",
-      ],
-      "name": "profit$",
+      "inputs": Array [],
+      "name": "price_",
       "reason": "explicit import",
     },
     "0_revenue" => Object {
@@ -1022,43 +180,6 @@ Object {
       "name": "revenue",
       "reason": "definition",
     },
-    "0_price" => Object {
-      "cul_scope_id": 0,
-      "cul_source_scope_id": 0,
-      "inputs": Array [
-        "price_in",
-      ],
-      "name": "price",
-      "reason": "definition",
-    },
-    "0_units" => Object {
-      "cul_scope_id": 0,
-      "cul_source_scope_id": 0,
-      "inputs": Array [
-        "units_in",
-      ],
-      "name": "units",
-      "reason": "definition",
-    },
-    "0_costs" => Object {
-      "cul_scope_id": 0,
-      "cul_source_scope_id": 0,
-      "inputs": Array [
-        "units_in",
-      ],
-      "name": "costs",
-      "reason": "definition",
-    },
-    "0_profit" => Object {
-      "cul_scope_id": 0,
-      "cul_source_scope_id": 0,
-      "inputs": Array [
-        "units_in",
-        "price_in",
-      ],
-      "name": "profit",
-      "reason": "definition",
-    },
     "1_revenue" => Object {
       "cul_scope_id": 1,
       "cul_source_scope_id": 0,
@@ -1067,43 +188,6 @@ Object {
         "price_in",
       ],
       "name": "revenue",
-      "reason": "implicit import",
-    },
-    "1_price" => Object {
-      "cul_scope_id": 1,
-      "cul_source_scope_id": 0,
-      "inputs": Array [
-        "price_in",
-      ],
-      "name": "price",
-      "reason": "implicit import",
-    },
-    "1_units" => Object {
-      "cul_scope_id": 1,
-      "cul_source_scope_id": 0,
-      "inputs": Array [
-        "units_in",
-      ],
-      "name": "units",
-      "reason": "implicit import",
-    },
-    "1_costs" => Object {
-      "cul_scope_id": 1,
-      "cul_source_scope_id": 0,
-      "inputs": Array [
-        "units_in",
-      ],
-      "name": "costs",
-      "reason": "implicit import",
-    },
-    "1_profit" => Object {
-      "cul_scope_id": 1,
-      "cul_source_scope_id": 0,
-      "inputs": Array [
-        "units_in",
-        "price_in",
-      ],
-      "name": "profit",
       "reason": "implicit import",
     },
     "1_revenue_" => Object {
@@ -1116,33 +200,33 @@ Object {
       "name": "revenue_",
       "reason": "definition (renamed)",
     },
-    "1_costs_" => Object {
+    "1_costs" => Object {
       "cul_scope_id": 1,
       "cul_source_scope_id": 1,
       "inputs": Array [
         "units_in",
       ],
-      "name": "costs_",
-      "reason": "definition (renamed)",
+      "name": "costs",
+      "reason": "definition",
     },
-    "1_profit_" => Object {
+    "1_profit" => Object {
       "cul_scope_id": 1,
       "cul_source_scope_id": 1,
       "inputs": Array [
         "units_in",
         "price_in",
       ],
-      "name": "profit_",
-      "reason": "definition (renamed)",
+      "name": "profit",
+      "reason": "definition",
     },
-    "1_units_" => Object {
+    "1_units" => Object {
       "cul_scope_id": 1,
       "cul_source_scope_id": 1,
       "inputs": Array [
         "units_in",
       ],
-      "name": "units_",
-      "reason": "definition (renamed)",
+      "name": "units",
+      "reason": "definition",
     },
     "1_units_in" => Object {
       "cul_scope_id": 1,
@@ -1153,14 +237,14 @@ Object {
       "name": "units_in",
       "reason": "input definition",
     },
-    "1_price_" => Object {
+    "1_price" => Object {
       "cul_scope_id": 1,
       "cul_source_scope_id": 1,
       "inputs": Array [
         "price_in",
       ],
-      "name": "price_",
-      "reason": "definition (renamed)",
+      "name": "price",
+      "reason": "definition",
     },
     "1_price_in" => Object {
       "cul_scope_id": 1,
@@ -1173,37 +257,13 @@ Object {
     },
   },
   "cul_input_map": Map {
-    "0_units$" => Set {
-      "units_in",
-    },
-    "0_revenue$" => Set {
+    "0_units_" => Set {},
+    "0_revenue_" => Set {
       "units_in",
       "price_in",
     },
-    "0_price$" => Set {
-      "price_in",
-    },
-    "0_costs$" => Set {
-      "units_in",
-    },
-    "0_profit$" => Set {
-      "units_in",
-      "price_in",
-    },
+    "0_price_" => Set {},
     "0_revenue" => Set {
-      "units_in",
-      "price_in",
-    },
-    "0_price" => Set {
-      "price_in",
-    },
-    "0_units" => Set {
-      "units_in",
-    },
-    "0_costs" => Set {
-      "units_in",
-    },
-    "0_profit" => Set {
       "units_in",
       "price_in",
     },
@@ -1211,11 +271,9 @@ Object {
       "units_in",
       "price_in",
     },
-    "1_price" => Set {
-      "price_in",
-    },
-    "1_units" => Set {
+    "1_revenue_" => Set {
       "units_in",
+      "price_in",
     },
     "1_costs" => Set {
       "units_in",
@@ -1224,24 +282,13 @@ Object {
       "units_in",
       "price_in",
     },
-    "1_revenue_" => Set {
-      "units_in",
-      "price_in",
-    },
-    "1_costs_" => Set {
-      "units_in",
-    },
-    "1_profit_" => Set {
-      "units_in",
-      "price_in",
-    },
-    "1_units_" => Set {
+    "1_units" => Set {
       "units_in",
     },
     "1_units_in" => Set {
       "units_in",
     },
-    "1_price_" => Set {
+    "1_price" => Set {
       "price_in",
     },
     "1_price_in" => Set {
@@ -1252,82 +299,28 @@ Object {
     Object {
       "from": "1_units_",
       "reason": "explicit import",
-      "to": "0_units$",
+      "to": "0_units_",
     },
     Object {
       "from": "1_revenue_",
       "reason": "explicit import",
-      "to": "0_revenue$",
+      "to": "0_revenue_",
     },
     Object {
       "from": "1_price_",
       "reason": "explicit import",
-      "to": "0_price$",
+      "to": "0_price_",
     },
     Object {
-      "from": "1_costs_",
-      "reason": "explicit import",
-      "to": "0_costs$",
-    },
-    Object {
-      "from": "1_profit_",
-      "reason": "explicit import",
-      "to": "0_profit$",
-    },
-    Object {
-      "from": "0_revenue$",
+      "from": "0_revenue_",
       "negs": Array [],
       "reason": "call",
       "to": "0_revenue",
     },
     Object {
-      "from": "0_price$",
-      "negs": Array [],
-      "reason": "call",
-      "to": "0_price",
-    },
-    Object {
-      "from": "0_units$",
-      "negs": Array [],
-      "reason": "call",
-      "to": "0_units",
-    },
-    Object {
-      "from": "0_costs$",
-      "negs": Array [],
-      "reason": "call",
-      "to": "0_costs",
-    },
-    Object {
-      "from": "0_profit$",
-      "negs": Array [],
-      "reason": "call",
-      "to": "0_profit",
-    },
-    Object {
       "from": "0_revenue",
       "reason": "implicit import",
       "to": "1_revenue",
-    },
-    Object {
-      "from": "0_price",
-      "reason": "implicit import",
-      "to": "1_price",
-    },
-    Object {
-      "from": "0_units",
-      "reason": "implicit import",
-      "to": "1_units",
-    },
-    Object {
-      "from": "0_costs",
-      "reason": "implicit import",
-      "to": "1_costs",
-    },
-    Object {
-      "from": "0_profit",
-      "reason": "implicit import",
-      "to": "1_profit",
     },
     Object {
       "from": "1_units",
@@ -1345,29 +338,29 @@ Object {
       "from": "1_units",
       "negs": Array [],
       "reason": "call",
-      "to": "1_costs_",
+      "to": "1_costs",
     },
     Object {
       "from": "1_revenue",
       "negs": Array [],
       "reason": "call",
-      "to": "1_profit_",
+      "to": "1_profit",
     },
     Object {
       "from": "1_costs",
       "negs": Array [],
       "reason": "call",
-      "to": "1_profit_",
+      "to": "1_profit",
     },
     Object {
       "from": "1_units_in",
       "reason": "input",
-      "to": "1_units_",
+      "to": "1_units",
     },
     Object {
       "from": "1_price_in",
       "reason": "input",
-      "to": "1_price_",
+      "to": "1_price",
     },
   },
   "cul_scope_ids_to_resource": Map {
@@ -1386,7 +379,6 @@ Object {
     "0_revenue" => Object {
       "cul_scope_id": 0,
       "cul_source_scope_id": 1,
-      "imported": "revenue",
       "inputs": Array [
         "step_in",
         "units_in",
@@ -1396,24 +388,22 @@ Object {
       "name": "revenue",
       "reason": "explicit import",
     },
-    "0_units_1" => Object {
+    "0_units_" => Object {
       "cul_scope_id": 0,
       "cul_source_scope_id": 1,
-      "imported": "units_",
       "inputs": Array [
         "units_in",
       ],
-      "name": "units_1",
+      "name": "units_",
       "reason": "explicit import",
     },
-    "0_price_1" => Object {
+    "0_price_" => Object {
       "cul_scope_id": 0,
       "cul_source_scope_id": 1,
-      "imported": "price_",
       "inputs": Array [
         "price_in",
       ],
-      "name": "price_1",
+      "name": "price_",
       "reason": "explicit import",
     },
     "0_units" => Object {
@@ -1594,10 +584,10 @@ Object {
       "price_in",
       "price_multiplier_in",
     },
-    "0_units_1" => Set {
+    "0_units_" => Set {
       "units_in",
     },
-    "0_price_1" => Set {
+    "0_price_" => Set {
       "price_in",
     },
     "0_units" => Set {
@@ -1678,12 +668,12 @@ Object {
     Object {
       "from": "1_units_",
       "reason": "explicit import",
-      "to": "0_units_1",
+      "to": "0_units_",
     },
     Object {
       "from": "1_price_",
       "reason": "explicit import",
-      "to": "0_price_1",
+      "to": "0_price_",
     },
     Object {
       "from": "0_step",
@@ -1692,7 +682,7 @@ Object {
       "to": "0_units",
     },
     Object {
-      "from": "0_units_1",
+      "from": "0_units_",
       "negs": Array [],
       "reason": "call",
       "to": "0_units",
@@ -1704,19 +694,19 @@ Object {
       "to": "0_units",
     },
     Object {
-      "from": "0_price_1",
+      "from": "0_price_",
       "negs": Array [],
       "reason": "call",
       "to": "0_units",
     },
     Object {
-      "from": "0_units_1",
+      "from": "0_units_",
       "negs": Array [],
       "reason": "call",
       "to": "0_units",
     },
     Object {
-      "from": "0_price_1",
+      "from": "0_price_",
       "negs": Array [],
       "reason": "call",
       "to": "0_price",
@@ -1814,7 +804,6 @@ Object {
     "0_revenue" => Object {
       "cul_scope_id": 0,
       "cul_source_scope_id": 1,
-      "imported": "revenue",
       "inputs": Array [],
       "name": "revenue",
       "reason": "explicit import",
@@ -2000,7 +989,6 @@ Object {
     "0_revenue" => Object {
       "cul_scope_id": 0,
       "cul_source_scope_id": 1,
-      "imported": "revenue",
       "inputs": Array [
         "price_in",
       ],
@@ -2010,7 +998,6 @@ Object {
     "0_price" => Object {
       "cul_scope_id": 0,
       "cul_source_scope_id": 1,
-      "imported": "price",
       "inputs": Array [
         "price_in",
       ],

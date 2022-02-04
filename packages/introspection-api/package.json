@@ -30,7 +30,7 @@
     "test:update": "jest --updateSnapshot"
   },
   "jest": {
-    "testEnvironment": "jsdom"
+    "testEnvironment": "node"
   },
   "devDependencies": {
     "@babel/cli": "^7.15.7",

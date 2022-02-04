@@ -1,5 +1,5 @@
 import { revenue, price } from './base.cul';
-export { revenue, price };
+export { revenue };
 
 // demand-curve constraint:
 export const units = () => 1000 - 200 * price();

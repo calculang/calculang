@@ -47,9 +47,6 @@ pad by looking up callee(?) in input map.Don't need parentfn logic          | NO
 
 */
 
-// memo loader/alpha5 introducing Import/ExportSpecifier... necessary?
-// also ImportDeclaration changes
-
 export default ({ types: t }) => ({
   name: 'calculang-js-transform-loader-visitor',
   visitor: {
@@ -73,11 +70,12 @@ export default ({ types: t }) => ({
             )
           )
         );
-        path.node.body[0].cul_implicit_import = true; // not sure if this is a supported trick! but it works. modifying leading/trailingCommments is an alt
       });
     },
 
     Function(path, state) {
+      if (path.node.params.length != 0) return; // memoization case export const y = (a) => {
+
       let name = path.parent.id?.name;
 
       var def_ = state.opts.cul_functions.get(
@@ -88,8 +86,6 @@ export default ({ types: t }) => ({
         name += '_';
         path.parent.id.name += '_';
       }
-
-      if (path.node.params.length != 0) return; // memoization case export const y = (a) => {   dont replace a with {}
 
       const ins = [
         ...state.opts.cul_input_map.get(
@@ -106,44 +102,14 @@ export default ({ types: t }) => ({
       ];
     },
 
-    ExportSpecifier(path, { opts, ...state }) {
-      var renamed = opts.cul_functions.has(
-        `${opts.params.cul_scope_id}_${path.node.local.name}_` // isn't this limited?
-      );
-      if (renamed) {
-        path.node.local.name += '_';
-        path.node.exported.name += '_';
-      }
-    },
-    ImportSpecifier(path, { opts, ...state }) {
-      if (path.parent.cul_implicit_import) return; // don't do this for implicits
-
-      var renamed = opts.cul_functions.get(
-        `${opts.params.cul_scope_id}_${path.node.local.name}_` // isn't this limited? Affd rec?
-      );
-      if (renamed) path.node.local.name += '_';
-
-      path.node.imported.name =
-        opts.cul_functions.get(
-          `${opts.params.cul_scope_id}_${path.node.local.name}` // isn't this limited? Affd rec?
-        )?.imported || path.node.imported.name; // isEqual etc.
-    },
     ImportDeclaration(path, { opts, ...state }) {
-      /* if (
-        [...opts.cul_scope_ids_to_resource.values()].indexOf(
-          `${path.node.source.value}`
-        ) > -1
-      )*/
-      if (path.node.cul_implicit_import) return; // ignore implicits, new logic
-
-      if (
-        !opts.cul_functions.has(
+      if (path.node.specifiers) {
+        var def = opts.cul_functions.get(
           `${opts.params.cul_scope_id}_${path.node.specifiers[0].local.name}`
-        )
-      )
-        return; // ignore non-calculang functions
+        );
+        if (def == undefined || def?.reason == 'implicit import') return;
+      }
 
-      // set the source based on calculang scoping etc logic
       path.node.source.value = opts.import_sources_to_resource.get(
         `${opts.params.cul_scope_id}_${path.node.source.value}`
       );

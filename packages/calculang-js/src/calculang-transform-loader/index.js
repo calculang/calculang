@@ -20,8 +20,6 @@ import { transformSync } from '@babel/core';
 
 import visitor from './visitor';
 
-var chk = 0;
-
 export default function loader(content, map, meta) {
   this.cacheable(false); // needed?
 
@@ -40,18 +38,10 @@ export default function loader(content, map, meta) {
     filename: this.resourcePath, //+ this.resourceQuery, //JSON.stringify(params), // to set sourceFileName, but has no impact
     inputSourceMap: map,
     babelrc: false,
-    generatorOpts: { /*compact: true*/ retainLines: true },
     configFile: false,
     plugins: [[visitor, options]],
     sourceMaps: true,
   });
-
-  // keeping because helpful, but needs to be done smarter, issue #34 filed
-  /*console.log(`\n\n\ncul_scope_id = ${options.params.cul_scope_id}`);
-  console.log('==================================');
-  console.log(transformed.code);*/
-  //if (!chk) this.emitFile('verbose/b', transformed.code);
-  this.emitFile(`verbose/${options.params.cul_scope_id}.js`, transformed.code); // fut also replace (link up correctly) import refs here
 
   this.callback(null, transformed.code, transformed.map, meta);
   return; // "always return undefined when calling callback()" https://v4.webpack.js.org/api/loaders/

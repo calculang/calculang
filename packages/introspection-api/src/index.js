@@ -80,59 +80,12 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 import compiler from './compiler.js';
 import global_state from './global_state.js';
 
-var global_state_before = {}; // need to save/restore global_state because introspection can call itself recursively e.g. in memoloader
-
-var global_state_stack = [];
-var global_state_stack2 = [];
-
-//var global_state_before_map = new Map();
-
-var i = 0;
-
-// is this where I need a stack... b/c global_state_before gets o/ren
-
 export default async (entrypoint, options = {}) => {
-  global_state.location.push({ options, entrypoint });
+  await compiler(entrypoint, options);
 
-  if (
-    global_state.location.length == 2 &&
-    global_state.location[1].entrypoint.indexOf('base') != -1
-  )
-    debugger;
+  const output = { ...global_state };
 
-  global_state.global_state_before_map.set(
-    JSON.stringify(global_state.location) /* bad */,
-    {
-      cul_functions: global_state.cul_functions,
-      cul_links: global_state.cul_links,
-      cul_scope_id_counter: global_state.cul_scope_id_counter,
-      cul_parent_scope_id: global_state.cul_parent_scope_id,
-      cul_scope_ids_to_resource: global_state.cul_scope_ids_to_resource,
-      import_sources_to_resource: global_state.import_sources_to_resource,
-      cul_input_map: global_state.cul_input_map,
-      dot: global_state.dot,
-    }
-  );
-
-  //if (!options.memo && entrypoint.indexOf('base') != -1) debugger;
-
-  global_state_stack[i] = {};
-  global_state_stack[i].cul_functions = global_state.cul_functions;
-  global_state_stack[i].cul_links = global_state.cul_links;
-  global_state_stack[i].cul_scope_id_counter =
-    global_state.cul_scope_id_counter;
-  global_state_stack[i].cul_parent_scope_id = global_state.cul_parent_scope_id;
-  global_state_stack[i].cul_scope_ids_to_resource =
-    global_state.cul_scope_ids_to_resource;
-  global_state_stack[i].import_sources_to_resource =
-    global_state.import_sources_to_resource;
-  global_state_stack[i].cul_input_map = global_state.cul_input_map;
-  global_state_stack[i].dot = global_state.dot;
-
-  global_state_stack2.push({ ...global_state });
-
-  //global_state_stack.push(Object.assign({}, global_state)); // doesn't copy maps!
-
+  // reset global_state
   global_state.cul_functions = new Map();
   global_state.cul_links = new Set();
   global_state.cul_scope_id_counter = 0;
@@ -141,36 +94,6 @@ export default async (entrypoint, options = {}) => {
   global_state.import_sources_to_resource = new Map();
   global_state.cul_input_map = new Map();
   global_state.dot = '';
-
-  i++;
-  await compiler(entrypoint, options);
-  i--;
-
-  const output = { ...global_state };
-
-  //var new_gs = global_state_stack2.pop(); // wrong? because things run in diff orders? => popping off other before states
-  var new_gs = {
-    ...global_state.global_state_before_map.get(
-      JSON.stringify(global_state.location) /* bad */
-    ),
-  };
-  global_state.location.pop();
-  // what can make the state unique?
-
-  //var global_state_new = global_state_stack.pop();
-
-  // how do I prove that the issue is stack?
-
-  global_state.cul_functions = new_gs.cul_functions;
-  global_state.cul_links = new_gs.cul_links;
-  global_state.cul_scope_id_counter = new_gs.cul_scope_id_counter;
-  global_state.cul_parent_scope_id = new_gs.cul_parent_scope_id;
-  global_state.cul_scope_ids_to_resource = new_gs.cul_scope_ids_to_resource;
-  global_state.import_sources_to_resource = new_gs.import_sources_to_resource;
-  global_state.cul_input_map = new_gs.cul_input_map;
-  global_state.dot = new_gs.dot;
-
-  //if (JSON.stringify(global_state) != t) debugger; // proof
 
   return output; // or/fut: reconstruct an object
 };

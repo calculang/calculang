@@ -21,14 +21,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 import path1 from 'path';
 import global_state from './global_state.js';
 
-//import md5 from 'md5';
-
 // NOTE many comments below are out-of-date, cleanup not complete !
-
-// in alpha 5 I am pushing code and dev commentary which should be abandoned: my efforts to get memo working for modular models,
-// which involves calling webpack recursively: unsupported.
-// but I am pushing because it is working for non-modular models and got plenty of practice,
-// but needs to be cleaned up!
 
 // TODO add narration on cul impacts to code
 
@@ -41,8 +34,6 @@ export default ({ types: t }) => ({
   visitor: {
     Program: {
       enter(path, state) {
-        //if (state.opts.cul_scope_id == 3) debugger;
-        // over of pop of imports must be consistent with calculang-js visitor, for import_sources_to...
         if (state.opts.cul_scope_id == 0) {
           // entry point, => set resource to filename
           global_state.cul_scope_ids_to_resource.set(
@@ -61,9 +52,8 @@ export default ({ types: t }) => ({
               (d) =>
                 d.cul_scope_id == state.opts.cul_parent_scope_id &&
                 d.cul_source_scope_id != state.opts.cul_scope_id &&
-                d.name[d.name.length - 1] != '_' && // don't inherit modified fns
-                d.reason != 'input definition' // is this a bad exclusion? /*&&
-              //d.reason != 'definition (renamed)'*/
+                d.reason != 'input definition' &&
+                d.reason != 'definition (renamed)'
             )
             .forEach((d) => {
               // create definition in current scope
@@ -85,10 +75,9 @@ export default ({ types: t }) => ({
             });
         }
       },
-      exit() {},
     },
     Function: {
-      enter(path, { opts, ...state }) {
+      enter(path, { opts }) {
         // TODO ignore annon fns ?
 
         var name = path.parent.id?.name;
@@ -98,35 +87,13 @@ export default ({ types: t }) => ({
         parentfn = name || 'bug_name';
         parentfnOrig = name || 'bug_name';
 
-        // rename already-scoped definitions (already merged from a parent scope) : apply _ modifier
+        // rename already-scoped definitions (merged from a parent scope)
+
+        // still needed
         if (global_state.cul_functions.get(`${opts.cul_scope_id}_${name}`)) {
           path.parent.id.name += '_';
           parentfn += '_'; // update this one, not Orig
-          reason = 'definition (renamed)'; // do this even when implicit import was blocked? or where E explicit import in parent for _
-
-          // now references to the function need to be updated
-          [...global_state.cul_functions.values()]
-            .filter(
-              (d) =>
-                d.imported /* I need imported here */ == name &&
-                d.reason.indexOf('explicit import') != -1 &&
-                d.cul_scope_id == opts.cul_parent_scope_id // new, post-working/tests
-            )
-            .forEach((d) => {
-              global_state.cul_functions.set(`${d.cul_scope_id}_${d.name}`, {
-                ...d,
-                imported: d.imported + '_',
-              });
-              global_state.cul_links.forEach((dd) => {
-                if (
-                  dd.to == `${d.cul_scope_id}_${d.name}` &&
-                  dd.reason == 'explicit import' // -> indexOf?
-                ) {
-                  dd.from += '_'; // add (renamed)?
-                  dd.reason += ' (renamed)';
-                }
-              });
-            }); // do I need local and imported in cul_functions? Yes: for now just set imported (name=>local)
+          reason = 'definition (renamed)';
         }
 
         // create definition
@@ -179,16 +146,7 @@ export default ({ types: t }) => ({
           global_state.cul_links.add(link);
       }
     },
-
-    ExportSpecifier(path, { opts, ...state }) {
-      var renamed = global_state.cul_functions.has(
-        `${opts.cul_scope_id}_${path.node.local.name}_` // isn't this limited?
-      );
-      if (renamed) path.node.local.name += '_';
-    },
     ImportDeclaration(path, { opts, ...state }) {
-      // "I think that below is overwriting revenues implicit import, rather than doing a rename!"" <-- this was real in dev, I think an API interaction with global_state that fails/complains in some circumstances has something to be said for it!
-
       // I need to return for any parent... or not run for implicits merged
       //if (path.node.source.value.includes(gs.cul_scope_ids_to_resource.get(0)))
       //return;
@@ -198,41 +156,20 @@ export default ({ types: t }) => ({
 
       // cul[_parent]_scope_id logic added here:
       // A note on calculang scoping logic is in ./index.js
-
       var q = `${
         path.node.source.value.includes('?') ? '&' : '?'
       }cul_scope_id=${++global_state.cul_scope_id_counter}&cul_parent_scope_id=${
         opts.cul_scope_id
-      }`//&location=${md5(JSON.stringify(global_state.location))}`; // some children starting with high opts.cul_scope_id: bad
-
-      // I need to remove any cul_scope_id, cul_parent_scope_id already present in path.node.source.value (without removing +memo etc.)
-      // Not removing &/? I still get e.g. ./base.cul.js?&&+memoed&cul_scope_id=3&cul_parent_scope_id=2
-      // refactor to above?
-
-      // counter logic breaks on memo of impactsAB case (only on memo why?)
-      // and empty specifiers must indicate broken logic in memoloader.js
-      if (global_state.location.length == 1) debugger;
-
-      if (
-        global_state.cul_scope_ids_to_resource.has(
-          global_state.cul_scope_id_counter
-        )
-      )
-        debugger;
+      }`;
 
       global_state.cul_scope_ids_to_resource.set(
         global_state.cul_scope_id_counter,
-        urlToRequest(
-          path.node.source.value
-            .replace(/cul_scope_id=\d+/, '')
-            .replace(/cul_parent_scope_id=\d+/, ''), // vs do this in code/memoloader?
-          state.filename
-        ) + q // TODO does this work for node modules?, this could be path.node.source.value + q ?
+        urlToRequest(path.node.source.value, state.filename) + q // TODO does this work for node modules?, this could be path.node.source.value + q ?
       );
       // """we always add a cul_scope_id, even though import may be javascript and not cul""" this is no longer true
       // but javascript won't be followed up on, as won't run in cul loader => won't get a cul_scope_ids_to_resource entry, and rewriter must not manipulate // TODO (partially out of date comment) ?
 
-      // import_sources_to_resource (basically a dictionary) used to ensure same source in a scope doesn't lead to diff scope ids eff being used
+      // import_sources_to_resource used to ensure same source in a scope doesn't lead to diff scope ids eff being used
       var l = global_state.import_sources_to_resource.get(
         `${opts.cul_scope_id}_${path.node.source.value}`
       );
@@ -241,21 +178,15 @@ export default ({ types: t }) => ({
       else {
         global_state.import_sources_to_resource.set(
           `${opts.cul_scope_id}_${path.node.source.value}`,
-          path.node.source.value
-            .replace(/cul_scope_id=\d+/, '')
-            .replace(/cul_parent_scope_id=\d+/, '') + q
+          path.node.source.value + q
         );
-        path.node.source.value =
-          path.node.source.value
-            .replace(/cul_scope_id=\d+/, '')
-            .replace(/cul_parent_scope_id=\d+/, '') + q;
+        path.node.source.value += q;
       }
 
       // TODO ImportNamespaceSpecifier => hint that at graph build populate all defns (include 'as')
       // TODO ImportDefaultSpecifier => " (basically/exactly the same?) NO this one is meaningless as I don't use default?
       // TODO import all_cul, where merge occurs
       // import * as xyz from... don't deal with for now, // TODO
-      //if (path.node.specifiers[0] == undefined) debugger;
       if (path.node.specifiers[0].type == 'ImportNamespaceSpecifier') return; // local.name
       // import x from...
       if (path.node.specifiers[0].type == 'ImportDefaultSpecifier') return; // local.name
@@ -263,25 +194,18 @@ export default ({ types: t }) => ({
       // for each import (specifier cases), create a definition in current scope, and link to source (explicit imports)
       // TODO ImportNamespaceSpecifier/all_cul case create hint instead and do this in graph build
       path.node.specifiers.forEach((d) => {
-        // no implicits exclusion because imports not actually added in introspection-api pass (see Program visitor)
-
-        // is rename here necessary given its in calculang-js that it matters?
-        const rename = global_state.cul_functions.has(
-          `${opts.cul_scope_id}_${d.local.name}`
-        ); // this is false despite revenue now being an implicit import from EP
-        if (rename) d.local.name += '_'; // only update the local name, imported name is altered if necessary by the logic where rename happens in Function
+        // create definition
         global_state.cul_functions.set(`${opts.cul_scope_id}_${d.local.name}`, {
           cul_scope_id: opts.cul_scope_id,
           name: d.local.name,
-          imported: d.imported.name,
           cul_source_scope_id: global_state.cul_scope_id_counter,
-          reason: `explicit import${rename ? ' (renamed)' : ''}`, // todo make distinction about local/imported renames?
+          reason: 'explicit import',
         });
         // and create link
         global_state.cul_links.add({
           to: `${opts.cul_scope_id}_${d.local.name}`,
           from: `${global_state.cul_scope_id_counter}_${d.imported.name}`, // ? fails on import addMonths from 'date-fns/esm/addMonths' ?
-          reason: 'explicit import', // todo " (renamed)"? prob not necessary as implied by modifiers in to/from
+          reason: 'explicit import',
         });
       });
     },

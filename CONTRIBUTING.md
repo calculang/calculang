@@ -26,7 +26,7 @@ Please talk to me if there are any doubts about the rights to your contribution,
 
 ## open issues
 
-If you are willing to work on an open issue (and confident), please comment in the issue.
+If you are willing to work on an open issue and confident, please comment in the issue.
 
 ## major changes
 

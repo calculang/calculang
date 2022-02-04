@@ -23,9 +23,49 @@ const { program } = require('commander');
 const introspection = require('@calculang/introspection-api').default;
 const compiler = require('@calculang/calculang-js').default;
 
+const stringify_introspection_info = (d) => {
+  // https://gist.github.com/lukehorvat/133e2293ba6ae96a35ba
+  let cul_functions = Array.from(d.cul_functions).reduce(
+    (obj, [key, value]) => Object.assign(obj, { [key]: value }), // Be careful! Maps can have non-String keys; object literals can't.
+    {}
+  );
+  let cul_links = [...d.cul_links.values()];
+  let cul_scope_ids_to_resource = Array.from(
+    d.cul_scope_ids_to_resource
+  ).reduce(
+    (obj, [key, value]) => Object.assign(obj, { [key]: value }), // Be careful! Maps can have non-String keys; object literals can't.
+    {}
+  );
+  let import_sources_to_resource = Array.from(
+    d.import_sources_to_resource
+  ).reduce(
+    (obj, [key, value]) => Object.assign(obj, { [key]: value }), // Be careful! Maps can have non-String keys; object literals can't.
+    {}
+  );
+
+  let cul_input_map = Array.from(d.cul_input_map).reduce(
+    (obj, [key, value]) => Object.assign(obj, { [key]: [...value.values()] }), // Be careful! Maps can have non-String keys; object literals can't.
+    {}
+  );
+
+  return JSON.stringify(
+    {
+      cul_functions,
+      cul_links,
+      cul_scope_ids_to_resource,
+      import_sources_to_resource,
+      cul_input_map,
+      dot: d.dot,
+    },
+    null,
+    2
+  );
+};
+
 program
   .version(require('../package.json').version) // reveals version of calculang-js, not introspection, problem?
   .command('compile <entrypoint.cul.js>')
+  .option('--memo', 'memoization')
   .description('Compile entrypoint.cul.js to entrypoint.js')
   .action((entrypoint, options) => {
     compiler(entrypoint, options)
@@ -44,6 +84,38 @@ program
             '.js.map',
           d.sourcemap
         ); // is this portable?
+
+        // todo delete existing files/folder
+        var dir =
+          path.dirname(entrypoint) +
+          path.sep +
+          path.basename(entrypoint, '.cul.js') +
+          '_verbose';
+        if (!fs.existsSync(dir)) {
+          fs.mkdirSync(dir);
+        }
+
+        d.verbose.forEach((scope) => {
+          fs.writeFileSync(
+            dir + path.sep + path.basename(scope.file),
+            scope.source
+          );
+        });
+
+        fs.writeFileSync(
+          path.dirname(entrypoint) +
+            path.sep +
+            path.basename(entrypoint, '.cul.js') +
+            '.introspection.json',
+          stringify_introspection_info(d.introspection_info)
+        );
+
+        // write d.introspection_info
+
+        //console.log(JSON.stringify(d.verbose, null, 2));
+
+        //console.log('hello ', d);
+        //fs.writeFileSync(dir + path.sep + 'a', d.a);
       })
       .catch((err) => {
         console.log(err);
@@ -53,45 +125,11 @@ program
 program
   .command('introspect <entrypoint.cul.js>')
   .description('Introspect entrypoint.cul.js')
-  .option('--memo', 'memoization (not working!)')
+  .option('--memo', 'memoization')
   .action((entrypoint, options) => {
     introspection(entrypoint, options)
       .then((d) => {
-        // https://gist.github.com/lukehorvat/133e2293ba6ae96a35ba
-        let cul_functions = Array.from(d.cul_functions).reduce(
-          (obj, [key, value]) => Object.assign(obj, { [key]: value }), // Be careful! Maps can have non-String keys; object literals can't.
-          {}
-        );
-        let cul_links = [...d.cul_links.values()];
-        let cul_scope_ids_to_resource = Array.from(
-          d.cul_scope_ids_to_resource
-        ).reduce(
-          (obj, [key, value]) => Object.assign(obj, { [key]: value }), // Be careful! Maps can have non-String keys; object literals can't.
-          {}
-        );
-        let import_sources_to_resource = Array.from(
-          d.import_sources_to_resource
-        ).reduce(
-          (obj, [key, value]) => Object.assign(obj, { [key]: value }), // Be careful! Maps can have non-String keys; object literals can't.
-          {}
-        );
-
-        let cul_input_map = Array.from(d.cul_input_map).reduce(
-          (obj, [key, value]) =>
-            Object.assign(obj, { [key]: [...value.values()] }), // Be careful! Maps can have non-String keys; object literals can't.
-          {}
-        );
-
-        console.log(
-          JSON.stringify({
-            cul_functions,
-            cul_links,
-            cul_scope_ids_to_resource,
-            import_sources_to_resource,
-            cul_input_map,
-            dot: d.dot,
-          })
-        );
+        console.log(stringify_introspection_info(d));
         //console.log(process.cwd());
         //console.log('options were: ' + JSON.stringify(options));
       })
@@ -103,6 +141,7 @@ program
 program
   .command('dot <entrypoint.cul.js>')
   .description('get the dot output, can be piped to dot command')
+  .option('--memo', 'memoization (you probably dont want this for dot command)')
   .action((entrypoint, options) => {
     introspection(entrypoint, options)
       .then((d) => {

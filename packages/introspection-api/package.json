@@ -23,6 +23,7 @@
     "functional programming",
     "fp"
   ],
+  "files": ["dist"],
   "scripts": {
     "prepare": "yarn build",
     "build": "babel src --out-dir dist",

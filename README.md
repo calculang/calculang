@@ -2,13 +2,13 @@
 
 calculang is a language for calculations.
 
-## separation of concerns: motivation
+## motivation: separation of concerns
 
 calculang is domain-specific to calculations and it proposes a separation of concerns: **calculations separate from general programming**.
 
 This makes it easier to reason about calculations, empowers specialised tooling, and enables **frictionless transparency and certainty** about calculations.
 
-A language specific to calculations also generalises better than more rigid systems or tools, enabling **unity of calculations and process** to boot, along with access to powerful existing **controls** and other tooling.
+A language specific to calculations also generalises better than more rigid systems or tools, enabling **unity of calculations and process** to boot (end-to-end), and also integrates freely with established best-practice **controls and other tooling** for languages.
 
 ## 🐣 early calculang highlights ⚡
 
@@ -38,6 +38,8 @@ cul-js compile entrypoint.cul.js --no-implicit-input-functions --no-memo --targe
 
 This creates `entrypoint.js` (alongside entrypoint.cul.js). This is a UMD Javascript bundle, with sourcemap `entrypoint.js.map`.
 
+Change `--no-memo` to `--memo` to turn on memoization - but this breaks for modular models now.
+
 Introspection:
 
 ```shell
@@ -51,13 +53,7 @@ cul-js dot entrypoint.cul.js | dot -Tsvg > temp.svg
 start temp.svg
 ```
 
-Note: options to `cul-js` above are concerned with forward-compatability, they don't currently matter.
-
-## status
-
-Initial implementation scales better conceptually vs. practically, but is nonetheless useful for an array of simple applications and carefully bounded problems beyond that.
-
-This is another way of saying: a bit of technical creativity helps to get the most out of the existing implementation. Interaction with Javascript leaves enormous scope open here (done carefully).
+Note: `--no-*` options to `cul-js` above are concerned with forward-compatability, they don't currently matter.
 
 ## design principles/features
 
@@ -92,6 +88,12 @@ export const price = price_base() * 1.1;
 In calculang-js implementation calculang models can interact with Javascript. You should keep Javascript-specific code in separate .js files/packages.
 
 This interaction, done carefully, opens up many usecases. Not least, integration and co-ordination with (and of) other systems.
+
+## status
+
+Initial implementation scales better conceptually vs. practically, but is nonetheless useful for an array of simple applications and carefully bounded problems beyond that.
+
+This is another way of saying: some technical creativity helps to get the most out of the existing implementation. Careful interation with Javascript leaves enormous scope open here!
 
 ## roadmap
 

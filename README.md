@@ -10,7 +10,7 @@ calculang is domain-specific to calculations and it proposes a separation of con
 
 This makes it easier to reason about calculations, empowers specialised tooling, and enables **frictionless transparency and certainty** about calculations.
 
-Language specific to calculations generalises better than any more rigid system or tool, empowering **unity of calculations and process** (end-to-end).
+A language specific to calculations also generalises better than more rigid systems or tools, empowering **unity of calculations and process** to boot.
 
 ## compiler
 
@@ -49,7 +49,9 @@ Note: options to `cul-js` above are concerned with forward-compatability, they d
 
 ## status
 
-Initial implementation scales better conceptually rather than practically, but should be useful for carefully bounded problems and a useful foundation/discussion project towards project motivations.
+Initial implementation scales better conceptually vs. practically, but is nonetheless useful for an array of simple applications and carefully bounded problems beyond that.
+
+This is another way of saying: a bit of technical creativity helps to get the most out of the existing implementation. Interaction with Javascript leaves enormous scope open here (when done carefully).
 
 ## design principles/features
 
@@ -92,8 +94,6 @@ v0.1.0-alpha1+ : some mini releases to introduce developed/proposed features, te
 v0.1+.0 : more tests, examples, integrations, documentation, logo, community focus,  maybe REPL, website, blog, barebones browser extension, barebones VSCode extension, alt. bundler?, eventually show HN, review license/CLA/etc, CI/CD optimisation
 
 Post: alt. implementations? e.g. Rust?
-
-In parallel to the public roadmap, I will probably have a private/applications roadmap. Feel free to get in touch if you want me to consider your own modelling project/s and how they can fit into this roadmap.
 
 ## help wanted
 

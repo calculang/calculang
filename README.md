@@ -2,7 +2,13 @@
 
 calculang is a language for calculations.
 
-:hatching_chick: check [my ObservableHQ collection](https://observablehq.com/collection/@declann/calculang) for some really early calculang models.
+## 🐣 early calculang highlights ⚡
+
+- [some SaaS cashflows 💸](https://observablehq.com/@declann/some-cashflows?collection=@declann/calculang)
+- [loan validator 🕵️ (dev 📓)](https://observablehq.com/@declann/loan-validator-dev?collection=@declann/calculang)
+- more on [my ObservableHQ collection](https://observablehq.com/collection/@declann/calculang)
+
+📫 for calculang updates, follow [@calculang](https://twitter.com/calculang) on Twitter.
 
 ## separation of concerns: motivation
 
@@ -51,7 +57,7 @@ Note: options to `cul-js` above are concerned with forward-compatability, they d
 
 Initial implementation scales better conceptually vs. practically, but is nonetheless useful for an array of simple applications and carefully bounded problems beyond that.
 
-This is another way of saying: a bit of technical creativity helps to get the most out of the existing implementation. Interaction with Javascript leaves enormous scope open here (when done carefully).
+This is another way of saying: a bit of technical creativity helps to get the most out of the existing implementation. Interaction with Javascript leaves enormous scope open here (done carefully).
 
 ## design principles/features
 

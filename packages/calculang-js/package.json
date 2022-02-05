@@ -1,6 +1,6 @@
 {
   "name": "@calculang/calculang-js",
-  "version": "0.1.0-alpha.4",
+  "version": "0.1.0-alpha.5",
   "bin": {
     "cul-js": "./bin/index.js"
   },
@@ -26,7 +26,10 @@
     "functional programming",
     "fp"
   ],
-  "files": ["dist", "bin"],
+  "files": [
+    "dist",
+    "bin"
+  ],
   "scripts": {
     "prepare": "yarn build",
     "build": "babel src --out-dir dist",
@@ -44,7 +47,7 @@
   "dependencies": {
     "@babel/core": "^7.15.8",
     "@babel/preset-env": "^7.15.8",
-    "@calculang/introspection-api": "0.1.0-alpha.4",
+    "@calculang/introspection-api": "0.1.0-alpha.5",
     "commander": "^8.2.0",
     "graphlib": "^2.1.8",
     "loader-utils": "^2.0.0",

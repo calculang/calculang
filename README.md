@@ -16,7 +16,8 @@ A language can integrate freely with **established best-practice controls** and 
 
 - [some SaaS cashflows 💸](https://observablehq.com/@declann/some-cashflows?collection=@declann/calculang)
 - [loan validator 🕵️ (dev 📓)](https://observablehq.com/@declann/loan-validator-dev?collection=@declann/calculang)
-- more on [my ObservableHQ collection](https://observablehq.com/collection/@declann/calculang)
+- [covid19: cases-deaths link (wip)](https://observablehq.com/@declann/covid19-cases-deaths-link?collection=@declann/calculang)
+- more in [my ObservableHQ collection](https://observablehq.com/collection/@declann/calculang)
 
 📫 for calculang updates, follow [@calculang](https://twitter.com/calculang) on Twitter.
 

@@ -97,7 +97,7 @@ program
 
         d.esm.forEach((scope) => {
           fs.writeFileSync(
-            dir + path.sep + path.basename(scope.file),
+            dir + path.sep + 'cul_scope_' + path.basename(scope.file),
             scope.source
           );
         });

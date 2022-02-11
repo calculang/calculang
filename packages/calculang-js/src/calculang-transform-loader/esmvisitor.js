@@ -22,7 +22,7 @@ export default ({ types: t }) => ({
   name: 'calculang-js-transform-loader-visitor-to-esm',
   visitor: {
     ImportDeclaration(path, { opts, ...state }) {
-      [...state.opts.cul_scope_ids_to_resource.entries()].filter(d => d[1] == path.node.source.value).forEach(d => {
+      [...opts.cul_scope_ids_to_resource.entries()].filter(d => d[1] == path.node.source.value).forEach(d => {
         path.node.source.value = `./cul_scope_${d[0]}.js`
       })
     },

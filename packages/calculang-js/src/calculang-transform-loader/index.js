@@ -52,6 +52,8 @@ export default function loader(content, map, meta) {
   // if cul_scope_ids_to_resource ignores non-cul, then to extent esm in we have got esm out
   // => verbose becomes esm.
 
+  // note: not esm because of dependence on webpack e.g. raw-loader!
+
   const transformed_esm = transformSync(transformed.code, {
     filename: this.resourcePath, //+ this.resourceQuery, //JSON.stringify(params), // to set sourceFileName, but has no impact
     inputSourceMap: transformed.map,

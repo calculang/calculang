@@ -102,9 +102,9 @@ export default async (entrypoint, options = {}) => {
           stats.compilation.assets[
             path.basename(entrypoint, '.cul.js') + '.js.map'
           ].source(),
-        verbose: Object.entries(stats.compilation.assets)
+        esm: Object.entries(stats.compilation.assets)
           //.entries()
-          .filter(([key, value]) => key.indexOf('verbose/') != -1)
+          .filter(([key, value]) => key.indexOf('esm/') != -1)
           .map(([key, value]) => ({ file: key, source: value.source() })),
         //a: stats.compilation.assets['a'].source(),
       });

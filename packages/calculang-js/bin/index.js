@@ -90,12 +90,12 @@ program
           path.dirname(entrypoint) +
           path.sep +
           path.basename(entrypoint, '.cul.js') +
-          '_verbose';
+          '_esm';
         if (!fs.existsSync(dir)) {
           fs.mkdirSync(dir);
         }
 
-        d.verbose.forEach((scope) => {
+        d.esm.forEach((scope) => {
           fs.writeFileSync(
             dir + path.sep + path.basename(scope.file),
             scope.source

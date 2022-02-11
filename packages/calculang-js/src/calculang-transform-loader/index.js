@@ -46,6 +46,11 @@ export default function loader(content, map, meta) {
     sourceMaps: true,
   });
 
+  // make transformed_esm = transformed, but remapping import sources using cul_scope_ids_to_resource where there is a match.
+  // is calling this feat esm legit?
+  // if cul_scope_ids_to_resource ignores non-cul, then to extent esm in we have got esm out
+  // => verbose becomes esm.
+
   // keeping because helpful, but needs to be done smarter, issue #34 filed
   /*console.log(`\n\n\ncul_scope_id = ${options.params.cul_scope_id}`);
   console.log('==================================');

@@ -69,7 +69,7 @@ export default function loader(content, map, meta) {
   console.log('==================================');
   console.log(transformed.code);*/
   //if (!chk) this.emitFile('verbose/b', transformed.code);
-  this.emitFile(`esm/${options.params.cul_scope_id}.js`, transformed_esm.code); // fut also replace (link up correctly) import refs here
+  this.emitFile(`esm/${options.params.cul_scope_id}.mjs`, transformed_esm.code); // fut also replace (link up correctly) import refs here
 
   this.callback(null, transformed.code, transformed.map, meta);
   return; // "always return undefined when calling callback()" https://v4.webpack.js.org/api/loaders/

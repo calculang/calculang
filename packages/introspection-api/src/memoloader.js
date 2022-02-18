@@ -58,6 +58,7 @@ export default async function loader(content, map, meta) {
 export const ${d.name}$m = memoize(${d.name}$, JSON.stringify);
 export const ${d.name} = (a) => {
   return ${d.name}$m(a);
+  // eslint-disable-next-line no-undef
   ${d.name}$(); // never run, but here to "trick" calculang graph logic
 };
 ////////// end ${d.name} memo-loader code //////////

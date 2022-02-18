@@ -10,7 +10,7 @@ This makes it easier to reason about calculations, empowers specialised tooling,
 
 A language for calculations also generalises more readily than more rigid systems or tools, enabling **unity of calculations** and process (all ends).
 
-A language can integrate freely with **established best-practice controls** and other tooling for languages.
+A language for calculations can integrate freely with **established best-practice development, testing, and controls approach and tooling** for languages.
 
 ## 🐣 early calculang highlights ⚡
 

@@ -54,7 +54,8 @@ export default async function loader(content, map, meta) {
           `
 
 ////////// start ${d.name} memo-loader code //////////
-const ${d.name}$m = memoize(999999, isEqual)(${d.name}$);
+//const ${d.name}$m = memoize(999999, isEqual)(${d.name}$);
+export const ${d.name}$m = memoize(${d.name}$, JSON.stringify);
 export const ${d.name} = (a) => {
   return ${d.name}$m(a);
   ${d.name}$(); // never run, but here to "trick" calculang graph logic
@@ -74,8 +75,9 @@ export const ${d.name} = (a) => {
       .replace('?&', '?');
 
     var return_val = `
-    import memoize from 'lru-memoize';
-    import { isEqual } from 'underscore'; // TODO poor tree shaking support, or why is this impact so massive? Move to lodash/lodash-es?
+    import { memoize } from 'underscore';
+    //import memoize from 'lru-memoize';
+    //import { isEqual } from 'underscore'; // TODO poor tree shaking support, or why is this impact so massive? Move to lodash/lodash-es?
     
     import { ${to_memo
       .map((d) => `${d.name}_ as ${d.name}$`) // don't pollute the _ modifier (=> use as)

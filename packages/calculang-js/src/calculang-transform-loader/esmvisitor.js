@@ -23,7 +23,7 @@ export default ({ types: t }) => ({
   visitor: {
     ImportDeclaration(path, { opts, ...state }) {
       [...opts.cul_scope_ids_to_resource.entries()].filter(d => d[1] == path.node.source.value).forEach(d => {
-        path.node.source.value = `./cul_scope_${d[0]}.js`
+        path.node.source.value = `./cul_scope_${d[0]}.mjs`
       })
     },
   },

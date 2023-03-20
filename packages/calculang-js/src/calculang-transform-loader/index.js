@@ -56,7 +56,7 @@ export default function loader(content, map, meta) {
 
   const transformed_esm = transformSync(transformed.code, {
     filename: this.resourcePath, //+ this.resourceQuery, //JSON.stringify(params), // to set sourceFileName, but has no impact
-    inputSourceMap: transformed.map,
+    //inputSourceMap: transformed.map,
     babelrc: false,
     generatorOpts: { /*compact: true*/ retainLines: true },
     configFile: false,
@@ -70,6 +70,11 @@ export default function loader(content, map, meta) {
   console.log(transformed.code);*/
   //if (!chk) this.emitFile('verbose/b', transformed.code);
   this.emitFile(`esm/${options.params.cul_scope_id}.mjs`, transformed_esm.code); // fut also replace (link up correctly) import refs here
+
+  this.emitFile(`esm/${options.params.cul_scope_id}.mjs.map`, JSON.stringify(transformed_esm.map));
+
+  this.emitFile(`esm/${options.params.cul_scope_id}.cul.js`, content); // works: input into calculang loader. Could also probe map contentSources as an approach ? (for memo=empty)
+  // must be careful to avoid a consistency problem, esp. if manipulation is added in fut. or crops up in edge cases. This file prob needs to match for location refs in introspection info
 
   this.callback(null, transformed.code, transformed.map, meta);
   return; // "always return undefined when calling callback()" https://v4.webpack.js.org/api/loaders/

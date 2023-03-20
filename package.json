@@ -51,5 +51,6 @@
     "rimraf": "^3.0.2",
     "run-for-every-file": "^1.1.0",
     "shx": "^0.3.3"
-  }
+  },
+  "packageManager": "yarn@1.22.19"
 }

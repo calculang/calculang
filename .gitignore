@@ -8,3 +8,8 @@ packages/introspection-api/dist
 *.out.js
 temp.png
 .prettierignore
+## from https://github.com/yarnpkg/berry/issues/454
+.yarn/*
+!.yarn/releases
+!.yarn/plugins
+.pnp.*

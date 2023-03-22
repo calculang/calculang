@@ -71,7 +71,7 @@ export default function loader(content, map, meta) {
   //if (!chk) this.emitFile('verbose/b', transformed.code);
   this.emitFile(`esm/${options.params.cul_scope_id}.mjs`, transformed_esm.code); // fut also replace (link up correctly) import refs here
 
-  this.emitFile(`esm/${options.params.cul_scope_id}.mjs.map`, JSON.stringify(transformed_esm.map));
+  this.emitFile(`esm/${options.params.cul_scope_id}.mjs.map`, JSON.stringify(transformed.map)); // missing _esm step in sourcemap. Material?
 
   this.emitFile(`esm/${options.params.cul_scope_id}.cul.js`, content); // works: input into calculang loader. Could also probe map contentSources as an approach ? (for memo=empty)
   // must be careful to avoid a consistency problem, esp. if manipulation is added in fut. or crops up in edge cases. This file prob needs to match for location refs in introspection info

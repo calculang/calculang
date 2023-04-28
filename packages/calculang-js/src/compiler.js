@@ -105,7 +105,7 @@ export default async (entrypoint, options = {}) => {
         esm: Object.entries(stats.compilation.assets)
           //.entries()
           .filter(([key, value]) => key.indexOf('esm/') != -1)
-          .map(([key, value]) => ({ file: key, source: value.source() })),
+          .map(([key, value]) => ({ file: key, source: key.indexOf('.map') == -1 ? value.source() : value.source() })),
         //a: stats.compilation.assets['a'].source(),
       });
     });

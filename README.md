@@ -14,12 +14,16 @@ A language for calculations can integrate freely with **established best-practic
 
 ## 🐣 early calculang highlights ⚡
 
+Interact with some models made with ❤️ and calculang:
+
+- [Pension Calculator 🧓👴 🚧](https://observablehq.com/@declann/pensions-calculator-wip?collection=@declann/calculang)
 - [some SaaS cashflows 💸](https://observablehq.com/@declann/some-cashflows?collection=@declann/calculang)
 - [loan validator 🕵️ (dev 📓)](https://observablehq.com/@declann/loan-validator-dev?collection=@declann/calculang)
-- [covid19: cases-deaths link (wip)](https://observablehq.com/@declann/covid19-cases-deaths-link?collection=@declann/calculang)
-- more in [my ObservableHQ collection](https://observablehq.com/collection/@declann/calculang)
+- more in [my ObservableHQ collection](https://observablehq.com/collection/@declann/calculang) including ferns, donuts and pi estimation models!
 
-📫 for calculang updates, follow [@calculang](https://twitter.com/calculang) on Twitter.
+## follow calculang 📫
+
+For calculang updates follow [@calculang](https://twitter.com/calculang) on Twitter, or follow [@calculang@fosstodon.org](https://fosstodon.org/@calculang) from any(!) [Mastodon](https://joinmastodon.org/) server 🐘
 
 ## compiler
 
@@ -72,7 +76,7 @@ Inputs to function calls in calculang are inferred by the compiler, based on a g
 
 This reduces code boilerplate, but more fundamentally it promotes recycling of models: we shouldn't code the wiring between functions manually because it will differ from one usecase to the next.
 
-**Inheritence of parent functions and overriding**:
+**Inheritance of parent functions and overriding**:
 
 In modular development, calculang gives precedence for a given function call to functions defined closer to the entrypoint or model root, rather than closer to the call.
 

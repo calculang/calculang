@@ -137,6 +137,7 @@ export default ({ types: t }) => ({
             name: path.parent.id.name,
             cul_source_scope_id: opts.cul_scope_id,
             reason,
+            loc: path.node.loc
           }
         );
       },

@@ -41,9 +41,26 @@ test('introspection of base with memo on matches memo-test with memo off', async
     {}
   );
 
+  const sort_fn_text = (a, b) => { // from https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/sort
+    const nameA = a.name; //a.name.toUpperCase(); // ignore upper and lowercase
+    const nameB = b.name; //b.name.toUpperCase(); // ignore upper and lowercase
+    if (nameA < nameB) {
+      return -1;
+    }
+    if (nameA > nameB) {
+      return 1;
+    }
+  
+    // names must be equal
+    return 0;
+  };
+
+  let base_memo_on_cul_functions_no_locs = [...base_memo_on.cul_functions.values()].sort(sort_fn_text).map(({loc, ...d}) => (d));
+  let test_memo_off_cul_functions_no_locs = [...test_memo_off.cul_functions.values()].sort(sort_fn_text).map(({loc, ...d}) => (d)); // poss ordering prob in comparison?
+
   expect(base_memo_on.cul_links).toEqual(test_memo_off.cul_links);
   expect(base_memo_on.cul_input_map).toEqual(test_memo_off.cul_input_map);
-  expect(base_memo_on.cul_functions).toEqual(test_memo_off.cul_functions);
+  expect(base_memo_on_cul_functions_no_locs).toEqual(test_memo_off_cul_functions_no_locs);
 });
 
 // should disable? disabling

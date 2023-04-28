@@ -14,12 +14,16 @@ A language for calculations can integrate freely with **established best-practic
 
 ## 🐣 early calculang highlights ⚡
 
+Interact with some models made with ❤️ and calculang:
+
+- [Pension Calculator 🧓👴 🚧](https://observablehq.com/@declann/pensions-calculator-wip?collection=@declann/calculang)
 - [some SaaS cashflows 💸](https://observablehq.com/@declann/some-cashflows?collection=@declann/calculang)
 - [loan validator 🕵️ (dev 📓)](https://observablehq.com/@declann/loan-validator-dev?collection=@declann/calculang)
-- [covid19: cases-deaths link (wip)](https://observablehq.com/@declann/covid19-cases-deaths-link?collection=@declann/calculang)
-- more in [my ObservableHQ collection](https://observablehq.com/collection/@declann/calculang)
+- more in [my ObservableHQ collection](https://observablehq.com/collection/@declann/calculang) including ferns, donuts and pi estimation models!
 
-📫 for calculang updates, follow [@calculang](https://twitter.com/calculang) on Twitter.
+## follow calculang
+
+📫 for calculang updates follow [@calculang](https://twitter.com/calculang) on Twitter, or follow [@calculang@fosstodon.org](https://fosstodon.org/@calculang) from any(!) [Mastodon](https://joinmastodon.org/) server 🐘
 
 ## compiler
 

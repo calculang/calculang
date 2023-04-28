@@ -21,9 +21,9 @@ Interact with some models made with ❤️ and calculang:
 - [loan validator 🕵️ (dev 📓)](https://observablehq.com/@declann/loan-validator-dev?collection=@declann/calculang)
 - more in [my ObservableHQ collection](https://observablehq.com/collection/@declann/calculang) including ferns, donuts and pi estimation models!
 
-## follow calculang
+## follow calculang 📫
 
-📫 for calculang updates follow [@calculang](https://twitter.com/calculang) on Twitter, or follow [@calculang@fosstodon.org](https://fosstodon.org/@calculang) from any(!) [Mastodon](https://joinmastodon.org/) server 🐘
+For calculang updates follow [@calculang](https://twitter.com/calculang) on Twitter, or follow [@calculang@fosstodon.org](https://fosstodon.org/@calculang) from any(!) [Mastodon](https://joinmastodon.org/) server 🐘
 
 ## compiler
 

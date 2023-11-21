@@ -123,11 +123,10 @@ export default ({ types: t }) => ({
       );
       if (renamed) path.node.local.name += '_$'; // an _ reference should never be used. I could delete, but I do this instead. $ mitigates eslint fails in esm.
 
-      // dn Nov 2023 #117
-      //path.node.imported.name =
-      //  opts.cul_functions.get(
-      //    `${opts.params.cul_scope_id}_${path.node.local.name}` // isn't this limited? Affd rec?
-      //  )?.imported || path.node.imported.name; // isEqual etc.
+      path.node.imported.name =
+        opts.cul_functions.get(
+          `${opts.params.cul_scope_id}_${path.node.local.name}` // isn't this limited? Affd rec?
+        )?.imported || path.node.imported.name; // isEqual etc.
     },
     ImportDeclaration(path, { opts, ...state }) {
       /* if (

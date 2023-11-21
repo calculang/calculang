@@ -107,15 +107,16 @@ export default ({ types: t }) => ({
           // now references to the function need to be updated
           [...global_state.cul_functions.values()]
             .filter(
-              (d) =>
+              (d) => 
                 d.imported /* I need imported here */ == name &&
-                d.reason.indexOf('explicit import') != -1 &&
+                (d.reason.indexOf('explicit import') != -1) && // function is imported explicitly
                 d.cul_scope_id == opts.cul_parent_scope_id // new, post-working/tests
+              && d.cul_source_scope_id == opts.cul_scope_id // Nov 2023 #117
             )
             .forEach((d) => {
               global_state.cul_functions.set(`${d.cul_scope_id}_${d.name}`, {
                 ...d,
-                imported: d.imported + '_',
+                imported: d.imported + '_', // here. Only do this when? 
               });
               global_state.cul_links.forEach((dd) => {
                 if (

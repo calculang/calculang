@@ -1,0 +1,1 @@
+{"version":3,"names":["num"],"sources":["one.cul.js"],"sourcesContent":["export const num = () => 1;"],"mappings":"wEAAA,OAAO,MAAMA,IAAG,GAAGA,CAAA,OAAM,CAAC"}

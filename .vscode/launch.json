@@ -1,0 +1,28 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "nomemo",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "program": "${workspaceFolder}/packages/calculang-js/bin/index.js",
+      "args": ["compile", "${workspaceFolder}/packages/calculang-testcase-models/manufacturing/revenue-with-demand-curve.cul.js"]
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "memo",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "program": "${workspaceFolder}/packages/calculang-js/bin/index.js",
+      "args": ["compile", "--memo", "${workspaceFolder}/packages/calculang-testcase-models/manufacturing/revenue-with-demand-curve.cul.js"]
+    }
+  ]
+}

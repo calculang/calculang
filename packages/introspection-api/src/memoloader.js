@@ -28,6 +28,11 @@ import global_state from './global_state.js';
 
 export default async function loader(content, map, meta) {
   this.cacheable(false);
+  var temp = global_state;
+  var loc = global_state.location[0].entrypoint
+  var b = path.basename(loc).slice(0,-7)
+  var nomemo_introspection_loc = path.dirname(loc) + path.sep + b + '-nomemo.introspection.json'
+  console.log('nomemo_introspection_loc', nomemo_introspection_loc);
   if (getOptions(this).memo == false) return content;
   //if (global_state.location.length == 1) debugger;
   if (this.resourceQuery != '' && parseQuery(this.resourceQuery).memoed)

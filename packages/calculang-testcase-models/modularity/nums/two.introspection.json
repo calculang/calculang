@@ -1,0 +1,89 @@
+{
+  "cul_functions": {
+    "0_num$": {
+      "cul_scope_id": 0,
+      "name": "num$",
+      "imported": "num_",
+      "cul_source_scope_id": 1,
+      "reason": "explicit import",
+      "inputs": []
+    },
+    "0_num": {
+      "cul_scope_id": 0,
+      "name": "num",
+      "cul_source_scope_id": 0,
+      "reason": "definition",
+      "loc": {
+        "start": {
+          "line": 3,
+          "column": 19,
+          "index": 62
+        },
+        "end": {
+          "line": 3,
+          "column": 35,
+          "index": 78
+        }
+      },
+      "inputs": []
+    },
+    "1_num": {
+      "cul_scope_id": 1,
+      "name": "num",
+      "cul_source_scope_id": 0,
+      "reason": "implicit import",
+      "inputs": []
+    },
+    "1_num_": {
+      "cul_scope_id": 1,
+      "name": "num_",
+      "cul_source_scope_id": 1,
+      "reason": "definition (renamed)",
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 19,
+          "index": 19
+        },
+        "end": {
+          "line": 1,
+          "column": 26,
+          "index": 26
+        }
+      },
+      "inputs": []
+    }
+  },
+  "cul_links": [
+    {
+      "to": "0_num$",
+      "from": "1_num_",
+      "reason": "explicit import"
+    },
+    {
+      "to": "0_num",
+      "from": "0_num$",
+      "reason": "call",
+      "negs": []
+    },
+    {
+      "to": "1_num",
+      "from": "0_num",
+      "reason": "implicit import"
+    }
+  ],
+  "cul_scope_ids_to_resource": {
+    "0": "./two.cul.js",
+    "1": "./one.cul?cul_scope_id=1&cul_parent_scope_id=0"
+  },
+  "import_sources_to_resource": {
+    "0_./one.cul": "./one.cul?cul_scope_id=1&cul_parent_scope_id=0"
+  },
+  "cul_input_map": {
+    "0_num$": [],
+    "0_num": [],
+    "1_num": [],
+    "1_num_": []
+  },
+  "dot": "digraph {\n  \"0_num$\" [cul_scope_id=0,name=\"num$\",imported=num_,cul_source_scope_id=1,reason=\"explicit import\",inputs=\"\",label=\"0_num$ inputs: \"]\n  \"0_num\" [cul_scope_id=0,name=num,cul_source_scope_id=0,reason=definition,loc=\"[object Object]\",inputs=\"\",label=\"0_num inputs: \"]\n  \"1_num\" [cul_scope_id=1,name=num,cul_source_scope_id=0,reason=\"implicit import\",inputs=\"\",label=\"1_num inputs: \"]\n  \"1_num_\" [cul_scope_id=1,name=num_,cul_source_scope_id=1,reason=\"definition (renamed)\",loc=\"[object Object]\",inputs=\"\",label=\"1_num_ inputs: \"]\n  \"1_num_\" -> \"0_num$\" [value=\"[object Object]\",label=\"explicit import\"]\n  \"0_num$\" -> \"0_num\" [value=\"[object Object]\",label=\"call -\"]\n  \"0_num\" -> \"1_num\" [value=\"[object Object]\",label=\"implicit import\"]\n}\n"
+}

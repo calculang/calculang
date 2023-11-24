@@ -23,6 +23,16 @@
       ],
       "program": "${workspaceFolder}/packages/calculang-js/bin/index.js",
       "args": ["compile", "--memo", "${workspaceFolder}/packages/calculang-testcase-models/manufacturing/revenue-with-demand-curve.cul.js"]
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "memo write introspection",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "program": "${workspaceFolder}/packages/calculang-js/bin/index.js",
+      "args": ["introspect", "--memo", "${workspaceFolder}/packages/calculang-testcase-models/manufacturing/revenue-with-demand-curve.cul.js"]
     }
   ]
 }

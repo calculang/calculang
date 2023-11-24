@@ -27,10 +27,12 @@ import global_state from './global_state.js';
 // never called for cul_scope_id=3?
 // "./price-change-reconciliation.cul.js?cul_scope_id=3&cul_parent_scope_id=1"
 
+// problem: nomemo doesn't know about renames of all fns !
+
 export default async function loader(content, map, meta) {
   this.cacheable(false);
   var temp = global_state;
-  var loc = global_state.location[0].entrypoint
+  var loc = '/home/declan/MESSING/GitHub/calculang/packages/calculang-testcase-models/manufacturing/revenue-with-demand-curve.cul.js' // global_state.location[0].entrypoint // not available in transform loader, alt?
   var b = path.basename(loc).slice(0,-7)
   var nomemo_introspection_loc = path.dirname(loc) + path.sep + b + '-nomemo.introspection.json' // reading this file only going to work in specific circumstances - not in testcases, currently
   console.log('nomemo_introspection_loc', nomemo_introspection_loc);
@@ -44,19 +46,39 @@ export default async function loader(content, map, meta) {
     return content;
   else {
     //debugger;
-    const child_introspection = await introspection(this.resourcePath, {
-      memo: false,
-    });
+    //const child_introspection = await introspection(this.resourcePath, {
+    //  memo: false,
+    //})
+    // this is not the same thing:
+    const child_introspection = json;
 
-    const to_memo = [...child_introspection.cul_functions.values()].filter(
-      (d) =>
-        d.reason != 'input definition' && // bring this in?
-        d.cul_scope_id == 0 && // referring to child introspection call
-        d.name.charAt(d.name.length - 1) != '$' // don't memo the memo. Alt: don't create cul_function for it? <-- prob never matters
-    );
-    // debugger; // how come some results are scope 0 with _?
-    // nothing has cul_scope_id=0 in another case, hence problem
+    global_state.memo_to_nomemo = { "0": "0", "2": "1" };
 
+    // how to map scope ids?
+    // 0,1 nomemo
+    // 0,1,2,3 memo
+    // 0 should pick 0. 2 should pick 1
+    // is there a general approach? or depends on scope id graph?
+    // surely it depends, and the way to go is to lookup inputs
+    
+    // for entrypoint it's easy. for children need to match filename in nomemo cul_scope_ids_to_resource AND
+    // parent_cul_scope_id mapping, and thats all?
+
+
+
+    debugger; 
+    if (0) {
+      var to_memo = [...child_introspection.cul_functions.values()].filter(
+        (d) =>
+          d.reason != 'input definition' && // bring this in?
+          //d.cul_scope_id == +global_state.memo_to_nomemo[parseQuery(this.resourceQuery).cul_scope_id] && // referring to child introspection call
+          d.name.charAt(d.name.length - 1) != '$' // don't memo the memo. Alt: don't create cul_function for it? <-- prob never matters
+      );
+      // debugger; // how come some results are scope 0 with _?
+      // nothing has cul_scope_id=0 in another case, hence problem
+    }
+    var to_memo = [{ name: "revenue" }, { name: "price" }, { name: "units" }]
+    
     const generated = to_memo
       .map(
         (d) =>

@@ -15,6 +15,7 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
 import path from 'path';
+import fs from 'fs';
 
 import { getOptions, parseQuery } from 'loader-utils';
 
@@ -33,6 +34,9 @@ export default async function loader(content, map, meta) {
   var b = path.basename(loc).slice(0,-7)
   var nomemo_introspection_loc = path.dirname(loc) + path.sep + b + '-nomemo.introspection.json' // reading this file only going to work in specific circumstances - not in testcases, currently
   console.log('nomemo_introspection_loc', nomemo_introspection_loc);
+  const json = JSON.parse(await fs.readFileSync(nomemo_introspection_loc))
+  debugger;
+
   if (getOptions(this).memo == false) return content;
   //if (global_state.location.length == 1) debugger;
   if (this.resourceQuery != '' && parseQuery(this.resourceQuery).memoed)

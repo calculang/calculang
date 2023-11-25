@@ -1,6 +1,6 @@
 import introspection from '@calculang/introspection-api';
 
-// TODO I don't expect this to work because of dependence on -nomemo run first !
+// TODO I don't expect this to work for modular models yet because of dependence on -nomemo run first !
 
 //jest.setTimeout(20000);
 jest.setTimeout(2000000); // for debug!

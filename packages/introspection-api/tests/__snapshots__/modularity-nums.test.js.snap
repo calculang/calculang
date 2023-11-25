@@ -1,0 +1,576 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`modularity/nums/one 1`] = `
+Object {
+  "cul_functions": Map {
+    "0_num" => Object {
+      "cul_scope_id": 0,
+      "cul_source_scope_id": 0,
+      "inputs": Array [],
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 26,
+          "index": 26,
+          "line": 1,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 19,
+          "index": 19,
+          "line": 1,
+        },
+      },
+      "name": "num",
+      "reason": "definition",
+    },
+  },
+  "cul_input_map": Map {
+    "0_num" => Set {},
+  },
+  "cul_links": Set {},
+  "cul_scope_ids_to_resource": Map {
+    0 => "./one.cul.js",
+  },
+  "import_sources_to_resource": Map {},
+}
+`;
+
+exports[`modularity/nums/three 1`] = `
+Object {
+  "cul_functions": Map {
+    "0_num$" => Object {
+      "cul_scope_id": 0,
+      "cul_source_scope_id": 1,
+      "imported": "num_",
+      "inputs": Array [],
+      "name": "num$",
+      "reason": "explicit import",
+    },
+    "0_num" => Object {
+      "cul_scope_id": 0,
+      "cul_source_scope_id": 0,
+      "inputs": Array [],
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 35,
+          "index": 78,
+          "line": 3,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 19,
+          "index": 62,
+          "line": 3,
+        },
+      },
+      "name": "num",
+      "reason": "definition",
+    },
+    "1_num" => Object {
+      "cul_scope_id": 1,
+      "cul_source_scope_id": 0,
+      "inputs": Array [],
+      "name": "num",
+      "reason": "implicit import",
+    },
+    "1_num$" => Object {
+      "cul_scope_id": 1,
+      "cul_source_scope_id": 2,
+      "imported": "num_",
+      "inputs": Array [],
+      "name": "num$",
+      "reason": "explicit import",
+    },
+    "1_num_" => Object {
+      "cul_scope_id": 1,
+      "cul_source_scope_id": 1,
+      "inputs": Array [],
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 35,
+          "index": 78,
+          "line": 3,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 19,
+          "index": 62,
+          "line": 3,
+        },
+      },
+      "name": "num_",
+      "reason": "definition (renamed)",
+    },
+    "2_num" => Object {
+      "cul_scope_id": 2,
+      "cul_source_scope_id": 0,
+      "inputs": Array [],
+      "name": "num",
+      "reason": "implicit import",
+    },
+    "2_num_" => Object {
+      "cul_scope_id": 2,
+      "cul_source_scope_id": 2,
+      "inputs": Array [],
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 26,
+          "index": 26,
+          "line": 1,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 19,
+          "index": 19,
+          "line": 1,
+        },
+      },
+      "name": "num_",
+      "reason": "definition (renamed)",
+    },
+  },
+  "cul_input_map": Map {
+    "0_num$" => Set {},
+    "0_num" => Set {},
+    "1_num" => Set {},
+    "1_num$" => Set {},
+    "1_num_" => Set {},
+    "2_num" => Set {},
+    "2_num_" => Set {},
+  },
+  "cul_links": Set {
+    Object {
+      "from": "1_num_",
+      "reason": "explicit import",
+      "to": "0_num$",
+    },
+    Object {
+      "from": "0_num$",
+      "negs": Array [],
+      "reason": "call",
+      "to": "0_num",
+    },
+    Object {
+      "from": "0_num",
+      "reason": "implicit import",
+      "to": "1_num",
+    },
+    Object {
+      "from": "2_num_",
+      "reason": "explicit import",
+      "to": "1_num$",
+    },
+    Object {
+      "from": "1_num$",
+      "negs": Array [],
+      "reason": "call",
+      "to": "1_num_",
+    },
+    Object {
+      "from": "0_num",
+      "reason": "implicit import",
+      "to": "2_num",
+    },
+  },
+  "cul_scope_ids_to_resource": Map {
+    0 => "./three.cul.js",
+    1 => "./two.cul?cul_scope_id=1&cul_parent_scope_id=0",
+    2 => "./one.cul?cul_scope_id=2&cul_parent_scope_id=1",
+  },
+  "import_sources_to_resource": Map {
+    "0_./two.cul" => "./two.cul?cul_scope_id=1&cul_parent_scope_id=0",
+    "1_./one.cul" => "./one.cul?cul_scope_id=2&cul_parent_scope_id=1",
+  },
+}
+`;
+
+exports[`modularity/nums/threeAgain 1`] = `
+Object {
+  "cul_functions": Map {
+    "0_num$" => Object {
+      "cul_scope_id": 0,
+      "cul_source_scope_id": 1,
+      "imported": "num_",
+      "inputs": Array [],
+      "name": "num$",
+      "reason": "explicit import",
+    },
+    "0_num" => Object {
+      "cul_scope_id": 0,
+      "cul_source_scope_id": 0,
+      "inputs": Array [],
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 35,
+          "index": 83,
+          "line": 3,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 19,
+          "index": 67,
+          "line": 3,
+        },
+      },
+      "name": "num",
+      "reason": "definition",
+    },
+    "1_num" => Object {
+      "cul_scope_id": 1,
+      "cul_source_scope_id": 0,
+      "inputs": Array [],
+      "name": "num",
+      "reason": "implicit import",
+    },
+    "1_num_" => Object {
+      "cul_scope_id": 1,
+      "cul_source_scope_id": 2,
+      "imported": "num_",
+      "inputs": Array [],
+      "name": "num_",
+      "reason": "explicit import (renamed)",
+    },
+    "2_num" => Object {
+      "cul_scope_id": 2,
+      "cul_source_scope_id": 0,
+      "inputs": Array [],
+      "name": "num",
+      "reason": "implicit import",
+    },
+    "2_num$" => Object {
+      "cul_scope_id": 2,
+      "cul_source_scope_id": 3,
+      "imported": "num_",
+      "inputs": Array [],
+      "name": "num$",
+      "reason": "explicit import",
+    },
+    "2_num_" => Object {
+      "cul_scope_id": 2,
+      "cul_source_scope_id": 2,
+      "inputs": Array [],
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 35,
+          "index": 78,
+          "line": 3,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 19,
+          "index": 62,
+          "line": 3,
+        },
+      },
+      "name": "num_",
+      "reason": "definition (renamed)",
+    },
+    "3_num" => Object {
+      "cul_scope_id": 3,
+      "cul_source_scope_id": 0,
+      "inputs": Array [],
+      "name": "num",
+      "reason": "implicit import",
+    },
+    "3_num_" => Object {
+      "cul_scope_id": 3,
+      "cul_source_scope_id": 3,
+      "inputs": Array [],
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 26,
+          "index": 26,
+          "line": 1,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 19,
+          "index": 19,
+          "line": 1,
+        },
+      },
+      "name": "num_",
+      "reason": "definition (renamed)",
+    },
+  },
+  "cul_input_map": Map {
+    "0_num$" => Set {},
+    "0_num" => Set {},
+    "1_num" => Set {},
+    "1_num_" => Set {},
+    "2_num" => Set {},
+    "2_num$" => Set {},
+    "2_num_" => Set {},
+    "3_num" => Set {},
+    "3_num_" => Set {},
+  },
+  "cul_links": Set {
+    Object {
+      "from": "1_num_",
+      "reason": "explicit import",
+      "to": "0_num$",
+    },
+    Object {
+      "from": "0_num$",
+      "negs": Array [],
+      "reason": "call",
+      "to": "0_num",
+    },
+    Object {
+      "from": "0_num",
+      "reason": "implicit import",
+      "to": "1_num",
+    },
+    Object {
+      "from": "2_num_",
+      "reason": "explicit import (renamed)",
+      "to": "1_num_",
+    },
+    Object {
+      "from": "0_num",
+      "reason": "implicit import",
+      "to": "2_num",
+    },
+    Object {
+      "from": "3_num_",
+      "reason": "explicit import",
+      "to": "2_num$",
+    },
+    Object {
+      "from": "2_num$",
+      "negs": Array [],
+      "reason": "call",
+      "to": "2_num_",
+    },
+    Object {
+      "from": "0_num",
+      "reason": "implicit import",
+      "to": "3_num",
+    },
+  },
+  "cul_scope_ids_to_resource": Map {
+    0 => "./threeAgain.cul.js",
+    1 => "./twoAgain.cul?cul_scope_id=1&cul_parent_scope_id=0",
+    2 => "./two.cul.js?cul_scope_id=2&cul_parent_scope_id=1",
+    3 => "./one.cul?cul_scope_id=3&cul_parent_scope_id=2",
+  },
+  "import_sources_to_resource": Map {
+    "0_./twoAgain.cul" => "./twoAgain.cul?cul_scope_id=1&cul_parent_scope_id=0",
+    "1_./two.cul.js" => "./two.cul.js?cul_scope_id=2&cul_parent_scope_id=1",
+    "2_./one.cul" => "./one.cul?cul_scope_id=3&cul_parent_scope_id=2",
+  },
+}
+`;
+
+exports[`modularity/nums/two 1`] = `
+Object {
+  "cul_functions": Map {
+    "0_num$" => Object {
+      "cul_scope_id": 0,
+      "cul_source_scope_id": 1,
+      "imported": "num_",
+      "inputs": Array [],
+      "name": "num$",
+      "reason": "explicit import",
+    },
+    "0_num" => Object {
+      "cul_scope_id": 0,
+      "cul_source_scope_id": 0,
+      "inputs": Array [],
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 35,
+          "index": 78,
+          "line": 3,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 19,
+          "index": 62,
+          "line": 3,
+        },
+      },
+      "name": "num",
+      "reason": "definition",
+    },
+    "1_num" => Object {
+      "cul_scope_id": 1,
+      "cul_source_scope_id": 0,
+      "inputs": Array [],
+      "name": "num",
+      "reason": "implicit import",
+    },
+    "1_num_" => Object {
+      "cul_scope_id": 1,
+      "cul_source_scope_id": 1,
+      "inputs": Array [],
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 26,
+          "index": 26,
+          "line": 1,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 19,
+          "index": 19,
+          "line": 1,
+        },
+      },
+      "name": "num_",
+      "reason": "definition (renamed)",
+    },
+  },
+  "cul_input_map": Map {
+    "0_num$" => Set {},
+    "0_num" => Set {},
+    "1_num" => Set {},
+    "1_num_" => Set {},
+  },
+  "cul_links": Set {
+    Object {
+      "from": "1_num_",
+      "reason": "explicit import",
+      "to": "0_num$",
+    },
+    Object {
+      "from": "0_num$",
+      "negs": Array [],
+      "reason": "call",
+      "to": "0_num",
+    },
+    Object {
+      "from": "0_num",
+      "reason": "implicit import",
+      "to": "1_num",
+    },
+  },
+  "cul_scope_ids_to_resource": Map {
+    0 => "./two.cul.js",
+    1 => "./one.cul?cul_scope_id=1&cul_parent_scope_id=0",
+  },
+  "import_sources_to_resource": Map {
+    "0_./one.cul" => "./one.cul?cul_scope_id=1&cul_parent_scope_id=0",
+  },
+}
+`;
+
+exports[`modularity/nums/twoAgain 1`] = `
+Object {
+  "cul_functions": Map {
+    "0_num" => Object {
+      "cul_scope_id": 0,
+      "cul_source_scope_id": 1,
+      "imported": "num",
+      "inputs": Array [],
+      "name": "num",
+      "reason": "explicit import",
+    },
+    "1_num$" => Object {
+      "cul_scope_id": 1,
+      "cul_source_scope_id": 2,
+      "imported": "num_",
+      "inputs": Array [],
+      "name": "num$",
+      "reason": "explicit import",
+    },
+    "1_num" => Object {
+      "cul_scope_id": 1,
+      "cul_source_scope_id": 1,
+      "inputs": Array [],
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 35,
+          "index": 78,
+          "line": 3,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 19,
+          "index": 62,
+          "line": 3,
+        },
+      },
+      "name": "num",
+      "reason": "definition",
+    },
+    "2_num" => Object {
+      "cul_scope_id": 2,
+      "cul_source_scope_id": 1,
+      "inputs": Array [],
+      "name": "num",
+      "reason": "implicit import",
+    },
+    "2_num_" => Object {
+      "cul_scope_id": 2,
+      "cul_source_scope_id": 2,
+      "inputs": Array [],
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 26,
+          "index": 26,
+          "line": 1,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 19,
+          "index": 19,
+          "line": 1,
+        },
+      },
+      "name": "num_",
+      "reason": "definition (renamed)",
+    },
+  },
+  "cul_input_map": Map {
+    "0_num" => Set {},
+    "1_num$" => Set {},
+    "1_num" => Set {},
+    "2_num" => Set {},
+    "2_num_" => Set {},
+  },
+  "cul_links": Set {
+    Object {
+      "from": "1_num",
+      "reason": "explicit import",
+      "to": "0_num",
+    },
+    Object {
+      "from": "2_num_",
+      "reason": "explicit import",
+      "to": "1_num$",
+    },
+    Object {
+      "from": "1_num$",
+      "negs": Array [],
+      "reason": "call",
+      "to": "1_num",
+    },
+    Object {
+      "from": "1_num",
+      "reason": "implicit import",
+      "to": "2_num",
+    },
+  },
+  "cul_scope_ids_to_resource": Map {
+    0 => "./twoAgain.cul.js",
+    1 => "./two.cul.js?cul_scope_id=1&cul_parent_scope_id=0",
+    2 => "./one.cul?cul_scope_id=2&cul_parent_scope_id=1",
+  },
+  "import_sources_to_resource": Map {
+    "0_./two.cul.js" => "./two.cul.js?cul_scope_id=1&cul_parent_scope_id=0",
+    "1_./one.cul" => "./one.cul?cul_scope_id=2&cul_parent_scope_id=1",
+  },
+}
+`;

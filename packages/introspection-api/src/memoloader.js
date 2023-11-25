@@ -66,19 +66,6 @@ export default async function loader(content, map, meta) {
 
     global_state.memo_to_nomemo = { "0": 0, "2": 1 }; // TODO replace this static
 
-    // how to map scope ids?
-    // 0,1 nomemo
-    // 0,1,2,3 memo
-    // 0 should pick 0. 2 should pick 1
-    // is there a general approach? or depends on scope id graph?
-    // surely it depends, and the way to go is to lookup inputs
-    
-    // for entrypoint it's easy. for children need to match filename in nomemo cul_scope_ids_to_resource AND
-    // parent_cul_scope_id mapping, and thats all?
-
-    // use this.resource/Path ? base and ./?
-    // NO use::
-    // this._module.rawRequest  <-------
 
 
     //debugger;
@@ -86,20 +73,42 @@ export default async function loader(content, map, meta) {
 
     // only getting here for cul_scope_id = 0,2
 
-    // not doing anything, trying iteration:
-    var memo_parent_scope_id, mapped_parent_scope_id;
+
+
+              // how to map scope ids?
+              // 0,1 nomemo
+              // 0,1,2,3 memo
+              // 0 should pick 0. 2 should pick 1
+              // is there a general approach? or depends on scope id graph?
+              // surely it depends, and the way to go is to lookup inputs
+              
+              // for entrypoint it's easy. for children need to match filename in nomemo cul_scope_ids_to_resource AND
+              // parent_cul_scope_id mapping, and thats all?
+
+              // use this.resource/Path ? base and ./?
+              // NO use::
+              // this._module.rawRequest  <-------
+
+              // not doing anything, trying iteration:
+              /*var memo_parent_scope_id, mapped_parent_scope_id;
+              if (this._compilation.options.entry == this._module.rawRequest) {
+                // entrypoint
+                mapped_parent_scope_id = 0;
+                iteration = 0 //needed for both passes
+              } else {
+                memo_parent_scope_id = +parseQuery(this._module.rawRequest.slice(this._module.rawRequest.indexOf('?'))).cul_parent_scope_id
+                //console.log(path.basename(this._module.rawRequest))
+                var resource_filename = this._module.rawRequest.slice(0, this._module.rawRequest.indexOf('?'))
+                mapped_parent_scope_id = child_introspection
+                debugger;
+
+              }*/
+    
     if (this._compilation.options.entry == this._module.rawRequest) {
       // entrypoint
-      mapped_parent_scope_id = 0;
       iteration = 0 //needed for both passes
-    } else {
-      memo_parent_scope_id = +parseQuery(this._module.rawRequest.slice(this._module.rawRequest.indexOf('?'))).cul_parent_scope_id
-      //console.log(path.basename(this._module.rawRequest))
-      var resource_filename = this._module.rawRequest.slice(0, this._module.rawRequest.indexOf('?'))
-      mapped_parent_scope_id = child_introspection
-      debugger;
-
     }
+
 
 
     if (1) {
@@ -109,14 +118,16 @@ export default async function loader(content, map, meta) {
         (d) =>
           d.reason != 'input definition' && // bring this in?
           d.reason.indexOf('renamed') == -1 &&
-          d.cul_scope_id == iteration++ /*+global_state.memo_to_nomemo[cul_scope_id]*/ && // referring to child introspection call
+          d.cul_scope_id == iteration /*+global_state.memo_to_nomemo[cul_scope_id]*/ && // referring to child introspection call
           d.name.charAt(d.name.length - 1) != '$' // don't memo the memo. Alt: don't create cul_function for it? <-- prob never matters
       );
       // debugger; // how come some results are scope 0 with _?
       // nothing has cul_scope_id=0 in another case, hence problem
     } else {
       to_memo = [{ name: "revenue" }, { name: "price" }, { name: "units" }]
-  }
+    }
+    
+    iteration++;
     
     const generated = to_memo
       .map(

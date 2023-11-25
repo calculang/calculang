@@ -47,6 +47,16 @@
     {
       "type": "node",
       "request": "launch",
+      "name": "memo shop-demand-curve-modular",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "program": "${workspaceFolder}/packages/calculang-js/bin/index.js",
+      "args": ["compile", "--memo", "/home/declan/MESSING/quarto/calculang-quarto-site-messing/models/shop-demand-curve-modular.cul.js"]
+    },
+    {
+      "type": "node",
+      "request": "launch",
       "name": "memo write introspection",
       "skipFiles": [
         "<node_internals>/**"

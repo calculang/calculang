@@ -2689,6 +2689,16 @@ Object {
       "name": "price",
       "reason": "explicit import",
     },
+    "0_profit" => Object {
+      "cul_scope_id": 0,
+      "cul_source_scope_id": 1,
+      "imported": "profit",
+      "inputs": Array [
+        "price_in",
+      ],
+      "name": "profit",
+      "reason": "explicit import",
+    },
     "0_units" => Object {
       "cul_scope_id": 0,
       "cul_source_scope_id": 0,
@@ -2698,14 +2708,14 @@ Object {
       "loc": SourceLocation {
         "end": Position {
           "column": 47,
-          "index": 148,
+          "index": 164,
           "line": 5,
         },
         "filename": undefined,
         "identifierName": undefined,
         "start": Position {
           "column": 21,
-          "index": 122,
+          "index": 138,
           "line": 5,
         },
       },
@@ -2862,6 +2872,9 @@ Object {
     "0_price" => Set {
       "price_in",
     },
+    "0_profit" => Set {
+      "price_in",
+    },
     "0_units" => Set {
       "price_in",
     },
@@ -2900,6 +2913,11 @@ Object {
       "from": "1_price",
       "reason": "explicit import",
       "to": "0_price",
+    },
+    Object {
+      "from": "1_profit",
+      "reason": "explicit import",
+      "to": "0_profit",
     },
     Object {
       "from": "0_price",

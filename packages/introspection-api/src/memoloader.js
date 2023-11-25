@@ -37,8 +37,10 @@ export default async function loader(content, map, meta) {
   var temp = global_state;
   var json
   if (1) {
-    ///////// TODO 
-    ///////// derive global_state.memo_to_nomemo                                /////////
+    ///////// TODO ~~ DONE
+    ///////// derive global_state.memo_to_nomemo   DONE using workaround iterations, apparently working     /////////
+
+    // TODO
     ///////// then test, REMEMBER that depends on -nomemo, so consider when to update main and how to integrate /////////
     ///////// IN THIS BRANCH memo is broken, but will be fixed with fixes for above /////////
     ///////// TESTS I changed test .cul.js => expect fails and should update snapshots, but obv won't with broken memo for other examples /////////

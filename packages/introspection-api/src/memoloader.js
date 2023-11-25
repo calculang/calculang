@@ -74,6 +74,9 @@ export default async function loader(content, map, meta) {
     // for entrypoint it's easy. for children need to match filename in nomemo cul_scope_ids_to_resource AND
     // parent_cul_scope_id mapping, and thats all?
 
+    // use this.resource/Path ? base and ./?
+    // NO use::
+    // this._module.rawRequest  <-------
 
 
     debugger;

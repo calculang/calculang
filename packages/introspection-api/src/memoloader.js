@@ -37,6 +37,7 @@ export default async function loader(content, map, meta) {
     ///////// TODO derive this in a way which works for transformer and loader      /////////
     ///////// and derive global_state.memo_to_nomemo                                /////////
     ///////// then test, REMEMBER that depends on -nomemo, so consider when to update main and how to integrate /////////
+    ///////// IN THIS BRANCH memo is broken, but will be fixed with fixes for above /////////
     var loc = '/home/declan/MESSING/GitHub/calculang/packages/calculang-testcase-models/manufacturing/revenue-with-demand-curve.cul.js' // global_state.location[0].entrypoint // not available in transform loader, alt?
     var b = path.basename(loc).slice(0, -7)
     var nomemo_introspection_loc = path.dirname(loc) + path.sep + b + '-nomemo.introspection.json' // reading this file only going to work in specific circumstances - not in testcases, currently

@@ -20,6 +20,16 @@
         "price_in"
       ]
     },
+    "0_profit": {
+      "cul_scope_id": 0,
+      "name": "profit",
+      "imported": "profit",
+      "cul_source_scope_id": 1,
+      "reason": "explicit import",
+      "inputs": [
+        "price_in"
+      ]
+    },
     "0_units": {
       "cul_scope_id": 0,
       "name": "units",
@@ -29,12 +39,12 @@
         "start": {
           "line": 5,
           "column": 21,
-          "index": 122
+          "index": 138
         },
         "end": {
           "line": 5,
           "column": 47,
-          "index": 148
+          "index": 164
         }
       },
       "inputs": [
@@ -186,6 +196,11 @@
       "reason": "explicit import"
     },
     {
+      "to": "0_profit",
+      "from": "1_profit",
+      "reason": "explicit import"
+    },
+    {
       "to": "0_units",
       "from": "0_price",
       "reason": "call",
@@ -251,6 +266,9 @@
     "0_price": [
       "price_in"
     ],
+    "0_profit": [
+      "price_in"
+    ],
     "0_units": [
       "price_in"
     ],
@@ -279,5 +297,5 @@
       "price_in"
     ]
   },
-  "dot": "digraph {\n  \"0_revenue\" [cul_scope_id=0,name=revenue,imported=revenue,cul_source_scope_id=1,reason=\"explicit import\",inputs=price_in,label=\"0_revenue inputs: price_in\"]\n  \"0_price\" [cul_scope_id=0,name=price,imported=price,cul_source_scope_id=1,reason=\"explicit import\",inputs=price_in,label=\"0_price inputs: price_in\"]\n  \"0_units\" [cul_scope_id=0,name=units,cul_source_scope_id=0,reason=definition,loc=\"[object Object]\",inputs=price_in,label=\"0_units inputs: price_in\"]\n  \"1_units\" [cul_scope_id=1,name=units,cul_source_scope_id=0,reason=\"implicit import\",inputs=price_in,label=\"1_units inputs: price_in\"]\n  \"1_revenue\" [cul_scope_id=1,name=revenue,cul_source_scope_id=1,reason=definition,loc=\"[object Object]\",inputs=price_in,label=\"1_revenue inputs: price_in\"]\n  \"1_costs\" [cul_scope_id=1,name=costs,cul_source_scope_id=1,reason=definition,loc=\"[object Object]\",inputs=price_in,label=\"1_costs inputs: price_in\"]\n  \"1_profit\" [cul_scope_id=1,name=profit,cul_source_scope_id=1,reason=definition,loc=\"[object Object]\",inputs=price_in,label=\"1_profit inputs: price_in\"]\n  \"1_units_\" [cul_scope_id=1,name=units_,cul_source_scope_id=1,reason=\"definition (renamed)\",loc=\"[object Object]\",inputs=units_in,label=\"1_units_ inputs: units_in\"]\n  \"1_units_in\" [cul_scope_id=1,name=units_in,cul_source_scope_id=1,reason=\"input definition\",inputs=units_in,label=\"1_units_in inputs: units_in\"]\n  \"1_price\" [cul_scope_id=1,name=price,cul_source_scope_id=1,reason=definition,loc=\"[object Object]\",inputs=price_in,label=\"1_price inputs: price_in\"]\n  \"1_price_in\" [cul_scope_id=1,name=price_in,cul_source_scope_id=1,reason=\"input definition\",inputs=price_in,label=\"1_price_in inputs: price_in\"]\n  \"1_revenue\" -> \"0_revenue\" [value=\"[object Object]\",label=\"explicit import\"]\n  \"1_price\" -> \"0_price\" [value=\"[object Object]\",label=\"explicit import\"]\n  \"0_price\" -> \"0_units\" [value=\"[object Object]\",label=\"call -\"]\n  \"0_units\" -> \"1_units\" [value=\"[object Object]\",label=\"implicit import\"]\n  \"1_units\" -> \"1_revenue\" [value=\"[object Object]\",label=\"call -\"]\n  \"1_price\" -> \"1_revenue\" [value=\"[object Object]\",label=\"call -\"]\n  \"1_units\" -> \"1_costs\" [value=\"[object Object]\",label=\"call -\"]\n  \"1_revenue\" -> \"1_profit\" [value=\"[object Object]\",label=\"call -\"]\n  \"1_costs\" -> \"1_profit\" [value=\"[object Object]\",label=\"call -\"]\n  \"1_units_in\" -> \"1_units_\" [value=\"[object Object]\",label=\"input +units_in\"]\n  \"1_price_in\" -> \"1_price\" [value=\"[object Object]\",label=\"input +price_in\"]\n}\n"
+  "dot": "digraph {\n  \"0_revenue\" [cul_scope_id=0,name=revenue,imported=revenue,cul_source_scope_id=1,reason=\"explicit import\",inputs=price_in,label=\"0_revenue inputs: price_in\"]\n  \"0_price\" [cul_scope_id=0,name=price,imported=price,cul_source_scope_id=1,reason=\"explicit import\",inputs=price_in,label=\"0_price inputs: price_in\"]\n  \"0_profit\" [cul_scope_id=0,name=profit,imported=profit,cul_source_scope_id=1,reason=\"explicit import\",inputs=price_in,label=\"0_profit inputs: price_in\"]\n  \"0_units\" [cul_scope_id=0,name=units,cul_source_scope_id=0,reason=definition,loc=\"[object Object]\",inputs=price_in,label=\"0_units inputs: price_in\"]\n  \"1_units\" [cul_scope_id=1,name=units,cul_source_scope_id=0,reason=\"implicit import\",inputs=price_in,label=\"1_units inputs: price_in\"]\n  \"1_revenue\" [cul_scope_id=1,name=revenue,cul_source_scope_id=1,reason=definition,loc=\"[object Object]\",inputs=price_in,label=\"1_revenue inputs: price_in\"]\n  \"1_costs\" [cul_scope_id=1,name=costs,cul_source_scope_id=1,reason=definition,loc=\"[object Object]\",inputs=price_in,label=\"1_costs inputs: price_in\"]\n  \"1_profit\" [cul_scope_id=1,name=profit,cul_source_scope_id=1,reason=definition,loc=\"[object Object]\",inputs=price_in,label=\"1_profit inputs: price_in\"]\n  \"1_units_\" [cul_scope_id=1,name=units_,cul_source_scope_id=1,reason=\"definition (renamed)\",loc=\"[object Object]\",inputs=units_in,label=\"1_units_ inputs: units_in\"]\n  \"1_units_in\" [cul_scope_id=1,name=units_in,cul_source_scope_id=1,reason=\"input definition\",inputs=units_in,label=\"1_units_in inputs: units_in\"]\n  \"1_price\" [cul_scope_id=1,name=price,cul_source_scope_id=1,reason=definition,loc=\"[object Object]\",inputs=price_in,label=\"1_price inputs: price_in\"]\n  \"1_price_in\" [cul_scope_id=1,name=price_in,cul_source_scope_id=1,reason=\"input definition\",inputs=price_in,label=\"1_price_in inputs: price_in\"]\n  \"1_revenue\" -> \"0_revenue\" [value=\"[object Object]\",label=\"explicit import\"]\n  \"1_price\" -> \"0_price\" [value=\"[object Object]\",label=\"explicit import\"]\n  \"1_profit\" -> \"0_profit\" [value=\"[object Object]\",label=\"explicit import\"]\n  \"0_price\" -> \"0_units\" [value=\"[object Object]\",label=\"call -\"]\n  \"0_units\" -> \"1_units\" [value=\"[object Object]\",label=\"implicit import\"]\n  \"1_units\" -> \"1_revenue\" [value=\"[object Object]\",label=\"call -\"]\n  \"1_price\" -> \"1_revenue\" [value=\"[object Object]\",label=\"call -\"]\n  \"1_units\" -> \"1_costs\" [value=\"[object Object]\",label=\"call -\"]\n  \"1_revenue\" -> \"1_profit\" [value=\"[object Object]\",label=\"call -\"]\n  \"1_costs\" -> \"1_profit\" [value=\"[object Object]\",label=\"call -\"]\n  \"1_units_in\" -> \"1_units_\" [value=\"[object Object]\",label=\"input +units_in\"]\n  \"1_price_in\" -> \"1_price\" [value=\"[object Object]\",label=\"input +price_in\"]\n}\n"
 }

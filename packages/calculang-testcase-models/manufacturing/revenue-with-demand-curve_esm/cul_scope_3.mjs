@@ -1,4 +1,4 @@
-import { profit } from "./cul_scope_2.mjs";import { costs } from "./cul_scope_2.mjs";import { units } from "./cul_scope_0.mjs";import { price } from "./cul_scope_0.mjs";import { revenue } from "./cul_scope_0.mjs";export const revenue_ = ({ price_in }) => {
+import { costs } from "./cul_scope_2.mjs";import { units } from "./cul_scope_0.mjs";import { profit } from "./cul_scope_0.mjs";import { price } from "./cul_scope_0.mjs";import { revenue } from "./cul_scope_0.mjs";export const revenue_ = ({ price_in }) => {
   return units({ price_in }) * price({ price_in });
 };
 

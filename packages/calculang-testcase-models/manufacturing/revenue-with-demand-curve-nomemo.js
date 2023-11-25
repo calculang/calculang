@@ -99,9 +99,9 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return revenue; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return revenue; });
 /* unused harmony export costs */
-/* unused harmony export profit */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return profit; });
 /* unused harmony export units_ */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return price; });
 /* harmony import */ var _revenue_with_demand_curve_nomemo_cul_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
@@ -128,9 +128,11 @@ const price = ({ price_in }) => price_in;
 __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "units", function() { return units; });
 /* harmony import */ var _base_cul_cul_scope_id_1_cul_parent_scope_id_0__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(0);
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "revenue", function() { return _base_cul_cul_scope_id_1_cul_parent_scope_id_0__WEBPACK_IMPORTED_MODULE_0__["b"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "revenue", function() { return _base_cul_cul_scope_id_1_cul_parent_scope_id_0__WEBPACK_IMPORTED_MODULE_0__["c"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "price", function() { return _base_cul_cul_scope_id_1_cul_parent_scope_id_0__WEBPACK_IMPORTED_MODULE_0__["a"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "profit", function() { return _base_cul_cul_scope_id_1_cul_parent_scope_id_0__WEBPACK_IMPORTED_MODULE_0__["b"]; });
 
 
 

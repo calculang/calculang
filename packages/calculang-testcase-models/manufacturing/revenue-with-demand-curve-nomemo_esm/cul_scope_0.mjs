@@ -1,5 +1,5 @@
-import { revenue, price } from "./cul_scope_1.mjs";
-export { revenue, price };
+import { revenue, price, profit } from "./cul_scope_1.mjs";
+export { revenue, price, profit };
 
 // demand-curve constraint:
 export const units = ({ price_in }) => 1000 - 200 * price({ price_in });

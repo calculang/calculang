@@ -107,6 +107,7 @@ export default ({ types: t }) => ({
     },
 
     ExportSpecifier(path, { opts, ...state }) {
+      debugger;
       var renamed = opts.cul_functions.has(
         `${opts.params.cul_scope_id}_${path.node.local.name}_` // isn't this limited?
       );
@@ -121,7 +122,9 @@ export default ({ types: t }) => ({
       var renamed = opts.cul_functions.get(
         `${opts.params.cul_scope_id}_${path.node.local.name}_` // isn't this limited? Affd rec?
       );
-      if (renamed) path.node.local.name += '_$'; // an _ reference should never be used. I could delete, but I do this instead. $ mitigates eslint fails in esm.
+      if (renamed) path.node.local.name += '_' // better or regressions?
+      // warped below ???
+      //if (renamed) path.node.local.name += '_$'; // an _ reference should never be used. I could delete, but I do this instead. $ mitigates eslint fails in esm.
 
       path.node.imported.name =
         opts.cul_functions.get(

@@ -272,6 +272,8 @@ export default ({ types: t }) => ({
           `${opts.cul_scope_id}_${d.local.name}`
         ); // this is false despite revenue now being an implicit import from EP
         if (rename) d.local.name += '_'; // only update the local name, imported name is altered if necessary by the logic where rename happens in Function
+        // BUT evidently this misses case where imported name should be altered because of Parent defns
+        // api output looks good.. issue in transform-loader?
         global_state.cul_functions.set(`${opts.cul_scope_id}_${d.local.name}`, {
           cul_scope_id: opts.cul_scope_id,
           name: d.local.name,

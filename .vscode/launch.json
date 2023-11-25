@@ -17,6 +17,16 @@
     {
       "type": "node",
       "request": "launch",
+      "name": "nomemo nums",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "program": "${workspaceFolder}/packages/calculang-js/bin/index.js",
+      "args": ["compile", "${workspaceFolder}/packages/calculang-testcase-models/modularity/nums/threeAgain.cul.js"]
+    },
+    {
+      "type": "node",
+      "request": "launch",
       "name": "memo",
       "skipFiles": [
         "<node_internals>/**"

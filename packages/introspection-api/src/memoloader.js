@@ -29,8 +29,10 @@ import global_state from './global_state.js';
 
 // problem: nomemo doesn't know about renames of all fns !
 
+var iteration = 0;
+
 export default async function loader(content, map, meta) {
-  debugger;
+  //debugger;
   this.cacheable(false);
   var temp = global_state;
   var json
@@ -79,8 +81,27 @@ export default async function loader(content, map, meta) {
     // this._module.rawRequest  <-------
 
 
-    debugger;
+    //debugger;
     var to_memo
+
+    // only getting here for cul_scope_id = 0,2
+
+    // not doing anything, trying iteration:
+    var memo_parent_scope_id, mapped_parent_scope_id;
+    if (this._compilation.options.entry == this._module.rawRequest) {
+      // entrypoint
+      mapped_parent_scope_id = 0;
+      iteration = 0 //needed for both passes
+    } else {
+      memo_parent_scope_id = +parseQuery(this._module.rawRequest.slice(this._module.rawRequest.indexOf('?'))).cul_parent_scope_id
+      //console.log(path.basename(this._module.rawRequest))
+      var resource_filename = this._module.rawRequest.slice(0, this._module.rawRequest.indexOf('?'))
+      mapped_parent_scope_id = child_introspection
+      debugger;
+
+    }
+
+
     if (1) {
       // BUG? units_ memoized in scope 2? JUST do not add to to_memo
       let cul_scope_id = this.resourceQuery == '' ? 0 : parseQuery(this.resourceQuery).cul_scope_id
@@ -88,7 +109,7 @@ export default async function loader(content, map, meta) {
         (d) =>
           d.reason != 'input definition' && // bring this in?
           d.reason.indexOf('renamed') == -1 &&
-          d.cul_scope_id == +global_state.memo_to_nomemo[cul_scope_id] && // referring to child introspection call
+          d.cul_scope_id == iteration++ /*+global_state.memo_to_nomemo[cul_scope_id]*/ && // referring to child introspection call
           d.name.charAt(d.name.length - 1) != '$' // don't memo the memo. Alt: don't create cul_function for it? <-- prob never matters
       );
       // debugger; // how come some results are scope 0 with _?

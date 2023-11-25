@@ -41,7 +41,7 @@ export default async function loader(content, map, meta) {
     json = JSON.parse(await fs.readFileSync(nomemo_introspection_loc))
   }
   // OFF ^
-    debugger;
+    //debugger;
 
   if (getOptions(this).memo == false) return content;
   //if (global_state.location.length == 1) debugger;
@@ -56,7 +56,7 @@ export default async function loader(content, map, meta) {
     // this is not the same thing:
     const child_introspection = json;
 
-    global_state.memo_to_nomemo = { "0": "0", "2": "1" };
+    global_state.memo_to_nomemo = { "0": 0, "2": 1 }; // TODO replace this static
 
     // how to map scope ids?
     // 0,1 nomemo
@@ -72,11 +72,13 @@ export default async function loader(content, map, meta) {
 
     debugger;
     var to_memo
-    if (0) {
-      to_memo = [...child_introspection.cul_functions.values()].filter(
+    if (1) {
+      // BUG? units_ memoized in scope 2? JUST do not add to to_memo
+      let cul_scope_id = this.resourceQuery == '' ? 0 : parseQuery(this.resourceQuery).cul_scope_id
+      to_memo = Object.values(child_introspection.cul_functions).filter(
         (d) =>
           d.reason != 'input definition' && // bring this in?
-          //d.cul_scope_id == +global_state.memo_to_nomemo[parseQuery(this.resourceQuery).cul_scope_id] && // referring to child introspection call
+          d.cul_scope_id == +global_state.memo_to_nomemo[cul_scope_id] && // referring to child introspection call
           d.name.charAt(d.name.length - 1) != '$' // don't memo the memo. Alt: don't create cul_function for it? <-- prob never matters
       );
       // debugger; // how come some results are scope 0 with _?

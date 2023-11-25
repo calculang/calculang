@@ -3,31 +3,7 @@ import { memoize } from 'underscore';
 //import memoize from 'lru-memoize';
 //import { isEqual } from 'underscore'; // TODO poor tree shaking support, or why is this impact so massive? Move to lodash/lodash-es?
 
-import { revenue_ as revenue$, price_ as price$, units_ as units$, costs_ as costs$, profit_ as profit$ } from "./cul_scope_3.mjs"; // there is already-culed stuff in here, why? imports to memo loader include cul_scope_id, what logic should it apply RE passing forward? eliminate? Probably!
-
-
-
-////////// start revenue memo-loader code //////////
-//const revenue$m = memoize(999999, isEqual)(revenue$);
-export const revenue$m = memoize(revenue$, JSON.stringify);
-export const revenue_ = (a) => {
-  return revenue$m(a);
-  // eslint-disable-next-line no-undef
-  revenue$({ price_in }); // never run, but here to "trick" calculang graph logic
-};
-////////// end revenue memo-loader code //////////
-
-
-
-////////// start price memo-loader code //////////
-//const price$m = memoize(999999, isEqual)(price$);
-export const price$m = memoize(price$, JSON.stringify);
-export const price_ = (a) => {
-  return price$m(a);
-  // eslint-disable-next-line no-undef
-  price$({ price_in }); // never run, but here to "trick" calculang graph logic
-};
-////////// end price memo-loader code //////////
+import { units_ as units$, revenue_ as revenue$, costs_ as costs$, profit_ as profit$, units__ as units_$, price_ as price$ } from "./cul_scope_3.mjs"; // there is already-culed stuff in here, why? imports to memo loader include cul_scope_id, what logic should it apply RE passing forward? eliminate? Probably!
 
 
 
@@ -40,6 +16,18 @@ export const units_ = (a) => {
   units$({ units_in }); // never run, but here to "trick" calculang graph logic
 };
 ////////// end units memo-loader code //////////
+
+
+
+////////// start revenue memo-loader code //////////
+//const revenue$m = memoize(999999, isEqual)(revenue$);
+export const revenue$m = memoize(revenue$, JSON.stringify);
+export const revenue_ = (a) => {
+  return revenue$m(a);
+  // eslint-disable-next-line no-undef
+  revenue$({ price_in }); // never run, but here to "trick" calculang graph logic
+};
+////////// end revenue memo-loader code //////////
 
 
 
@@ -64,3 +52,27 @@ export const profit = (a) => {
   profit$({ price_in }); // never run, but here to "trick" calculang graph logic
 };
 ////////// end profit memo-loader code //////////
+
+
+
+////////// start units_ memo-loader code //////////
+//const units_$m = memoize(999999, isEqual)(units_$);
+export const units_$m = memoize(units_$, JSON.stringify);
+export const units__ = (a) => {
+  return units_$m(a);
+  // eslint-disable-next-line no-undef
+  units_$({}); // never run, but here to "trick" calculang graph logic
+};
+////////// end units_ memo-loader code //////////
+
+
+
+////////// start price memo-loader code //////////
+//const price$m = memoize(999999, isEqual)(price$);
+export const price$m = memoize(price$, JSON.stringify);
+export const price_ = (a) => {
+  return price$m(a);
+  // eslint-disable-next-line no-undef
+  price$({ price_in }); // never run, but here to "trick" calculang graph logic
+};
+////////// end price memo-loader code //////////

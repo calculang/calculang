@@ -30,16 +30,17 @@ import global_state from './global_state.js';
 // problem: nomemo doesn't know about renames of all fns !
 
 export default async function loader(content, map, meta) {
+  debugger;
   this.cacheable(false);
   var temp = global_state;
   var json
   if (1) {
-    ///////// TODO derive this in a way which works for transformer and loader      /////////
-    ///////// and derive global_state.memo_to_nomemo                                /////////
+    ///////// TODO 
+    ///////// derive global_state.memo_to_nomemo                                /////////
     ///////// then test, REMEMBER that depends on -nomemo, so consider when to update main and how to integrate /////////
     ///////// IN THIS BRANCH memo is broken, but will be fixed with fixes for above /////////
     ///////// TESTS I changed test .cul.js => expect fails and should update snapshots, but obv won't with broken memo for other examples /////////
-    var loc = '/home/declan/MESSING/GitHub/calculang/packages/calculang-testcase-models/manufacturing/revenue-with-demand-curve.cul.js' // global_state.location[0].entrypoint // not available in transform loader, alt?
+    var loc = this._compilation.options.entry; //'/home/declan/MESSING/GitHub/calculang/packages/calculang-testcase-models/manufacturing/revenue-with-demand-curve.cul.js' // global_state.location[0].entrypoint // not available in transform loader, alt?
     var b = path.basename(loc).slice(0, -7)
     var nomemo_introspection_loc = path.dirname(loc) + path.sep + b + '-nomemo.introspection.json' // reading this file only going to work in specific circumstances - not in testcases, currently
     console.log('nomemo_introspection_loc', nomemo_introspection_loc);

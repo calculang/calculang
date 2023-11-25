@@ -47,7 +47,7 @@ export default async function loader(content, map, meta) {
     var loc = this._compilation.options.entry;//should be using loader-utils? //'/home/declan/MESSING/GitHub/calculang/packages/calculang-testcase-models/manufacturing/revenue-with-demand-curve.cul.js' // global_state.location[0].entrypoint // not available in transform loader, alt?
     var b = path.basename(loc).slice(0, -7)
     var nomemo_introspection_loc = path.dirname(loc) + path.sep + b + '-nomemo.introspection.json' // reading this file only going to work in specific circumstances - not in testcases, currently
-    console.log('nomemo_introspection_loc', nomemo_introspection_loc);
+    //console.log('nomemo_introspection_loc', nomemo_introspection_loc);
     json = JSON.parse(await fs.readFileSync(nomemo_introspection_loc))
   }
   // OFF ^

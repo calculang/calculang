@@ -8,7 +8,8 @@ test.each([
   'modularity/nums/two',
   'modularity/nums/three',
   'modularity/nums/twoAgain',
-  'modularity/nums/threeAgain'
+  'modularity/nums/threeAgain',
+  'modularity/join/join'
 
 ])('%s', async (d) => {
   const output = await introspection(

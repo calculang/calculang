@@ -136,4 +136,4 @@ Many ideas along different lines of interaction with models become clearer when 
 
 Code in this repository is free software licensed under the [GNU Affero General Public License Version 3](LICENSE).
 
-calculang is made with ❤️ and 🧉.
+calculang is made with ❤️ and 🧉

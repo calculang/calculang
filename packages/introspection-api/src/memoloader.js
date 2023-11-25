@@ -32,12 +32,15 @@ import global_state from './global_state.js';
 export default async function loader(content, map, meta) {
   this.cacheable(false);
   var temp = global_state;
-  var loc = '/home/declan/MESSING/GitHub/calculang/packages/calculang-testcase-models/manufacturing/revenue-with-demand-curve.cul.js' // global_state.location[0].entrypoint // not available in transform loader, alt?
-  var b = path.basename(loc).slice(0,-7)
-  var nomemo_introspection_loc = path.dirname(loc) + path.sep + b + '-nomemo.introspection.json' // reading this file only going to work in specific circumstances - not in testcases, currently
-  console.log('nomemo_introspection_loc', nomemo_introspection_loc);
-  const json = JSON.parse(await fs.readFileSync(nomemo_introspection_loc))
-  debugger;
+  if (0) {
+    var loc = '/home/declan/MESSING/GitHub/calculang/packages/calculang-testcase-models/manufacturing/revenue-with-demand-curve.cul.js' // global_state.location[0].entrypoint // not available in transform loader, alt?
+    var b = path.basename(loc).slice(0, -7)
+    var nomemo_introspection_loc = path.dirname(loc) + path.sep + b + '-nomemo.introspection.json' // reading this file only going to work in specific circumstances - not in testcases, currently
+    console.log('nomemo_introspection_loc', nomemo_introspection_loc);
+    const json = JSON.parse(await fs.readFileSync(nomemo_introspection_loc))
+  }
+  // OFF ^
+    debugger;
 
   if (getOptions(this).memo == false) return content;
   //if (global_state.location.length == 1) debugger;
@@ -46,11 +49,11 @@ export default async function loader(content, map, meta) {
     return content;
   else {
     //debugger;
-    //const child_introspection = await introspection(this.resourcePath, {
-    //  memo: false,
-    //})
+    const child_introspection = await introspection(this.resourcePath, {
+      memo: false,
+    })
     // this is not the same thing:
-    const child_introspection = json;
+    //const child_introspection = json;
 
     global_state.memo_to_nomemo = { "0": "0", "2": "1" };
 

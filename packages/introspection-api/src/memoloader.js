@@ -70,8 +70,9 @@ export default async function loader(content, map, meta) {
 
 
     debugger; 
-    if (0) {
-      var to_memo = [...child_introspection.cul_functions.values()].filter(
+    var to_memo
+    if (1) {
+      to_memo = [...child_introspection.cul_functions.values()].filter(
         (d) =>
           d.reason != 'input definition' && // bring this in?
           //d.cul_scope_id == +global_state.memo_to_nomemo[parseQuery(this.resourceQuery).cul_scope_id] && // referring to child introspection call
@@ -80,7 +81,7 @@ export default async function loader(content, map, meta) {
       // debugger; // how come some results are scope 0 with _?
       // nothing has cul_scope_id=0 in another case, hence problem
     }
-    var to_memo = [{ name: "revenue" }, { name: "price" }, { name: "units" }]
+    //var to_memo = [{ name: "revenue" }, { name: "price" }, { name: "units" }]
     
     const generated = to_memo
       .map(

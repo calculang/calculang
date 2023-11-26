@@ -73,28 +73,35 @@ program
 
     // use fs.fileCopy to copy -nomemo
     // call compiler on that entrypoint With memo option turned off
-    var nomemo = path.basename(entrypoint, '.cul.js') + '-nomemo.cul.js'
-    fs.copyFile(entrypoint, nomemo,fs.constants.COPYFILE_FICLONE, c => {
+    var nomemo = path.dirname(entrypoint) +
+                  path.sep + path.basename(entrypoint, '.cul.js') + '-nomemo.cul.js'
+    await fs.copyFileSync(entrypoint, nomemo, fs.constants.COPYFILE_FICLONE)
+  
+      {
         // done
 
         // then call regular compiler
         // vs. just call & save introspection-api
-        introspection(nomemo, options /** TODO make this nomemo */)
+        await introspection(nomemo, { memo:false} /** TODO make this nomemo */)
           .then((d) => {
-            fs.writeFileSync(path.basename(entrypoint, '.cul.js') + '-nomemo.introspection.json', (stringify_introspection_info(d)));
+            fs.writeFileSync(path.dirname(entrypoint) +
+            path.sep + path.basename(entrypoint, '.cul.js') + '-nomemo.introspection.json', (stringify_introspection_info(d)));
             //console.log(process.cwd());
             //console.log('options were: ' + JSON.stringify(options));
           })
           .catch((e) => {
             console.log(e);
           });
-      })
+      }
 
     // regressions expected???
     // compile... cp (overwrite), compile...
     // expect -nomemo-nomemo but otherwise, it's solid
     // memo option not used for -nomemo. So result the same, if as defined above.
 
+
+    // this runs BEFORE the stuff above
+    // so compile happens immediate, but should be AFTER ABOVE
     compiler(entrypoint, options)
       .then((d) => {
         fs.writeFileSync(

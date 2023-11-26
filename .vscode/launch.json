@@ -57,6 +57,16 @@
     {
       "type": "node",
       "request": "launch",
+      "name": "one",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "program": "${workspaceFolder}/packages/calculang-js/bin/index.js",
+      "args": ["compile", "--memo", "${workspaceFolder}/packages/calculang-testcase-models/modularity/nums/one.cul.js"]
+    },
+    {
+      "type": "node",
+      "request": "launch",
       "name": "memo write introspection",
       "skipFiles": [
         "<node_internals>/**"

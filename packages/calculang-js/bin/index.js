@@ -25,7 +25,7 @@ const compiler = require('@calculang/calculang-js').default;
 
 const stringify_introspection_info = (d) => {
   // https://gist.github.com/lukehorvat/133e2293ba6ae96a35ba
-  let cul_functions = Array.from(d.cul_functions).reduce(
+  let cul_functions = Array.from(d.cul_functions).reduce( // TODO sort here!!
     (obj, [key, value]) => Object.assign(obj, { [key]: value }), // Be careful! Maps can have non-String keys; object literals can't.
     {}
   );
@@ -67,16 +67,28 @@ program
   .command('compile <entrypoint.cul.js>')
   .option('--memo', 'memoization')
   .description('compile entrypoint.cul.js to entrypoint.js')
-  .action((entrypoint, options) => {
+  .action(async (entrypoint, options) => {
 
     // TODO issue #123
 
     // use fs.fileCopy to copy -nomemo
     // call compiler on that entrypoint With memo option turned off
-    fs.copyFileSync(entrypoint, path.basename(entrypoint, '.cul.js') + '-nomemo.cul.js');
-    // done
+    var nomemo = path.basename(entrypoint, '.cul.js') + '-nomemo.cul.js'
+    fs.copyFile(entrypoint, nomemo,fs.constants.COPYFILE_FICLONE, c => {
+        // done
 
-    // then call regular compiler
+        // then call regular compiler
+        // vs. just call & save introspection-api
+        introspection(nomemo, options /** TODO make this nomemo */)
+          .then((d) => {
+            fs.writeFileSync(path.basename(entrypoint, '.cul.js') + '-nomemo.introspection.json', (stringify_introspection_info(d)));
+            //console.log(process.cwd());
+            //console.log('options were: ' + JSON.stringify(options));
+          })
+          .catch((e) => {
+            console.log(e);
+          });
+      })
 
     // regressions expected???
     // compile... cp (overwrite), compile...

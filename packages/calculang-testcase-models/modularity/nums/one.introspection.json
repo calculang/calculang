@@ -1,0 +1,32 @@
+{
+  "cul_functions": {
+    "0_num": {
+      "cul_scope_id": 0,
+      "name": "num",
+      "cul_source_scope_id": 0,
+      "reason": "definition",
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 19,
+          "index": 19
+        },
+        "end": {
+          "line": 1,
+          "column": 26,
+          "index": 26
+        }
+      },
+      "inputs": []
+    }
+  },
+  "cul_links": [],
+  "cul_scope_ids_to_resource": {
+    "0": "./one.cul.js"
+  },
+  "import_sources_to_resource": {},
+  "cul_input_map": {
+    "0_num": []
+  },
+  "dot": "digraph {\n  \"0_num\" [cul_scope_id=0,name=num,cul_source_scope_id=0,reason=definition,loc=\"[object Object]\",inputs=\"\",label=\"0_num inputs: \"]\n}\n"
+}

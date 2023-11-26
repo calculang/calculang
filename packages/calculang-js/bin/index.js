@@ -73,6 +73,8 @@ program
 
     // use fs.fileCopy to copy -nomemo
     // call compiler on that entrypoint With memo option turned off
+    fs.copyFileSync(entrypoint, path.basename(entrypoint, '.cul.js') + '-nomemo.cul.js');
+    // done
 
     // then call regular compiler
 

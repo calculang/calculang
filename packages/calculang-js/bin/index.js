@@ -68,6 +68,19 @@ program
   .option('--memo', 'memoization (only designed for non-modular models now)')
   .description('compile entrypoint.cul.js to entrypoint.js')
   .action((entrypoint, options) => {
+
+    // TODO issue #123
+
+    // use fs.fileCopy to copy -nomemo
+    // call compiler on that entrypoint
+
+    // then call regular compiler
+
+    // regressions expected???
+    // compile... cp (overwrite), compile...
+    // expect -nomemo-nomemo but otherwise, it's solid
+    // memo option not used for -nomemo. So result the same, if as defined above.
+
     compiler(entrypoint, options)
       .then((d) => {
         fs.writeFileSync(

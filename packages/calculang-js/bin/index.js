@@ -72,7 +72,7 @@ program
     // TODO issue #123
 
     // use fs.fileCopy to copy -nomemo
-    // call compiler on that entrypoint
+    // call compiler on that entrypoint With memo option turned off
 
     // then call regular compiler
 

@@ -1,1 +1,2 @@
-export const num = () => 1;
+import { num } from './two.cul.js';
+export { num };

@@ -1,2 +1,3 @@
-import { num } from "./cul_scope_0.mjs";import { num_ } from "./cul_scope_2.mjs";
-export { num_ };
+import { num } from "./cul_scope_0.mjs";import { num_ as num$ } from "./cul_scope_2.mjs";
+
+export const num_ = ({}) => 1 + num$({});

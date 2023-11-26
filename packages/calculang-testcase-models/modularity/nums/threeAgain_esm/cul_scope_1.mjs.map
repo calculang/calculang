@@ -1,1 +1,1 @@
-{"version":3,"names":["num"],"sources":["twoAgain.cul.js"],"sourcesContent":["import { num } from './two.cul.js';\nexport { num };"],"mappings":"0CAAA,SAASA,IAAG,QAAQ,mDAAc;AAClC,SAASA,IAAG"}
+{"version":3,"names":["num_","num$","num"],"sources":["threeAgain.cul.js"],"sourcesContent":["import { num_ as num$ } from './twoAgain.cul';\n\nexport const num = () => 1 + num$();"],"mappings":"0CAAA,SAASA,IAAI,IAAIC,IAAI,QAAQ,qDAAgB;;AAE7C,OAAO,MAAMC,IAAG,GAAGA,CAAA,OAAM,CAAC,GAAGD,IAAI,IAAE"}

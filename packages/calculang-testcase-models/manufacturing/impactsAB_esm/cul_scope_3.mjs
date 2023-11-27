@@ -1,14 +1,66 @@
-import { price } from "./cul_scope_1.mjs";import { units } from "./cul_scope_1.mjs";import { revenue_impact } from "./cul_scope_0.mjs";import { B_revenue } from "./cul_scope_2.mjs";export const revenue = ({}) => {
-  return units({}) * price({});
+import { revenue_impact } from "./cul_scope_0.mjs";import { B_revenue } from "./cul_scope_0.mjs";import { A_revenue } from "./cul_scope_0.mjs";
+import { memoize } from 'underscore';
+//import memoize from 'lru-memoize';
+//import { isEqual } from 'underscore'; // TODO poor tree shaking support, or why is this impact so massive? Move to lodash/lodash-es?
+
+import { B_revenue_ as B_revenue$, revenue_impact_ as revenue_impact$, revenue_ as revenue$, units_ as units$, price_ as price$ } from "./cul_scope_7.mjs"; // there is already-culed stuff in here, why? imports to memo loader include cul_scope_id, what logic should it apply RE passing forward? eliminate? Probably!
+
+
+
+////////// start B_revenue memo-loader code //////////
+//const B_revenue$m = memoize(999999, isEqual)(B_revenue$);
+export const B_revenue$m = memoize(B_revenue$, JSON.stringify);
+export const B_revenue_ = (a) => {
+  return B_revenue$m(a);
+  // eslint-disable-next-line no-undef
+  B_revenue$({}); // never run, but here to "trick" calculang graph logic
 };
+////////// end B_revenue memo-loader code //////////
 
-// variable costs only, OK for testing
-export const costs = ({}) => 100 * units({});
 
-export const profit = ({}) => revenue({}) - costs({});
 
-// inputs
-export const units_ = ({ units_in }) => units_in;
-export const price_ = ({ price_in }) => price_in;
+////////// start revenue_impact memo-loader code //////////
+//const revenue_impact$m = memoize(999999, isEqual)(revenue_impact$);
+export const revenue_impact$m = memoize(revenue_impact$, JSON.stringify);
+export const revenue_impact_ = (a) => {
+  return revenue_impact$m(a);
+  // eslint-disable-next-line no-undef
+  revenue_impact$({}); // never run, but here to "trick" calculang graph logic
+};
+////////// end revenue_impact memo-loader code //////////
 
-// ?? what if an explicit import in base referred back to A or B?
+
+
+////////// start revenue memo-loader code //////////
+//const revenue$m = memoize(999999, isEqual)(revenue$);
+export const revenue$m = memoize(revenue$, JSON.stringify);
+export const revenue = (a) => {
+  return revenue$m(a);
+  // eslint-disable-next-line no-undef
+  revenue$({ step_in, units_in, price_in, price_multiplier_in }); // never run, but here to "trick" calculang graph logic
+};
+////////// end revenue memo-loader code //////////
+
+
+
+////////// start units memo-loader code //////////
+//const units$m = memoize(999999, isEqual)(units$);
+export const units$m = memoize(units$, JSON.stringify);
+export const units = (a) => {
+  return units$m(a);
+  // eslint-disable-next-line no-undef
+  units$({ step_in, units_in, price_in, price_multiplier_in }); // never run, but here to "trick" calculang graph logic
+};
+////////// end units memo-loader code //////////
+
+
+
+////////// start price memo-loader code //////////
+//const price$m = memoize(999999, isEqual)(price$);
+export const price$m = memoize(price$, JSON.stringify);
+export const price = (a) => {
+  return price$m(a);
+  // eslint-disable-next-line no-undef
+  price$({ price_in, price_multiplier_in }); // never run, but here to "trick" calculang graph logic
+};
+////////// end price memo-loader code //////////

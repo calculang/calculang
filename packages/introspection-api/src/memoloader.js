@@ -91,7 +91,8 @@ export default async function loader(content, map, meta) {
               // NO use::
               // this._module.rawRequest  <-------
 
-              // not doing anything, trying iteration:
+    // not doing anything, trying iteration:
+    // iteration assumptions are bad, do this!
               /*var memo_parent_scope_id, mapped_parent_scope_id;
               if (this._compilation.options.entry == this._module.rawRequest) {
                 // entrypoint

@@ -62,6 +62,8 @@ export default async (entrypoint, options = {}) => {
           .replace(/\\/g, '/')}`; // do I need to add info.loaders?
       },
     },
+    parallelism: 1,
+    mode: 'none',
     optimization: {
       minimize: false,
       concatenateModules: false, // Do this temporarily because concatenated modules leaks absolute paths - TODO fix!

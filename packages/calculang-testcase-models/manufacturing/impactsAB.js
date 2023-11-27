@@ -91,7 +91,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 3);
+/******/ 	return __webpack_require__(__webpack_require__.s = 0);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -99,14 +99,63 @@ return /******/ (function(modules) { // webpackBootstrap
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return units; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return price; });
-/* unused harmony export price_multiplier */
-/* unused harmony export step */
-/* harmony import */ var _impactsAB_cul_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(3);
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "revenue_impact", function() { return revenue_impact; });
+/* harmony import */ var _revenue_fixed_inputs_cul_js_cul_scope_id_1_cul_parent_scope_id_0__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "A_revenue", function() { return _revenue_fixed_inputs_cul_js_cul_scope_id_1_cul_parent_scope_id_0__WEBPACK_IMPORTED_MODULE_0__["revenue"]; });
+
+/* harmony import */ var _price_change_reconciliation_cul_js_cul_scope_id_2_cul_parent_scope_id_0__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(2);
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "B_revenue", function() { return _price_change_reconciliation_cul_js_cul_scope_id_2_cul_parent_scope_id_0__WEBPACK_IMPORTED_MODULE_1__["revenue"]; });
+
+ // model A
+ // model B // sometimes B goes through cul loader before A!
+
+ // should fail without this, but doesn't? : => internally everything effectively exported by webpack (maybe just b/c module concatenation plugin)
+
+const revenue_impact = ({ step_in, units_in, price_in, price_multiplier_in }) => Object(_revenue_fixed_inputs_cul_js_cul_scope_id_1_cul_parent_scope_id_0__WEBPACK_IMPORTED_MODULE_0__["revenue"])({}) - Object(_price_change_reconciliation_cul_js_cul_scope_id_2_cul_parent_scope_id_0__WEBPACK_IMPORTED_MODULE_1__["revenue"])({ step_in, units_in, price_in, price_multiplier_in }); // todo units, price, or maybe generate via impacts loader
+
+// because concatenation module doesn't use the 'as' part, it does some of its own renaming instead
+
+/***/ }),
+/* 1 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "units", function() { return units; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "price", function() { return price; });
+/* harmony import */ var _impactsAB_cul_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(0);
+/* harmony import */ var _price_change_reconciliation_cul_js_cul_scope_id_2_cul_parent_scope_id_0__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(2);
+/* harmony import */ var _base_cul_cul_scope_id_3_cul_parent_scope_id_1__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(4);
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "revenue", function() { return _base_cul_cul_scope_id_3_cul_parent_scope_id_1__WEBPACK_IMPORTED_MODULE_2__["revenue"]; });
+
+
+
+
+const units = ({}) => 100;
+const price = ({}) => 500;
+
+// this fixes (or constrains) the 2 inputs in base, so that this model is independent of inputs
+// e.g. revenue() and profit() can be called without inputs and the values specified above are used
+
+/***/ }),
+/* 2 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "units", function() { return units; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "price", function() { return price; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "price_multiplier", function() { return price_multiplier; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "step", function() { return step; });
+/* harmony import */ var _impactsAB_cul_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(0);
 /* harmony import */ var _revenue_fixed_inputs_cul_js_cul_scope_id_1_cul_parent_scope_id_0__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(1);
-/* harmony import */ var _base_cul_cul_scope_id_4_cul_parent_scope_id_2__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(2);
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "b", function() { return _base_cul_cul_scope_id_4_cul_parent_scope_id_2__WEBPACK_IMPORTED_MODULE_2__["b"]; });
+/* harmony import */ var _base_cul_cul_scope_id_4_cul_parent_scope_id_2__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(3);
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "revenue", function() { return _base_cul_cul_scope_id_4_cul_parent_scope_id_2__WEBPACK_IMPORTED_MODULE_2__["revenue"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "units_1", function() { return _base_cul_cul_scope_id_4_cul_parent_scope_id_2__WEBPACK_IMPORTED_MODULE_2__["units_"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "price_1", function() { return _base_cul_cul_scope_id_4_cul_parent_scope_id_2__WEBPACK_IMPORTED_MODULE_2__["price_"]; });
 
  // this model takes inputs base price and units, and a price_multiplier.
 // it derives a proposed price by applying the multiplier and derives consequent units, constrained to the demand curve below.
@@ -129,53 +178,33 @@ return /******/ (function(modules) { // webpackBootstrap
 // export { all };
 
 const units = ({ step_in, units_in, price_in, price_multiplier_in }) =>
-step({ step_in }) >= 1 ? Object(_base_cul_cul_scope_id_4_cul_parent_scope_id_2__WEBPACK_IMPORTED_MODULE_2__[/* units_ */ "c"])({ units_in }) + (price({ price_in, price_multiplier_in }) - Object(_base_cul_cul_scope_id_4_cul_parent_scope_id_2__WEBPACK_IMPORTED_MODULE_2__[/* price_ */ "a"])({ price_in })) * -0.005 : Object(_base_cul_cul_scope_id_4_cul_parent_scope_id_2__WEBPACK_IMPORTED_MODULE_2__[/* units_ */ "c"])({ units_in });
-const price = ({ price_in, price_multiplier_in }) => Object(_base_cul_cul_scope_id_4_cul_parent_scope_id_2__WEBPACK_IMPORTED_MODULE_2__[/* price_ */ "a"])({ price_in }) * price_multiplier({ price_multiplier_in });
+step({ step_in }) >= 1 ? Object(_base_cul_cul_scope_id_4_cul_parent_scope_id_2__WEBPACK_IMPORTED_MODULE_2__["units_"])({ units_in }) + (price({ price_in, price_multiplier_in }) - Object(_base_cul_cul_scope_id_4_cul_parent_scope_id_2__WEBPACK_IMPORTED_MODULE_2__["price_"])({ price_in })) * -0.005 : Object(_base_cul_cul_scope_id_4_cul_parent_scope_id_2__WEBPACK_IMPORTED_MODULE_2__["units_"])({ units_in });
+const price = ({ price_in, price_multiplier_in }) => Object(_base_cul_cul_scope_id_4_cul_parent_scope_id_2__WEBPACK_IMPORTED_MODULE_2__["price_"])({ price_in }) * price_multiplier({ price_multiplier_in });
 
 // new inputs
 const price_multiplier = ({ price_multiplier_in }) => price_multiplier_in;
 const step = ({ step_in }) => step_in;
 
 /***/ }),
-/* 1 */
+/* 3 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return units; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return price; });
-/* harmony import */ var _impactsAB_cul_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(3);
-/* harmony import */ var _price_change_reconciliation_cul_js_cul_scope_id_2_cul_parent_scope_id_0__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(0);
-/* harmony import */ var _base_cul_cul_scope_id_3_cul_parent_scope_id_1__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(4);
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "b", function() { return _base_cul_cul_scope_id_3_cul_parent_scope_id_1__WEBPACK_IMPORTED_MODULE_2__["a"]; });
-
-
-
-
-const units = ({}) => 100;
-const price = ({}) => 500;
-
-// this fixes (or constrains) the 2 inputs in base, so that this model is independent of inputs
-// e.g. revenue() and profit() can be called without inputs and the values specified above are used
-
-/***/ }),
-/* 2 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return revenue; });
-/* unused harmony export costs */
-/* unused harmony export profit */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return units_; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return price_; });
-/* harmony import */ var _price_change_reconciliation_cul_js_cul_scope_id_2_cul_parent_scope_id_0__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(0);
-/* harmony import */ var _impactsAB_cul_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(3);
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "revenue", function() { return revenue; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "costs", function() { return costs; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "profit", function() { return profit; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "units_", function() { return units_; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "price_", function() { return price_; });
+/* harmony import */ var _price_change_reconciliation_cul_js_cul_scope_id_2_cul_parent_scope_id_0__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
+/* harmony import */ var _impactsAB_cul_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(0);
 /* harmony import */ var _revenue_fixed_inputs_cul_js_cul_scope_id_1_cul_parent_scope_id_0__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(1);
 const revenue = ({ step_in, units_in, price_in, price_multiplier_in }) => {
-  return Object(_price_change_reconciliation_cul_js_cul_scope_id_2_cul_parent_scope_id_0__WEBPACK_IMPORTED_MODULE_0__[/* units */ "c"])({ step_in, units_in, price_in, price_multiplier_in }) * Object(_price_change_reconciliation_cul_js_cul_scope_id_2_cul_parent_scope_id_0__WEBPACK_IMPORTED_MODULE_0__[/* price */ "a"])({ price_in, price_multiplier_in });
+  return Object(_price_change_reconciliation_cul_js_cul_scope_id_2_cul_parent_scope_id_0__WEBPACK_IMPORTED_MODULE_0__["units"])({ step_in, units_in, price_in, price_multiplier_in }) * Object(_price_change_reconciliation_cul_js_cul_scope_id_2_cul_parent_scope_id_0__WEBPACK_IMPORTED_MODULE_0__["price"])({ price_in, price_multiplier_in });
 };
 
 // variable costs only, OK for testing
-const costs = ({ step_in, units_in, price_in, price_multiplier_in }) => 100 * Object(_price_change_reconciliation_cul_js_cul_scope_id_2_cul_parent_scope_id_0__WEBPACK_IMPORTED_MODULE_0__[/* units */ "c"])({ step_in, units_in, price_in, price_multiplier_in });
+const costs = ({ step_in, units_in, price_in, price_multiplier_in }) => 100 * Object(_price_change_reconciliation_cul_js_cul_scope_id_2_cul_parent_scope_id_0__WEBPACK_IMPORTED_MODULE_0__["units"])({ step_in, units_in, price_in, price_multiplier_in });
 
 const profit = ({ step_in, units_in, price_in, price_multiplier_in }) => revenue({ step_in, units_in, price_in, price_multiplier_in }) - costs({ step_in, units_in, price_in, price_multiplier_in });
 
@@ -186,46 +215,25 @@ const price_ = ({ price_in }) => price_in;
 // ?? what if an explicit import in base referred back to A or B?
 
 /***/ }),
-/* 3 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "revenue_impact", function() { return revenue_impact; });
-/* harmony import */ var _revenue_fixed_inputs_cul_js_cul_scope_id_1_cul_parent_scope_id_0__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "A_revenue", function() { return _revenue_fixed_inputs_cul_js_cul_scope_id_1_cul_parent_scope_id_0__WEBPACK_IMPORTED_MODULE_0__["b"]; });
-
-/* harmony import */ var _price_change_reconciliation_cul_js_cul_scope_id_2_cul_parent_scope_id_0__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(0);
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "B_revenue", function() { return _price_change_reconciliation_cul_js_cul_scope_id_2_cul_parent_scope_id_0__WEBPACK_IMPORTED_MODULE_1__["b"]; });
-
- // model A
- // model B // sometimes B goes through cul loader before A!
-
- // should fail without this, but doesn't? : => internally everything effectively exported by webpack (maybe just b/c module concatenation plugin)
-
-const revenue_impact = ({ step_in, units_in, price_in, price_multiplier_in }) => Object(_revenue_fixed_inputs_cul_js_cul_scope_id_1_cul_parent_scope_id_0__WEBPACK_IMPORTED_MODULE_0__[/* revenue */ "b"])({}) - Object(_price_change_reconciliation_cul_js_cul_scope_id_2_cul_parent_scope_id_0__WEBPACK_IMPORTED_MODULE_1__[/* revenue */ "b"])({ step_in, units_in, price_in, price_multiplier_in }); // todo units, price, or maybe generate via impacts loader
-
-// because concatenation module doesn't use the 'as' part, it does some of its own renaming instead
-
-/***/ }),
 /* 4 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return revenue; });
-/* unused harmony export costs */
-/* unused harmony export profit */
-/* unused harmony export units_ */
-/* unused harmony export price_ */
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "revenue", function() { return revenue; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "costs", function() { return costs; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "profit", function() { return profit; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "units_", function() { return units_; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "price_", function() { return price_; });
 /* harmony import */ var _revenue_fixed_inputs_cul_js_cul_scope_id_1_cul_parent_scope_id_0__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
-/* harmony import */ var _impactsAB_cul_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(3);
-/* harmony import */ var _price_change_reconciliation_cul_js_cul_scope_id_2_cul_parent_scope_id_0__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(0);
+/* harmony import */ var _impactsAB_cul_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(0);
+/* harmony import */ var _price_change_reconciliation_cul_js_cul_scope_id_2_cul_parent_scope_id_0__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(2);
 const revenue = ({}) => {
-  return Object(_revenue_fixed_inputs_cul_js_cul_scope_id_1_cul_parent_scope_id_0__WEBPACK_IMPORTED_MODULE_0__[/* units */ "c"])({}) * Object(_revenue_fixed_inputs_cul_js_cul_scope_id_1_cul_parent_scope_id_0__WEBPACK_IMPORTED_MODULE_0__[/* price */ "a"])({});
+  return Object(_revenue_fixed_inputs_cul_js_cul_scope_id_1_cul_parent_scope_id_0__WEBPACK_IMPORTED_MODULE_0__["units"])({}) * Object(_revenue_fixed_inputs_cul_js_cul_scope_id_1_cul_parent_scope_id_0__WEBPACK_IMPORTED_MODULE_0__["price"])({});
 };
 
 // variable costs only, OK for testing
-const costs = ({}) => 100 * Object(_revenue_fixed_inputs_cul_js_cul_scope_id_1_cul_parent_scope_id_0__WEBPACK_IMPORTED_MODULE_0__[/* units */ "c"])({});
+const costs = ({}) => 100 * Object(_revenue_fixed_inputs_cul_js_cul_scope_id_1_cul_parent_scope_id_0__WEBPACK_IMPORTED_MODULE_0__["units"])({});
 
 const profit = ({}) => revenue({}) - costs({});
 

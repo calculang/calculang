@@ -34,6 +34,9 @@ var iteration = 0;
 export default async function loader(content, map, meta) {
   //debugger;
   this.cacheable(false);
+
+
+  
   var temp = global_state;
   var json
   if (1) {
@@ -94,6 +97,15 @@ export default async function loader(content, map, meta) {
               // NO use::
               // this._module.rawRequest  <-------
 
+    
+            if (this.rootContext == "/home/declan/MESSING/GitHub/calculang/packages/introspection-api/dist") // replace with options stage:introspection
+              global_state.memo_cul_scope_id_to_nomemo = { '0': 0, '2': 1 }
+          
+            
+            
+              let cul_scope_id = this.resourceQuery == '' ? 0 : parseQuery(this.resourceQuery).cul_scope_id
+
+
     // not doing anything, trying iteration:
     // iteration assumptions are bad, do this!
               var memo_parent_scope_id, mapped_parent_scope_id;
@@ -105,8 +117,16 @@ export default async function loader(content, map, meta) {
                 memo_parent_scope_id = +parseQuery(this._module.rawRequest.slice(this._module.rawRequest.indexOf('?'))).cul_parent_scope_id
                 //console.log(path.basename(this._module.rawRequest))
                 var resource_filename = this._module.rawRequest.slice(0, this._module.rawRequest.indexOf('?'))
-                mapped_parent_scope_id = child_introspection
-                debugger;
+                debugger
+                // find same resource and map of parent == parent, pretty complete?
+                mapped_parent_scope_id = Object.entries(child_introspection.cul_scope_ids_to_resource).filter(d => d[1].indexOf(resource_filename) != -1 &&
+                  
+                  
+                  +parseQuery(d[1].slice(d[1].indexOf('?'))).cul_parent_scope_id == global_state.memo_cul_scope_id_to_nomemo[memo_parent_scope_id]);
+                
+                  global_state.memo_cul_scope_id_to_nomemo[cul_scope_id] = +mapped_parent_scope_id[0][0]
+
+                // cul_scope_id 2 run first?
 
               }
     
@@ -119,7 +139,6 @@ export default async function loader(content, map, meta) {
 
     if (1) {
       // BUG? units_ memoized in scope 2? JUST do not add to to_memo
-      let cul_scope_id = this.resourceQuery == '' ? 0 : parseQuery(this.resourceQuery).cul_scope_id
       to_memo = Object.values(child_introspection.cul_functions).filter(
         (d) =>
           d.reason != 'input definition' && // bring this in?
@@ -133,6 +152,7 @@ export default async function loader(content, map, meta) {
       to_memo = [{ name: "revenue" }, { name: "price" }, { name: "units" }]
     }
     
+    debugger
     iteration++;
     
     const generated = to_memo

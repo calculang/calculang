@@ -1,69 +1,27 @@
+// this model takes inputs base price and units, and a price_multiplier.
+// it derives a proposed price by applying the multiplier and derives consequent units, constrained to the demand curve below.
 
-    import { memoize } from 'underscore';
-    //import memoize from 'lru-memoize';
-    //import { isEqual } from 'underscore'; // TODO poor tree shaking support, or why is this impact so massive? Move to lodash/lodash-es?
-    
-    import { B_revenue_ as B_revenue$, revenue_impact_ as revenue_impact$, revenue_ as revenue$, units_ as units$, price_ as price$ } from './revenue-fixed-inputs.cul.js?&+memoed'; // there is already-culed stuff in here, why? imports to memo loader include cul_scope_id, what logic should it apply RE passing forward? eliminate? Probably!
-    
-    
+// via an additional input step_in it provides a mini reconciliation (if you can call it that) feature, moving units from the amount reflecting the update to the demand curve (when step_in is 0)
+// back to the base unit value (when step_in is 1) i.e. giving the results without the demand curve impact.
 
-////////// start B_revenue memo-loader code //////////
-//const B_revenue$m = memoize(999999, isEqual)(B_revenue$);
-export const B_revenue$m = memoize(B_revenue$, JSON.stringify);
-export const B_revenue = (a) => {
-  return B_revenue$m(a);
-  // eslint-disable-next-line no-undef
-  B_revenue$(); // never run, but here to "trick" calculang graph logic
-};
-////////// end B_revenue memo-loader code //////////
+// both revenue and units are impacted by the step input (and profit, and any other units-dependent functions throughout the complete model: this works no matter how complicated the base model)
 
+// 'mini' is because price is already updated throughout the steps - step is really just acting like a switch here.
+// A real reconciliation should move through all the inputs, and should be structured more logically (as in a model-of- a more general model, separated), but this is just for testing
 
+// this tests some key language features of calculang and demos their technical motivations
 
-////////// start revenue_impact memo-loader code //////////
-//const revenue_impact$m = memoize(999999, isEqual)(revenue_impact$);
-export const revenue_impact$m = memoize(revenue_impact$, JSON.stringify);
-export const revenue_impact = (a) => {
-  return revenue_impact$m(a);
-  // eslint-disable-next-line no-undef
-  revenue_impact$(); // never run, but here to "trick" calculang graph logic
-};
-////////// end revenue_impact memo-loader code //////////
+import { revenue, units_ as units_1, price_ as price_1 } from './base.cul'; // don't pollute the _ modifier
+export { revenue, units_1, price_1 };
+//export { revenue, units_, price_ };
 
+// import { all } from './base.cul.js'; TODO use this in place of above when I fix issue #13
+// export { all };
 
+export const units = () =>
+  step() >= 1 ? units_1() + (price() - price_1()) * -0.005 : units_1();
+export const price = () => price_1() * price_multiplier();
 
-////////// start revenue memo-loader code //////////
-//const revenue$m = memoize(999999, isEqual)(revenue$);
-export const revenue$m = memoize(revenue$, JSON.stringify);
-export const revenue = (a) => {
-  return revenue$m(a);
-  // eslint-disable-next-line no-undef
-  revenue$(); // never run, but here to "trick" calculang graph logic
-};
-////////// end revenue memo-loader code //////////
-
-
-
-////////// start units memo-loader code //////////
-//const units$m = memoize(999999, isEqual)(units$);
-export const units$m = memoize(units$, JSON.stringify);
-export const units = (a) => {
-  return units$m(a);
-  // eslint-disable-next-line no-undef
-  units$(); // never run, but here to "trick" calculang graph logic
-};
-////////// end units memo-loader code //////////
-
-
-
-////////// start price memo-loader code //////////
-//const price$m = memoize(999999, isEqual)(price$);
-export const price$m = memoize(price$, JSON.stringify);
-export const price = (a) => {
-  return price$m(a);
-  // eslint-disable-next-line no-undef
-  price$(); // never run, but here to "trick" calculang graph logic
-};
-////////// end price memo-loader code //////////
-
-
-    
+// new inputs
+export const price_multiplier = () => price_multiplier_in;
+export const step = () => step_in;

@@ -107,7 +107,7 @@ export default ({ types: t }) => ({
     },
 
     ExportSpecifier(path, { opts, ...state }) {
-      debugger;
+      //debugger;
       var renamed = opts.cul_functions.has(
         `${opts.params.cul_scope_id}_${path.node.local.name}_` // isn't this limited?
       );

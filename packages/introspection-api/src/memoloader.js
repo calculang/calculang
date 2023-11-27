@@ -66,7 +66,10 @@ export default async function loader(content, map, meta) {
     // this is not the same thing:
     const child_introspection = json;
 
-    global_state.memo_to_nomemo = { "0": 0, "2": 1 }; // TODO replace this static
+    // TODO
+    // seems like OK to use iteration order in introspection-api run, and re-use it in the calculang-js run
+    // not sure why process order would not be consistent in calculang-js so that iteration hack works there too?
+    global_state.memo_to_nomemo = { "0": 0, "2": 1 , "3":2, "5":3, "8": 4, "10": 5}; // TODO replace this static
 
 
 
@@ -93,7 +96,7 @@ export default async function loader(content, map, meta) {
 
     // not doing anything, trying iteration:
     // iteration assumptions are bad, do this!
-              /*var memo_parent_scope_id, mapped_parent_scope_id;
+              var memo_parent_scope_id, mapped_parent_scope_id;
               if (this._compilation.options.entry == this._module.rawRequest) {
                 // entrypoint
                 mapped_parent_scope_id = 0;
@@ -105,7 +108,7 @@ export default async function loader(content, map, meta) {
                 mapped_parent_scope_id = child_introspection
                 debugger;
 
-              }*/
+              }
     
     if (this._compilation.options.entry == this._module.rawRequest) {
       // entrypoint
@@ -121,7 +124,7 @@ export default async function loader(content, map, meta) {
         (d) =>
           d.reason != 'input definition' && // bring this in?
           d.reason.indexOf('renamed') == -1 &&
-          d.cul_scope_id == iteration /*+global_state.memo_to_nomemo[cul_scope_id]*/ && // referring to child introspection call
+          d.cul_scope_id == /*iteration */+global_state.memo_to_nomemo[cul_scope_id] && //*/ && // referring to child introspection call
           d.name.charAt(d.name.length - 1) != '$' // don't memo the memo. Alt: don't create cul_function for it? <-- prob never matters
       );
       // debugger; // how come some results are scope 0 with _?

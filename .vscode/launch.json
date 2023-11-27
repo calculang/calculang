@@ -47,6 +47,16 @@
     {
       "type": "node",
       "request": "launch",
+      "name": "memo finance-minister",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "program": "${workspaceFolder}/packages/calculang-js/bin/index.js",
+      "args": ["compile", "--memo", "/home/declan/MESSING/GitHub/calculang-miscellaneous-models/models/tax-revenues/impact.cul.js"]
+    },
+    {
+      "type": "node",
+      "request": "launch",
       "name": "memo shop-demand-curve-modular",
       "skipFiles": [
         "<node_internals>/**"

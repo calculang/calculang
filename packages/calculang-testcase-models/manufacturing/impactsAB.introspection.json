@@ -2859,7 +2859,7 @@
     "8": "./base.cul?cul_scope_id=8&cul_parent_scope_id=7",
     "9": "./base.cul.js?&+memoed&cul_scope_id=9&cul_parent_scope_id=8"
   },
-  "import_sources_to_resource": {
+  "import_sources_to_resource": { // add iteration map to here? Is it reliable for introspection api?
     "0_./impactsAB.cul.js?+memoed": "./impactsAB.cul.js?+memoed&cul_scope_id=1&cul_parent_scope_id=0",
     "1_./revenue-fixed-inputs.cul.js": "./revenue-fixed-inputs.cul.js?cul_scope_id=2&cul_parent_scope_id=1",
     "1_./price-change-reconciliation.cul.js": "./price-change-reconciliation.cul.js?cul_scope_id=3&cul_parent_scope_id=1",

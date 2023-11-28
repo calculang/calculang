@@ -42,6 +42,7 @@ const stringify_introspection_info = (d) => {
     (obj, [key, value]) => Object.assign(obj, { [key]: value }), // Be careful! Maps can have non-String keys; object literals can't.
     {}
   );
+  let memo_map = d.memo_map;
 
   let cul_input_map = Array.from(d.cul_input_map).reduce(
     (obj, [key, value]) => Object.assign(obj, { [key]: [...value.values()] }), // Be careful! Maps can have non-String keys; object literals can't.
@@ -56,6 +57,7 @@ const stringify_introspection_info = (d) => {
       import_sources_to_resource,
       cul_input_map,
       dot: d.dot,
+      memo_map
     },
     null,
     2

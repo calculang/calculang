@@ -31,6 +31,7 @@ export default {
   dot: '', // graph of calculang model in dot notation
   global_state_before_map: new Map(),
   opts: new Map(), // TODO
+  memo_map: {}
 };
 
 ////////////////////////////////////////

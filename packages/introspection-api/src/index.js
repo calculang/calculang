@@ -172,5 +172,5 @@ export default async (entrypoint, options = {}) => {
 
   //if (JSON.stringify(global_state) != t) debugger; // proof
 
-  return output; // or/fut: reconstruct an object
+  return { ...output, memo_map: global_state.memo_map }; // or/fut: reconstruct an object
 };

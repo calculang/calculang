@@ -35,6 +35,8 @@ export default async function loader(content, map, meta) {
   //debugger;
   this.cacheable(false);
 
+  console.log(this._module.rawRequest)
+
 
   
   var temp = global_state;
@@ -56,9 +58,9 @@ export default async function loader(content, map, meta) {
   // OFF ^
     //debugger;
 
-  if (getOptions(this).memo == false) return content;
+  if (getOptions(this).memo == false && 0) return content;
   //if (global_state.location.length == 1) debugger;
-  if (this.resourceQuery != '' && parseQuery(this.resourceQuery).memoed)
+  if (this.resourceQuery != '' && parseQuery(this.resourceQuery).memoed && 0)
     // see use of +memoed added to query below, TODO validate # executions given updated logic
     return content;
   else {
@@ -67,7 +69,8 @@ export default async function loader(content, map, meta) {
     //  memo: false,
     //})
     // this is not the same thing:
-    const child_introspection = json;
+    var child_introspection = json;
+    child_introspection.cul_scope_ids_to_resource[0] = child_introspection.cul_scope_ids_to_resource[0].replace('-nomemo','')
 
     // TODO
     // seems like OK to use iteration order in introspection-api run, and re-use it in the calculang-js run
@@ -98,9 +101,12 @@ export default async function loader(content, map, meta) {
               // this._module.rawRequest  <-------
 
     
-            if (this.rootContext == "/home/declan/MESSING/GitHub/calculang/packages/introspection-api/dist") // replace with options stage:introspection
-              global_state.memo_cul_scope_id_to_nomemo = { '0': 0, '2': 1 }
-          
+    let pass = 'transform'
+    if (this.rootContext == "/home/declan/MESSING/GitHub/calculang/packages/introspection-api/dist") // replace with options stage:introspection
+    {
+      global_state.memo_cul_scope_id_to_nomemo = { '0': 0 }
+      pass = 'introspection-api'
+    }
             
             
               let cul_scope_id = this.resourceQuery == '' ? 0 : parseQuery(this.resourceQuery).cul_scope_id
@@ -119,21 +125,34 @@ export default async function loader(content, map, meta) {
                 var resource_filename = this._module.rawRequest.slice(0, this._module.rawRequest.indexOf('?'))
                 debugger
                 // find same resource and map of parent == parent, pretty complete?
-                mapped_parent_scope_id = Object.entries(child_introspection.cul_scope_ids_to_resource).filter(d => d[1].indexOf(resource_filename) != -1 &&
+                // FAILING HERE because no ? in 0 case
+                console.log(this._compilation.options.entry)
+                if (cul_scope_id != 0) {
+                  mapped_parent_scope_id = Object.entries(child_introspection.cul_scope_ids_to_resource).filter(d => d[1].indexOf(resource_filename) != -1 &&
                   
                   
-                  +parseQuery(d[1].slice(d[1].indexOf('?'))).cul_parent_scope_id == global_state.memo_cul_scope_id_to_nomemo[memo_parent_scope_id]);
+                    1)////+parseQuery(global_state.cul_scope_ids_to_resource.get(+parseQuery(d[1].slice(d[1].indexOf('?'))).cul_parent_scope_id).cul_parent_scope_id) == global_state.memo_cul_scope_id_to_nomemo[memo_parent_scope_id]);
                 
-                  global_state.memo_cul_scope_id_to_nomemo[cul_scope_id] = +mapped_parent_scope_id[0][0]
+                  // sometimes the lookup is parents parent.
+                  ////global_state.memo_cul_scope_id_to_nomemo[cul_scope_id] = +mapped_parent_scope_id[0][0]
 
-                // cul_scope_id 2 run first?
+                  // cul_scope_id 2 run first?
 
+                }
               }
     
     if (this._compilation.options.entry == this._module.rawRequest) {
       // entrypoint
       iteration = 0 //needed for both passes
     }
+
+    if (pass == 'transform') iteration = global_state.memo_map[cul_scope_id]
+
+    if (getOptions(this).memo == false) return content;
+    //if (global_state.location.length == 1) debugger;
+    if (this.resourceQuery != '' && parseQuery(this.resourceQuery).memoed)
+      // see use of +memoed added to query below, TODO validate # executions given updated logic
+      return content;
 
 
 
@@ -143,7 +162,7 @@ export default async function loader(content, map, meta) {
         (d) =>
           d.reason != 'input definition' && // bring this in?
           d.reason.indexOf('renamed') == -1 &&
-          d.cul_scope_id == /*iteration */+global_state.memo_to_nomemo[cul_scope_id] && //*/ && // referring to child introspection call
+          d.cul_scope_id == iteration && //+global_state.memo_to_nomemo[cul_scope_id] && //*/ && // referring to child introspection call
           d.name.charAt(d.name.length - 1) != '$' // don't memo the memo. Alt: don't create cul_function for it? <-- prob never matters
       );
       // debugger; // how come some results are scope 0 with _?
@@ -153,6 +172,9 @@ export default async function loader(content, map, meta) {
     }
     
     debugger
+    /// ra
+    global_state.memo_map[cul_scope_id] = iteration
+
     iteration++;
     
     const generated = to_memo

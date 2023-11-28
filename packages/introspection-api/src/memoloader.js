@@ -58,9 +58,9 @@ export default async function loader(content, map, meta) {
   // OFF ^
     //debugger;
 
-  if (getOptions(this).memo == false && 0) return content;
+  if (getOptions(this).memo == false) return content;
   //if (global_state.location.length == 1) debugger;
-  if (this.resourceQuery != '' && parseQuery(this.resourceQuery).memoed && 0)
+  if (this.resourceQuery != '' && parseQuery(this.resourceQuery).memoed)
     // see use of +memoed added to query below, TODO validate # executions given updated logic
     return content;
   else {
@@ -99,17 +99,27 @@ export default async function loader(content, map, meta) {
               // use this.resource/Path ? base and ./?
               // NO use::
               // this._module.rawRequest  <-------
+    let cul_scope_id = this.resourceQuery == '' ? 0 : parseQuery(this.resourceQuery).cul_scope_id
 
     
     let pass = 'transform'
-    if (this.rootContext == "/home/declan/MESSING/GitHub/calculang/packages/introspection-api/dist") // replace with options stage:introspection
+    if (this.rootContext == "/home/declan/MESSING/GitHub/calculang/packages/introspection-api/dist" && cul_scope_id ==0) // replace with options stage:introspection
     {
       global_state.memo_cul_scope_id_to_nomemo = { '0': 0 }
+    }
+    if (this.rootContext == "/home/declan/MESSING/GitHub/calculang/packages/introspection-api/dist") // replace with options stage:introspection
+    {
       pass = 'introspection-api'
     }
             
             
-              let cul_scope_id = this.resourceQuery == '' ? 0 : parseQuery(this.resourceQuery).cul_scope_id
+    let cul_parent_scope_id = this.resourceQuery == '' ? 0 : parseQuery(this.resourceQuery).cul_parent_scope_id
+    let cp = global_state.cul_scope_ids_to_resource.get(+cul_parent_scope_id)
+    let cul_parent_parent_scope_id = 0;
+    //if (cul_scope_id != 0) cul_parent_parent_scope_id =  +parseQuery(cp.slice(cp.indexOf('?'))).cul_parent_scope_id // move to paths/scope paths instead?
+    let criteria = 0;// criteria = global_state.memo_cul_scope_id_to_nomemo[cul_parent_parent_scope_id]
+    let criteria2 = 0;
+      
 
 
     // not doing anything, trying iteration:
@@ -120,6 +130,9 @@ export default async function loader(content, map, meta) {
                 mapped_parent_scope_id = 0;
                 iteration = 0 //needed for both passes
               } else {
+                cul_parent_parent_scope_id = +parseQuery(cp.slice(cp.indexOf('?'))).cul_parent_scope_id
+                debugger;
+                criteria = global_state.memo_cul_scope_id_to_nomemo[cul_parent_parent_scope_id]
                 memo_parent_scope_id = +parseQuery(this._module.rawRequest.slice(this._module.rawRequest.indexOf('?'))).cul_parent_scope_id
                 //console.log(path.basename(this._module.rawRequest))
                 var resource_filename = this._module.rawRequest.slice(0, this._module.rawRequest.indexOf('?'))
@@ -128,13 +141,17 @@ export default async function loader(content, map, meta) {
                 // FAILING HERE because no ? in 0 case
                 console.log(this._compilation.options.entry)
                 if (cul_scope_id != 0) {
-                  mapped_parent_scope_id = Object.entries(child_introspection.cul_scope_ids_to_resource).filter(d => d[1].indexOf(resource_filename) != -1 &&
+                  /*mapped_parent_scope_id = Object.entries(child_introspection.cul_scope_ids_to_resource).filter(d => d[1].indexOf(resource_filename) != -1 &&
                   
                   
-                    1)////+parseQuery(global_state.cul_scope_ids_to_resource.get(+parseQuery(d[1].slice(d[1].indexOf('?'))).cul_parent_scope_id).cul_parent_scope_id) == global_state.memo_cul_scope_id_to_nomemo[memo_parent_scope_id]);
+                    +parseQuery(global_state.cul_scope_ids_to_resource.get(+parseQuery(d[1].slice(d[1].indexOf('?'))).cul_parent_scope_id).cul_parent_scope_id) == global_state.memo_cul_scope_id_to_nomemo[memo_parent_scope_id]);*/
                 
                   // sometimes the lookup is parents parent.
-                  ////global_state.memo_cul_scope_id_to_nomemo[cul_scope_id] = +mapped_parent_scope_id[0][0]
+                  criteria2 = +Object.entries(child_introspection.cul_scope_ids_to_resource).filter(d => d[1].indexOf(resource_filename) != -1
+                  && +parseQuery(d[1].slice(d[1].indexOf('?'))).cul_parent_scope_id == criteria)[0][0]        
+
+
+                  global_state.memo_cul_scope_id_to_nomemo[cul_scope_id] = criteria2//+mapped_parent_scope_id[0][0]
 
                   // cul_scope_id 2 run first?
 
@@ -162,7 +179,7 @@ export default async function loader(content, map, meta) {
         (d) =>
           d.reason != 'input definition' && // bring this in?
           d.reason.indexOf('renamed') == -1 &&
-          d.cul_scope_id == iteration && //+global_state.memo_to_nomemo[cul_scope_id] && //*/ && // referring to child introspection call
+          d.cul_scope_id == criteria2 && //+global_state.memo_to_nomemo[cul_scope_id] && //*/ && // referring to child introspection call
           d.name.charAt(d.name.length - 1) != '$' // don't memo the memo. Alt: don't create cul_function for it? <-- prob never matters
       );
       // debugger; // how come some results are scope 0 with _?

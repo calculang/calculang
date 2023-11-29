@@ -3,7 +3,11 @@
     //import memoize from 'lru-memoize';
     //import { isEqual } from 'underscore'; // TODO poor tree shaking support, or why is this impact so massive? Move to lodash/lodash-es?
     
-    import { table_ as table$, customer_row_ as customer_row$, name_ as name$, rating_ as rating$ } from './customers.cul.js?&+memoed'; // there is already-culed stuff in here, why? imports to memo loader include cul_scope_id, what logic should it apply RE passing forward? eliminate? Probably!
+    // import/export non-to memo?
+
+    import { table_ as table$, customer_ as customer$, customer_row_ as customer_row$, name_ as name$, rating_ as rating$ } from './customers.cul.js?&+memoed'; // there is already-culed stuff in here, why? imports to memo loader include cul_scope_id, what logic should it apply RE passing forward? eliminate? Probably!
+
+    
     
     
 
@@ -16,6 +20,18 @@ export const table = (a) => {
   table$(); // never run, but here to "trick" calculang graph logic
 };
 ////////// end table memo-loader code //////////
+
+
+
+////////// start customer memo-loader code //////////
+//const customer$m = memoize(999999, isEqual)(customer$);
+export const customer$m = memoize(customer$, JSON.stringify);
+export const customer = (a) => {
+  return customer$m(a);
+  // eslint-disable-next-line no-undef
+  customer$(); // never run, but here to "trick" calculang graph logic
+};
+////////// end customer memo-loader code //////////
 
 
 

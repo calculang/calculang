@@ -5,7 +5,7 @@ import { memoize } from 'underscore';
 
 // import/export non-to memo?
 
-import { num_ as num$ } from "./cul_scope_3.mjs"; // there is already-culed stuff in here, why? imports to memo loader include cul_scope_id, what logic should it apply RE passing forward? eliminate? Probably!
+import { num_ as num$ } from "./cul_scope_5.mjs"; // there is already-culed stuff in here, why? imports to memo loader include cul_scope_id, what logic should it apply RE passing forward? eliminate? Probably!
 
 
 

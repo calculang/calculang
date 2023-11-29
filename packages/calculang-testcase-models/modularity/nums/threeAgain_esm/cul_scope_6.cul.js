@@ -3,19 +3,23 @@
     //import memoize from 'lru-memoize';
     //import { isEqual } from 'underscore'; // TODO poor tree shaking support, or why is this impact so massive? Move to lodash/lodash-es?
     
-    import { num_ as num$ } from './one.cul.js?&+memoed'; // there is already-culed stuff in here, why? imports to memo loader include cul_scope_id, what logic should it apply RE passing forward? eliminate? Probably!
+    // import/export non-to memo?
+
+    import { num__ as num_$ } from './one.cul.js?&+memoed'; // there is already-culed stuff in here, why? imports to memo loader include cul_scope_id, what logic should it apply RE passing forward? eliminate? Probably!
+
+    
     
     
 
-////////// start num memo-loader code //////////
-//const num$m = memoize(999999, isEqual)(num$);
-export const num$m = memoize(num$, JSON.stringify);
-export const num = (a) => {
-  return num$m(a);
+////////// start num_ memo-loader code //////////
+//const num_$m = memoize(999999, isEqual)(num_$);
+export const num_$m = memoize(num_$, JSON.stringify);
+export const num_ = (a) => {
+  return num_$m(a);
   // eslint-disable-next-line no-undef
-  num$(); // never run, but here to "trick" calculang graph logic
+  num_$(); // never run, but here to "trick" calculang graph logic
 };
-////////// end num memo-loader code //////////
+////////// end num_ memo-loader code //////////
 
 
     

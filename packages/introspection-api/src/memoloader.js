@@ -173,7 +173,9 @@ export default async function loader(content, map, meta) {
       // see use of +memoed added to query below, TODO validate # executions given updated logic
       return content;
 
+    let dont_memo = []
 
+    // KNOWN EDGECASE: PAGES WITHOUT FUNCTION DEFINITIONS E.G. ONLY IMPORT-EXPORT
 
     if (1) {
       // BUG? units_ memoized in scope 2? JUST do not add to to_memo
@@ -181,6 +183,16 @@ export default async function loader(content, map, meta) {
         (d) =>
           d.reason != 'input definition' && // bring this in?
           d.reason != 'implicit import' &&
+          d.reason != 'explicit import (renamed)' &&
+          d.cul_scope_id == criteria2 && //+global_state.memo_to_nomemo[cul_scope_id] && //*/ && // referring to child introspection call
+          d.name.charAt(d.name.length - 1) != '$' // don't memo the memo. Alt: don't create cul_function for it? <-- prob never matters
+      ).map(d => ({ ...d, name: d.reason.indexOf('renamed') != -1 ? d.name.slice(0,-1) : d.name /* I need to reverse-engineer names ! */}));
+
+
+      dont_memo = Object.values(child_introspection.cul_functions).filter(
+        (d) =>
+          ((d.reason == 'input definition') || // bring this in?
+          (d.reason == 'implicit import')) &&
           d.reason.indexOf('renamed') == -1 &&
           d.cul_scope_id == criteria2 && //+global_state.memo_to_nomemo[cul_scope_id] && //*/ && // referring to child introspection call
           d.name.charAt(d.name.length - 1) != '$' // don't memo the memo. Alt: don't create cul_function for it? <-- prob never matters
@@ -223,17 +235,27 @@ export const ${d.name} = (a) => {
       .replace(/cul_parent_scope_id=\d+/, '')
       .replace(/&&/, '&')
       .replace('?&', '?');
+    
+    dont_memo = []
+    
+    // WHAT HAPPENED TO JUST MEMO DEFINITIONS??
+    
+    var memo_import_line = `import { ${to_memo
+      .map((d) => `${d.name}_ as ${d.name}$`) // don't pollute the _ modifier (=> use as)
+      .join(', ') + ((dont_memo.length && to_memo.length) ? ',' : '') + dont_memo.map(d => d.name).join(', ')} } from './${path.relative(this.context, this.resourcePath)}${
+      this.resourceQuery == '' ? '?' : cleaned + '&'
+    }+memoed'; // there is already-culed stuff in here, why? imports to memo loader include cul_scope_id, what logic should it apply RE passing forward? eliminate? Probably!`
 
     var return_val = `
     import { memoize } from 'underscore';
     //import memoize from 'lru-memoize';
     //import { isEqual } from 'underscore'; // TODO poor tree shaking support, or why is this impact so massive? Move to lodash/lodash-es?
     
-    import { ${to_memo
-      .map((d) => `${d.name}_ as ${d.name}$`) // don't pollute the _ modifier (=> use as)
-      .join(', ')} } from './${path.relative(this.context, this.resourcePath)}${
-      this.resourceQuery == '' ? '?' : cleaned + '&'
-    }+memoed'; // there is already-culed stuff in here, why? imports to memo loader include cul_scope_id, what logic should it apply RE passing forward? eliminate? Probably!
+    // import/export non-to memo?
+
+    ${memo_import_line}
+
+    ${dont_memo.length ? `export { ${dont_memo.map(d => d.name).join(', ')} }` : ''}
     
     ${generated}
     `;

@@ -744,7 +744,11 @@ __webpack_require__.r(__webpack_exports__);
 //import memoize from 'lru-memoize';
 //import { isEqual } from 'underscore'; // TODO poor tree shaking support, or why is this impact so massive? Move to lodash/lodash-es?
 
+// import/export non-to memo?
+
  // there is already-culed stuff in here, why? imports to memo loader include cul_scope_id, what logic should it apply RE passing forward? eliminate? Probably!
+
+
 
 
 
@@ -2899,8 +2903,6 @@ const num_ = ({}) => 1 + Object(_twoAgain_cul_cul_scope_id_2_cul_parent_scope_id
 "use strict";
 /* harmony import */ var _threeAgain_cul_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(24);
 /* harmony import */ var _two_cul_js_cul_scope_id_4_cul_parent_scope_id_3__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(163);
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "a", function() { return _two_cul_js_cul_scope_id_4_cul_parent_scope_id_3__WEBPACK_IMPORTED_MODULE_1__["a"]; });
-
 
 
 
@@ -2909,7 +2911,7 @@ const num_ = ({}) => 1 + Object(_twoAgain_cul_cul_scope_id_2_cul_parent_scope_id
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return num_; });
+/* unused harmony export num_ */
 /* harmony import */ var _threeAgain_cul_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(24);
 /* harmony import */ var _one_cul_cul_scope_id_6_cul_parent_scope_id_5__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(168);
 
@@ -2921,7 +2923,7 @@ const num_ = ({}) => Object(_one_cul_cul_scope_id_6_cul_parent_scope_id_5__WEBPA
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return num_; });
+/* unused harmony export num_ */
 /* harmony import */ var _threeAgain_cul_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(24);
 const num_ = ({}) => 1;
 
@@ -4491,8 +4493,8 @@ Object(_each_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])(['concat', 'joi
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* unused harmony export num$m */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return num_; });
+/* unused harmony export num_$m */
+/* unused harmony export num_ */
 /* harmony import */ var _threeAgain_cul_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(24);
 /* harmony import */ var underscore__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(26);
 /* harmony import */ var _two_cul_js_memoed_cul_scope_id_5_cul_parent_scope_id_4__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(99);
@@ -4501,19 +4503,23 @@ Object(_each_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])(['concat', 'joi
 //import memoize from 'lru-memoize';
 //import { isEqual } from 'underscore'; // TODO poor tree shaking support, or why is this impact so massive? Move to lodash/lodash-es?
 
+// import/export non-to memo?
+
  // there is already-culed stuff in here, why? imports to memo loader include cul_scope_id, what logic should it apply RE passing forward? eliminate? Probably!
 
 
 
-////////// start num memo-loader code //////////
-//const num$m = memoize(999999, isEqual)(num$);
-const num$m = Object(underscore__WEBPACK_IMPORTED_MODULE_1__[/* memoize */ "a"])(_two_cul_js_memoed_cul_scope_id_5_cul_parent_scope_id_4__WEBPACK_IMPORTED_MODULE_2__[/* num_ */ "a"], JSON.stringify);
+
+
+////////// start num_ memo-loader code //////////
+//const num_$m = memoize(999999, isEqual)(num_$);
+const num_$m = Object(underscore__WEBPACK_IMPORTED_MODULE_1__[/* memoize */ "a"])(_two_cul_js_memoed_cul_scope_id_5_cul_parent_scope_id_4__WEBPACK_IMPORTED_MODULE_2__["num__"], JSON.stringify);
 const num_ = (a) => {
-  return num$m(a);
+  return num_$m(a);
   // eslint-disable-next-line no-undef
-  Object(_two_cul_js_memoed_cul_scope_id_5_cul_parent_scope_id_4__WEBPACK_IMPORTED_MODULE_2__[/* num_ */ "a"])({}); // never run, but here to "trick" calculang graph logic
+  Object(_two_cul_js_memoed_cul_scope_id_5_cul_parent_scope_id_4__WEBPACK_IMPORTED_MODULE_2__["num__"])({}); // never run, but here to "trick" calculang graph logic
 };
-////////// end num memo-loader code //////////
+////////// end num_ memo-loader code //////////
 
 /***/ }),
 /* 164 */
@@ -4562,7 +4568,7 @@ function keyInObj(value, key, obj) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* unused harmony export num$m */
+/* unused harmony export num_$m */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return num_; });
 /* harmony import */ var _threeAgain_cul_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(24);
 /* harmony import */ var underscore__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(26);
@@ -4572,26 +4578,30 @@ function keyInObj(value, key, obj) {
 //import memoize from 'lru-memoize';
 //import { isEqual } from 'underscore'; // TODO poor tree shaking support, or why is this impact so massive? Move to lodash/lodash-es?
 
+// import/export non-to memo?
+
  // there is already-culed stuff in here, why? imports to memo loader include cul_scope_id, what logic should it apply RE passing forward? eliminate? Probably!
 
 
 
-////////// start num memo-loader code //////////
-//const num$m = memoize(999999, isEqual)(num$);
-const num$m = Object(underscore__WEBPACK_IMPORTED_MODULE_1__[/* memoize */ "a"])(_twoAgain_cul_js_memoed_cul_scope_id_3_cul_parent_scope_id_2__WEBPACK_IMPORTED_MODULE_2__[/* num_ */ "a"], JSON.stringify);
+
+
+////////// start num_ memo-loader code //////////
+//const num_$m = memoize(999999, isEqual)(num_$);
+const num_$m = Object(underscore__WEBPACK_IMPORTED_MODULE_1__[/* memoize */ "a"])(_twoAgain_cul_js_memoed_cul_scope_id_3_cul_parent_scope_id_2__WEBPACK_IMPORTED_MODULE_2__["num__"], JSON.stringify);
 const num_ = (a) => {
-  return num$m(a);
+  return num_$m(a);
   // eslint-disable-next-line no-undef
-  Object(_twoAgain_cul_js_memoed_cul_scope_id_3_cul_parent_scope_id_2__WEBPACK_IMPORTED_MODULE_2__[/* num_ */ "a"])({}); // never run, but here to "trick" calculang graph logic
+  Object(_twoAgain_cul_js_memoed_cul_scope_id_3_cul_parent_scope_id_2__WEBPACK_IMPORTED_MODULE_2__["num__"])({}); // never run, but here to "trick" calculang graph logic
 };
-////////// end num memo-loader code //////////
+////////// end num_ memo-loader code //////////
 
 /***/ }),
 /* 168 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* unused harmony export num$m */
+/* unused harmony export num_$m */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return num_; });
 /* harmony import */ var _threeAgain_cul_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(24);
 /* harmony import */ var underscore__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(26);
@@ -4601,19 +4611,23 @@ const num_ = (a) => {
 //import memoize from 'lru-memoize';
 //import { isEqual } from 'underscore'; // TODO poor tree shaking support, or why is this impact so massive? Move to lodash/lodash-es?
 
+// import/export non-to memo?
+
  // there is already-culed stuff in here, why? imports to memo loader include cul_scope_id, what logic should it apply RE passing forward? eliminate? Probably!
 
 
 
-////////// start num memo-loader code //////////
-//const num$m = memoize(999999, isEqual)(num$);
-const num$m = Object(underscore__WEBPACK_IMPORTED_MODULE_1__[/* memoize */ "a"])(_one_cul_js_memoed_cul_scope_id_7_cul_parent_scope_id_6__WEBPACK_IMPORTED_MODULE_2__[/* num_ */ "a"], JSON.stringify);
+
+
+////////// start num_ memo-loader code //////////
+//const num_$m = memoize(999999, isEqual)(num_$);
+const num_$m = Object(underscore__WEBPACK_IMPORTED_MODULE_1__[/* memoize */ "a"])(_one_cul_js_memoed_cul_scope_id_7_cul_parent_scope_id_6__WEBPACK_IMPORTED_MODULE_2__["num__"], JSON.stringify);
 const num_ = (a) => {
-  return num$m(a);
+  return num_$m(a);
   // eslint-disable-next-line no-undef
-  Object(_one_cul_js_memoed_cul_scope_id_7_cul_parent_scope_id_6__WEBPACK_IMPORTED_MODULE_2__[/* num_ */ "a"])({}); // never run, but here to "trick" calculang graph logic
+  Object(_one_cul_js_memoed_cul_scope_id_7_cul_parent_scope_id_6__WEBPACK_IMPORTED_MODULE_2__["num__"])({}); // never run, but here to "trick" calculang graph logic
 };
-////////// end num memo-loader code //////////
+////////// end num_ memo-loader code //////////
 
 /***/ }),
 /* 169 */

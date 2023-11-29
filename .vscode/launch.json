@@ -67,6 +67,16 @@
     {
       "type": "node",
       "request": "launch",
+      "name": "memo twoAgain",
+      "skipFiles": [
+        "<node_internals>/**"
+      ],
+      "program": "${workspaceFolder}/packages/calculang-js/bin/index.js",
+      "args": ["compile", "--memo", "${workspaceFolder}/packages/calculang-testcase-models/modularity/nums/twoAgain.cul.js"]
+    },
+    {
+      "type": "node",
+      "request": "launch",
       "name": "one",
       "skipFiles": [
         "<node_internals>/**"

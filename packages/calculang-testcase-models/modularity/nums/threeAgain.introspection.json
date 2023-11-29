@@ -15,14 +15,14 @@
       "reason": "definition",
       "loc": {
         "start": {
-          "line": 13,
+          "line": 17,
           "column": 19,
-          "index": 630
+          "index": 671
         },
         "end": {
-          "line": 17,
+          "line": 21,
           "column": 1,
-          "index": 764
+          "index": 805
         }
       },
       "inputs": []
@@ -68,10 +68,10 @@
       "reason": "implicit import",
       "inputs": []
     },
-    "2_num$": {
+    "2_num_$": {
       "cul_scope_id": 2,
-      "name": "num$",
-      "imported": "num_",
+      "name": "num_$",
+      "imported": "num__",
       "cul_source_scope_id": 3,
       "reason": "explicit import",
       "inputs": []
@@ -80,17 +80,17 @@
       "cul_scope_id": 2,
       "name": "num_",
       "cul_source_scope_id": 2,
-      "reason": "definition (renamed)",
+      "reason": "definition",
       "loc": {
         "start": {
-          "line": 13,
-          "column": 19,
-          "index": 629
+          "line": 17,
+          "column": 20,
+          "index": 678
         },
         "end": {
-          "line": 17,
+          "line": 21,
           "column": 1,
-          "index": 763
+          "index": 814
         }
       },
       "inputs": []
@@ -105,7 +105,7 @@
     "3_num_": {
       "cul_scope_id": 3,
       "name": "num_",
-      "imported": "num_",
+      "imported": "num",
       "cul_source_scope_id": 4,
       "reason": "explicit import (renamed)",
       "inputs": []
@@ -117,10 +117,10 @@
       "reason": "implicit import",
       "inputs": []
     },
-    "4_num$": {
+    "4_num_$": {
       "cul_scope_id": 4,
-      "name": "num$",
-      "imported": "num_",
+      "name": "num_$",
+      "imported": "num__",
       "cul_source_scope_id": 5,
       "reason": "explicit import",
       "inputs": []
@@ -129,17 +129,17 @@
       "cul_scope_id": 4,
       "name": "num_",
       "cul_source_scope_id": 4,
-      "reason": "definition (renamed)",
+      "reason": "definition",
       "loc": {
         "start": {
-          "line": 13,
-          "column": 19,
-          "index": 624
+          "line": 17,
+          "column": 20,
+          "index": 673
         },
         "end": {
-          "line": 17,
+          "line": 21,
           "column": 1,
-          "index": 758
+          "index": 809
         }
       },
       "inputs": []
@@ -185,10 +185,10 @@
       "reason": "implicit import",
       "inputs": []
     },
-    "6_num$": {
+    "6_num_$": {
       "cul_scope_id": 6,
-      "name": "num$",
-      "imported": "num_",
+      "name": "num_$",
+      "imported": "num__",
       "cul_source_scope_id": 7,
       "reason": "explicit import",
       "inputs": []
@@ -197,17 +197,17 @@
       "cul_scope_id": 6,
       "name": "num_",
       "cul_source_scope_id": 6,
-      "reason": "definition (renamed)",
+      "reason": "definition",
       "loc": {
         "start": {
-          "line": 13,
-          "column": 19,
-          "index": 624
+          "line": 17,
+          "column": 20,
+          "index": 673
         },
         "end": {
-          "line": 17,
+          "line": 21,
           "column": 1,
-          "index": 758
+          "index": 809
         }
       },
       "inputs": []
@@ -273,13 +273,13 @@
       "reason": "implicit import"
     },
     {
-      "to": "2_num$",
-      "from": "3_num_",
+      "to": "2_num_$",
+      "from": "3_num__",
       "reason": "explicit import"
     },
     {
       "to": "2_num_",
-      "from": "2_num$",
+      "from": "2_num_$",
       "reason": "call",
       "negs": []
     },
@@ -290,8 +290,8 @@
     },
     {
       "to": "3_num_",
-      "from": "4_num_",
-      "reason": "explicit import (renamed)"
+      "from": "4_num",
+      "reason": "explicit import"
     },
     {
       "to": "4_num",
@@ -299,13 +299,13 @@
       "reason": "implicit import"
     },
     {
-      "to": "4_num$",
-      "from": "5_num_",
+      "to": "4_num_$",
+      "from": "5_num__",
       "reason": "explicit import"
     },
     {
       "to": "4_num_",
-      "from": "4_num$",
+      "from": "4_num_$",
       "reason": "call",
       "negs": []
     },
@@ -331,13 +331,13 @@
       "reason": "implicit import"
     },
     {
-      "to": "6_num$",
-      "from": "7_num_",
+      "to": "6_num_$",
+      "from": "7_num__",
       "reason": "explicit import"
     },
     {
       "to": "6_num_",
-      "from": "6_num$",
+      "from": "6_num_$",
       "reason": "call",
       "negs": []
     },
@@ -373,21 +373,27 @@
     "1_num$": [],
     "1_num_": [],
     "2_num": [],
-    "2_num$": [],
+    "2_num_$": [],
     "2_num_": [],
     "3_num": [],
     "3_num_": [],
     "4_num": [],
-    "4_num$": [],
+    "4_num_$": [],
     "4_num_": [],
     "5_num": [],
     "5_num$": [],
     "5_num_": [],
     "6_num": [],
-    "6_num$": [],
+    "6_num_$": [],
     "6_num_": [],
     "7_num": [],
     "7_num_": []
   },
-  "dot": "digraph {\n  \"0_num$\" [cul_scope_id=0,name=\"num$\",imported=num_,cul_source_scope_id=1,reason=\"explicit import\",inputs=\"\",label=\"0_num$ inputs: \"]\n  \"0_num\" [cul_scope_id=0,name=num,cul_source_scope_id=0,reason=definition,loc=\"[object Object]\",inputs=\"\",label=\"0_num inputs: \"]\n  \"1_num\" [cul_scope_id=1,name=num,cul_source_scope_id=0,reason=\"implicit import\",inputs=\"\",label=\"1_num inputs: \"]\n  \"1_num$\" [cul_scope_id=1,name=\"num$\",imported=num_,cul_source_scope_id=2,reason=\"explicit import\",inputs=\"\",label=\"1_num$ inputs: \"]\n  \"1_num_\" [cul_scope_id=1,name=num_,cul_source_scope_id=1,reason=\"definition (renamed)\",loc=\"[object Object]\",inputs=\"\",label=\"1_num_ inputs: \"]\n  \"2_num\" [cul_scope_id=2,name=num,cul_source_scope_id=0,reason=\"implicit import\",inputs=\"\",label=\"2_num inputs: \"]\n  \"2_num$\" [cul_scope_id=2,name=\"num$\",imported=num_,cul_source_scope_id=3,reason=\"explicit import\",inputs=\"\",label=\"2_num$ inputs: \"]\n  \"2_num_\" [cul_scope_id=2,name=num_,cul_source_scope_id=2,reason=\"definition (renamed)\",loc=\"[object Object]\",inputs=\"\",label=\"2_num_ inputs: \"]\n  \"3_num\" [cul_scope_id=3,name=num,cul_source_scope_id=0,reason=\"implicit import\",inputs=\"\",label=\"3_num inputs: \"]\n  \"3_num_\" [cul_scope_id=3,name=num_,imported=num_,cul_source_scope_id=4,reason=\"explicit import (renamed)\",inputs=\"\",label=\"3_num_ inputs: \"]\n  \"4_num\" [cul_scope_id=4,name=num,cul_source_scope_id=0,reason=\"implicit import\",inputs=\"\",label=\"4_num inputs: \"]\n  \"4_num$\" [cul_scope_id=4,name=\"num$\",imported=num_,cul_source_scope_id=5,reason=\"explicit import\",inputs=\"\",label=\"4_num$ inputs: \"]\n  \"4_num_\" [cul_scope_id=4,name=num_,cul_source_scope_id=4,reason=\"definition (renamed)\",loc=\"[object Object]\",inputs=\"\",label=\"4_num_ inputs: \"]\n  \"5_num\" [cul_scope_id=5,name=num,cul_source_scope_id=0,reason=\"implicit import\",inputs=\"\",label=\"5_num inputs: \"]\n  \"5_num$\" [cul_scope_id=5,name=\"num$\",imported=num_,cul_source_scope_id=6,reason=\"explicit import\",inputs=\"\",label=\"5_num$ inputs: \"]\n  \"5_num_\" [cul_scope_id=5,name=num_,cul_source_scope_id=5,reason=\"definition (renamed)\",loc=\"[object Object]\",inputs=\"\",label=\"5_num_ inputs: \"]\n  \"6_num\" [cul_scope_id=6,name=num,cul_source_scope_id=0,reason=\"implicit import\",inputs=\"\",label=\"6_num inputs: \"]\n  \"6_num$\" [cul_scope_id=6,name=\"num$\",imported=num_,cul_source_scope_id=7,reason=\"explicit import\",inputs=\"\",label=\"6_num$ inputs: \"]\n  \"6_num_\" [cul_scope_id=6,name=num_,cul_source_scope_id=6,reason=\"definition (renamed)\",loc=\"[object Object]\",inputs=\"\",label=\"6_num_ inputs: \"]\n  \"7_num\" [cul_scope_id=7,name=num,cul_source_scope_id=0,reason=\"implicit import\",inputs=\"\",label=\"7_num inputs: \"]\n  \"7_num_\" [cul_scope_id=7,name=num_,cul_source_scope_id=7,reason=\"definition (renamed)\",loc=\"[object Object]\",inputs=\"\",label=\"7_num_ inputs: \"]\n  \"1_num_\" -> \"0_num$\" [value=\"[object Object]\",label=\"explicit import\"]\n  \"0_num$\" -> \"0_num\" [value=\"[object Object]\",label=\"call -\"]\n  \"0_num\" -> \"1_num\" [value=\"[object Object]\",label=\"implicit import\"]\n  \"2_num_\" -> \"1_num$\" [value=\"[object Object]\",label=\"explicit import\"]\n  \"1_num$\" -> \"1_num_\" [value=\"[object Object]\",label=\"call -\"]\n  \"0_num\" -> \"2_num\" [value=\"[object Object]\",label=\"implicit import\"]\n  \"3_num_\" -> \"2_num$\" [value=\"[object Object]\",label=\"explicit import\"]\n  \"2_num$\" -> \"2_num_\" [value=\"[object Object]\",label=\"call -\"]\n  \"0_num\" -> \"3_num\" [value=\"[object Object]\",label=\"implicit import\"]\n  \"4_num_\" -> \"3_num_\" [value=\"[object Object]\",label=\"explicit import (renamed)\"]\n  \"0_num\" -> \"4_num\" [value=\"[object Object]\",label=\"implicit import\"]\n  \"5_num_\" -> \"4_num$\" [value=\"[object Object]\",label=\"explicit import\"]\n  \"4_num$\" -> \"4_num_\" [value=\"[object Object]\",label=\"call -\"]\n  \"0_num\" -> \"5_num\" [value=\"[object Object]\",label=\"implicit import\"]\n  \"6_num_\" -> \"5_num$\" [value=\"[object Object]\",label=\"explicit import\"]\n  \"5_num$\" -> \"5_num_\" [value=\"[object Object]\",label=\"call -\"]\n  \"0_num\" -> \"6_num\" [value=\"[object Object]\",label=\"implicit import\"]\n  \"7_num_\" -> \"6_num$\" [value=\"[object Object]\",label=\"explicit import\"]\n  \"6_num$\" -> \"6_num_\" [value=\"[object Object]\",label=\"call -\"]\n  \"0_num\" -> \"7_num\" [value=\"[object Object]\",label=\"implicit import\"]\n}\n"
+  "dot": "digraph {\n  \"0_num$\" [cul_scope_id=0,name=\"num$\",imported=num_,cul_source_scope_id=1,reason=\"explicit import\",inputs=\"\",label=\"0_num$ inputs: \"]\n  \"0_num\" [cul_scope_id=0,name=num,cul_source_scope_id=0,reason=definition,loc=\"[object Object]\",inputs=\"\",label=\"0_num inputs: \"]\n  \"1_num\" [cul_scope_id=1,name=num,cul_source_scope_id=0,reason=\"implicit import\",inputs=\"\",label=\"1_num inputs: \"]\n  \"1_num$\" [cul_scope_id=1,name=\"num$\",imported=num_,cul_source_scope_id=2,reason=\"explicit import\",inputs=\"\",label=\"1_num$ inputs: \"]\n  \"1_num_\" [cul_scope_id=1,name=num_,cul_source_scope_id=1,reason=\"definition (renamed)\",loc=\"[object Object]\",inputs=\"\",label=\"1_num_ inputs: \"]\n  \"2_num\" [cul_scope_id=2,name=num,cul_source_scope_id=0,reason=\"implicit import\",inputs=\"\",label=\"2_num inputs: \"]\n  \"2_num_$\" [cul_scope_id=2,name=\"num_$\",imported=num__,cul_source_scope_id=3,reason=\"explicit import\",inputs=\"\",label=\"2_num_$ inputs: \"]\n  \"2_num_\" [cul_scope_id=2,name=num_,cul_source_scope_id=2,reason=definition,loc=\"[object Object]\",inputs=\"\",label=\"2_num_ inputs: \"]\n  \"3_num\" [cul_scope_id=3,name=num,cul_source_scope_id=0,reason=\"implicit import\",inputs=\"\",label=\"3_num inputs: \"]\n  \"3_num_\" [cul_scope_id=3,name=num_,imported=num,cul_source_scope_id=4,reason=\"explicit import (renamed)\",inputs=\"\",label=\"3_num_ inputs: \"]\n  \"4_num\" [cul_scope_id=4,name=num,cul_source_scope_id=0,reason=\"implicit import\",inputs=\"\",label=\"4_num inputs: \"]\n  \"4_num_$\" [cul_scope_id=4,name=\"num_$\",imported=num__,cul_source_scope_id=5,reason=\"explicit import\",inputs=\"\",label=\"4_num_$ inputs: \"]\n  \"4_num_\" [cul_scope_id=4,name=num_,cul_source_scope_id=4,reason=definition,loc=\"[object Object]\",inputs=\"\",label=\"4_num_ inputs: \"]\n  \"5_num\" [cul_scope_id=5,name=num,cul_source_scope_id=0,reason=\"implicit import\",inputs=\"\",label=\"5_num inputs: \"]\n  \"5_num$\" [cul_scope_id=5,name=\"num$\",imported=num_,cul_source_scope_id=6,reason=\"explicit import\",inputs=\"\",label=\"5_num$ inputs: \"]\n  \"5_num_\" [cul_scope_id=5,name=num_,cul_source_scope_id=5,reason=\"definition (renamed)\",loc=\"[object Object]\",inputs=\"\",label=\"5_num_ inputs: \"]\n  \"6_num\" [cul_scope_id=6,name=num,cul_source_scope_id=0,reason=\"implicit import\",inputs=\"\",label=\"6_num inputs: \"]\n  \"6_num_$\" [cul_scope_id=6,name=\"num_$\",imported=num__,cul_source_scope_id=7,reason=\"explicit import\",inputs=\"\",label=\"6_num_$ inputs: \"]\n  \"6_num_\" [cul_scope_id=6,name=num_,cul_source_scope_id=6,reason=definition,loc=\"[object Object]\",inputs=\"\",label=\"6_num_ inputs: \"]\n  \"7_num\" [cul_scope_id=7,name=num,cul_source_scope_id=0,reason=\"implicit import\",inputs=\"\",label=\"7_num inputs: \"]\n  \"7_num_\" [cul_scope_id=7,name=num_,cul_source_scope_id=7,reason=\"definition (renamed)\",loc=\"[object Object]\",inputs=\"\",label=\"7_num_ inputs: \"]\n  \"1_num_\" -> \"0_num$\" [value=\"[object Object]\",label=\"explicit import\"]\n  \"0_num$\" -> \"0_num\" [value=\"[object Object]\",label=\"call -\"]\n  \"0_num\" -> \"1_num\" [value=\"[object Object]\",label=\"implicit import\"]\n  \"2_num_\" -> \"1_num$\" [value=\"[object Object]\",label=\"explicit import\"]\n  \"1_num$\" -> \"1_num_\" [value=\"[object Object]\",label=\"call -\"]\n  \"0_num\" -> \"2_num\" [value=\"[object Object]\",label=\"implicit import\"]\n  \"2_num_$\" -> \"2_num_\" [value=\"[object Object]\",label=\"call -\"]\n  \"0_num\" -> \"3_num\" [value=\"[object Object]\",label=\"implicit import\"]\n  \"4_num\" -> \"3_num_\" [value=\"[object Object]\",label=\"explicit import\"]\n  \"0_num\" -> \"4_num\" [value=\"[object Object]\",label=\"implicit import\"]\n  \"4_num_$\" -> \"4_num_\" [value=\"[object Object]\",label=\"call -\"]\n  \"0_num\" -> \"5_num\" [value=\"[object Object]\",label=\"implicit import\"]\n  \"6_num_\" -> \"5_num$\" [value=\"[object Object]\",label=\"explicit import\"]\n  \"5_num$\" -> \"5_num_\" [value=\"[object Object]\",label=\"call -\"]\n  \"0_num\" -> \"6_num\" [value=\"[object Object]\",label=\"implicit import\"]\n  \"6_num_$\" -> \"6_num_\" [value=\"[object Object]\",label=\"call -\"]\n  \"0_num\" -> \"7_num\" [value=\"[object Object]\",label=\"implicit import\"]\n}\n",
+  "memo_map": {
+    "0": 0,
+    "2": 1,
+    "4": 2,
+    "6": 3
+  }
 }

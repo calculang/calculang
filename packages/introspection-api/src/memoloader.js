@@ -180,6 +180,7 @@ export default async function loader(content, map, meta) {
       to_memo = Object.values(child_introspection.cul_functions).filter(
         (d) =>
           d.reason != 'input definition' && // bring this in?
+          d.reason != 'implicit import' &&
           d.reason.indexOf('renamed') == -1 &&
           d.cul_scope_id == criteria2 && //+global_state.memo_to_nomemo[cul_scope_id] && //*/ && // referring to child introspection call
           d.name.charAt(d.name.length - 1) != '$' // don't memo the memo. Alt: don't create cul_function for it? <-- prob never matters

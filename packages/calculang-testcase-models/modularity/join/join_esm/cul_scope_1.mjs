@@ -1,10 +1,5 @@
-import { sales_price } from "./cul_scope_3.mjs";import { rating } from "./cul_scope_2.mjs";import { name } from "./cul_scope_2.mjs";export const table = ({}) => [
-{ order: 1, customer: 1, item: 'A' },
-{ order: 2, customer: 1, item: 'B' },
-{ order: 3, customer: 2, item: 'B' }];
+import { sales_price } from "./cul_scope_0.mjs";import { rating } from "./cul_scope_0.mjs";import { name } from "./cul_scope_0.mjs";import { item } from "./cul_scope_0.mjs";import { customer } from "./cul_scope_0.mjs";import { order } from "./cul_scope_0.mjs";import { order_, customer_, item_ } from "./cul_scope_2.mjs"; // driving keys
+import { name_, rating_ } from "./cul_scope_3.mjs";
+import { sales_price_ } from "./cul_scope_4.mjs";
 
-
-export const order = ({ order_in }) => order_in;
-export const order_row = ({ order_in }) => table({}).find((d) => d.order == order({ order_in }));
-export const customer = ({ order_in }) => order_row({ order_in }).customer;
-export const item = ({ order_in }) => order_row({ order_in }).item;
+export { name_, rating_, sales_price_, order_, customer_, item_ };

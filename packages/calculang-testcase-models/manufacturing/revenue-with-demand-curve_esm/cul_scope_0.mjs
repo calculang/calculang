@@ -3,7 +3,11 @@ import { memoize } from 'underscore';
 //import memoize from 'lru-memoize';
 //import { isEqual } from 'underscore'; // TODO poor tree shaking support, or why is this impact so massive? Move to lodash/lodash-es?
 
+// import/export non-to memo?
+
 import { revenue_ as revenue$, price_ as price$, profit_ as profit$, units_ as units$ } from "./cul_scope_1.mjs"; // there is already-culed stuff in here, why? imports to memo loader include cul_scope_id, what logic should it apply RE passing forward? eliminate? Probably!
+
+
 
 
 

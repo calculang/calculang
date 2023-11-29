@@ -3,33 +3,13 @@
     //import memoize from 'lru-memoize';
     //import { isEqual } from 'underscore'; // TODO poor tree shaking support, or why is this impact so massive? Move to lodash/lodash-es?
     
-    import { A_revenue_ as A_revenue$, revenue_impact_ as revenue_impact$, revenue_ as revenue$, units_1_ as units_1$, price_1_ as price_1$, units_ as units$, price_ as price$, price_multiplier_ as price_multiplier$, step_ as step$ } from './price-change-reconciliation.cul.js?&+memoed'; // there is already-culed stuff in here, why? imports to memo loader include cul_scope_id, what logic should it apply RE passing forward? eliminate? Probably!
+    // import/export non-to memo?
+
+    import { revenue_ as revenue$, units_1_ as units_1$, price_1_ as price_1$, units_ as units$, price_ as price$, price_multiplier_ as price_multiplier$, step_ as step$ } from './price-change-reconciliation.cul.js?&+memoed'; // there is already-culed stuff in here, why? imports to memo loader include cul_scope_id, what logic should it apply RE passing forward? eliminate? Probably!
+
     
     
-
-////////// start A_revenue memo-loader code //////////
-//const A_revenue$m = memoize(999999, isEqual)(A_revenue$);
-export const A_revenue$m = memoize(A_revenue$, JSON.stringify);
-export const A_revenue = (a) => {
-  return A_revenue$m(a);
-  // eslint-disable-next-line no-undef
-  A_revenue$(); // never run, but here to "trick" calculang graph logic
-};
-////////// end A_revenue memo-loader code //////////
-
-
-
-////////// start revenue_impact memo-loader code //////////
-//const revenue_impact$m = memoize(999999, isEqual)(revenue_impact$);
-export const revenue_impact$m = memoize(revenue_impact$, JSON.stringify);
-export const revenue_impact = (a) => {
-  return revenue_impact$m(a);
-  // eslint-disable-next-line no-undef
-  revenue_impact$(); // never run, but here to "trick" calculang graph logic
-};
-////////// end revenue_impact memo-loader code //////////
-
-
+    
 
 ////////// start revenue memo-loader code //////////
 //const revenue$m = memoize(999999, isEqual)(revenue$);

@@ -3,33 +3,13 @@
     //import memoize from 'lru-memoize';
     //import { isEqual } from 'underscore'; // TODO poor tree shaking support, or why is this impact so massive? Move to lodash/lodash-es?
     
-    import { B_revenue_ as B_revenue$, revenue_impact_ as revenue_impact$, revenue_ as revenue$, units_ as units$, price_ as price$ } from './revenue-fixed-inputs.cul.js?&+memoed'; // there is already-culed stuff in here, why? imports to memo loader include cul_scope_id, what logic should it apply RE passing forward? eliminate? Probably!
+    // import/export non-to memo?
+
+    import { revenue_ as revenue$, units_ as units$, price_ as price$ } from './revenue-fixed-inputs.cul.js?&+memoed'; // there is already-culed stuff in here, why? imports to memo loader include cul_scope_id, what logic should it apply RE passing forward? eliminate? Probably!
+
     
     
-
-////////// start B_revenue memo-loader code //////////
-//const B_revenue$m = memoize(999999, isEqual)(B_revenue$);
-export const B_revenue$m = memoize(B_revenue$, JSON.stringify);
-export const B_revenue = (a) => {
-  return B_revenue$m(a);
-  // eslint-disable-next-line no-undef
-  B_revenue$(); // never run, but here to "trick" calculang graph logic
-};
-////////// end B_revenue memo-loader code //////////
-
-
-
-////////// start revenue_impact memo-loader code //////////
-//const revenue_impact$m = memoize(999999, isEqual)(revenue_impact$);
-export const revenue_impact$m = memoize(revenue_impact$, JSON.stringify);
-export const revenue_impact = (a) => {
-  return revenue_impact$m(a);
-  // eslint-disable-next-line no-undef
-  revenue_impact$(); // never run, but here to "trick" calculang graph logic
-};
-////////// end revenue_impact memo-loader code //////////
-
-
+    
 
 ////////// start revenue memo-loader code //////////
 //const revenue$m = memoize(999999, isEqual)(revenue$);

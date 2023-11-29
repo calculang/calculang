@@ -375,7 +375,11 @@ __webpack_require__.r(__webpack_exports__);
 //import memoize from 'lru-memoize';
 //import { isEqual } from 'underscore'; // TODO poor tree shaking support, or why is this impact so massive? Move to lodash/lodash-es?
 
+// import/export non-to memo?
+
  // there is already-culed stuff in here, why? imports to memo loader include cul_scope_id, what logic should it apply RE passing forward? eliminate? Probably!
+
+
 
 
 
@@ -1023,14 +1027,14 @@ function rest(array, n, guard) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* unused harmony export units$m */
-/* unused harmony export units_ */
 /* unused harmony export revenue$m */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return revenue_; });
 /* unused harmony export costs$m */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return costs; });
 /* unused harmony export profit$m */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return profit_; });
+/* unused harmony export units$m */
+/* unused harmony export units_ */
 /* unused harmony export price$m */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return price_; });
 /* harmony import */ var _revenue_with_demand_curve_cul_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(9);
@@ -1041,19 +1045,11 @@ function rest(array, n, guard) {
 //import memoize from 'lru-memoize';
 //import { isEqual } from 'underscore'; // TODO poor tree shaking support, or why is this impact so massive? Move to lodash/lodash-es?
 
+// import/export non-to memo?
+
  // there is already-culed stuff in here, why? imports to memo loader include cul_scope_id, what logic should it apply RE passing forward? eliminate? Probably!
 
 
-
-////////// start units memo-loader code //////////
-//const units$m = memoize(999999, isEqual)(units$);
-const units$m = Object(underscore__WEBPACK_IMPORTED_MODULE_1__[/* memoize */ "a"])(_base_cul_js_memoed_cul_scope_id_3_cul_parent_scope_id_2__WEBPACK_IMPORTED_MODULE_2__[/* units_ */ "e"], JSON.stringify);
-const units_ = (a) => {
-  return units$m(a);
-  // eslint-disable-next-line no-undef
-  Object(_base_cul_js_memoed_cul_scope_id_3_cul_parent_scope_id_2__WEBPACK_IMPORTED_MODULE_2__[/* units_ */ "e"])({ units_in }); // never run, but here to "trick" calculang graph logic
-};
-////////// end units memo-loader code //////////
 
 
 
@@ -1090,6 +1086,18 @@ const profit_ = (a) => {
   Object(_base_cul_js_memoed_cul_scope_id_3_cul_parent_scope_id_2__WEBPACK_IMPORTED_MODULE_2__[/* profit_ */ "c"])({ price_in }); // never run, but here to "trick" calculang graph logic
 };
 ////////// end profit memo-loader code //////////
+
+
+
+////////// start units memo-loader code //////////
+//const units$m = memoize(999999, isEqual)(units$);
+const units$m = Object(underscore__WEBPACK_IMPORTED_MODULE_1__[/* memoize */ "a"])(_base_cul_js_memoed_cul_scope_id_3_cul_parent_scope_id_2__WEBPACK_IMPORTED_MODULE_2__[/* units_ */ "e"], JSON.stringify);
+const units_ = (a) => {
+  return units$m(a);
+  // eslint-disable-next-line no-undef
+  Object(_base_cul_js_memoed_cul_scope_id_3_cul_parent_scope_id_2__WEBPACK_IMPORTED_MODULE_2__[/* units_ */ "e"])({ units_in }); // never run, but here to "trick" calculang graph logic
+};
+////////// end units memo-loader code //////////
 
 
 

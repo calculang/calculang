@@ -129,7 +129,7 @@ export default async function loader(content, map, meta) {
                 // entrypoint
                 mapped_parent_scope_id = 0;
                 iteration = 0 //needed for both passes
-              } else {
+              } else if (pass =='introspection-api') {
                 cul_parent_parent_scope_id = +parseQuery(cp.slice(cp.indexOf('?'))).cul_parent_scope_id
                 debugger;
                 criteria = global_state.memo_cul_scope_id_to_nomemo[cul_parent_parent_scope_id]
@@ -156,6 +156,8 @@ export default async function loader(content, map, meta) {
                   // cul_scope_id 2 run first?
 
                 }
+              } else {
+                criteria2 = global_state.memo_cul_scope_id_to_nomemo[cul_scope_id]
               }
     
     if (this._compilation.options.entry == this._module.rawRequest) {

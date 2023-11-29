@@ -1,4 +1,4 @@
-import { profit } from "./cul_scope_3.mjs";import { costs } from "./cul_scope_3.mjs";import { revenue } from "./cul_scope_3.mjs";import { price } from "./cul_scope_3.mjs";import { units } from "./cul_scope_3.mjs";import { revenue_impact } from "./cul_scope_0.mjs";import { B_revenue } from "./cul_scope_0.mjs";import { A_revenue } from "./cul_scope_0.mjs"; // this model takes inputs base price and units, and a price_multiplier.
+import { step } from "./cul_scope_3.mjs";import { price_multiplier } from "./cul_scope_3.mjs";import { price } from "./cul_scope_3.mjs";import { units } from "./cul_scope_3.mjs";import { price_1 } from "./cul_scope_3.mjs";import { units_1 } from "./cul_scope_3.mjs";import { revenue } from "./cul_scope_3.mjs";import { revenue_impact } from "./cul_scope_0.mjs";import { B_revenue } from "./cul_scope_0.mjs";import { A_revenue } from "./cul_scope_0.mjs"; // this model takes inputs base price and units, and a price_multiplier.
 // it derives a proposed price by applying the multiplier and derives consequent units, constrained to the demand curve below.
 
 // via an additional input step_in it provides a mini reconciliation (if you can call it that) feature, moving units from the amount reflecting the update to the demand curve (when step_in is 0)
@@ -11,8 +11,8 @@ import { profit } from "./cul_scope_3.mjs";import { costs } from "./cul_scope_3.
 
 // this tests some key language features of calculang and demos their technical motivations
 
-import { revenue_, units_ as units_1, price_ as price_1 } from "./cul_scope_8.mjs"; // don't pollute the _ modifier
-export { revenue_, units_1, price_1 };
+import { revenue_, units_ as units_1_, price_ as price_1_ } from "./cul_scope_8.mjs"; // don't pollute the _ modifier
+export { revenue_, units_1_, price_1_ };
 //export { revenue, units_, price_ };
 
 // import { all } from './base.cul.js'; TODO use this in place of above when I fix issue #13
@@ -23,5 +23,5 @@ step({ step_in }) >= 1 ? units_1({ units_in }) + (price({ price_in, price_multip
 export const price_ = ({ price_in, price_multiplier_in }) => price_1({ price_in }) * price_multiplier({ price_multiplier_in });
 
 // new inputs
-export const price_multiplier = ({ price_multiplier_in }) => price_multiplier_in;
-export const step = ({ step_in }) => step_in;
+export const price_multiplier_ = ({ price_multiplier_in }) => price_multiplier_in;
+export const step_ = ({ step_in }) => step_in;

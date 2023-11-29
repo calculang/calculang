@@ -1,11 +1,11 @@
-import { step } from "./cul_scope_5.mjs";import { price_multiplier } from "./cul_scope_5.mjs";import { price_1 } from "./cul_scope_5.mjs";import { units_1 } from "./cul_scope_5.mjs";import { price } from "./cul_scope_2.mjs";import { units } from "./cul_scope_2.mjs";import { revenue } from "./cul_scope_2.mjs";import { revenue_impact } from "./cul_scope_0.mjs";import { B_revenue } from "./cul_scope_0.mjs";import { A_revenue } from "./cul_scope_0.mjs";export const revenue_ = ({}) => {
+import { profit } from "./cul_scope_5.mjs";import { costs } from "./cul_scope_5.mjs";import { price } from "./cul_scope_2.mjs";import { units } from "./cul_scope_2.mjs";import { revenue } from "./cul_scope_2.mjs";import { revenue_impact } from "./cul_scope_0.mjs";import { B_revenue } from "./cul_scope_0.mjs";import { A_revenue } from "./cul_scope_0.mjs";export const revenue_ = ({}) => {
   return units({}) * price({});
 };
 
 // variable costs only, OK for testing
-export const costs = ({}) => 100 * units({});
+export const costs_ = ({}) => 100 * units({});
 
-export const profit = ({}) => revenue({}) - costs({});
+export const profit_ = ({}) => revenue({}) - costs({});
 
 // inputs
 export const units_ = ({ units_in }) => units_in;

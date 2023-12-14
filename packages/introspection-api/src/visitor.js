@@ -326,6 +326,7 @@ export default ({ types: t }) => ({
         from: `${state.opts.cul_scope_id}_${path.node.callee.name}`, // TODO develop logic for method calls (console.log=undefined) result.push({obj}) ignore
         reason: 'call',
         negs,
+        loc: path.node.loc
       });
     },
   },

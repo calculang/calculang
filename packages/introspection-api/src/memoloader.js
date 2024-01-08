@@ -208,6 +208,11 @@ export default async function loader(content, map, meta) {
     global_state.memo_map[cul_scope_id] = iteration
 
     iteration++;
+
+    // impt!
+    dont_memo = to_memo.filter(d => d.name.includes("function")) // SHOULD DO a babel pass to collect exports which are not cul functions ! I needed this doing JS keys_stream stuff
+
+    to_memo = to_memo.filter(d => !d.name.includes("function"))
     
     const generated = to_memo
       .map(
@@ -236,9 +241,8 @@ export const ${d.name} = (a) => {
       .replace(/&&/, '&')
       .replace('?&', '?');
     
-    dont_memo = []
     
-    // WHAT HAPPENED TO JUST MEMO DEFINITIONS??
+    // WHAT HAPPENED TO JUST MEMO DEFINITIONS?? <-- remember random case
     
     var memo_import_line = `import { ${to_memo
       .map((d) => `${d.name}_ as ${d.name}$`) // don't pollute the _ modifier (=> use as)

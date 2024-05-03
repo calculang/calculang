@@ -142,7 +142,11 @@ export default ({ types: t }) => ({
           }
         );
       },
-      exit() {
+      exit(path) {
+        // exclude anon fns, as above, closes #143
+        var name = path.parent.id?.name;
+        if (name == undefined) return;
+
         parentfn = undefined;
         parentfnOrig = undefined;
       },

@@ -332,43 +332,127 @@
       "to": "0_units",
       "from": "0_step",
       "reason": "call",
-      "negs": []
+      "negs": [],
+      "loc": {
+        "start": {
+          "line": 22,
+          "column": 2,
+          "index": 1420
+        },
+        "end": {
+          "line": 22,
+          "column": 8,
+          "index": 1426
+        }
+      }
     },
     {
       "to": "0_units",
       "from": "0_units_1",
       "reason": "call",
-      "negs": []
+      "negs": [],
+      "loc": {
+        "start": {
+          "line": 22,
+          "column": 16,
+          "index": 1434
+        },
+        "end": {
+          "line": 22,
+          "column": 25,
+          "index": 1443
+        }
+      }
     },
     {
       "to": "0_units",
       "from": "0_price",
       "reason": "call",
-      "negs": []
+      "negs": [],
+      "loc": {
+        "start": {
+          "line": 22,
+          "column": 29,
+          "index": 1447
+        },
+        "end": {
+          "line": 22,
+          "column": 36,
+          "index": 1454
+        }
+      }
     },
     {
       "to": "0_units",
       "from": "0_price_1",
       "reason": "call",
-      "negs": []
+      "negs": [],
+      "loc": {
+        "start": {
+          "line": 22,
+          "column": 39,
+          "index": 1457
+        },
+        "end": {
+          "line": 22,
+          "column": 48,
+          "index": 1466
+        }
+      }
     },
     {
       "to": "0_units",
       "from": "0_units_1",
       "reason": "call",
-      "negs": []
+      "negs": [],
+      "loc": {
+        "start": {
+          "line": 22,
+          "column": 61,
+          "index": 1479
+        },
+        "end": {
+          "line": 22,
+          "column": 70,
+          "index": 1488
+        }
+      }
     },
     {
       "to": "0_price",
       "from": "0_price_1",
       "reason": "call",
-      "negs": []
+      "negs": [],
+      "loc": {
+        "start": {
+          "line": 23,
+          "column": 27,
+          "index": 1517
+        },
+        "end": {
+          "line": 23,
+          "column": 36,
+          "index": 1526
+        }
+      }
     },
     {
       "to": "0_price",
       "from": "0_price_multiplier",
       "reason": "call",
-      "negs": []
+      "negs": [],
+      "loc": {
+        "start": {
+          "line": 23,
+          "column": 39,
+          "index": 1529
+        },
+        "end": {
+          "line": 23,
+          "column": 57,
+          "index": 1547
+        }
+      }
     },
     {
       "to": "0_price_multiplier",
@@ -404,31 +488,91 @@
       "to": "1_revenue",
       "from": "1_units",
       "reason": "call",
-      "negs": []
+      "negs": [],
+      "loc": {
+        "start": {
+          "line": 2,
+          "column": 9,
+          "index": 40
+        },
+        "end": {
+          "line": 2,
+          "column": 16,
+          "index": 47
+        }
+      }
     },
     {
       "to": "1_revenue",
       "from": "1_price",
       "reason": "call",
-      "negs": []
+      "negs": [],
+      "loc": {
+        "start": {
+          "line": 2,
+          "column": 19,
+          "index": 50
+        },
+        "end": {
+          "line": 2,
+          "column": 26,
+          "index": 57
+        }
+      }
     },
     {
       "to": "1_costs",
       "from": "1_units",
       "reason": "call",
-      "negs": []
+      "negs": [],
+      "loc": {
+        "start": {
+          "line": 6,
+          "column": 33,
+          "index": 135
+        },
+        "end": {
+          "line": 6,
+          "column": 40,
+          "index": 142
+        }
+      }
     },
     {
       "to": "1_profit",
       "from": "1_revenue",
       "reason": "call",
-      "negs": []
+      "negs": [],
+      "loc": {
+        "start": {
+          "line": 8,
+          "column": 28,
+          "index": 173
+        },
+        "end": {
+          "line": 8,
+          "column": 37,
+          "index": 182
+        }
+      }
     },
     {
       "to": "1_profit",
       "from": "1_costs",
       "reason": "call",
-      "negs": []
+      "negs": [],
+      "loc": {
+        "start": {
+          "line": 8,
+          "column": 40,
+          "index": 185
+        },
+        "end": {
+          "line": 8,
+          "column": 47,
+          "index": 192
+        }
+      }
     },
     {
       "to": "1_units_",

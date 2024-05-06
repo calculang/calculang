@@ -1,14 +1,7 @@
-import { units } from "./cul_scope_0.mjs";export const revenue = ({ price_in }) => {
-  return units({ price_in }) * price({ price_in });
-};
+import { units } from "./cul_scope_0.mjs";import { profit } from "./cul_scope_0.mjs";import { price } from "./cul_scope_0.mjs";import { revenue } from "./cul_scope_0.mjs";import { revenue_, price_, profit_ } from "./cul_scope_2.mjs";
+export { revenue_, price_, profit_ };
 
-// variable costs only, OK for testing
-export const costs = ({ price_in }) => 100 * units({ price_in });
+// demand-curve constraint:
+export const units_ = ({ price_in }) => 1000 - 200 * price({ price_in });
 
-export const profit = ({ price_in }) => revenue({ price_in }) - costs({ price_in });
-
-// inputs
-export const units_ = ({ units_in }) => units_in;
-export const price = ({ price_in }) => price_in;
-
-// ?? what if an explicit import in base referred back to A or B?
+// this model has a constraint on units so that price is the only model input, and units are derived from the price input

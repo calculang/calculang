@@ -950,43 +950,127 @@
       "to": "0_revenue",
       "from": "0_revenue$",
       "reason": "call",
-      "negs": []
+      "negs": [],
+      "loc": {
+        "start": {
+          "line": 20,
+          "column": 2,
+          "index": 929
+        },
+        "end": {
+          "line": 20,
+          "column": 12,
+          "index": 939
+        }
+      }
     },
     {
       "to": "0_units_1",
       "from": "0_units_1$",
       "reason": "call",
-      "negs": []
+      "negs": [],
+      "loc": {
+        "start": {
+          "line": 32,
+          "column": 2,
+          "index": 1319
+        },
+        "end": {
+          "line": 32,
+          "column": 12,
+          "index": 1329
+        }
+      }
     },
     {
       "to": "0_price_1",
       "from": "0_price_1$",
       "reason": "call",
-      "negs": []
+      "negs": [],
+      "loc": {
+        "start": {
+          "line": 44,
+          "column": 2,
+          "index": 1709
+        },
+        "end": {
+          "line": 44,
+          "column": 12,
+          "index": 1719
+        }
+      }
     },
     {
       "to": "0_units",
       "from": "0_units$",
       "reason": "call",
-      "negs": []
+      "negs": [],
+      "loc": {
+        "start": {
+          "line": 56,
+          "column": 2,
+          "index": 2085
+        },
+        "end": {
+          "line": 56,
+          "column": 10,
+          "index": 2093
+        }
+      }
     },
     {
       "to": "0_price",
       "from": "0_price$",
       "reason": "call",
-      "negs": []
+      "negs": [],
+      "loc": {
+        "start": {
+          "line": 68,
+          "column": 2,
+          "index": 2457
+        },
+        "end": {
+          "line": 68,
+          "column": 10,
+          "index": 2465
+        }
+      }
     },
     {
       "to": "0_price_multiplier",
       "from": "0_price_multiplier$",
       "reason": "call",
-      "negs": []
+      "negs": [],
+      "loc": {
+        "start": {
+          "line": 80,
+          "column": 2,
+          "index": 2906
+        },
+        "end": {
+          "line": 80,
+          "column": 21,
+          "index": 2925
+        }
+      }
     },
     {
       "to": "0_step",
       "from": "0_step$",
       "reason": "call",
-      "negs": []
+      "negs": [],
+      "loc": {
+        "start": {
+          "line": 92,
+          "column": 2,
+          "index": 3293
+        },
+        "end": {
+          "line": 92,
+          "column": 9,
+          "index": 3300
+        }
+      }
     },
     {
       "to": "1_revenue",
@@ -1042,43 +1126,127 @@
       "to": "1_units_",
       "from": "1_step",
       "reason": "call",
-      "negs": []
+      "negs": [],
+      "loc": {
+        "start": {
+          "line": 22,
+          "column": 2,
+          "index": 1420
+        },
+        "end": {
+          "line": 22,
+          "column": 8,
+          "index": 1426
+        }
+      }
     },
     {
       "to": "1_units_",
       "from": "1_units_1",
       "reason": "call",
-      "negs": []
+      "negs": [],
+      "loc": {
+        "start": {
+          "line": 22,
+          "column": 16,
+          "index": 1434
+        },
+        "end": {
+          "line": 22,
+          "column": 25,
+          "index": 1443
+        }
+      }
     },
     {
       "to": "1_units_",
       "from": "1_price",
       "reason": "call",
-      "negs": []
+      "negs": [],
+      "loc": {
+        "start": {
+          "line": 22,
+          "column": 29,
+          "index": 1447
+        },
+        "end": {
+          "line": 22,
+          "column": 36,
+          "index": 1454
+        }
+      }
     },
     {
       "to": "1_units_",
       "from": "1_price_1",
       "reason": "call",
-      "negs": []
+      "negs": [],
+      "loc": {
+        "start": {
+          "line": 22,
+          "column": 39,
+          "index": 1457
+        },
+        "end": {
+          "line": 22,
+          "column": 48,
+          "index": 1466
+        }
+      }
     },
     {
       "to": "1_units_",
       "from": "1_units_1",
       "reason": "call",
-      "negs": []
+      "negs": [],
+      "loc": {
+        "start": {
+          "line": 22,
+          "column": 61,
+          "index": 1479
+        },
+        "end": {
+          "line": 22,
+          "column": 70,
+          "index": 1488
+        }
+      }
     },
     {
       "to": "1_price_",
       "from": "1_price_1",
       "reason": "call",
-      "negs": []
+      "negs": [],
+      "loc": {
+        "start": {
+          "line": 23,
+          "column": 27,
+          "index": 1517
+        },
+        "end": {
+          "line": 23,
+          "column": 36,
+          "index": 1526
+        }
+      }
     },
     {
       "to": "1_price_",
       "from": "1_price_multiplier",
       "reason": "call",
-      "negs": []
+      "negs": [],
+      "loc": {
+        "start": {
+          "line": 23,
+          "column": 39,
+          "index": 1529
+        },
+        "end": {
+          "line": 23,
+          "column": 57,
+          "index": 1547
+        }
+      }
     },
     {
       "to": "1_price_multiplier_",
@@ -1154,31 +1322,91 @@
       "to": "2_revenue_",
       "from": "2_revenue$",
       "reason": "call",
-      "negs": []
+      "negs": [],
+      "loc": {
+        "start": {
+          "line": 20,
+          "column": 2,
+          "index": 845
+        },
+        "end": {
+          "line": 20,
+          "column": 12,
+          "index": 855
+        }
+      }
     },
     {
       "to": "2_costs",
       "from": "2_costs$",
       "reason": "call",
-      "negs": []
+      "negs": [],
+      "loc": {
+        "start": {
+          "line": 32,
+          "column": 2,
+          "index": 1221
+        },
+        "end": {
+          "line": 32,
+          "column": 10,
+          "index": 1229
+        }
+      }
     },
     {
       "to": "2_profit",
       "from": "2_profit$",
       "reason": "call",
-      "negs": []
+      "negs": [],
+      "loc": {
+        "start": {
+          "line": 44,
+          "column": 2,
+          "index": 1600
+        },
+        "end": {
+          "line": 44,
+          "column": 11,
+          "index": 1609
+        }
+      }
     },
     {
       "to": "2_units_",
       "from": "2_units$",
       "reason": "call",
-      "negs": []
+      "negs": [],
+      "loc": {
+        "start": {
+          "line": 56,
+          "column": 2,
+          "index": 1974
+        },
+        "end": {
+          "line": 56,
+          "column": 10,
+          "index": 1982
+        }
+      }
     },
     {
       "to": "2_price_",
       "from": "2_price$",
       "reason": "call",
-      "negs": []
+      "negs": [],
+      "loc": {
+        "start": {
+          "line": 68,
+          "column": 2,
+          "index": 2346
+        },
+        "end": {
+          "line": 68,
+          "column": 10,
+          "index": 2354
+        }
+      }
     },
     {
       "to": "3_revenue",
@@ -1229,31 +1457,91 @@
       "to": "3_revenue_",
       "from": "3_units",
       "reason": "call",
-      "negs": []
+      "negs": [],
+      "loc": {
+        "start": {
+          "line": 2,
+          "column": 9,
+          "index": 40
+        },
+        "end": {
+          "line": 2,
+          "column": 16,
+          "index": 47
+        }
+      }
     },
     {
       "to": "3_revenue_",
       "from": "3_price",
       "reason": "call",
-      "negs": []
+      "negs": [],
+      "loc": {
+        "start": {
+          "line": 2,
+          "column": 19,
+          "index": 50
+        },
+        "end": {
+          "line": 2,
+          "column": 26,
+          "index": 57
+        }
+      }
     },
     {
       "to": "3_costs_",
       "from": "3_units",
       "reason": "call",
-      "negs": []
+      "negs": [],
+      "loc": {
+        "start": {
+          "line": 6,
+          "column": 33,
+          "index": 135
+        },
+        "end": {
+          "line": 6,
+          "column": 40,
+          "index": 142
+        }
+      }
     },
     {
       "to": "3_profit_",
       "from": "3_revenue",
       "reason": "call",
-      "negs": []
+      "negs": [],
+      "loc": {
+        "start": {
+          "line": 8,
+          "column": 28,
+          "index": 173
+        },
+        "end": {
+          "line": 8,
+          "column": 37,
+          "index": 182
+        }
+      }
     },
     {
       "to": "3_profit_",
       "from": "3_costs",
       "reason": "call",
-      "negs": []
+      "negs": [],
+      "loc": {
+        "start": {
+          "line": 8,
+          "column": 40,
+          "index": 185
+        },
+        "end": {
+          "line": 8,
+          "column": 47,
+          "index": 192
+        }
+      }
     },
     {
       "to": "3_units_",

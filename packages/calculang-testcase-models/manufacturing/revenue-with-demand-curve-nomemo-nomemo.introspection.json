@@ -1,0 +1,374 @@
+{
+  "cul_functions": {
+    "0_revenue": {
+      "cul_scope_id": 0,
+      "name": "revenue",
+      "imported": "revenue",
+      "cul_source_scope_id": 1,
+      "reason": "explicit import",
+      "inputs": [
+        "price_in"
+      ]
+    },
+    "0_price": {
+      "cul_scope_id": 0,
+      "name": "price",
+      "imported": "price",
+      "cul_source_scope_id": 1,
+      "reason": "explicit import",
+      "inputs": [
+        "price_in"
+      ]
+    },
+    "0_profit": {
+      "cul_scope_id": 0,
+      "name": "profit",
+      "imported": "profit",
+      "cul_source_scope_id": 1,
+      "reason": "explicit import",
+      "inputs": [
+        "price_in"
+      ]
+    },
+    "0_units": {
+      "cul_scope_id": 0,
+      "name": "units",
+      "cul_source_scope_id": 0,
+      "reason": "definition",
+      "loc": {
+        "start": {
+          "line": 5,
+          "column": 21,
+          "index": 138
+        },
+        "end": {
+          "line": 5,
+          "column": 47,
+          "index": 164
+        }
+      },
+      "inputs": [
+        "price_in"
+      ]
+    },
+    "1_units": {
+      "cul_scope_id": 1,
+      "name": "units",
+      "cul_source_scope_id": 0,
+      "reason": "implicit import",
+      "inputs": [
+        "price_in"
+      ]
+    },
+    "1_revenue": {
+      "cul_scope_id": 1,
+      "name": "revenue",
+      "cul_source_scope_id": 1,
+      "reason": "definition",
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 23,
+          "index": 23
+        },
+        "end": {
+          "line": 3,
+          "column": 1,
+          "index": 60
+        }
+      },
+      "inputs": [
+        "price_in"
+      ]
+    },
+    "1_costs": {
+      "cul_scope_id": 1,
+      "name": "costs",
+      "cul_source_scope_id": 1,
+      "reason": "definition",
+      "loc": {
+        "start": {
+          "line": 6,
+          "column": 21,
+          "index": 123
+        },
+        "end": {
+          "line": 6,
+          "column": 40,
+          "index": 142
+        }
+      },
+      "inputs": [
+        "price_in"
+      ]
+    },
+    "1_profit": {
+      "cul_scope_id": 1,
+      "name": "profit",
+      "cul_source_scope_id": 1,
+      "reason": "definition",
+      "loc": {
+        "start": {
+          "line": 8,
+          "column": 22,
+          "index": 167
+        },
+        "end": {
+          "line": 8,
+          "column": 47,
+          "index": 192
+        }
+      },
+      "inputs": [
+        "price_in"
+      ]
+    },
+    "1_units_": {
+      "cul_scope_id": 1,
+      "name": "units_",
+      "cul_source_scope_id": 1,
+      "reason": "definition (renamed)",
+      "loc": {
+        "start": {
+          "line": 11,
+          "column": 21,
+          "index": 226
+        },
+        "end": {
+          "line": 11,
+          "column": 35,
+          "index": 240
+        }
+      },
+      "inputs": [
+        "units_in"
+      ]
+    },
+    "1_units_in": {
+      "cul_scope_id": 1,
+      "name": "units_in",
+      "cul_source_scope_id": 1,
+      "reason": "input definition",
+      "inputs": [
+        "units_in"
+      ]
+    },
+    "1_price": {
+      "cul_scope_id": 1,
+      "name": "price",
+      "cul_source_scope_id": 1,
+      "reason": "definition",
+      "loc": {
+        "start": {
+          "line": 12,
+          "column": 21,
+          "index": 263
+        },
+        "end": {
+          "line": 12,
+          "column": 35,
+          "index": 277
+        }
+      },
+      "inputs": [
+        "price_in"
+      ]
+    },
+    "1_price_in": {
+      "cul_scope_id": 1,
+      "name": "price_in",
+      "cul_source_scope_id": 1,
+      "reason": "input definition",
+      "inputs": [
+        "price_in"
+      ]
+    }
+  },
+  "cul_links": [
+    {
+      "to": "0_revenue",
+      "from": "1_revenue",
+      "reason": "explicit import"
+    },
+    {
+      "to": "0_price",
+      "from": "1_price",
+      "reason": "explicit import"
+    },
+    {
+      "to": "0_profit",
+      "from": "1_profit",
+      "reason": "explicit import"
+    },
+    {
+      "to": "0_units",
+      "from": "0_price",
+      "reason": "call",
+      "negs": [],
+      "loc": {
+        "start": {
+          "line": 5,
+          "column": 40,
+          "index": 157
+        },
+        "end": {
+          "line": 5,
+          "column": 47,
+          "index": 164
+        }
+      }
+    },
+    {
+      "to": "1_units",
+      "from": "0_units",
+      "reason": "implicit import"
+    },
+    {
+      "to": "1_revenue",
+      "from": "1_units",
+      "reason": "call",
+      "negs": [],
+      "loc": {
+        "start": {
+          "line": 2,
+          "column": 9,
+          "index": 40
+        },
+        "end": {
+          "line": 2,
+          "column": 16,
+          "index": 47
+        }
+      }
+    },
+    {
+      "to": "1_revenue",
+      "from": "1_price",
+      "reason": "call",
+      "negs": [],
+      "loc": {
+        "start": {
+          "line": 2,
+          "column": 19,
+          "index": 50
+        },
+        "end": {
+          "line": 2,
+          "column": 26,
+          "index": 57
+        }
+      }
+    },
+    {
+      "to": "1_costs",
+      "from": "1_units",
+      "reason": "call",
+      "negs": [],
+      "loc": {
+        "start": {
+          "line": 6,
+          "column": 33,
+          "index": 135
+        },
+        "end": {
+          "line": 6,
+          "column": 40,
+          "index": 142
+        }
+      }
+    },
+    {
+      "to": "1_profit",
+      "from": "1_revenue",
+      "reason": "call",
+      "negs": [],
+      "loc": {
+        "start": {
+          "line": 8,
+          "column": 28,
+          "index": 173
+        },
+        "end": {
+          "line": 8,
+          "column": 37,
+          "index": 182
+        }
+      }
+    },
+    {
+      "to": "1_profit",
+      "from": "1_costs",
+      "reason": "call",
+      "negs": [],
+      "loc": {
+        "start": {
+          "line": 8,
+          "column": 40,
+          "index": 185
+        },
+        "end": {
+          "line": 8,
+          "column": 47,
+          "index": 192
+        }
+      }
+    },
+    {
+      "to": "1_units_",
+      "from": "1_units_in",
+      "reason": "input"
+    },
+    {
+      "to": "1_price",
+      "from": "1_price_in",
+      "reason": "input"
+    }
+  ],
+  "cul_scope_ids_to_resource": {
+    "0": "./revenue-with-demand-curve-nomemo-nomemo.cul.js",
+    "1": "./base.cul?cul_scope_id=1&cul_parent_scope_id=0"
+  },
+  "import_sources_to_resource": {
+    "0_./base.cul": "./base.cul?cul_scope_id=1&cul_parent_scope_id=0"
+  },
+  "cul_input_map": {
+    "0_revenue": [
+      "price_in"
+    ],
+    "0_price": [
+      "price_in"
+    ],
+    "0_profit": [
+      "price_in"
+    ],
+    "0_units": [
+      "price_in"
+    ],
+    "1_units": [
+      "price_in"
+    ],
+    "1_revenue": [
+      "price_in"
+    ],
+    "1_costs": [
+      "price_in"
+    ],
+    "1_profit": [
+      "price_in"
+    ],
+    "1_units_": [
+      "units_in"
+    ],
+    "1_units_in": [
+      "units_in"
+    ],
+    "1_price": [
+      "price_in"
+    ],
+    "1_price_in": [
+      "price_in"
+    ]
+  },
+  "dot": "digraph {\n  \"0_revenue\" [cul_scope_id=0,name=revenue,imported=revenue,cul_source_scope_id=1,reason=\"explicit import\",inputs=price_in,label=\"0_revenue inputs: price_in\"]\n  \"0_price\" [cul_scope_id=0,name=price,imported=price,cul_source_scope_id=1,reason=\"explicit import\",inputs=price_in,label=\"0_price inputs: price_in\"]\n  \"0_profit\" [cul_scope_id=0,name=profit,imported=profit,cul_source_scope_id=1,reason=\"explicit import\",inputs=price_in,label=\"0_profit inputs: price_in\"]\n  \"0_units\" [cul_scope_id=0,name=units,cul_source_scope_id=0,reason=definition,loc=\"[object Object]\",inputs=price_in,label=\"0_units inputs: price_in\"]\n  \"1_units\" [cul_scope_id=1,name=units,cul_source_scope_id=0,reason=\"implicit import\",inputs=price_in,label=\"1_units inputs: price_in\"]\n  \"1_revenue\" [cul_scope_id=1,name=revenue,cul_source_scope_id=1,reason=definition,loc=\"[object Object]\",inputs=price_in,label=\"1_revenue inputs: price_in\"]\n  \"1_costs\" [cul_scope_id=1,name=costs,cul_source_scope_id=1,reason=definition,loc=\"[object Object]\",inputs=price_in,label=\"1_costs inputs: price_in\"]\n  \"1_profit\" [cul_scope_id=1,name=profit,cul_source_scope_id=1,reason=definition,loc=\"[object Object]\",inputs=price_in,label=\"1_profit inputs: price_in\"]\n  \"1_units_\" [cul_scope_id=1,name=units_,cul_source_scope_id=1,reason=\"definition (renamed)\",loc=\"[object Object]\",inputs=units_in,label=\"1_units_ inputs: units_in\"]\n  \"1_units_in\" [cul_scope_id=1,name=units_in,cul_source_scope_id=1,reason=\"input definition\",inputs=units_in,label=\"1_units_in inputs: units_in\"]\n  \"1_price\" [cul_scope_id=1,name=price,cul_source_scope_id=1,reason=definition,loc=\"[object Object]\",inputs=price_in,label=\"1_price inputs: price_in\"]\n  \"1_price_in\" [cul_scope_id=1,name=price_in,cul_source_scope_id=1,reason=\"input definition\",inputs=price_in,label=\"1_price_in inputs: price_in\"]\n  \"1_revenue\" -> \"0_revenue\" [value=\"[object Object]\",label=\"explicit import\"]\n  \"1_price\" -> \"0_price\" [value=\"[object Object]\",label=\"explicit import\"]\n  \"1_profit\" -> \"0_profit\" [value=\"[object Object]\",label=\"explicit import\"]\n  \"0_price\" -> \"0_units\" [value=\"[object Object]\",label=\"call -\"]\n  \"0_units\" -> \"1_units\" [value=\"[object Object]\",label=\"implicit import\"]\n  \"1_units\" -> \"1_revenue\" [value=\"[object Object]\",label=\"call -\"]\n  \"1_price\" -> \"1_revenue\" [value=\"[object Object]\",label=\"call -\"]\n  \"1_units\" -> \"1_costs\" [value=\"[object Object]\",label=\"call -\"]\n  \"1_revenue\" -> \"1_profit\" [value=\"[object Object]\",label=\"call -\"]\n  \"1_costs\" -> \"1_profit\" [value=\"[object Object]\",label=\"call -\"]\n  \"1_units_in\" -> \"1_units_\" [value=\"[object Object]\",label=\"input +units_in\"]\n  \"1_price_in\" -> \"1_price\" [value=\"[object Object]\",label=\"input +price_in\"]\n}\n",
+  "memo_map": {}
+}

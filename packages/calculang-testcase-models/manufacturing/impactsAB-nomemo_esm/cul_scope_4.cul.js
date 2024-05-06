@@ -1,8 +1,14 @@
-import { revenue } from './base.cul';
-export { revenue };
+export const revenue = () => {
+  return units() * price();
+};
 
-export const units = () => 100;
-export const price = () => 500;
+// variable costs only, OK for testing
+export const costs = () => 100 * units();
 
-// this fixes (or constrains) the 2 inputs in base, so that this model is independent of inputs
-// e.g. revenue() and profit() can be called without inputs and the values specified above are used
+export const profit = () => revenue() - costs();
+
+// inputs
+export const units = () => units_in;
+export const price = () => price_in;
+
+// ?? what if an explicit import in base referred back to A or B?

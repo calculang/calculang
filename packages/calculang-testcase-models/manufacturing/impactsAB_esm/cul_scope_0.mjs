@@ -101,7 +101,7 @@ export const B_costs$m = memoize(B_costs$, JSON.stringify);
 export const B_costs = (a) => {
   return B_costs$m(a);
   // eslint-disable-next-line no-undef
-  B_costs$({}); // never run, but here to "trick" calculang graph logic
+  B_costs$({ step_in, units_in, price_in, price_multiplier_in }); // never run, but here to "trick" calculang graph logic
 };
 ////////// end B_costs memo-loader code //////////
 
@@ -161,7 +161,7 @@ export const costs_impact$m = memoize(costs_impact$, JSON.stringify);
 export const costs_impact = (a) => {
   return costs_impact$m(a);
   // eslint-disable-next-line no-undef
-  costs_impact$({}); // never run, but here to "trick" calculang graph logic
+  costs_impact$({ step_in, units_in, price_in, price_multiplier_in }); // never run, but here to "trick" calculang graph logic
 };
 ////////// end costs_impact memo-loader code //////////
 

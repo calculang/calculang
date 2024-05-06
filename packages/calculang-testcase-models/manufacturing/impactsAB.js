@@ -130,7 +130,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "units_impact", function() { return units_impact; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "price_impact$m", function() { return price_impact$m; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "price_impact", function() { return price_impact; });
-/* harmony import */ var underscore__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
+/* harmony import */ var underscore__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(3);
 /* harmony import */ var _impactsAB_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(7);
 
 
@@ -235,7 +235,7 @@ const B_costs$m = Object(underscore__WEBPACK_IMPORTED_MODULE_0__[/* memoize */ "
 const B_costs = (a) => {
   return B_costs$m(a);
   // eslint-disable-next-line no-undef
-  Object(_impactsAB_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0__WEBPACK_IMPORTED_MODULE_1__[/* B_costs_ */ "f"])({}); // never run, but here to "trick" calculang graph logic
+  Object(_impactsAB_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0__WEBPACK_IMPORTED_MODULE_1__[/* B_costs_ */ "f"])({ step_in, units_in, price_in, price_multiplier_in }); // never run, but here to "trick" calculang graph logic
 };
 ////////// end B_costs memo-loader code //////////
 
@@ -295,7 +295,7 @@ const costs_impact$m = Object(underscore__WEBPACK_IMPORTED_MODULE_0__[/* memoize
 const costs_impact = (a) => {
   return costs_impact$m(a);
   // eslint-disable-next-line no-undef
-  Object(_impactsAB_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0__WEBPACK_IMPORTED_MODULE_1__[/* costs_impact_ */ "k"])({}); // never run, but here to "trick" calculang graph logic
+  Object(_impactsAB_cul_js_memoed_cul_scope_id_1_cul_parent_scope_id_0__WEBPACK_IMPORTED_MODULE_1__[/* costs_impact_ */ "k"])({ step_in, units_in, price_in, price_multiplier_in }); // never run, but here to "trick" calculang graph logic
 };
 ////////// end costs_impact memo-loader code //////////
 
@@ -399,6 +399,151 @@ var MAX_ARRAY_INDEX = Math.pow(2, 53) - 1;
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* unused harmony export revenue$m */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return revenue; });
+/* unused harmony export profit$m */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return profit; });
+/* unused harmony export costs$m */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return costs; });
+/* unused harmony export units_1$m */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return units_1; });
+/* unused harmony export price_1$m */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return price_1; });
+/* unused harmony export units$m */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return units; });
+/* unused harmony export price$m */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return price; });
+/* unused harmony export price_multiplier$m */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return price_multiplier; });
+/* unused harmony export step$m */
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return step; });
+/* harmony import */ var _impactsAB_cul_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(0);
+/* harmony import */ var underscore__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(3);
+/* harmony import */ var _price_change_reconciliation_cul_js_memoed_cul_scope_id_7_cul_parent_scope_id_3__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(14);
+
+
+//import memoize from 'lru-memoize';
+//import { isEqual } from 'underscore'; // TODO poor tree shaking support, or why is this impact so massive? Move to lodash/lodash-es?
+
+// import/export non-to memo?
+
+ // there is already-culed stuff in here, why? imports to memo loader include cul_scope_id, what logic should it apply RE passing forward? eliminate? Probably!
+
+
+
+
+
+////////// start revenue memo-loader code //////////
+//const revenue$m = memoize(999999, isEqual)(revenue$);
+const revenue$m = Object(underscore__WEBPACK_IMPORTED_MODULE_1__[/* memoize */ "a"])(_price_change_reconciliation_cul_js_memoed_cul_scope_id_7_cul_parent_scope_id_3__WEBPACK_IMPORTED_MODULE_2__[/* revenue_ */ "f"], JSON.stringify);
+const revenue = (a) => {
+  return revenue$m(a);
+  // eslint-disable-next-line no-undef
+  Object(_price_change_reconciliation_cul_js_memoed_cul_scope_id_7_cul_parent_scope_id_3__WEBPACK_IMPORTED_MODULE_2__[/* revenue_ */ "f"])({ step_in, units_in, price_in, price_multiplier_in }); // never run, but here to "trick" calculang graph logic
+};
+////////// end revenue memo-loader code //////////
+
+
+
+////////// start profit memo-loader code //////////
+//const profit$m = memoize(999999, isEqual)(profit$);
+const profit$m = Object(underscore__WEBPACK_IMPORTED_MODULE_1__[/* memoize */ "a"])(_price_change_reconciliation_cul_js_memoed_cul_scope_id_7_cul_parent_scope_id_3__WEBPACK_IMPORTED_MODULE_2__[/* profit_ */ "e"], JSON.stringify);
+const profit = (a) => {
+  return profit$m(a);
+  // eslint-disable-next-line no-undef
+  Object(_price_change_reconciliation_cul_js_memoed_cul_scope_id_7_cul_parent_scope_id_3__WEBPACK_IMPORTED_MODULE_2__[/* profit_ */ "e"])({ step_in, units_in, price_in, price_multiplier_in }); // never run, but here to "trick" calculang graph logic
+};
+////////// end profit memo-loader code //////////
+
+
+
+////////// start costs memo-loader code //////////
+//const costs$m = memoize(999999, isEqual)(costs$);
+const costs$m = Object(underscore__WEBPACK_IMPORTED_MODULE_1__[/* memoize */ "a"])(_price_change_reconciliation_cul_js_memoed_cul_scope_id_7_cul_parent_scope_id_3__WEBPACK_IMPORTED_MODULE_2__[/* costs_ */ "a"], JSON.stringify);
+const costs = (a) => {
+  return costs$m(a);
+  // eslint-disable-next-line no-undef
+  Object(_price_change_reconciliation_cul_js_memoed_cul_scope_id_7_cul_parent_scope_id_3__WEBPACK_IMPORTED_MODULE_2__[/* costs_ */ "a"])({ step_in, units_in, price_in, price_multiplier_in }); // never run, but here to "trick" calculang graph logic
+};
+////////// end costs memo-loader code //////////
+
+
+
+////////// start units_1 memo-loader code //////////
+//const units_1$m = memoize(999999, isEqual)(units_1$);
+const units_1$m = Object(underscore__WEBPACK_IMPORTED_MODULE_1__[/* memoize */ "a"])(_price_change_reconciliation_cul_js_memoed_cul_scope_id_7_cul_parent_scope_id_3__WEBPACK_IMPORTED_MODULE_2__[/* units_1_ */ "i"], JSON.stringify);
+const units_1 = (a) => {
+  return units_1$m(a);
+  // eslint-disable-next-line no-undef
+  Object(_price_change_reconciliation_cul_js_memoed_cul_scope_id_7_cul_parent_scope_id_3__WEBPACK_IMPORTED_MODULE_2__[/* units_1_ */ "i"])({ units_in }); // never run, but here to "trick" calculang graph logic
+};
+////////// end units_1 memo-loader code //////////
+
+
+
+////////// start price_1 memo-loader code //////////
+//const price_1$m = memoize(999999, isEqual)(price_1$);
+const price_1$m = Object(underscore__WEBPACK_IMPORTED_MODULE_1__[/* memoize */ "a"])(_price_change_reconciliation_cul_js_memoed_cul_scope_id_7_cul_parent_scope_id_3__WEBPACK_IMPORTED_MODULE_2__[/* price_1_ */ "c"], JSON.stringify);
+const price_1 = (a) => {
+  return price_1$m(a);
+  // eslint-disable-next-line no-undef
+  Object(_price_change_reconciliation_cul_js_memoed_cul_scope_id_7_cul_parent_scope_id_3__WEBPACK_IMPORTED_MODULE_2__[/* price_1_ */ "c"])({ price_in }); // never run, but here to "trick" calculang graph logic
+};
+////////// end price_1 memo-loader code //////////
+
+
+
+////////// start units memo-loader code //////////
+//const units$m = memoize(999999, isEqual)(units$);
+const units$m = Object(underscore__WEBPACK_IMPORTED_MODULE_1__[/* memoize */ "a"])(_price_change_reconciliation_cul_js_memoed_cul_scope_id_7_cul_parent_scope_id_3__WEBPACK_IMPORTED_MODULE_2__[/* units_ */ "h"], JSON.stringify);
+const units = (a) => {
+  return units$m(a);
+  // eslint-disable-next-line no-undef
+  Object(_price_change_reconciliation_cul_js_memoed_cul_scope_id_7_cul_parent_scope_id_3__WEBPACK_IMPORTED_MODULE_2__[/* units_ */ "h"])({ step_in, units_in, price_in, price_multiplier_in }); // never run, but here to "trick" calculang graph logic
+};
+////////// end units memo-loader code //////////
+
+
+
+////////// start price memo-loader code //////////
+//const price$m = memoize(999999, isEqual)(price$);
+const price$m = Object(underscore__WEBPACK_IMPORTED_MODULE_1__[/* memoize */ "a"])(_price_change_reconciliation_cul_js_memoed_cul_scope_id_7_cul_parent_scope_id_3__WEBPACK_IMPORTED_MODULE_2__[/* price_ */ "b"], JSON.stringify);
+const price = (a) => {
+  return price$m(a);
+  // eslint-disable-next-line no-undef
+  Object(_price_change_reconciliation_cul_js_memoed_cul_scope_id_7_cul_parent_scope_id_3__WEBPACK_IMPORTED_MODULE_2__[/* price_ */ "b"])({ price_in, price_multiplier_in }); // never run, but here to "trick" calculang graph logic
+};
+////////// end price memo-loader code //////////
+
+
+
+////////// start price_multiplier memo-loader code //////////
+//const price_multiplier$m = memoize(999999, isEqual)(price_multiplier$);
+const price_multiplier$m = Object(underscore__WEBPACK_IMPORTED_MODULE_1__[/* memoize */ "a"])(_price_change_reconciliation_cul_js_memoed_cul_scope_id_7_cul_parent_scope_id_3__WEBPACK_IMPORTED_MODULE_2__[/* price_multiplier_ */ "d"], JSON.stringify);
+const price_multiplier = (a) => {
+  return price_multiplier$m(a);
+  // eslint-disable-next-line no-undef
+  Object(_price_change_reconciliation_cul_js_memoed_cul_scope_id_7_cul_parent_scope_id_3__WEBPACK_IMPORTED_MODULE_2__[/* price_multiplier_ */ "d"])({ price_multiplier_in }); // never run, but here to "trick" calculang graph logic
+};
+////////// end price_multiplier memo-loader code //////////
+
+
+
+////////// start step memo-loader code //////////
+//const step$m = memoize(999999, isEqual)(step$);
+const step$m = Object(underscore__WEBPACK_IMPORTED_MODULE_1__[/* memoize */ "a"])(_price_change_reconciliation_cul_js_memoed_cul_scope_id_7_cul_parent_scope_id_3__WEBPACK_IMPORTED_MODULE_2__[/* step_ */ "g"], JSON.stringify);
+const step = (a) => {
+  return step$m(a);
+  // eslint-disable-next-line no-undef
+  Object(_price_change_reconciliation_cul_js_memoed_cul_scope_id_7_cul_parent_scope_id_3__WEBPACK_IMPORTED_MODULE_2__[/* step_ */ "g"])({ step_in }); // never run, but here to "trick" calculang graph logic
+};
+////////// end step memo-loader code //////////
+
+/***/ }),
+/* 3 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 /* harmony import */ var _index_default_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(106);
 /* harmony import */ var _index_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(41);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "a", function() { return _index_js__WEBPACK_IMPORTED_MODULE_1__["memoize"]; });
@@ -422,137 +567,6 @@ var MAX_ARRAY_INDEX = Math.pow(2, 53) - 1;
 
 
 
-
-/***/ }),
-/* 3 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* unused harmony export revenue$m */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return revenue; });
-/* unused harmony export profit$m */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return profit; });
-/* unused harmony export units_1$m */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "i", function() { return units_1; });
-/* unused harmony export price_1$m */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return price_1; });
-/* unused harmony export units$m */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return units; });
-/* unused harmony export price$m */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return price; });
-/* unused harmony export price_multiplier$m */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return price_multiplier; });
-/* unused harmony export step$m */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return step; });
-/* harmony import */ var _impactsAB_cul_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(0);
-/* harmony import */ var underscore__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(2);
-/* harmony import */ var _price_change_reconciliation_cul_js_memoed_cul_scope_id_7_cul_parent_scope_id_3__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(14);
-
-
-//import memoize from 'lru-memoize';
-//import { isEqual } from 'underscore'; // TODO poor tree shaking support, or why is this impact so massive? Move to lodash/lodash-es?
-
-// import/export non-to memo?
-
- // there is already-culed stuff in here, why? imports to memo loader include cul_scope_id, what logic should it apply RE passing forward? eliminate? Probably!
-
-
-
-
-
-////////// start revenue memo-loader code //////////
-//const revenue$m = memoize(999999, isEqual)(revenue$);
-const revenue$m = Object(underscore__WEBPACK_IMPORTED_MODULE_1__[/* memoize */ "a"])(_price_change_reconciliation_cul_js_memoed_cul_scope_id_7_cul_parent_scope_id_3__WEBPACK_IMPORTED_MODULE_2__[/* revenue_ */ "e"], JSON.stringify);
-const revenue = (a) => {
-  return revenue$m(a);
-  // eslint-disable-next-line no-undef
-  Object(_price_change_reconciliation_cul_js_memoed_cul_scope_id_7_cul_parent_scope_id_3__WEBPACK_IMPORTED_MODULE_2__[/* revenue_ */ "e"])({ step_in, units_in, price_in, price_multiplier_in }); // never run, but here to "trick" calculang graph logic
-};
-////////// end revenue memo-loader code //////////
-
-
-
-////////// start profit memo-loader code //////////
-//const profit$m = memoize(999999, isEqual)(profit$);
-const profit$m = Object(underscore__WEBPACK_IMPORTED_MODULE_1__[/* memoize */ "a"])(_price_change_reconciliation_cul_js_memoed_cul_scope_id_7_cul_parent_scope_id_3__WEBPACK_IMPORTED_MODULE_2__[/* profit_ */ "d"], JSON.stringify);
-const profit = (a) => {
-  return profit$m(a);
-  // eslint-disable-next-line no-undef
-  Object(_price_change_reconciliation_cul_js_memoed_cul_scope_id_7_cul_parent_scope_id_3__WEBPACK_IMPORTED_MODULE_2__[/* profit_ */ "d"])({ step_in, units_in, price_in, price_multiplier_in }); // never run, but here to "trick" calculang graph logic
-};
-////////// end profit memo-loader code //////////
-
-
-
-////////// start units_1 memo-loader code //////////
-//const units_1$m = memoize(999999, isEqual)(units_1$);
-const units_1$m = Object(underscore__WEBPACK_IMPORTED_MODULE_1__[/* memoize */ "a"])(_price_change_reconciliation_cul_js_memoed_cul_scope_id_7_cul_parent_scope_id_3__WEBPACK_IMPORTED_MODULE_2__[/* units_1_ */ "h"], JSON.stringify);
-const units_1 = (a) => {
-  return units_1$m(a);
-  // eslint-disable-next-line no-undef
-  Object(_price_change_reconciliation_cul_js_memoed_cul_scope_id_7_cul_parent_scope_id_3__WEBPACK_IMPORTED_MODULE_2__[/* units_1_ */ "h"])({ units_in }); // never run, but here to "trick" calculang graph logic
-};
-////////// end units_1 memo-loader code //////////
-
-
-
-////////// start price_1 memo-loader code //////////
-//const price_1$m = memoize(999999, isEqual)(price_1$);
-const price_1$m = Object(underscore__WEBPACK_IMPORTED_MODULE_1__[/* memoize */ "a"])(_price_change_reconciliation_cul_js_memoed_cul_scope_id_7_cul_parent_scope_id_3__WEBPACK_IMPORTED_MODULE_2__[/* price_1_ */ "b"], JSON.stringify);
-const price_1 = (a) => {
-  return price_1$m(a);
-  // eslint-disable-next-line no-undef
-  Object(_price_change_reconciliation_cul_js_memoed_cul_scope_id_7_cul_parent_scope_id_3__WEBPACK_IMPORTED_MODULE_2__[/* price_1_ */ "b"])({ price_in }); // never run, but here to "trick" calculang graph logic
-};
-////////// end price_1 memo-loader code //////////
-
-
-
-////////// start units memo-loader code //////////
-//const units$m = memoize(999999, isEqual)(units$);
-const units$m = Object(underscore__WEBPACK_IMPORTED_MODULE_1__[/* memoize */ "a"])(_price_change_reconciliation_cul_js_memoed_cul_scope_id_7_cul_parent_scope_id_3__WEBPACK_IMPORTED_MODULE_2__[/* units_ */ "g"], JSON.stringify);
-const units = (a) => {
-  return units$m(a);
-  // eslint-disable-next-line no-undef
-  Object(_price_change_reconciliation_cul_js_memoed_cul_scope_id_7_cul_parent_scope_id_3__WEBPACK_IMPORTED_MODULE_2__[/* units_ */ "g"])({ step_in, units_in, price_in, price_multiplier_in }); // never run, but here to "trick" calculang graph logic
-};
-////////// end units memo-loader code //////////
-
-
-
-////////// start price memo-loader code //////////
-//const price$m = memoize(999999, isEqual)(price$);
-const price$m = Object(underscore__WEBPACK_IMPORTED_MODULE_1__[/* memoize */ "a"])(_price_change_reconciliation_cul_js_memoed_cul_scope_id_7_cul_parent_scope_id_3__WEBPACK_IMPORTED_MODULE_2__[/* price_ */ "a"], JSON.stringify);
-const price = (a) => {
-  return price$m(a);
-  // eslint-disable-next-line no-undef
-  Object(_price_change_reconciliation_cul_js_memoed_cul_scope_id_7_cul_parent_scope_id_3__WEBPACK_IMPORTED_MODULE_2__[/* price_ */ "a"])({ price_in, price_multiplier_in }); // never run, but here to "trick" calculang graph logic
-};
-////////// end price memo-loader code //////////
-
-
-
-////////// start price_multiplier memo-loader code //////////
-//const price_multiplier$m = memoize(999999, isEqual)(price_multiplier$);
-const price_multiplier$m = Object(underscore__WEBPACK_IMPORTED_MODULE_1__[/* memoize */ "a"])(_price_change_reconciliation_cul_js_memoed_cul_scope_id_7_cul_parent_scope_id_3__WEBPACK_IMPORTED_MODULE_2__[/* price_multiplier_ */ "c"], JSON.stringify);
-const price_multiplier = (a) => {
-  return price_multiplier$m(a);
-  // eslint-disable-next-line no-undef
-  Object(_price_change_reconciliation_cul_js_memoed_cul_scope_id_7_cul_parent_scope_id_3__WEBPACK_IMPORTED_MODULE_2__[/* price_multiplier_ */ "c"])({ price_multiplier_in }); // never run, but here to "trick" calculang graph logic
-};
-////////// end price_multiplier memo-loader code //////////
-
-
-
-////////// start step memo-loader code //////////
-//const step$m = memoize(999999, isEqual)(step$);
-const step$m = Object(underscore__WEBPACK_IMPORTED_MODULE_1__[/* memoize */ "a"])(_price_change_reconciliation_cul_js_memoed_cul_scope_id_7_cul_parent_scope_id_3__WEBPACK_IMPORTED_MODULE_2__[/* step_ */ "f"], JSON.stringify);
-const step = (a) => {
-  return step$m(a);
-  // eslint-disable-next-line no-undef
-  Object(_price_change_reconciliation_cul_js_memoed_cul_scope_id_7_cul_parent_scope_id_3__WEBPACK_IMPORTED_MODULE_2__[/* step_ */ "f"])({ step_in }); // never run, but here to "trick" calculang graph logic
-};
-////////// end step memo-loader code //////////
 
 /***/ }),
 /* 4 */
@@ -656,12 +670,12 @@ function tagTester(name) {
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "b", function() { return _revenue_fixed_inputs_cul_js_cul_scope_id_2_cul_parent_scope_id_1__WEBPACK_IMPORTED_MODULE_1__["b"]; });
 
-/* harmony import */ var _price_change_reconciliation_cul_js_cul_scope_id_3_cul_parent_scope_id_1__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(3);
+/* harmony import */ var _price_change_reconciliation_cul_js_cul_scope_id_3_cul_parent_scope_id_1__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(2);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "i", function() { return _price_change_reconciliation_cul_js_cul_scope_id_3_cul_parent_scope_id_1__WEBPACK_IMPORTED_MODULE_2__["f"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "h", function() { return _price_change_reconciliation_cul_js_cul_scope_id_3_cul_parent_scope_id_1__WEBPACK_IMPORTED_MODULE_2__["e"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "f", function() { return _price_change_reconciliation_cul_js_cul_scope_id_3_cul_parent_scope_id_1__WEBPACK_IMPORTED_MODULE_2__["costs"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "f", function() { return _price_change_reconciliation_cul_js_cul_scope_id_3_cul_parent_scope_id_1__WEBPACK_IMPORTED_MODULE_2__["a"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "j", function() { return _price_change_reconciliation_cul_js_cul_scope_id_3_cul_parent_scope_id_1__WEBPACK_IMPORTED_MODULE_2__["h"]; });
 
@@ -676,7 +690,7 @@ function tagTester(name) {
 
 const revenue_impact_ = ({ step_in, units_in, price_in, price_multiplier_in }) => Object(_impactsAB_cul_js__WEBPACK_IMPORTED_MODULE_0__["A_revenue"])({}) - Object(_impactsAB_cul_js__WEBPACK_IMPORTED_MODULE_0__["B_revenue"])({ step_in, units_in, price_in, price_multiplier_in }); // todo units, price, or maybe generate via impacts loader
 const profit_impact_ = ({ step_in, units_in, price_in, price_multiplier_in }) => Object(_impactsAB_cul_js__WEBPACK_IMPORTED_MODULE_0__["A_profit"])({}) - Object(_impactsAB_cul_js__WEBPACK_IMPORTED_MODULE_0__["B_profit"])({ step_in, units_in, price_in, price_multiplier_in });
-const costs_impact_ = ({}) => Object(_impactsAB_cul_js__WEBPACK_IMPORTED_MODULE_0__["A_costs"])({}) - Object(_impactsAB_cul_js__WEBPACK_IMPORTED_MODULE_0__["B_costs"])({});
+const costs_impact_ = ({ step_in, units_in, price_in, price_multiplier_in }) => Object(_impactsAB_cul_js__WEBPACK_IMPORTED_MODULE_0__["A_costs"])({}) - Object(_impactsAB_cul_js__WEBPACK_IMPORTED_MODULE_0__["B_costs"])({ step_in, units_in, price_in, price_multiplier_in });
 const units_impact_ = ({ step_in, units_in, price_in, price_multiplier_in }) => Object(_impactsAB_cul_js__WEBPACK_IMPORTED_MODULE_0__["A_units"])({}) - Object(_impactsAB_cul_js__WEBPACK_IMPORTED_MODULE_0__["B_units"])({ step_in, units_in, price_in, price_multiplier_in });
 const price_impact_ = ({ price_in, price_multiplier_in }) => Object(_impactsAB_cul_js__WEBPACK_IMPORTED_MODULE_0__["A_price"])({}) - Object(_impactsAB_cul_js__WEBPACK_IMPORTED_MODULE_0__["B_price"])({ price_in, price_multiplier_in });
 
@@ -778,7 +792,7 @@ if ( true && typeof Int8Array != 'object' && typeof nodelist != 'function') {
 /* unused harmony export price$m */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return price; });
 /* harmony import */ var _impactsAB_cul_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(0);
-/* harmony import */ var underscore__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(2);
+/* harmony import */ var underscore__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(3);
 /* harmony import */ var _revenue_fixed_inputs_cul_js_memoed_cul_scope_id_4_cul_parent_scope_id_2__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(24);
 
 
@@ -885,20 +899,22 @@ const price = (a) => {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return units_; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return price_; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return price_multiplier_; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "f", function() { return step_; });
-/* harmony import */ var _price_change_reconciliation_cul_js_cul_scope_id_3_cul_parent_scope_id_1__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(3);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "h", function() { return units_; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return price_; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return price_multiplier_; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "g", function() { return step_; });
+/* harmony import */ var _price_change_reconciliation_cul_js_cul_scope_id_3_cul_parent_scope_id_1__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
 /* harmony import */ var _impactsAB_cul_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(0);
-/* harmony import */ var _base_cul_cul_scope_id_8_cul_parent_scope_id_7__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(36);
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "e", function() { return _base_cul_cul_scope_id_8_cul_parent_scope_id_7__WEBPACK_IMPORTED_MODULE_2__["d"]; });
+/* harmony import */ var _base_cul_cul_scope_id_8_cul_parent_scope_id_7__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(39);
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "f", function() { return _base_cul_cul_scope_id_8_cul_parent_scope_id_7__WEBPACK_IMPORTED_MODULE_2__["d"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "d", function() { return _base_cul_cul_scope_id_8_cul_parent_scope_id_7__WEBPACK_IMPORTED_MODULE_2__["c"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "e", function() { return _base_cul_cul_scope_id_8_cul_parent_scope_id_7__WEBPACK_IMPORTED_MODULE_2__["c"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "h", function() { return _base_cul_cul_scope_id_8_cul_parent_scope_id_7__WEBPACK_IMPORTED_MODULE_2__["e"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "a", function() { return _base_cul_cul_scope_id_8_cul_parent_scope_id_7__WEBPACK_IMPORTED_MODULE_2__["a"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "b", function() { return _base_cul_cul_scope_id_8_cul_parent_scope_id_7__WEBPACK_IMPORTED_MODULE_2__["b"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "i", function() { return _base_cul_cul_scope_id_8_cul_parent_scope_id_7__WEBPACK_IMPORTED_MODULE_2__["e"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "c", function() { return _base_cul_cul_scope_id_8_cul_parent_scope_id_7__WEBPACK_IMPORTED_MODULE_2__["b"]; });
 
  // this model takes inputs base price and units, and a price_multiplier.
 // it derives a proposed price by applying the multiplier and derives consequent units, constrained to the demand curve below.
@@ -1201,17 +1217,16 @@ const price_ = ({ price_in }) => price_in;
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return profit_; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return units_; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return price_; });
-/* harmony import */ var _base_cul_cul_scope_id_8_cul_parent_scope_id_7__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(36);
-/* harmony import */ var _price_change_reconciliation_cul_js_cul_scope_id_3_cul_parent_scope_id_1__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(3);
-/* harmony import */ var _impactsAB_cul_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(0);
+/* harmony import */ var _price_change_reconciliation_cul_js_cul_scope_id_3_cul_parent_scope_id_1__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
+/* harmony import */ var _impactsAB_cul_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(0);
 const revenue_ = ({ step_in, units_in, price_in, price_multiplier_in }) => {
-  return Object(_price_change_reconciliation_cul_js_cul_scope_id_3_cul_parent_scope_id_1__WEBPACK_IMPORTED_MODULE_1__[/* units */ "h"])({ step_in, units_in, price_in, price_multiplier_in }) * Object(_price_change_reconciliation_cul_js_cul_scope_id_3_cul_parent_scope_id_1__WEBPACK_IMPORTED_MODULE_1__[/* price */ "b"])({ price_in, price_multiplier_in });
+  return Object(_price_change_reconciliation_cul_js_cul_scope_id_3_cul_parent_scope_id_1__WEBPACK_IMPORTED_MODULE_0__[/* units */ "h"])({ step_in, units_in, price_in, price_multiplier_in }) * Object(_price_change_reconciliation_cul_js_cul_scope_id_3_cul_parent_scope_id_1__WEBPACK_IMPORTED_MODULE_0__[/* price */ "b"])({ price_in, price_multiplier_in });
 };
 
 // variable costs only, OK for testing
-const costs_ = ({ step_in, units_in, price_in, price_multiplier_in }) => 100 * Object(_price_change_reconciliation_cul_js_cul_scope_id_3_cul_parent_scope_id_1__WEBPACK_IMPORTED_MODULE_1__[/* units */ "h"])({ step_in, units_in, price_in, price_multiplier_in });
+const costs_ = ({ step_in, units_in, price_in, price_multiplier_in }) => 100 * Object(_price_change_reconciliation_cul_js_cul_scope_id_3_cul_parent_scope_id_1__WEBPACK_IMPORTED_MODULE_0__[/* units */ "h"])({ step_in, units_in, price_in, price_multiplier_in });
 
-const profit_ = ({ step_in, units_in, price_in, price_multiplier_in }) => Object(_price_change_reconciliation_cul_js_cul_scope_id_3_cul_parent_scope_id_1__WEBPACK_IMPORTED_MODULE_1__[/* revenue */ "f"])({ step_in, units_in, price_in, price_multiplier_in }) - Object(_base_cul_cul_scope_id_8_cul_parent_scope_id_7__WEBPACK_IMPORTED_MODULE_0__[/* costs */ "a"])({ step_in, units_in, price_in, price_multiplier_in });
+const profit_ = ({ step_in, units_in, price_in, price_multiplier_in }) => Object(_price_change_reconciliation_cul_js_cul_scope_id_3_cul_parent_scope_id_1__WEBPACK_IMPORTED_MODULE_0__[/* revenue */ "f"])({ step_in, units_in, price_in, price_multiplier_in }) - Object(_price_change_reconciliation_cul_js_cul_scope_id_3_cul_parent_scope_id_1__WEBPACK_IMPORTED_MODULE_0__[/* costs */ "a"])({ step_in, units_in, price_in, price_multiplier_in });
 
 // inputs
 const units_ = ({ units_in }) => units_in;
@@ -1317,7 +1332,7 @@ function optimizeCb(func, context, argCount) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return matcher; });
-/* harmony import */ var _extendOwn_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(37);
+/* harmony import */ var _extendOwn_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(36);
 /* harmony import */ var _isMatch_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(68);
 
 
@@ -1458,19 +1473,72 @@ function group(behavior, partition) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* harmony import */ var _createAssigner_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(49);
+/* harmony import */ var _keys_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(4);
+
+
+
+// Assigns a given object with all the own properties in the passed-in
+// object(s).
+// (https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object/assign)
+/* harmony default export */ __webpack_exports__["a"] = (Object(_createAssigner_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(_keys_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"]));
+
+
+/***/ }),
+/* 37 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var _tagTester_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(6);
+/* harmony import */ var _isFunction_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(10);
+/* harmony import */ var _isArrayBuffer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(64);
+/* harmony import */ var _stringTagBug_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(28);
+
+
+
+
+
+var isDataView = Object(_tagTester_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])('DataView');
+
+// In IE 10 - Edge 13, we need a different heuristic
+// to determine whether an object is a `DataView`.
+function ie10IsDataView(obj) {
+  return obj != null && Object(_isFunction_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])(obj.getInt8) && Object(_isArrayBuffer_js__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"])(obj.buffer);
+}
+
+/* harmony default export */ __webpack_exports__["a"] = (_stringTagBug_js__WEBPACK_IMPORTED_MODULE_3__[/* hasStringTagBug */ "a"] ? ie10IsDataView : isDataView);
+
+
+/***/ }),
+/* 38 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony import */ var _shallowProperty_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(89);
+
+
+// Internal helper to obtain the `byteLength` property of an object.
+/* harmony default export */ __webpack_exports__["a"] = (Object(_shallowProperty_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])('byteLength'));
+
+
+/***/ }),
+/* 39 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
 /* unused harmony export revenue$m */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return revenue_; });
 /* unused harmony export costs$m */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return costs; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return costs_; });
 /* unused harmony export profit$m */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return profit_; });
 /* unused harmony export units$m */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return units_; });
 /* unused harmony export price$m */
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return price_; });
-/* harmony import */ var _price_change_reconciliation_cul_js_cul_scope_id_3_cul_parent_scope_id_1__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(3);
+/* harmony import */ var _price_change_reconciliation_cul_js_cul_scope_id_3_cul_parent_scope_id_1__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
 /* harmony import */ var _impactsAB_cul_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(0);
-/* harmony import */ var underscore__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(2);
+/* harmony import */ var underscore__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(3);
 /* harmony import */ var _base_cul_js_memoed_cul_scope_id_9_cul_parent_scope_id_8__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(26);
 
 
@@ -1500,7 +1568,7 @@ const revenue_ = (a) => {
 ////////// start costs memo-loader code //////////
 //const costs$m = memoize(999999, isEqual)(costs$);
 const costs$m = Object(underscore__WEBPACK_IMPORTED_MODULE_2__[/* memoize */ "a"])(_base_cul_js_memoed_cul_scope_id_9_cul_parent_scope_id_8__WEBPACK_IMPORTED_MODULE_3__[/* costs_ */ "a"], JSON.stringify);
-const costs = (a) => {
+const costs_ = (a) => {
   return costs$m(a);
   // eslint-disable-next-line no-undef
   Object(_base_cul_js_memoed_cul_scope_id_9_cul_parent_scope_id_8__WEBPACK_IMPORTED_MODULE_3__[/* costs_ */ "a"])({ step_in, units_in, price_in, price_multiplier_in }); // never run, but here to "trick" calculang graph logic
@@ -1542,59 +1610,6 @@ const price_ = (a) => {
   Object(_base_cul_js_memoed_cul_scope_id_9_cul_parent_scope_id_8__WEBPACK_IMPORTED_MODULE_3__[/* price_ */ "b"])({ price_in }); // never run, but here to "trick" calculang graph logic
 };
 ////////// end price memo-loader code //////////
-
-/***/ }),
-/* 37 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var _createAssigner_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(49);
-/* harmony import */ var _keys_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(4);
-
-
-
-// Assigns a given object with all the own properties in the passed-in
-// object(s).
-// (https://developer.mozilla.org/docs/Web/JavaScript/Reference/Global_Objects/Object/assign)
-/* harmony default export */ __webpack_exports__["a"] = (Object(_createAssigner_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])(_keys_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"]));
-
-
-/***/ }),
-/* 38 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var _tagTester_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(6);
-/* harmony import */ var _isFunction_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(10);
-/* harmony import */ var _isArrayBuffer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(64);
-/* harmony import */ var _stringTagBug_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(28);
-
-
-
-
-
-var isDataView = Object(_tagTester_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])('DataView');
-
-// In IE 10 - Edge 13, we need a different heuristic
-// to determine whether an object is a `DataView`.
-function ie10IsDataView(obj) {
-  return obj != null && Object(_isFunction_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])(obj.getInt8) && Object(_isArrayBuffer_js__WEBPACK_IMPORTED_MODULE_2__[/* default */ "a"])(obj.buffer);
-}
-
-/* harmony default export */ __webpack_exports__["a"] = (_stringTagBug_js__WEBPACK_IMPORTED_MODULE_3__[/* hasStringTagBug */ "a"] ? ie10IsDataView : isDataView);
-
-
-/***/ }),
-/* 39 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var _shallowProperty_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(89);
-
-
-// Internal helper to obtain the `byteLength` property of an object.
-/* harmony default export */ __webpack_exports__["a"] = (Object(_shallowProperty_js__WEBPACK_IMPORTED_MODULE_0__[/* default */ "a"])('byteLength'));
-
 
 /***/ }),
 /* 40 */
@@ -1661,7 +1676,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _isArrayBuffer_js__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(64);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "isArrayBuffer", function() { return _isArrayBuffer_js__WEBPACK_IMPORTED_MODULE_13__["a"]; });
 
-/* harmony import */ var _isDataView_js__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(38);
+/* harmony import */ var _isDataView_js__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(37);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "isDataView", function() { return _isDataView_js__WEBPACK_IMPORTED_MODULE_14__["a"]; });
 
 /* harmony import */ var _isArray_js__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(18);
@@ -1726,7 +1741,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _extend_js__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(70);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "extend", function() { return _extend_js__WEBPACK_IMPORTED_MODULE_34__["a"]; });
 
-/* harmony import */ var _extendOwn_js__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(37);
+/* harmony import */ var _extendOwn_js__WEBPACK_IMPORTED_MODULE_35__ = __webpack_require__(36);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "extendOwn", function() { return _extendOwn_js__WEBPACK_IMPORTED_MODULE_35__["a"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "assign", function() { return _extendOwn_js__WEBPACK_IMPORTED_MODULE_35__["a"]; });
@@ -2567,7 +2582,7 @@ function first(array, n, guard) {
 /* unused harmony export price_ */
 /* harmony import */ var _revenue_fixed_inputs_cul_js_cul_scope_id_2_cul_parent_scope_id_1__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(11);
 /* harmony import */ var _impactsAB_cul_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(0);
-/* harmony import */ var underscore__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(2);
+/* harmony import */ var underscore__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(3);
 /* harmony import */ var _base_cul_js_memoed_cul_scope_id_6_cul_parent_scope_id_5__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(25);
 
 
@@ -2723,7 +2738,7 @@ function isNaN(obj) {
 
 "use strict";
 /* harmony import */ var _setup_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(1);
-/* harmony import */ var _isDataView_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(38);
+/* harmony import */ var _isDataView_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(37);
 /* harmony import */ var _constant_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(67);
 /* harmony import */ var _isBufferLike_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(168);
 
@@ -3642,7 +3657,7 @@ function some(obj, predicate, context) {
 
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return toBufferView; });
-/* harmony import */ var _getByteLength_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(39);
+/* harmony import */ var _getByteLength_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(38);
 
 
 // Internal function to wrap or shallow-copy an ArrayBuffer,
@@ -3804,11 +3819,11 @@ function isEmpty(obj) {
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return isEqual; });
 /* harmony import */ var _underscore_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(5);
 /* harmony import */ var _setup_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(1);
-/* harmony import */ var _getByteLength_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(39);
+/* harmony import */ var _getByteLength_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(38);
 /* harmony import */ var _isTypedArray_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(66);
 /* harmony import */ var _isFunction_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(10);
 /* harmony import */ var _stringTagBug_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(28);
-/* harmony import */ var _isDataView_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(38);
+/* harmony import */ var _isDataView_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(37);
 /* harmony import */ var _keys_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(4);
 /* harmony import */ var _has_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(16);
 /* harmony import */ var _toBufferView_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(105);
@@ -4037,7 +4052,7 @@ function pairs(obj) {
 "use strict";
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return create; });
 /* harmony import */ var _baseCreate_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(91);
-/* harmony import */ var _extendOwn_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(37);
+/* harmony import */ var _extendOwn_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(36);
 
 
 
@@ -5223,7 +5238,7 @@ Object(_each_js__WEBPACK_IMPORTED_MODULE_1__[/* default */ "a"])(['concat', 'joi
 
 "use strict";
 /* harmony import */ var _createSizePropertyCheck_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(88);
-/* harmony import */ var _getByteLength_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(39);
+/* harmony import */ var _getByteLength_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(38);
 
 
 

@@ -5,7 +5,7 @@ import { memoize } from 'underscore';
 
 // import/export non-to memo?
 
-import { revenue_ as revenue$, profit_ as profit$, units_1_ as units_1$, price_1_ as price_1$, units_ as units$, price_ as price$, price_multiplier_ as price_multiplier$, step_ as step$ } from "./cul_scope_7.mjs"; // there is already-culed stuff in here, why? imports to memo loader include cul_scope_id, what logic should it apply RE passing forward? eliminate? Probably!
+import { revenue_ as revenue$, profit_ as profit$, costs_ as costs$, units_1_ as units_1$, price_1_ as price_1$, units_ as units$, price_ as price$, price_multiplier_ as price_multiplier$, step_ as step$ } from "./cul_scope_7.mjs"; // there is already-culed stuff in here, why? imports to memo loader include cul_scope_id, what logic should it apply RE passing forward? eliminate? Probably!
 
 
 
@@ -32,6 +32,18 @@ export const profit = (a) => {
   profit$({ step_in, units_in, price_in, price_multiplier_in }); // never run, but here to "trick" calculang graph logic
 };
 ////////// end profit memo-loader code //////////
+
+
+
+////////// start costs memo-loader code //////////
+//const costs$m = memoize(999999, isEqual)(costs$);
+export const costs$m = memoize(costs$, JSON.stringify);
+export const costs = (a) => {
+  return costs$m(a);
+  // eslint-disable-next-line no-undef
+  costs$({ step_in, units_in, price_in, price_multiplier_in }); // never run, but here to "trick" calculang graph logic
+};
+////////// end costs memo-loader code //////////
 
 
 

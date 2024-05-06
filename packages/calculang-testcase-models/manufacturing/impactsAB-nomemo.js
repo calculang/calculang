@@ -106,9 +106,11 @@ return /******/ (function(modules) { // webpackBootstrap
 /* harmony import */ var _impactsAB_nomemo_cul_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(2);
 /* harmony import */ var _revenue_fixed_inputs_cul_js_cul_scope_id_1_cul_parent_scope_id_0__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(1);
 /* harmony import */ var _base_cul_cul_scope_id_4_cul_parent_scope_id_2__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(3);
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "d", function() { return _base_cul_cul_scope_id_4_cul_parent_scope_id_2__WEBPACK_IMPORTED_MODULE_2__["c"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "d", function() { return _base_cul_cul_scope_id_4_cul_parent_scope_id_2__WEBPACK_IMPORTED_MODULE_2__["d"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "c", function() { return _base_cul_cul_scope_id_4_cul_parent_scope_id_2__WEBPACK_IMPORTED_MODULE_2__["b"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "c", function() { return _base_cul_cul_scope_id_4_cul_parent_scope_id_2__WEBPACK_IMPORTED_MODULE_2__["c"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "a", function() { return _base_cul_cul_scope_id_4_cul_parent_scope_id_2__WEBPACK_IMPORTED_MODULE_2__["a"]; });
 
  // this model takes inputs base price and units, and a price_multiplier.
 // it derives a proposed price by applying the multiplier and derives consequent units, constrained to the demand curve below.
@@ -131,8 +133,8 @@ return /******/ (function(modules) { // webpackBootstrap
 // export { all };
 
 const units = ({ step_in, units_in, price_in, price_multiplier_in }) =>
-step({ step_in }) >= 1 ? Object(_base_cul_cul_scope_id_4_cul_parent_scope_id_2__WEBPACK_IMPORTED_MODULE_2__[/* units_ */ "d"])({ units_in }) + (price({ price_in, price_multiplier_in }) - Object(_base_cul_cul_scope_id_4_cul_parent_scope_id_2__WEBPACK_IMPORTED_MODULE_2__[/* price_ */ "a"])({ price_in })) * -0.005 : Object(_base_cul_cul_scope_id_4_cul_parent_scope_id_2__WEBPACK_IMPORTED_MODULE_2__[/* units_ */ "d"])({ units_in });
-const price = ({ price_in, price_multiplier_in }) => Object(_base_cul_cul_scope_id_4_cul_parent_scope_id_2__WEBPACK_IMPORTED_MODULE_2__[/* price_ */ "a"])({ price_in }) * price_multiplier({ price_multiplier_in });
+step({ step_in }) >= 1 ? Object(_base_cul_cul_scope_id_4_cul_parent_scope_id_2__WEBPACK_IMPORTED_MODULE_2__[/* units_ */ "e"])({ units_in }) + (price({ price_in, price_multiplier_in }) - Object(_base_cul_cul_scope_id_4_cul_parent_scope_id_2__WEBPACK_IMPORTED_MODULE_2__[/* price_ */ "b"])({ price_in })) * -0.005 : Object(_base_cul_cul_scope_id_4_cul_parent_scope_id_2__WEBPACK_IMPORTED_MODULE_2__[/* units_ */ "e"])({ units_in });
+const price = ({ price_in, price_multiplier_in }) => Object(_base_cul_cul_scope_id_4_cul_parent_scope_id_2__WEBPACK_IMPORTED_MODULE_2__[/* price_ */ "b"])({ price_in }) * price_multiplier({ price_multiplier_in });
 
 // new inputs
 const price_multiplier = ({ price_multiplier_in }) => price_multiplier_in;
@@ -190,7 +192,7 @@ __webpack_require__.r(__webpack_exports__);
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "B_profit", function() { return _price_change_reconciliation_cul_js_cul_scope_id_2_cul_parent_scope_id_0__WEBPACK_IMPORTED_MODULE_1__["c"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "B_costs", function() { return _price_change_reconciliation_cul_js_cul_scope_id_2_cul_parent_scope_id_0__WEBPACK_IMPORTED_MODULE_1__["costs"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "B_costs", function() { return _price_change_reconciliation_cul_js_cul_scope_id_2_cul_parent_scope_id_0__WEBPACK_IMPORTED_MODULE_1__["a"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "B_units", function() { return _price_change_reconciliation_cul_js_cul_scope_id_2_cul_parent_scope_id_0__WEBPACK_IMPORTED_MODULE_1__["e"]; });
 
@@ -205,7 +207,7 @@ __webpack_require__.r(__webpack_exports__);
 
 const revenue_impact = ({ step_in, units_in, price_in, price_multiplier_in }) => Object(_revenue_fixed_inputs_cul_js_cul_scope_id_1_cul_parent_scope_id_0__WEBPACK_IMPORTED_MODULE_0__[/* revenue */ "d"])({}) - Object(_price_change_reconciliation_cul_js_cul_scope_id_2_cul_parent_scope_id_0__WEBPACK_IMPORTED_MODULE_1__[/* revenue */ "d"])({ step_in, units_in, price_in, price_multiplier_in }); // todo units, price, or maybe generate via impacts loader
 const profit_impact = ({ step_in, units_in, price_in, price_multiplier_in }) => Object(_revenue_fixed_inputs_cul_js_cul_scope_id_1_cul_parent_scope_id_0__WEBPACK_IMPORTED_MODULE_0__[/* profit */ "c"])({}) - Object(_price_change_reconciliation_cul_js_cul_scope_id_2_cul_parent_scope_id_0__WEBPACK_IMPORTED_MODULE_1__[/* profit */ "c"])({ step_in, units_in, price_in, price_multiplier_in });
-const costs_impact = ({}) => Object(_revenue_fixed_inputs_cul_js_cul_scope_id_1_cul_parent_scope_id_0__WEBPACK_IMPORTED_MODULE_0__[/* costs */ "a"])({}) - Object(_price_change_reconciliation_cul_js_cul_scope_id_2_cul_parent_scope_id_0__WEBPACK_IMPORTED_MODULE_1__["costs"])({});
+const costs_impact = ({ step_in, units_in, price_in, price_multiplier_in }) => Object(_revenue_fixed_inputs_cul_js_cul_scope_id_1_cul_parent_scope_id_0__WEBPACK_IMPORTED_MODULE_0__[/* costs */ "a"])({}) - Object(_price_change_reconciliation_cul_js_cul_scope_id_2_cul_parent_scope_id_0__WEBPACK_IMPORTED_MODULE_1__[/* costs */ "a"])({ step_in, units_in, price_in, price_multiplier_in });
 const units_impact = ({ step_in, units_in, price_in, price_multiplier_in }) => Object(_revenue_fixed_inputs_cul_js_cul_scope_id_1_cul_parent_scope_id_0__WEBPACK_IMPORTED_MODULE_0__[/* units */ "e"])({}) - Object(_price_change_reconciliation_cul_js_cul_scope_id_2_cul_parent_scope_id_0__WEBPACK_IMPORTED_MODULE_1__[/* units */ "e"])({ step_in, units_in, price_in, price_multiplier_in });
 const price_impact = ({ price_in, price_multiplier_in }) => Object(_revenue_fixed_inputs_cul_js_cul_scope_id_1_cul_parent_scope_id_0__WEBPACK_IMPORTED_MODULE_0__[/* price */ "b"])({}) - Object(_price_change_reconciliation_cul_js_cul_scope_id_2_cul_parent_scope_id_0__WEBPACK_IMPORTED_MODULE_1__[/* price */ "b"])({ price_in, price_multiplier_in });
 
@@ -216,11 +218,11 @@ const price_impact = ({ price_in, price_multiplier_in }) => Object(_revenue_fixe
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return revenue; });
-/* unused harmony export costs */
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return profit; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return units_; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return price_; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "d", function() { return revenue; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return costs; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "c", function() { return profit; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "e", function() { return units_; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return price_; });
 /* harmony import */ var _price_change_reconciliation_cul_js_cul_scope_id_2_cul_parent_scope_id_0__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(0);
 /* harmony import */ var _impactsAB_nomemo_cul_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(2);
 /* harmony import */ var _revenue_fixed_inputs_cul_js_cul_scope_id_1_cul_parent_scope_id_0__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(1);

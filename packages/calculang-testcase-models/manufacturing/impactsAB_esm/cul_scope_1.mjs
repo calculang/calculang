@@ -7,7 +7,7 @@ export { A_revenue_, A_profit_, A_costs_, A_units_, A_price_, B_revenue_, B_prof
 
 export const revenue_impact_ = ({ step_in, units_in, price_in, price_multiplier_in }) => A_revenue({}) - B_revenue({ step_in, units_in, price_in, price_multiplier_in }); // todo units, price, or maybe generate via impacts loader
 export const profit_impact_ = ({ step_in, units_in, price_in, price_multiplier_in }) => A_profit({}) - B_profit({ step_in, units_in, price_in, price_multiplier_in });
-export const costs_impact_ = ({}) => A_costs({}) - B_costs({});
+export const costs_impact_ = ({ step_in, units_in, price_in, price_multiplier_in }) => A_costs({}) - B_costs({ step_in, units_in, price_in, price_multiplier_in });
 export const units_impact_ = ({ step_in, units_in, price_in, price_multiplier_in }) => A_units({}) - B_units({ step_in, units_in, price_in, price_multiplier_in });
 export const price_impact_ = ({ price_in, price_multiplier_in }) => A_price({}) - B_price({ price_in, price_multiplier_in });
 

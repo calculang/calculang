@@ -11,8 +11,8 @@
 
 // this tests some key language features of calculang and demos their technical motivations
 
-import { revenue, profit, units_ as units_1, price_ as price_1 } from './base.cul'; // don't pollute the _ modifier
-export { revenue, profit, units_1, price_1 };
+import { revenue, profit, costs, units_ as units_1, price_ as price_1 } from './base.cul'; // don't pollute the _ modifier
+export { revenue, profit, costs, units_1, price_1 };
 //export { revenue, units_, price_ };
 
 // import { all } from './base.cul.js'; TODO use this in place of above when I fix issue #13

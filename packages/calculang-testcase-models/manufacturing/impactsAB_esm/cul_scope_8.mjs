@@ -1,4 +1,4 @@
-import { step } from "./cul_scope_3.mjs";import { price_multiplier } from "./cul_scope_3.mjs";import { price } from "./cul_scope_3.mjs";import { units } from "./cul_scope_3.mjs";import { price_1 } from "./cul_scope_3.mjs";import { units_1 } from "./cul_scope_3.mjs";import { revenue } from "./cul_scope_3.mjs";import { price_impact } from "./cul_scope_0.mjs";import { units_impact } from "./cul_scope_0.mjs";import { costs_impact } from "./cul_scope_0.mjs";import { profit_impact } from "./cul_scope_0.mjs";import { revenue_impact } from "./cul_scope_0.mjs";import { B_price } from "./cul_scope_0.mjs";import { B_units } from "./cul_scope_0.mjs";import { B_costs } from "./cul_scope_0.mjs";import { B_profit } from "./cul_scope_0.mjs";import { B_revenue } from "./cul_scope_0.mjs";import { A_price } from "./cul_scope_0.mjs";import { A_units } from "./cul_scope_0.mjs";import { A_costs } from "./cul_scope_0.mjs";import { A_profit } from "./cul_scope_0.mjs";import { A_revenue } from "./cul_scope_0.mjs";
+import { step } from "./cul_scope_3.mjs";import { price_multiplier } from "./cul_scope_3.mjs";import { price } from "./cul_scope_3.mjs";import { units } from "./cul_scope_3.mjs";import { price_1 } from "./cul_scope_3.mjs";import { units_1 } from "./cul_scope_3.mjs";import { profit } from "./cul_scope_3.mjs";import { revenue } from "./cul_scope_3.mjs";import { price_impact } from "./cul_scope_0.mjs";import { units_impact } from "./cul_scope_0.mjs";import { costs_impact } from "./cul_scope_0.mjs";import { profit_impact } from "./cul_scope_0.mjs";import { revenue_impact } from "./cul_scope_0.mjs";import { B_price } from "./cul_scope_0.mjs";import { B_units } from "./cul_scope_0.mjs";import { B_costs } from "./cul_scope_0.mjs";import { B_profit } from "./cul_scope_0.mjs";import { B_revenue } from "./cul_scope_0.mjs";import { A_price } from "./cul_scope_0.mjs";import { A_units } from "./cul_scope_0.mjs";import { A_costs } from "./cul_scope_0.mjs";import { A_profit } from "./cul_scope_0.mjs";import { A_revenue } from "./cul_scope_0.mjs";
 import { memoize } from 'underscore';
 //import memoize from 'lru-memoize';
 //import { isEqual } from 'underscore'; // TODO poor tree shaking support, or why is this impact so massive? Move to lodash/lodash-es?
@@ -38,7 +38,7 @@ export const costs = (a) => {
 ////////// start profit memo-loader code //////////
 //const profit$m = memoize(999999, isEqual)(profit$);
 export const profit$m = memoize(profit$, JSON.stringify);
-export const profit = (a) => {
+export const profit_ = (a) => {
   return profit$m(a);
   // eslint-disable-next-line no-undef
   profit$({ step_in, units_in, price_in, price_multiplier_in }); // never run, but here to "trick" calculang graph logic

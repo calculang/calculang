@@ -11,8 +11,8 @@ import { price_impact } from "./cul_scope_0.mjs";import { units_impact } from ".
 
 // this tests some key language features of calculang and demos their technical motivations
 
-import { revenue, units_ as units_1, price_ as price_1 } from "./cul_scope_4.mjs"; // don't pollute the _ modifier
-export { revenue, units_1, price_1 };
+import { revenue, profit, units_ as units_1, price_ as price_1 } from "./cul_scope_4.mjs"; // don't pollute the _ modifier
+export { revenue, profit, units_1, price_1 };
 //export { revenue, units_, price_ };
 
 // import { all } from './base.cul.js'; TODO use this in place of above when I fix issue #13

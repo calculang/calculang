@@ -89,7 +89,7 @@ export const B_profit$m = memoize(B_profit$, JSON.stringify);
 export const B_profit = (a) => {
   return B_profit$m(a);
   // eslint-disable-next-line no-undef
-  B_profit$({}); // never run, but here to "trick" calculang graph logic
+  B_profit$({ step_in, units_in, price_in, price_multiplier_in }); // never run, but here to "trick" calculang graph logic
 };
 ////////// end B_profit memo-loader code //////////
 
@@ -149,7 +149,7 @@ export const profit_impact$m = memoize(profit_impact$, JSON.stringify);
 export const profit_impact = (a) => {
   return profit_impact$m(a);
   // eslint-disable-next-line no-undef
-  profit_impact$({}); // never run, but here to "trick" calculang graph logic
+  profit_impact$({ step_in, units_in, price_in, price_multiplier_in }); // never run, but here to "trick" calculang graph logic
 };
 ////////// end profit_impact memo-loader code //////////
 

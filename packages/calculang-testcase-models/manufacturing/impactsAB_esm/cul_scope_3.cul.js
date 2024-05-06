@@ -5,7 +5,7 @@
     
     // import/export non-to memo?
 
-    import { revenue_ as revenue$, units_1_ as units_1$, price_1_ as price_1$, units_ as units$, price_ as price$, price_multiplier_ as price_multiplier$, step_ as step$ } from './price-change-reconciliation.cul.js?&+memoed'; // there is already-culed stuff in here, why? imports to memo loader include cul_scope_id, what logic should it apply RE passing forward? eliminate? Probably!
+    import { revenue_ as revenue$, profit_ as profit$, units_1_ as units_1$, price_1_ as price_1$, units_ as units$, price_ as price$, price_multiplier_ as price_multiplier$, step_ as step$ } from './price-change-reconciliation.cul.js?&+memoed'; // there is already-culed stuff in here, why? imports to memo loader include cul_scope_id, what logic should it apply RE passing forward? eliminate? Probably!
 
     
     
@@ -20,6 +20,18 @@ export const revenue = (a) => {
   revenue$(); // never run, but here to "trick" calculang graph logic
 };
 ////////// end revenue memo-loader code //////////
+
+
+
+////////// start profit memo-loader code //////////
+//const profit$m = memoize(999999, isEqual)(profit$);
+export const profit$m = memoize(profit$, JSON.stringify);
+export const profit = (a) => {
+  return profit$m(a);
+  // eslint-disable-next-line no-undef
+  profit$(); // never run, but here to "trick" calculang graph logic
+};
+////////// end profit memo-loader code //////////
 
 
 

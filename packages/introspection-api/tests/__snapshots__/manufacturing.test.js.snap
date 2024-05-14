@@ -167,30 +167,100 @@ Object {
   "cul_links": Set {
     Object {
       "from": "0_units",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 16,
+          "index": 47,
+          "line": 2,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 9,
+          "index": 40,
+          "line": 2,
+        },
+      },
       "negs": Array [],
       "reason": "call",
       "to": "0_revenue",
     },
     Object {
       "from": "0_price",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 26,
+          "index": 57,
+          "line": 2,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 19,
+          "index": 50,
+          "line": 2,
+        },
+      },
       "negs": Array [],
       "reason": "call",
       "to": "0_revenue",
     },
     Object {
       "from": "0_units",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 40,
+          "index": 142,
+          "line": 6,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 33,
+          "index": 135,
+          "line": 6,
+        },
+      },
       "negs": Array [],
       "reason": "call",
       "to": "0_costs",
     },
     Object {
       "from": "0_revenue",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 37,
+          "index": 182,
+          "line": 8,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 28,
+          "index": 173,
+          "line": 8,
+        },
+      },
       "negs": Array [],
       "reason": "call",
       "to": "0_profit",
     },
     Object {
       "from": "0_costs",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 47,
+          "index": 192,
+          "line": 8,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 40,
+          "index": 185,
+          "line": 8,
+        },
+      },
       "negs": Array [],
       "reason": "call",
       "to": "0_profit",
@@ -224,6 +294,38 @@ Object {
       "name": "A_revenue",
       "reason": "explicit import",
     },
+    "0_A_profit" => Object {
+      "cul_scope_id": 0,
+      "cul_source_scope_id": 1,
+      "imported": "profit",
+      "inputs": Array [],
+      "name": "A_profit",
+      "reason": "explicit import",
+    },
+    "0_A_costs" => Object {
+      "cul_scope_id": 0,
+      "cul_source_scope_id": 1,
+      "imported": "costs",
+      "inputs": Array [],
+      "name": "A_costs",
+      "reason": "explicit import",
+    },
+    "0_A_units" => Object {
+      "cul_scope_id": 0,
+      "cul_source_scope_id": 1,
+      "imported": "units",
+      "inputs": Array [],
+      "name": "A_units",
+      "reason": "explicit import",
+    },
+    "0_A_price" => Object {
+      "cul_scope_id": 0,
+      "cul_source_scope_id": 1,
+      "imported": "price",
+      "inputs": Array [],
+      "name": "A_price",
+      "reason": "explicit import",
+    },
     "0_B_revenue" => Object {
       "cul_scope_id": 0,
       "cul_source_scope_id": 2,
@@ -235,6 +337,56 @@ Object {
         "price_multiplier_in",
       ],
       "name": "B_revenue",
+      "reason": "explicit import",
+    },
+    "0_B_profit" => Object {
+      "cul_scope_id": 0,
+      "cul_source_scope_id": 2,
+      "imported": "profit",
+      "inputs": Array [
+        "step_in",
+        "units_in",
+        "price_in",
+        "price_multiplier_in",
+      ],
+      "name": "B_profit",
+      "reason": "explicit import",
+    },
+    "0_B_costs" => Object {
+      "cul_scope_id": 0,
+      "cul_source_scope_id": 2,
+      "imported": "costs",
+      "inputs": Array [
+        "step_in",
+        "units_in",
+        "price_in",
+        "price_multiplier_in",
+      ],
+      "name": "B_costs",
+      "reason": "explicit import",
+    },
+    "0_B_units" => Object {
+      "cul_scope_id": 0,
+      "cul_source_scope_id": 2,
+      "imported": "units",
+      "inputs": Array [
+        "step_in",
+        "units_in",
+        "price_in",
+        "price_multiplier_in",
+      ],
+      "name": "B_units",
+      "reason": "explicit import",
+    },
+    "0_B_price" => Object {
+      "cul_scope_id": 0,
+      "cul_source_scope_id": 2,
+      "imported": "price",
+      "inputs": Array [
+        "price_in",
+        "price_multiplier_in",
+      ],
+      "name": "B_price",
       "reason": "explicit import",
     },
     "0_revenue_impact" => Object {
@@ -249,18 +401,120 @@ Object {
       "loc": SourceLocation {
         "end": Position {
           "column": 61,
-          "index": 460,
-          "line": 6,
+          "index": 684,
+          "line": 8,
         },
         "filename": undefined,
         "identifierName": undefined,
         "start": Position {
           "column": 30,
-          "index": 429,
-          "line": 6,
+          "index": 653,
+          "line": 8,
         },
       },
       "name": "revenue_impact",
+      "reason": "definition",
+    },
+    "0_profit_impact" => Object {
+      "cul_scope_id": 0,
+      "cul_source_scope_id": 0,
+      "inputs": Array [
+        "step_in",
+        "units_in",
+        "price_in",
+        "price_multiplier_in",
+      ],
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 58,
+          "index": 803,
+          "line": 9,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 29,
+          "index": 774,
+          "line": 9,
+        },
+      },
+      "name": "profit_impact",
+      "reason": "definition",
+    },
+    "0_costs_impact" => Object {
+      "cul_scope_id": 0,
+      "cul_source_scope_id": 0,
+      "inputs": Array [
+        "step_in",
+        "units_in",
+        "price_in",
+        "price_multiplier_in",
+      ],
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 55,
+          "index": 860,
+          "line": 10,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 28,
+          "index": 833,
+          "line": 10,
+        },
+      },
+      "name": "costs_impact",
+      "reason": "definition",
+    },
+    "0_units_impact" => Object {
+      "cul_scope_id": 0,
+      "cul_source_scope_id": 0,
+      "inputs": Array [
+        "step_in",
+        "units_in",
+        "price_in",
+        "price_multiplier_in",
+      ],
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 55,
+          "index": 917,
+          "line": 11,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 28,
+          "index": 890,
+          "line": 11,
+        },
+      },
+      "name": "units_impact",
+      "reason": "definition",
+    },
+    "0_price_impact" => Object {
+      "cul_scope_id": 0,
+      "cul_source_scope_id": 0,
+      "inputs": Array [
+        "price_in",
+        "price_multiplier_in",
+      ],
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 55,
+          "index": 974,
+          "line": 12,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 28,
+          "index": 947,
+          "line": 12,
+        },
+      },
+      "name": "price_impact",
       "reason": "definition",
     },
     "1_B_revenue" => Object {
@@ -268,6 +522,34 @@ Object {
       "cul_source_scope_id": 2,
       "inputs": Array [],
       "name": "B_revenue",
+      "reason": "implicit import",
+    },
+    "1_B_profit" => Object {
+      "cul_scope_id": 1,
+      "cul_source_scope_id": 2,
+      "inputs": Array [],
+      "name": "B_profit",
+      "reason": "implicit import",
+    },
+    "1_B_costs" => Object {
+      "cul_scope_id": 1,
+      "cul_source_scope_id": 2,
+      "inputs": Array [],
+      "name": "B_costs",
+      "reason": "implicit import",
+    },
+    "1_B_units" => Object {
+      "cul_scope_id": 1,
+      "cul_source_scope_id": 2,
+      "inputs": Array [],
+      "name": "B_units",
+      "reason": "implicit import",
+    },
+    "1_B_price" => Object {
+      "cul_scope_id": 1,
+      "cul_source_scope_id": 2,
+      "inputs": Array [],
+      "name": "B_price",
       "reason": "implicit import",
     },
     "1_revenue_impact" => Object {
@@ -282,12 +564,74 @@ Object {
       "name": "revenue_impact",
       "reason": "implicit import",
     },
+    "1_profit_impact" => Object {
+      "cul_scope_id": 1,
+      "cul_source_scope_id": 0,
+      "inputs": Array [
+        "step_in",
+        "units_in",
+        "price_in",
+        "price_multiplier_in",
+      ],
+      "name": "profit_impact",
+      "reason": "implicit import",
+    },
+    "1_costs_impact" => Object {
+      "cul_scope_id": 1,
+      "cul_source_scope_id": 0,
+      "inputs": Array [
+        "step_in",
+        "units_in",
+        "price_in",
+        "price_multiplier_in",
+      ],
+      "name": "costs_impact",
+      "reason": "implicit import",
+    },
+    "1_units_impact" => Object {
+      "cul_scope_id": 1,
+      "cul_source_scope_id": 0,
+      "inputs": Array [
+        "step_in",
+        "units_in",
+        "price_in",
+        "price_multiplier_in",
+      ],
+      "name": "units_impact",
+      "reason": "implicit import",
+    },
+    "1_price_impact" => Object {
+      "cul_scope_id": 1,
+      "cul_source_scope_id": 0,
+      "inputs": Array [
+        "price_in",
+        "price_multiplier_in",
+      ],
+      "name": "price_impact",
+      "reason": "implicit import",
+    },
     "1_revenue" => Object {
       "cul_scope_id": 1,
       "cul_source_scope_id": 3,
       "imported": "revenue",
       "inputs": Array [],
       "name": "revenue",
+      "reason": "explicit import",
+    },
+    "1_profit" => Object {
+      "cul_scope_id": 1,
+      "cul_source_scope_id": 3,
+      "imported": "profit",
+      "inputs": Array [],
+      "name": "profit",
+      "reason": "explicit import",
+    },
+    "1_costs" => Object {
+      "cul_scope_id": 1,
+      "cul_source_scope_id": 3,
+      "imported": "costs",
+      "inputs": Array [],
+      "name": "costs",
       "reason": "explicit import",
     },
     "1_units" => Object {
@@ -297,14 +641,14 @@ Object {
       "loc": SourceLocation {
         "end": Position {
           "column": 30,
-          "index": 89,
+          "index": 119,
           "line": 4,
         },
         "filename": undefined,
         "identifierName": undefined,
         "start": Position {
           "column": 21,
-          "index": 80,
+          "index": 110,
           "line": 4,
         },
       },
@@ -318,191 +662,53 @@ Object {
       "loc": SourceLocation {
         "end": Position {
           "column": 30,
-          "index": 121,
+          "index": 151,
           "line": 5,
         },
         "filename": undefined,
         "identifierName": undefined,
         "start": Position {
           "column": 21,
-          "index": 112,
+          "index": 142,
           "line": 5,
         },
       },
       "name": "price",
       "reason": "definition",
-    },
-    "2_A_revenue" => Object {
-      "cul_scope_id": 2,
-      "cul_source_scope_id": 1,
-      "inputs": Array [],
-      "name": "A_revenue",
-      "reason": "implicit import",
-    },
-    "2_revenue_impact" => Object {
-      "cul_scope_id": 2,
-      "cul_source_scope_id": 0,
-      "inputs": Array [
-        "step_in",
-        "units_in",
-        "price_in",
-        "price_multiplier_in",
-      ],
-      "name": "revenue_impact",
-      "reason": "implicit import",
-    },
-    "2_revenue" => Object {
-      "cul_scope_id": 2,
-      "cul_source_scope_id": 4,
-      "imported": "revenue",
-      "inputs": Array [
-        "step_in",
-        "units_in",
-        "price_in",
-        "price_multiplier_in",
-      ],
-      "name": "revenue",
-      "reason": "explicit import",
-    },
-    "2_units_1" => Object {
-      "cul_scope_id": 2,
-      "cul_source_scope_id": 4,
-      "imported": "units_",
-      "inputs": Array [
-        "units_in",
-      ],
-      "name": "units_1",
-      "reason": "explicit import",
-    },
-    "2_price_1" => Object {
-      "cul_scope_id": 2,
-      "cul_source_scope_id": 4,
-      "imported": "price_",
-      "inputs": Array [
-        "price_in",
-      ],
-      "name": "price_1",
-      "reason": "explicit import",
-    },
-    "2_units" => Object {
-      "cul_scope_id": 2,
-      "cul_source_scope_id": 2,
-      "inputs": Array [
-        "step_in",
-        "units_in",
-        "price_in",
-        "price_multiplier_in",
-      ],
-      "loc": SourceLocation {
-        "end": Position {
-          "column": 70,
-          "index": 1488,
-          "line": 22,
-        },
-        "filename": undefined,
-        "identifierName": undefined,
-        "start": Position {
-          "column": 21,
-          "index": 1412,
-          "line": 21,
-        },
-      },
-      "name": "units",
-      "reason": "definition",
-    },
-    "2_price" => Object {
-      "cul_scope_id": 2,
-      "cul_source_scope_id": 2,
-      "inputs": Array [
-        "price_in",
-        "price_multiplier_in",
-      ],
-      "loc": SourceLocation {
-        "end": Position {
-          "column": 57,
-          "index": 1547,
-          "line": 23,
-        },
-        "filename": undefined,
-        "identifierName": undefined,
-        "start": Position {
-          "column": 21,
-          "index": 1511,
-          "line": 23,
-        },
-      },
-      "name": "price",
-      "reason": "definition",
-    },
-    "2_price_multiplier" => Object {
-      "cul_scope_id": 2,
-      "cul_source_scope_id": 2,
-      "inputs": Array [
-        "price_multiplier_in",
-      ],
-      "loc": SourceLocation {
-        "end": Position {
-          "column": 57,
-          "index": 1621,
-          "line": 26,
-        },
-        "filename": undefined,
-        "identifierName": undefined,
-        "start": Position {
-          "column": 32,
-          "index": 1596,
-          "line": 26,
-        },
-      },
-      "name": "price_multiplier",
-      "reason": "definition",
-    },
-    "2_price_multiplier_in" => Object {
-      "cul_scope_id": 2,
-      "cul_source_scope_id": 2,
-      "inputs": Array [
-        "price_multiplier_in",
-      ],
-      "name": "price_multiplier_in",
-      "reason": "input definition",
-    },
-    "2_step" => Object {
-      "cul_scope_id": 2,
-      "cul_source_scope_id": 2,
-      "inputs": Array [
-        "step_in",
-      ],
-      "loc": SourceLocation {
-        "end": Position {
-          "column": 33,
-          "index": 1656,
-          "line": 27,
-        },
-        "filename": undefined,
-        "identifierName": undefined,
-        "start": Position {
-          "column": 20,
-          "index": 1643,
-          "line": 27,
-        },
-      },
-      "name": "step",
-      "reason": "definition",
-    },
-    "2_step_in" => Object {
-      "cul_scope_id": 2,
-      "cul_source_scope_id": 2,
-      "inputs": Array [
-        "step_in",
-      ],
-      "name": "step_in",
-      "reason": "input definition",
     },
     "3_B_revenue" => Object {
       "cul_scope_id": 3,
       "cul_source_scope_id": 2,
       "inputs": Array [],
       "name": "B_revenue",
+      "reason": "implicit import",
+    },
+    "3_B_profit" => Object {
+      "cul_scope_id": 3,
+      "cul_source_scope_id": 2,
+      "inputs": Array [],
+      "name": "B_profit",
+      "reason": "implicit import",
+    },
+    "3_B_costs" => Object {
+      "cul_scope_id": 3,
+      "cul_source_scope_id": 2,
+      "inputs": Array [],
+      "name": "B_costs",
+      "reason": "implicit import",
+    },
+    "3_B_units" => Object {
+      "cul_scope_id": 3,
+      "cul_source_scope_id": 2,
+      "inputs": Array [],
+      "name": "B_units",
+      "reason": "implicit import",
+    },
+    "3_B_price" => Object {
+      "cul_scope_id": 3,
+      "cul_source_scope_id": 2,
+      "inputs": Array [],
+      "name": "B_price",
       "reason": "implicit import",
     },
     "3_revenue_impact" => Object {
@@ -515,6 +721,52 @@ Object {
         "price_multiplier_in",
       ],
       "name": "revenue_impact",
+      "reason": "implicit import",
+    },
+    "3_profit_impact" => Object {
+      "cul_scope_id": 3,
+      "cul_source_scope_id": 0,
+      "inputs": Array [
+        "step_in",
+        "units_in",
+        "price_in",
+        "price_multiplier_in",
+      ],
+      "name": "profit_impact",
+      "reason": "implicit import",
+    },
+    "3_costs_impact" => Object {
+      "cul_scope_id": 3,
+      "cul_source_scope_id": 0,
+      "inputs": Array [
+        "step_in",
+        "units_in",
+        "price_in",
+        "price_multiplier_in",
+      ],
+      "name": "costs_impact",
+      "reason": "implicit import",
+    },
+    "3_units_impact" => Object {
+      "cul_scope_id": 3,
+      "cul_source_scope_id": 0,
+      "inputs": Array [
+        "step_in",
+        "units_in",
+        "price_in",
+        "price_multiplier_in",
+      ],
+      "name": "units_impact",
+      "reason": "implicit import",
+    },
+    "3_price_impact" => Object {
+      "cul_scope_id": 3,
+      "cul_source_scope_id": 0,
+      "inputs": Array [
+        "price_in",
+        "price_multiplier_in",
+      ],
+      "name": "price_impact",
       "reason": "implicit import",
     },
     "3_units" => Object {
@@ -658,11 +910,305 @@ Object {
       "name": "price_in",
       "reason": "input definition",
     },
+    "2_A_revenue" => Object {
+      "cul_scope_id": 2,
+      "cul_source_scope_id": 1,
+      "inputs": Array [],
+      "name": "A_revenue",
+      "reason": "implicit import",
+    },
+    "2_A_profit" => Object {
+      "cul_scope_id": 2,
+      "cul_source_scope_id": 1,
+      "inputs": Array [],
+      "name": "A_profit",
+      "reason": "implicit import",
+    },
+    "2_A_costs" => Object {
+      "cul_scope_id": 2,
+      "cul_source_scope_id": 1,
+      "inputs": Array [],
+      "name": "A_costs",
+      "reason": "implicit import",
+    },
+    "2_A_units" => Object {
+      "cul_scope_id": 2,
+      "cul_source_scope_id": 1,
+      "inputs": Array [],
+      "name": "A_units",
+      "reason": "implicit import",
+    },
+    "2_A_price" => Object {
+      "cul_scope_id": 2,
+      "cul_source_scope_id": 1,
+      "inputs": Array [],
+      "name": "A_price",
+      "reason": "implicit import",
+    },
+    "2_revenue_impact" => Object {
+      "cul_scope_id": 2,
+      "cul_source_scope_id": 0,
+      "inputs": Array [
+        "step_in",
+        "units_in",
+        "price_in",
+        "price_multiplier_in",
+      ],
+      "name": "revenue_impact",
+      "reason": "implicit import",
+    },
+    "2_profit_impact" => Object {
+      "cul_scope_id": 2,
+      "cul_source_scope_id": 0,
+      "inputs": Array [
+        "step_in",
+        "units_in",
+        "price_in",
+        "price_multiplier_in",
+      ],
+      "name": "profit_impact",
+      "reason": "implicit import",
+    },
+    "2_costs_impact" => Object {
+      "cul_scope_id": 2,
+      "cul_source_scope_id": 0,
+      "inputs": Array [
+        "step_in",
+        "units_in",
+        "price_in",
+        "price_multiplier_in",
+      ],
+      "name": "costs_impact",
+      "reason": "implicit import",
+    },
+    "2_units_impact" => Object {
+      "cul_scope_id": 2,
+      "cul_source_scope_id": 0,
+      "inputs": Array [
+        "step_in",
+        "units_in",
+        "price_in",
+        "price_multiplier_in",
+      ],
+      "name": "units_impact",
+      "reason": "implicit import",
+    },
+    "2_price_impact" => Object {
+      "cul_scope_id": 2,
+      "cul_source_scope_id": 0,
+      "inputs": Array [
+        "price_in",
+        "price_multiplier_in",
+      ],
+      "name": "price_impact",
+      "reason": "implicit import",
+    },
+    "2_revenue" => Object {
+      "cul_scope_id": 2,
+      "cul_source_scope_id": 4,
+      "imported": "revenue",
+      "inputs": Array [
+        "step_in",
+        "units_in",
+        "price_in",
+        "price_multiplier_in",
+      ],
+      "name": "revenue",
+      "reason": "explicit import",
+    },
+    "2_profit" => Object {
+      "cul_scope_id": 2,
+      "cul_source_scope_id": 4,
+      "imported": "profit",
+      "inputs": Array [
+        "step_in",
+        "units_in",
+        "price_in",
+        "price_multiplier_in",
+      ],
+      "name": "profit",
+      "reason": "explicit import",
+    },
+    "2_costs" => Object {
+      "cul_scope_id": 2,
+      "cul_source_scope_id": 4,
+      "imported": "costs",
+      "inputs": Array [
+        "step_in",
+        "units_in",
+        "price_in",
+        "price_multiplier_in",
+      ],
+      "name": "costs",
+      "reason": "explicit import",
+    },
+    "2_units_1" => Object {
+      "cul_scope_id": 2,
+      "cul_source_scope_id": 4,
+      "imported": "units_",
+      "inputs": Array [
+        "units_in",
+      ],
+      "name": "units_1",
+      "reason": "explicit import",
+    },
+    "2_price_1" => Object {
+      "cul_scope_id": 2,
+      "cul_source_scope_id": 4,
+      "imported": "price_",
+      "inputs": Array [
+        "price_in",
+      ],
+      "name": "price_1",
+      "reason": "explicit import",
+    },
+    "2_units" => Object {
+      "cul_scope_id": 2,
+      "cul_source_scope_id": 2,
+      "inputs": Array [
+        "step_in",
+        "units_in",
+        "price_in",
+        "price_multiplier_in",
+      ],
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 70,
+          "index": 1518,
+          "line": 22,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 21,
+          "index": 1442,
+          "line": 21,
+        },
+      },
+      "name": "units",
+      "reason": "definition",
+    },
+    "2_price" => Object {
+      "cul_scope_id": 2,
+      "cul_source_scope_id": 2,
+      "inputs": Array [
+        "price_in",
+        "price_multiplier_in",
+      ],
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 57,
+          "index": 1577,
+          "line": 23,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 21,
+          "index": 1541,
+          "line": 23,
+        },
+      },
+      "name": "price",
+      "reason": "definition",
+    },
+    "2_price_multiplier" => Object {
+      "cul_scope_id": 2,
+      "cul_source_scope_id": 2,
+      "inputs": Array [
+        "price_multiplier_in",
+      ],
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 57,
+          "index": 1651,
+          "line": 26,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 32,
+          "index": 1626,
+          "line": 26,
+        },
+      },
+      "name": "price_multiplier",
+      "reason": "definition",
+    },
+    "2_price_multiplier_in" => Object {
+      "cul_scope_id": 2,
+      "cul_source_scope_id": 2,
+      "inputs": Array [
+        "price_multiplier_in",
+      ],
+      "name": "price_multiplier_in",
+      "reason": "input definition",
+    },
+    "2_step" => Object {
+      "cul_scope_id": 2,
+      "cul_source_scope_id": 2,
+      "inputs": Array [
+        "step_in",
+      ],
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 33,
+          "index": 1686,
+          "line": 27,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 20,
+          "index": 1673,
+          "line": 27,
+        },
+      },
+      "name": "step",
+      "reason": "definition",
+    },
+    "2_step_in" => Object {
+      "cul_scope_id": 2,
+      "cul_source_scope_id": 2,
+      "inputs": Array [
+        "step_in",
+      ],
+      "name": "step_in",
+      "reason": "input definition",
+    },
     "4_A_revenue" => Object {
       "cul_scope_id": 4,
       "cul_source_scope_id": 1,
       "inputs": Array [],
       "name": "A_revenue",
+      "reason": "implicit import",
+    },
+    "4_A_profit" => Object {
+      "cul_scope_id": 4,
+      "cul_source_scope_id": 1,
+      "inputs": Array [],
+      "name": "A_profit",
+      "reason": "implicit import",
+    },
+    "4_A_costs" => Object {
+      "cul_scope_id": 4,
+      "cul_source_scope_id": 1,
+      "inputs": Array [],
+      "name": "A_costs",
+      "reason": "implicit import",
+    },
+    "4_A_units" => Object {
+      "cul_scope_id": 4,
+      "cul_source_scope_id": 1,
+      "inputs": Array [],
+      "name": "A_units",
+      "reason": "implicit import",
+    },
+    "4_A_price" => Object {
+      "cul_scope_id": 4,
+      "cul_source_scope_id": 1,
+      "inputs": Array [],
+      "name": "A_price",
       "reason": "implicit import",
     },
     "4_revenue_impact" => Object {
@@ -675,6 +1221,52 @@ Object {
         "price_multiplier_in",
       ],
       "name": "revenue_impact",
+      "reason": "implicit import",
+    },
+    "4_profit_impact" => Object {
+      "cul_scope_id": 4,
+      "cul_source_scope_id": 0,
+      "inputs": Array [
+        "step_in",
+        "units_in",
+        "price_in",
+        "price_multiplier_in",
+      ],
+      "name": "profit_impact",
+      "reason": "implicit import",
+    },
+    "4_costs_impact" => Object {
+      "cul_scope_id": 4,
+      "cul_source_scope_id": 0,
+      "inputs": Array [
+        "step_in",
+        "units_in",
+        "price_in",
+        "price_multiplier_in",
+      ],
+      "name": "costs_impact",
+      "reason": "implicit import",
+    },
+    "4_units_impact" => Object {
+      "cul_scope_id": 4,
+      "cul_source_scope_id": 0,
+      "inputs": Array [
+        "step_in",
+        "units_in",
+        "price_in",
+        "price_multiplier_in",
+      ],
+      "name": "units_impact",
+      "reason": "implicit import",
+    },
+    "4_price_impact" => Object {
+      "cul_scope_id": 4,
+      "cul_source_scope_id": 0,
+      "inputs": Array [
+        "price_in",
+        "price_multiplier_in",
+      ],
+      "name": "price_impact",
       "reason": "implicit import",
     },
     "4_units" => Object {
@@ -862,9 +1454,35 @@ Object {
   },
   "cul_input_map": Map {
     "0_A_revenue" => Set {},
+    "0_A_profit" => Set {},
+    "0_A_costs" => Set {},
+    "0_A_units" => Set {},
+    "0_A_price" => Set {},
     "0_B_revenue" => Set {
       "step_in",
       "units_in",
+      "price_in",
+      "price_multiplier_in",
+    },
+    "0_B_profit" => Set {
+      "step_in",
+      "units_in",
+      "price_in",
+      "price_multiplier_in",
+    },
+    "0_B_costs" => Set {
+      "step_in",
+      "units_in",
+      "price_in",
+      "price_multiplier_in",
+    },
+    "0_B_units" => Set {
+      "step_in",
+      "units_in",
+      "price_in",
+      "price_multiplier_in",
+    },
+    "0_B_price" => Set {
       "price_in",
       "price_multiplier_in",
     },
@@ -874,24 +1492,162 @@ Object {
       "price_in",
       "price_multiplier_in",
     },
+    "0_profit_impact" => Set {
+      "step_in",
+      "units_in",
+      "price_in",
+      "price_multiplier_in",
+    },
+    "0_costs_impact" => Set {
+      "step_in",
+      "units_in",
+      "price_in",
+      "price_multiplier_in",
+    },
+    "0_units_impact" => Set {
+      "step_in",
+      "units_in",
+      "price_in",
+      "price_multiplier_in",
+    },
+    "0_price_impact" => Set {
+      "price_in",
+      "price_multiplier_in",
+    },
     "1_B_revenue" => Set {},
+    "1_B_profit" => Set {},
+    "1_B_costs" => Set {},
+    "1_B_units" => Set {},
+    "1_B_price" => Set {},
     "1_revenue_impact" => Set {
       "step_in",
       "units_in",
       "price_in",
       "price_multiplier_in",
     },
+    "1_profit_impact" => Set {
+      "step_in",
+      "units_in",
+      "price_in",
+      "price_multiplier_in",
+    },
+    "1_costs_impact" => Set {
+      "step_in",
+      "units_in",
+      "price_in",
+      "price_multiplier_in",
+    },
+    "1_units_impact" => Set {
+      "step_in",
+      "units_in",
+      "price_in",
+      "price_multiplier_in",
+    },
+    "1_price_impact" => Set {
+      "price_in",
+      "price_multiplier_in",
+    },
     "1_revenue" => Set {},
+    "1_profit" => Set {},
+    "1_costs" => Set {},
     "1_units" => Set {},
     "1_price" => Set {},
+    "3_B_revenue" => Set {},
+    "3_B_profit" => Set {},
+    "3_B_costs" => Set {},
+    "3_B_units" => Set {},
+    "3_B_price" => Set {},
+    "3_revenue_impact" => Set {
+      "step_in",
+      "units_in",
+      "price_in",
+      "price_multiplier_in",
+    },
+    "3_profit_impact" => Set {
+      "step_in",
+      "units_in",
+      "price_in",
+      "price_multiplier_in",
+    },
+    "3_costs_impact" => Set {
+      "step_in",
+      "units_in",
+      "price_in",
+      "price_multiplier_in",
+    },
+    "3_units_impact" => Set {
+      "step_in",
+      "units_in",
+      "price_in",
+      "price_multiplier_in",
+    },
+    "3_price_impact" => Set {
+      "price_in",
+      "price_multiplier_in",
+    },
+    "3_units" => Set {},
+    "3_price" => Set {},
+    "3_revenue" => Set {},
+    "3_costs" => Set {},
+    "3_profit" => Set {},
+    "3_units_" => Set {
+      "units_in",
+    },
+    "3_units_in" => Set {
+      "units_in",
+    },
+    "3_price_" => Set {
+      "price_in",
+    },
+    "3_price_in" => Set {
+      "price_in",
+    },
     "2_A_revenue" => Set {},
+    "2_A_profit" => Set {},
+    "2_A_costs" => Set {},
+    "2_A_units" => Set {},
+    "2_A_price" => Set {},
     "2_revenue_impact" => Set {
       "step_in",
       "units_in",
       "price_in",
       "price_multiplier_in",
     },
+    "2_profit_impact" => Set {
+      "step_in",
+      "units_in",
+      "price_in",
+      "price_multiplier_in",
+    },
+    "2_costs_impact" => Set {
+      "step_in",
+      "units_in",
+      "price_in",
+      "price_multiplier_in",
+    },
+    "2_units_impact" => Set {
+      "step_in",
+      "units_in",
+      "price_in",
+      "price_multiplier_in",
+    },
+    "2_price_impact" => Set {
+      "price_in",
+      "price_multiplier_in",
+    },
     "2_revenue" => Set {
+      "step_in",
+      "units_in",
+      "price_in",
+      "price_multiplier_in",
+    },
+    "2_profit" => Set {
+      "step_in",
+      "units_in",
+      "price_in",
+      "price_multiplier_in",
+    },
+    "2_costs" => Set {
       "step_in",
       "units_in",
       "price_in",
@@ -925,34 +1681,36 @@ Object {
     "2_step_in" => Set {
       "step_in",
     },
-    "3_B_revenue" => Set {},
-    "3_revenue_impact" => Set {
+    "4_A_revenue" => Set {},
+    "4_A_profit" => Set {},
+    "4_A_costs" => Set {},
+    "4_A_units" => Set {},
+    "4_A_price" => Set {},
+    "4_revenue_impact" => Set {
       "step_in",
       "units_in",
       "price_in",
       "price_multiplier_in",
     },
-    "3_units" => Set {},
-    "3_price" => Set {},
-    "3_revenue" => Set {},
-    "3_costs" => Set {},
-    "3_profit" => Set {},
-    "3_units_" => Set {
-      "units_in",
-    },
-    "3_units_in" => Set {
-      "units_in",
-    },
-    "3_price_" => Set {
-      "price_in",
-    },
-    "3_price_in" => Set {
-      "price_in",
-    },
-    "4_A_revenue" => Set {},
-    "4_revenue_impact" => Set {
+    "4_profit_impact" => Set {
       "step_in",
       "units_in",
+      "price_in",
+      "price_multiplier_in",
+    },
+    "4_costs_impact" => Set {
+      "step_in",
+      "units_in",
+      "price_in",
+      "price_multiplier_in",
+    },
+    "4_units_impact" => Set {
+      "step_in",
+      "units_in",
+      "price_in",
+      "price_multiplier_in",
+    },
+    "4_price_impact" => Set {
       "price_in",
       "price_multiplier_in",
     },
@@ -1010,21 +1768,249 @@ Object {
       "to": "0_A_revenue",
     },
     Object {
+      "from": "1_profit",
+      "reason": "explicit import",
+      "to": "0_A_profit",
+    },
+    Object {
+      "from": "1_costs",
+      "reason": "explicit import",
+      "to": "0_A_costs",
+    },
+    Object {
+      "from": "1_units",
+      "reason": "explicit import",
+      "to": "0_A_units",
+    },
+    Object {
+      "from": "1_price",
+      "reason": "explicit import",
+      "to": "0_A_price",
+    },
+    Object {
       "from": "2_revenue",
       "reason": "explicit import",
       "to": "0_B_revenue",
     },
     Object {
+      "from": "2_profit",
+      "reason": "explicit import",
+      "to": "0_B_profit",
+    },
+    Object {
+      "from": "2_costs",
+      "reason": "explicit import",
+      "to": "0_B_costs",
+    },
+    Object {
+      "from": "2_units",
+      "reason": "explicit import",
+      "to": "0_B_units",
+    },
+    Object {
+      "from": "2_price",
+      "reason": "explicit import",
+      "to": "0_B_price",
+    },
+    Object {
       "from": "0_A_revenue",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 47,
+          "index": 670,
+          "line": 8,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 36,
+          "index": 659,
+          "line": 8,
+        },
+      },
       "negs": Array [],
       "reason": "call",
       "to": "0_revenue_impact",
     },
     Object {
       "from": "0_B_revenue",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 61,
+          "index": 684,
+          "line": 8,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 50,
+          "index": 673,
+          "line": 8,
+        },
+      },
       "negs": Array [],
       "reason": "call",
       "to": "0_revenue_impact",
+    },
+    Object {
+      "from": "0_A_profit",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 45,
+          "index": 790,
+          "line": 9,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 35,
+          "index": 780,
+          "line": 9,
+        },
+      },
+      "negs": Array [],
+      "reason": "call",
+      "to": "0_profit_impact",
+    },
+    Object {
+      "from": "0_B_profit",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 58,
+          "index": 803,
+          "line": 9,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 48,
+          "index": 793,
+          "line": 9,
+        },
+      },
+      "negs": Array [],
+      "reason": "call",
+      "to": "0_profit_impact",
+    },
+    Object {
+      "from": "0_A_costs",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 43,
+          "index": 848,
+          "line": 10,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 34,
+          "index": 839,
+          "line": 10,
+        },
+      },
+      "negs": Array [],
+      "reason": "call",
+      "to": "0_costs_impact",
+    },
+    Object {
+      "from": "0_B_costs",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 55,
+          "index": 860,
+          "line": 10,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 46,
+          "index": 851,
+          "line": 10,
+        },
+      },
+      "negs": Array [],
+      "reason": "call",
+      "to": "0_costs_impact",
+    },
+    Object {
+      "from": "0_A_units",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 43,
+          "index": 905,
+          "line": 11,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 34,
+          "index": 896,
+          "line": 11,
+        },
+      },
+      "negs": Array [],
+      "reason": "call",
+      "to": "0_units_impact",
+    },
+    Object {
+      "from": "0_B_units",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 55,
+          "index": 917,
+          "line": 11,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 46,
+          "index": 908,
+          "line": 11,
+        },
+      },
+      "negs": Array [],
+      "reason": "call",
+      "to": "0_units_impact",
+    },
+    Object {
+      "from": "0_A_price",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 43,
+          "index": 962,
+          "line": 12,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 34,
+          "index": 953,
+          "line": 12,
+        },
+      },
+      "negs": Array [],
+      "reason": "call",
+      "to": "0_price_impact",
+    },
+    Object {
+      "from": "0_B_price",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 55,
+          "index": 974,
+          "line": 12,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 46,
+          "index": 965,
+          "line": 12,
+        },
+      },
+      "negs": Array [],
+      "reason": "call",
+      "to": "0_price_impact",
     },
     Object {
       "from": "2_B_revenue",
@@ -1032,9 +2018,49 @@ Object {
       "to": "1_B_revenue",
     },
     Object {
+      "from": "2_B_profit",
+      "reason": "implicit import",
+      "to": "1_B_profit",
+    },
+    Object {
+      "from": "2_B_costs",
+      "reason": "implicit import",
+      "to": "1_B_costs",
+    },
+    Object {
+      "from": "2_B_units",
+      "reason": "implicit import",
+      "to": "1_B_units",
+    },
+    Object {
+      "from": "2_B_price",
+      "reason": "implicit import",
+      "to": "1_B_price",
+    },
+    Object {
       "from": "0_revenue_impact",
       "reason": "implicit import",
       "to": "1_revenue_impact",
+    },
+    Object {
+      "from": "0_profit_impact",
+      "reason": "implicit import",
+      "to": "1_profit_impact",
+    },
+    Object {
+      "from": "0_costs_impact",
+      "reason": "implicit import",
+      "to": "1_costs_impact",
+    },
+    Object {
+      "from": "0_units_impact",
+      "reason": "implicit import",
+      "to": "1_units_impact",
+    },
+    Object {
+      "from": "0_price_impact",
+      "reason": "implicit import",
+      "to": "1_price_impact",
     },
     Object {
       "from": "3_revenue",
@@ -1042,81 +2068,14 @@ Object {
       "to": "1_revenue",
     },
     Object {
-      "from": "1_A_revenue",
-      "reason": "implicit import",
-      "to": "2_A_revenue",
-    },
-    Object {
-      "from": "0_revenue_impact",
-      "reason": "implicit import",
-      "to": "2_revenue_impact",
-    },
-    Object {
-      "from": "4_revenue",
+      "from": "3_profit",
       "reason": "explicit import",
-      "to": "2_revenue",
+      "to": "1_profit",
     },
     Object {
-      "from": "4_units_",
+      "from": "3_costs",
       "reason": "explicit import",
-      "to": "2_units_1",
-    },
-    Object {
-      "from": "4_price_",
-      "reason": "explicit import",
-      "to": "2_price_1",
-    },
-    Object {
-      "from": "2_step",
-      "negs": Array [],
-      "reason": "call",
-      "to": "2_units",
-    },
-    Object {
-      "from": "2_units_1",
-      "negs": Array [],
-      "reason": "call",
-      "to": "2_units",
-    },
-    Object {
-      "from": "2_price",
-      "negs": Array [],
-      "reason": "call",
-      "to": "2_units",
-    },
-    Object {
-      "from": "2_price_1",
-      "negs": Array [],
-      "reason": "call",
-      "to": "2_units",
-    },
-    Object {
-      "from": "2_units_1",
-      "negs": Array [],
-      "reason": "call",
-      "to": "2_units",
-    },
-    Object {
-      "from": "2_price_1",
-      "negs": Array [],
-      "reason": "call",
-      "to": "2_price",
-    },
-    Object {
-      "from": "2_price_multiplier",
-      "negs": Array [],
-      "reason": "call",
-      "to": "2_price",
-    },
-    Object {
-      "from": "2_price_multiplier_in",
-      "reason": "input",
-      "to": "2_price_multiplier",
-    },
-    Object {
-      "from": "2_step_in",
-      "reason": "input",
-      "to": "2_step",
+      "to": "1_costs",
     },
     Object {
       "from": "2_B_revenue",
@@ -1124,9 +2083,49 @@ Object {
       "to": "3_B_revenue",
     },
     Object {
+      "from": "2_B_profit",
+      "reason": "implicit import",
+      "to": "3_B_profit",
+    },
+    Object {
+      "from": "2_B_costs",
+      "reason": "implicit import",
+      "to": "3_B_costs",
+    },
+    Object {
+      "from": "2_B_units",
+      "reason": "implicit import",
+      "to": "3_B_units",
+    },
+    Object {
+      "from": "2_B_price",
+      "reason": "implicit import",
+      "to": "3_B_price",
+    },
+    Object {
       "from": "0_revenue_impact",
       "reason": "implicit import",
       "to": "3_revenue_impact",
+    },
+    Object {
+      "from": "0_profit_impact",
+      "reason": "implicit import",
+      "to": "3_profit_impact",
+    },
+    Object {
+      "from": "0_costs_impact",
+      "reason": "implicit import",
+      "to": "3_costs_impact",
+    },
+    Object {
+      "from": "0_units_impact",
+      "reason": "implicit import",
+      "to": "3_units_impact",
+    },
+    Object {
+      "from": "0_price_impact",
+      "reason": "implicit import",
+      "to": "3_price_impact",
     },
     Object {
       "from": "1_units",
@@ -1140,30 +2139,100 @@ Object {
     },
     Object {
       "from": "3_units",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 16,
+          "index": 47,
+          "line": 2,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 9,
+          "index": 40,
+          "line": 2,
+        },
+      },
       "negs": Array [],
       "reason": "call",
       "to": "3_revenue",
     },
     Object {
       "from": "3_price",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 26,
+          "index": 57,
+          "line": 2,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 19,
+          "index": 50,
+          "line": 2,
+        },
+      },
       "negs": Array [],
       "reason": "call",
       "to": "3_revenue",
     },
     Object {
       "from": "3_units",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 40,
+          "index": 142,
+          "line": 6,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 33,
+          "index": 135,
+          "line": 6,
+        },
+      },
       "negs": Array [],
       "reason": "call",
       "to": "3_costs",
     },
     Object {
       "from": "3_revenue",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 37,
+          "index": 182,
+          "line": 8,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 28,
+          "index": 173,
+          "line": 8,
+        },
+      },
       "negs": Array [],
       "reason": "call",
       "to": "3_profit",
     },
     Object {
       "from": "3_costs",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 47,
+          "index": 192,
+          "line": 8,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 40,
+          "index": 185,
+          "line": 8,
+        },
+      },
       "negs": Array [],
       "reason": "call",
       "to": "3_profit",
@@ -1181,12 +2250,277 @@ Object {
     Object {
       "from": "1_A_revenue",
       "reason": "implicit import",
+      "to": "2_A_revenue",
+    },
+    Object {
+      "from": "1_A_profit",
+      "reason": "implicit import",
+      "to": "2_A_profit",
+    },
+    Object {
+      "from": "1_A_costs",
+      "reason": "implicit import",
+      "to": "2_A_costs",
+    },
+    Object {
+      "from": "1_A_units",
+      "reason": "implicit import",
+      "to": "2_A_units",
+    },
+    Object {
+      "from": "1_A_price",
+      "reason": "implicit import",
+      "to": "2_A_price",
+    },
+    Object {
+      "from": "0_revenue_impact",
+      "reason": "implicit import",
+      "to": "2_revenue_impact",
+    },
+    Object {
+      "from": "0_profit_impact",
+      "reason": "implicit import",
+      "to": "2_profit_impact",
+    },
+    Object {
+      "from": "0_costs_impact",
+      "reason": "implicit import",
+      "to": "2_costs_impact",
+    },
+    Object {
+      "from": "0_units_impact",
+      "reason": "implicit import",
+      "to": "2_units_impact",
+    },
+    Object {
+      "from": "0_price_impact",
+      "reason": "implicit import",
+      "to": "2_price_impact",
+    },
+    Object {
+      "from": "4_revenue",
+      "reason": "explicit import",
+      "to": "2_revenue",
+    },
+    Object {
+      "from": "4_profit",
+      "reason": "explicit import",
+      "to": "2_profit",
+    },
+    Object {
+      "from": "4_costs",
+      "reason": "explicit import",
+      "to": "2_costs",
+    },
+    Object {
+      "from": "4_units_",
+      "reason": "explicit import",
+      "to": "2_units_1",
+    },
+    Object {
+      "from": "4_price_",
+      "reason": "explicit import",
+      "to": "2_price_1",
+    },
+    Object {
+      "from": "2_step",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 8,
+          "index": 1456,
+          "line": 22,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 2,
+          "index": 1450,
+          "line": 22,
+        },
+      },
+      "negs": Array [],
+      "reason": "call",
+      "to": "2_units",
+    },
+    Object {
+      "from": "2_units_1",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 25,
+          "index": 1473,
+          "line": 22,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 16,
+          "index": 1464,
+          "line": 22,
+        },
+      },
+      "negs": Array [],
+      "reason": "call",
+      "to": "2_units",
+    },
+    Object {
+      "from": "2_price",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 36,
+          "index": 1484,
+          "line": 22,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 29,
+          "index": 1477,
+          "line": 22,
+        },
+      },
+      "negs": Array [],
+      "reason": "call",
+      "to": "2_units",
+    },
+    Object {
+      "from": "2_price_1",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 48,
+          "index": 1496,
+          "line": 22,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 39,
+          "index": 1487,
+          "line": 22,
+        },
+      },
+      "negs": Array [],
+      "reason": "call",
+      "to": "2_units",
+    },
+    Object {
+      "from": "2_units_1",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 70,
+          "index": 1518,
+          "line": 22,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 61,
+          "index": 1509,
+          "line": 22,
+        },
+      },
+      "negs": Array [],
+      "reason": "call",
+      "to": "2_units",
+    },
+    Object {
+      "from": "2_price_1",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 36,
+          "index": 1556,
+          "line": 23,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 27,
+          "index": 1547,
+          "line": 23,
+        },
+      },
+      "negs": Array [],
+      "reason": "call",
+      "to": "2_price",
+    },
+    Object {
+      "from": "2_price_multiplier",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 57,
+          "index": 1577,
+          "line": 23,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 39,
+          "index": 1559,
+          "line": 23,
+        },
+      },
+      "negs": Array [],
+      "reason": "call",
+      "to": "2_price",
+    },
+    Object {
+      "from": "2_price_multiplier_in",
+      "reason": "input",
+      "to": "2_price_multiplier",
+    },
+    Object {
+      "from": "2_step_in",
+      "reason": "input",
+      "to": "2_step",
+    },
+    Object {
+      "from": "1_A_revenue",
+      "reason": "implicit import",
       "to": "4_A_revenue",
+    },
+    Object {
+      "from": "1_A_profit",
+      "reason": "implicit import",
+      "to": "4_A_profit",
+    },
+    Object {
+      "from": "1_A_costs",
+      "reason": "implicit import",
+      "to": "4_A_costs",
+    },
+    Object {
+      "from": "1_A_units",
+      "reason": "implicit import",
+      "to": "4_A_units",
+    },
+    Object {
+      "from": "1_A_price",
+      "reason": "implicit import",
+      "to": "4_A_price",
     },
     Object {
       "from": "0_revenue_impact",
       "reason": "implicit import",
       "to": "4_revenue_impact",
+    },
+    Object {
+      "from": "0_profit_impact",
+      "reason": "implicit import",
+      "to": "4_profit_impact",
+    },
+    Object {
+      "from": "0_costs_impact",
+      "reason": "implicit import",
+      "to": "4_costs_impact",
+    },
+    Object {
+      "from": "0_units_impact",
+      "reason": "implicit import",
+      "to": "4_units_impact",
+    },
+    Object {
+      "from": "0_price_impact",
+      "reason": "implicit import",
+      "to": "4_price_impact",
     },
     Object {
       "from": "2_units",
@@ -1210,30 +2544,100 @@ Object {
     },
     Object {
       "from": "4_units",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 16,
+          "index": 47,
+          "line": 2,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 9,
+          "index": 40,
+          "line": 2,
+        },
+      },
       "negs": Array [],
       "reason": "call",
       "to": "4_revenue",
     },
     Object {
       "from": "4_price",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 26,
+          "index": 57,
+          "line": 2,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 19,
+          "index": 50,
+          "line": 2,
+        },
+      },
       "negs": Array [],
       "reason": "call",
       "to": "4_revenue",
     },
     Object {
       "from": "4_units",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 40,
+          "index": 142,
+          "line": 6,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 33,
+          "index": 135,
+          "line": 6,
+        },
+      },
       "negs": Array [],
       "reason": "call",
       "to": "4_costs",
     },
     Object {
       "from": "4_revenue",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 37,
+          "index": 182,
+          "line": 8,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 28,
+          "index": 173,
+          "line": 8,
+        },
+      },
       "negs": Array [],
       "reason": "call",
       "to": "4_profit",
     },
     Object {
       "from": "4_costs",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 47,
+          "index": 192,
+          "line": 8,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 40,
+          "index": 185,
+          "line": 8,
+        },
+      },
       "negs": Array [],
       "reason": "call",
       "to": "4_profit",
@@ -1724,30 +3128,100 @@ Object {
     },
     Object {
       "from": "0_revenue$",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 12,
+          "index": 711,
+          "line": 23,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 2,
+          "index": 701,
+          "line": 23,
+        },
+      },
       "negs": Array [],
       "reason": "call",
       "to": "0_revenue",
     },
     Object {
       "from": "0_price$",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 10,
+          "index": 833,
+          "line": 27,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 2,
+          "index": 825,
+          "line": 27,
+        },
+      },
       "negs": Array [],
       "reason": "call",
       "to": "0_price",
     },
     Object {
       "from": "0_units$",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 10,
+          "index": 955,
+          "line": 31,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 2,
+          "index": 947,
+          "line": 31,
+        },
+      },
       "negs": Array [],
       "reason": "call",
       "to": "0_units",
     },
     Object {
       "from": "0_costs$",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 10,
+          "index": 1077,
+          "line": 35,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 2,
+          "index": 1069,
+          "line": 35,
+        },
+      },
       "negs": Array [],
       "reason": "call",
       "to": "0_costs",
     },
     Object {
       "from": "0_profit$",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 11,
+          "index": 1202,
+          "line": 39,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 2,
+          "index": 1193,
+          "line": 39,
+        },
+      },
       "negs": Array [],
       "reason": "call",
       "to": "0_profit",
@@ -1779,30 +3253,100 @@ Object {
     },
     Object {
       "from": "1_units",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 16,
+          "index": 47,
+          "line": 2,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 9,
+          "index": 40,
+          "line": 2,
+        },
+      },
       "negs": Array [],
       "reason": "call",
       "to": "1_revenue_",
     },
     Object {
       "from": "1_price",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 26,
+          "index": 57,
+          "line": 2,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 19,
+          "index": 50,
+          "line": 2,
+        },
+      },
       "negs": Array [],
       "reason": "call",
       "to": "1_revenue_",
     },
     Object {
       "from": "1_units",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 40,
+          "index": 142,
+          "line": 6,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 33,
+          "index": 135,
+          "line": 6,
+        },
+      },
       "negs": Array [],
       "reason": "call",
       "to": "1_costs_",
     },
     Object {
       "from": "1_revenue",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 37,
+          "index": 182,
+          "line": 8,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 28,
+          "index": 173,
+          "line": 8,
+        },
+      },
       "negs": Array [],
       "reason": "call",
       "to": "1_profit_",
     },
     Object {
       "from": "1_costs",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 47,
+          "index": 192,
+          "line": 8,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 40,
+          "index": 185,
+          "line": 8,
+        },
+      },
       "negs": Array [],
       "reason": "call",
       "to": "1_profit_",
@@ -1844,6 +3388,32 @@ Object {
       "name": "revenue",
       "reason": "explicit import",
     },
+    "0_profit" => Object {
+      "cul_scope_id": 0,
+      "cul_source_scope_id": 1,
+      "imported": "profit",
+      "inputs": Array [
+        "step_in",
+        "units_in",
+        "price_in",
+        "price_multiplier_in",
+      ],
+      "name": "profit",
+      "reason": "explicit import",
+    },
+    "0_costs" => Object {
+      "cul_scope_id": 0,
+      "cul_source_scope_id": 1,
+      "imported": "costs",
+      "inputs": Array [
+        "step_in",
+        "units_in",
+        "price_in",
+        "price_multiplier_in",
+      ],
+      "name": "costs",
+      "reason": "explicit import",
+    },
     "0_units_1" => Object {
       "cul_scope_id": 0,
       "cul_source_scope_id": 1,
@@ -1876,14 +3446,14 @@ Object {
       "loc": SourceLocation {
         "end": Position {
           "column": 70,
-          "index": 1488,
+          "index": 1518,
           "line": 22,
         },
         "filename": undefined,
         "identifierName": undefined,
         "start": Position {
           "column": 21,
-          "index": 1412,
+          "index": 1442,
           "line": 21,
         },
       },
@@ -1900,14 +3470,14 @@ Object {
       "loc": SourceLocation {
         "end": Position {
           "column": 57,
-          "index": 1547,
+          "index": 1577,
           "line": 23,
         },
         "filename": undefined,
         "identifierName": undefined,
         "start": Position {
           "column": 21,
-          "index": 1511,
+          "index": 1541,
           "line": 23,
         },
       },
@@ -1923,14 +3493,14 @@ Object {
       "loc": SourceLocation {
         "end": Position {
           "column": 57,
-          "index": 1621,
+          "index": 1651,
           "line": 26,
         },
         "filename": undefined,
         "identifierName": undefined,
         "start": Position {
           "column": 32,
-          "index": 1596,
+          "index": 1626,
           "line": 26,
         },
       },
@@ -1955,14 +3525,14 @@ Object {
       "loc": SourceLocation {
         "end": Position {
           "column": 33,
-          "index": 1656,
+          "index": 1686,
           "line": 27,
         },
         "filename": undefined,
         "identifierName": undefined,
         "start": Position {
           "column": 20,
-          "index": 1643,
+          "index": 1673,
           "line": 27,
         },
       },
@@ -2168,6 +3738,18 @@ Object {
       "price_in",
       "price_multiplier_in",
     },
+    "0_profit" => Set {
+      "step_in",
+      "units_in",
+      "price_in",
+      "price_multiplier_in",
+    },
+    "0_costs" => Set {
+      "step_in",
+      "units_in",
+      "price_in",
+      "price_multiplier_in",
+    },
     "0_units_1" => Set {
       "units_in",
     },
@@ -2250,6 +3832,16 @@ Object {
       "to": "0_revenue",
     },
     Object {
+      "from": "1_profit",
+      "reason": "explicit import",
+      "to": "0_profit",
+    },
+    Object {
+      "from": "1_costs",
+      "reason": "explicit import",
+      "to": "0_costs",
+    },
+    Object {
       "from": "1_units_",
       "reason": "explicit import",
       "to": "0_units_1",
@@ -2261,42 +3853,140 @@ Object {
     },
     Object {
       "from": "0_step",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 8,
+          "index": 1456,
+          "line": 22,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 2,
+          "index": 1450,
+          "line": 22,
+        },
+      },
       "negs": Array [],
       "reason": "call",
       "to": "0_units",
     },
     Object {
       "from": "0_units_1",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 25,
+          "index": 1473,
+          "line": 22,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 16,
+          "index": 1464,
+          "line": 22,
+        },
+      },
       "negs": Array [],
       "reason": "call",
       "to": "0_units",
     },
     Object {
       "from": "0_price",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 36,
+          "index": 1484,
+          "line": 22,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 29,
+          "index": 1477,
+          "line": 22,
+        },
+      },
       "negs": Array [],
       "reason": "call",
       "to": "0_units",
     },
     Object {
       "from": "0_price_1",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 48,
+          "index": 1496,
+          "line": 22,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 39,
+          "index": 1487,
+          "line": 22,
+        },
+      },
       "negs": Array [],
       "reason": "call",
       "to": "0_units",
     },
     Object {
       "from": "0_units_1",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 70,
+          "index": 1518,
+          "line": 22,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 61,
+          "index": 1509,
+          "line": 22,
+        },
+      },
       "negs": Array [],
       "reason": "call",
       "to": "0_units",
     },
     Object {
       "from": "0_price_1",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 36,
+          "index": 1556,
+          "line": 23,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 27,
+          "index": 1547,
+          "line": 23,
+        },
+      },
       "negs": Array [],
       "reason": "call",
       "to": "0_price",
     },
     Object {
       "from": "0_price_multiplier",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 57,
+          "index": 1577,
+          "line": 23,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 39,
+          "index": 1559,
+          "line": 23,
+        },
+      },
       "negs": Array [],
       "reason": "call",
       "to": "0_price",
@@ -2333,30 +4023,100 @@ Object {
     },
     Object {
       "from": "1_units",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 16,
+          "index": 47,
+          "line": 2,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 9,
+          "index": 40,
+          "line": 2,
+        },
+      },
       "negs": Array [],
       "reason": "call",
       "to": "1_revenue",
     },
     Object {
       "from": "1_price",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 26,
+          "index": 57,
+          "line": 2,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 19,
+          "index": 50,
+          "line": 2,
+        },
+      },
       "negs": Array [],
       "reason": "call",
       "to": "1_revenue",
     },
     Object {
       "from": "1_units",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 40,
+          "index": 142,
+          "line": 6,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 33,
+          "index": 135,
+          "line": 6,
+        },
+      },
       "negs": Array [],
       "reason": "call",
       "to": "1_costs",
     },
     Object {
       "from": "1_revenue",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 37,
+          "index": 182,
+          "line": 8,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 28,
+          "index": 173,
+          "line": 8,
+        },
+      },
       "negs": Array [],
       "reason": "call",
       "to": "1_profit",
     },
     Object {
       "from": "1_costs",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 47,
+          "index": 192,
+          "line": 8,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 40,
+          "index": 185,
+          "line": 8,
+        },
+      },
       "negs": Array [],
       "reason": "call",
       "to": "1_profit",
@@ -2393,6 +4153,22 @@ Object {
       "name": "revenue",
       "reason": "explicit import",
     },
+    "0_profit" => Object {
+      "cul_scope_id": 0,
+      "cul_source_scope_id": 1,
+      "imported": "profit",
+      "inputs": Array [],
+      "name": "profit",
+      "reason": "explicit import",
+    },
+    "0_costs" => Object {
+      "cul_scope_id": 0,
+      "cul_source_scope_id": 1,
+      "imported": "costs",
+      "inputs": Array [],
+      "name": "costs",
+      "reason": "explicit import",
+    },
     "0_units" => Object {
       "cul_scope_id": 0,
       "cul_source_scope_id": 0,
@@ -2400,14 +4176,14 @@ Object {
       "loc": SourceLocation {
         "end": Position {
           "column": 30,
-          "index": 89,
+          "index": 119,
           "line": 4,
         },
         "filename": undefined,
         "identifierName": undefined,
         "start": Position {
           "column": 21,
-          "index": 80,
+          "index": 110,
           "line": 4,
         },
       },
@@ -2421,14 +4197,14 @@ Object {
       "loc": SourceLocation {
         "end": Position {
           "column": 30,
-          "index": 121,
+          "index": 151,
           "line": 5,
         },
         "filename": undefined,
         "identifierName": undefined,
         "start": Position {
           "column": 21,
-          "index": 112,
+          "index": 142,
           "line": 5,
         },
       },
@@ -2579,6 +4355,8 @@ Object {
   },
   "cul_input_map": Map {
     "0_revenue" => Set {},
+    "0_profit" => Set {},
+    "0_costs" => Set {},
     "0_units" => Set {},
     "0_price" => Set {},
     "1_units" => Set {},
@@ -2606,6 +4384,16 @@ Object {
       "to": "0_revenue",
     },
     Object {
+      "from": "1_profit",
+      "reason": "explicit import",
+      "to": "0_profit",
+    },
+    Object {
+      "from": "1_costs",
+      "reason": "explicit import",
+      "to": "0_costs",
+    },
+    Object {
       "from": "0_units",
       "reason": "implicit import",
       "to": "1_units",
@@ -2617,30 +4405,100 @@ Object {
     },
     Object {
       "from": "1_units",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 16,
+          "index": 47,
+          "line": 2,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 9,
+          "index": 40,
+          "line": 2,
+        },
+      },
       "negs": Array [],
       "reason": "call",
       "to": "1_revenue",
     },
     Object {
       "from": "1_price",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 26,
+          "index": 57,
+          "line": 2,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 19,
+          "index": 50,
+          "line": 2,
+        },
+      },
       "negs": Array [],
       "reason": "call",
       "to": "1_revenue",
     },
     Object {
       "from": "1_units",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 40,
+          "index": 142,
+          "line": 6,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 33,
+          "index": 135,
+          "line": 6,
+        },
+      },
       "negs": Array [],
       "reason": "call",
       "to": "1_costs",
     },
     Object {
       "from": "1_revenue",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 37,
+          "index": 182,
+          "line": 8,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 28,
+          "index": 173,
+          "line": 8,
+        },
+      },
       "negs": Array [],
       "reason": "call",
       "to": "1_profit",
     },
     Object {
       "from": "1_costs",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 47,
+          "index": 192,
+          "line": 8,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 40,
+          "index": 185,
+          "line": 8,
+        },
+      },
       "negs": Array [],
       "reason": "call",
       "to": "1_profit",
@@ -2921,6 +4779,20 @@ Object {
     },
     Object {
       "from": "0_price",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 47,
+          "index": 164,
+          "line": 5,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 40,
+          "index": 157,
+          "line": 5,
+        },
+      },
       "negs": Array [],
       "reason": "call",
       "to": "0_units",
@@ -2932,30 +4804,100 @@ Object {
     },
     Object {
       "from": "1_units",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 16,
+          "index": 47,
+          "line": 2,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 9,
+          "index": 40,
+          "line": 2,
+        },
+      },
       "negs": Array [],
       "reason": "call",
       "to": "1_revenue",
     },
     Object {
       "from": "1_price",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 26,
+          "index": 57,
+          "line": 2,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 19,
+          "index": 50,
+          "line": 2,
+        },
+      },
       "negs": Array [],
       "reason": "call",
       "to": "1_revenue",
     },
     Object {
       "from": "1_units",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 40,
+          "index": 142,
+          "line": 6,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 33,
+          "index": 135,
+          "line": 6,
+        },
+      },
       "negs": Array [],
       "reason": "call",
       "to": "1_costs",
     },
     Object {
       "from": "1_revenue",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 37,
+          "index": 182,
+          "line": 8,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 28,
+          "index": 173,
+          "line": 8,
+        },
+      },
       "negs": Array [],
       "reason": "call",
       "to": "1_profit",
     },
     Object {
       "from": "1_costs",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 47,
+          "index": 192,
+          "line": 8,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 40,
+          "index": 185,
+          "line": 8,
+        },
+      },
       "negs": Array [],
       "reason": "call",
       "to": "1_profit",
@@ -3080,6 +5022,20 @@ Object {
   "cul_links": Set {
     Object {
       "from": "0_product",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 48,
+          "index": 176,
+          "line": 4,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 39,
+          "index": 167,
+          "line": 4,
+        },
+      },
       "negs": Array [],
       "reason": "call",
       "to": "0_sales_by_product",
@@ -3091,6 +5047,20 @@ Object {
     },
     Object {
       "from": "0_sales_by_product",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 37,
+          "index": 306,
+          "line": 7,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 2,
+          "index": 271,
+          "line": 7,
+        },
+      },
       "negs": Array [
         "product_in",
       ],
@@ -3099,6 +5069,20 @@ Object {
     },
     Object {
       "from": "0_sales_by_product",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 60,
+          "index": 329,
+          "line": 7,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 40,
+          "index": 309,
+          "line": 7,
+        },
+      },
       "negs": Array [],
       "reason": "call",
       "to": "0_sales_total",
@@ -3206,6 +5190,20 @@ Object {
   "cul_links": Set {
     Object {
       "from": "0_product",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 48,
+          "index": 176,
+          "line": 4,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 39,
+          "index": 167,
+          "line": 4,
+        },
+      },
       "negs": Array [],
       "reason": "call",
       "to": "0_sales_by_product",
@@ -3217,6 +5215,20 @@ Object {
     },
     Object {
       "from": "0_sales_by_product",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 37,
+          "index": 306,
+          "line": 7,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 2,
+          "index": 271,
+          "line": 7,
+        },
+      },
       "negs": Array [
         "product_in",
       ],
@@ -3225,6 +5237,20 @@ Object {
     },
     Object {
       "from": "0_sales_by_product",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 75,
+          "index": 344,
+          "line": 7,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 40,
+          "index": 309,
+          "line": 7,
+        },
+      },
       "negs": Array [
         "product_in",
       ],
@@ -3334,6 +5360,20 @@ Object {
   "cul_links": Set {
     Object {
       "from": "0_product",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 48,
+          "index": 176,
+          "line": 4,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 39,
+          "index": 167,
+          "line": 4,
+        },
+      },
       "negs": Array [],
       "reason": "call",
       "to": "0_sales_by_product",
@@ -3345,6 +5385,20 @@ Object {
     },
     Object {
       "from": "0_sales_by_product",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 55,
+          "index": 324,
+          "line": 7,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 37,
+          "index": 306,
+          "line": 7,
+        },
+      },
       "negs": Array [
         "product_in",
       ],

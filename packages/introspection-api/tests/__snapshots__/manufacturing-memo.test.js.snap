@@ -65,15 +65,15 @@ Object {
       "loc": SourceLocation {
         "end": Position {
           "column": 1,
-          "index": 872,
-          "line": 17,
+          "index": 913,
+          "line": 21,
         },
         "filename": undefined,
         "identifierName": undefined,
         "start": Position {
           "column": 23,
-          "index": 730,
-          "line": 13,
+          "index": 771,
+          "line": 17,
         },
       },
       "name": "revenue",
@@ -88,15 +88,15 @@ Object {
       "loc": SourceLocation {
         "end": Position {
           "column": 1,
-          "index": 1246,
-          "line": 29,
+          "index": 1287,
+          "line": 33,
         },
         "filename": undefined,
         "identifierName": undefined,
         "start": Position {
           "column": 21,
-          "index": 1108,
-          "line": 25,
+          "index": 1149,
+          "line": 29,
         },
       },
       "name": "costs",
@@ -112,15 +112,15 @@ Object {
       "loc": SourceLocation {
         "end": Position {
           "column": 1,
-          "index": 1626,
-          "line": 41,
+          "index": 1667,
+          "line": 45,
         },
         "filename": undefined,
         "identifierName": undefined,
         "start": Position {
           "column": 22,
-          "index": 1486,
-          "line": 37,
+          "index": 1527,
+          "line": 41,
         },
       },
       "name": "profit",
@@ -135,15 +135,15 @@ Object {
       "loc": SourceLocation {
         "end": Position {
           "column": 1,
-          "index": 1999,
-          "line": 53,
+          "index": 2040,
+          "line": 57,
         },
         "filename": undefined,
         "identifierName": undefined,
         "start": Position {
           "column": 21,
-          "index": 1861,
-          "line": 49,
+          "index": 1902,
+          "line": 53,
         },
       },
       "name": "units",
@@ -158,15 +158,15 @@ Object {
       "loc": SourceLocation {
         "end": Position {
           "column": 1,
-          "index": 2371,
-          "line": 65,
+          "index": 2412,
+          "line": 69,
         },
         "filename": undefined,
         "identifierName": undefined,
         "start": Position {
           "column": 21,
-          "index": 2233,
-          "line": 61,
+          "index": 2274,
+          "line": 65,
         },
       },
       "name": "price",
@@ -459,30 +459,100 @@ Object {
     },
     Object {
       "from": "0_revenue$",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 12,
+          "index": 854,
+          "line": 20,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 2,
+          "index": 844,
+          "line": 20,
+        },
+      },
       "negs": Array [],
       "reason": "call",
       "to": "0_revenue",
     },
     Object {
       "from": "0_costs$",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 10,
+          "index": 1228,
+          "line": 32,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 2,
+          "index": 1220,
+          "line": 32,
+        },
+      },
       "negs": Array [],
       "reason": "call",
       "to": "0_costs",
     },
     Object {
       "from": "0_profit$",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 11,
+          "index": 1608,
+          "line": 44,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 2,
+          "index": 1599,
+          "line": 44,
+        },
+      },
       "negs": Array [],
       "reason": "call",
       "to": "0_profit",
     },
     Object {
       "from": "0_units$",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 10,
+          "index": 1981,
+          "line": 56,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 2,
+          "index": 1973,
+          "line": 56,
+        },
+      },
       "negs": Array [],
       "reason": "call",
       "to": "0_units",
     },
     Object {
       "from": "0_price$",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 10,
+          "index": 2353,
+          "line": 68,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 2,
+          "index": 2345,
+          "line": 68,
+        },
+      },
       "negs": Array [],
       "reason": "call",
       "to": "0_price",
@@ -514,30 +584,100 @@ Object {
     },
     Object {
       "from": "1_units",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 16,
+          "index": 47,
+          "line": 2,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 9,
+          "index": 40,
+          "line": 2,
+        },
+      },
       "negs": Array [],
       "reason": "call",
       "to": "1_revenue_",
     },
     Object {
       "from": "1_price",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 26,
+          "index": 57,
+          "line": 2,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 19,
+          "index": 50,
+          "line": 2,
+        },
+      },
       "negs": Array [],
       "reason": "call",
       "to": "1_revenue_",
     },
     Object {
       "from": "1_units",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 40,
+          "index": 142,
+          "line": 6,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 33,
+          "index": 135,
+          "line": 6,
+        },
+      },
       "negs": Array [],
       "reason": "call",
       "to": "1_costs_",
     },
     Object {
       "from": "1_revenue",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 37,
+          "index": 182,
+          "line": 8,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 28,
+          "index": 173,
+          "line": 8,
+        },
+      },
       "negs": Array [],
       "reason": "call",
       "to": "1_profit_",
     },
     Object {
       "from": "1_costs",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 47,
+          "index": 192,
+          "line": 8,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 40,
+          "index": 185,
+          "line": 8,
+        },
+      },
       "negs": Array [],
       "reason": "call",
       "to": "1_profit_",
@@ -605,15 +745,15 @@ Object {
       "loc": SourceLocation {
         "end": Position {
           "column": 1,
-          "index": 948,
-          "line": 17,
+          "index": 989,
+          "line": 21,
         },
         "filename": undefined,
         "identifierName": undefined,
         "start": Position {
           "column": 32,
-          "index": 788,
-          "line": 13,
+          "index": 829,
+          "line": 17,
         },
       },
       "name": "sales_by_product",
@@ -628,15 +768,15 @@ Object {
       "loc": SourceLocation {
         "end": Position {
           "column": 1,
-          "index": 1347,
-          "line": 29,
+          "index": 1388,
+          "line": 33,
         },
         "filename": undefined,
         "identifierName": undefined,
         "start": Position {
           "column": 23,
-          "index": 1205,
-          "line": 25,
+          "index": 1246,
+          "line": 29,
         },
       },
       "name": "product",
@@ -651,15 +791,15 @@ Object {
       "loc": SourceLocation {
         "end": Position {
           "column": 1,
-          "index": 1769,
-          "line": 41,
+          "index": 1810,
+          "line": 45,
         },
         "filename": undefined,
         "identifierName": undefined,
         "start": Position {
           "column": 27,
-          "index": 1619,
-          "line": 37,
+          "index": 1660,
+          "line": 41,
         },
       },
       "name": "sales_total",
@@ -830,18 +970,60 @@ Object {
     },
     Object {
       "from": "0_sales_by_product$",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 21,
+          "index": 930,
+          "line": 20,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 2,
+          "index": 911,
+          "line": 20,
+        },
+      },
       "negs": Array [],
       "reason": "call",
       "to": "0_sales_by_product",
     },
     Object {
       "from": "0_product$",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 12,
+          "index": 1329,
+          "line": 32,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 2,
+          "index": 1319,
+          "line": 32,
+        },
+      },
       "negs": Array [],
       "reason": "call",
       "to": "0_product",
     },
     Object {
       "from": "0_sales_total$",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 16,
+          "index": 1751,
+          "line": 44,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 2,
+          "index": 1737,
+          "line": 44,
+        },
+      },
       "negs": Array [],
       "reason": "call",
       "to": "0_sales_total",
@@ -863,6 +1045,20 @@ Object {
     },
     Object {
       "from": "1_product",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 48,
+          "index": 176,
+          "line": 4,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 39,
+          "index": 167,
+          "line": 4,
+        },
+      },
       "negs": Array [],
       "reason": "call",
       "to": "1_sales_by_product_",
@@ -874,6 +1070,20 @@ Object {
     },
     Object {
       "from": "1_sales_by_product",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 37,
+          "index": 306,
+          "line": 7,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 2,
+          "index": 271,
+          "line": 7,
+        },
+      },
       "negs": Array [
         "product_in",
       ],
@@ -882,6 +1092,20 @@ Object {
     },
     Object {
       "from": "1_sales_by_product",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 60,
+          "index": 329,
+          "line": 7,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 40,
+          "index": 309,
+          "line": 7,
+        },
+      },
       "negs": Array [],
       "reason": "call",
       "to": "1_sales_total_",
@@ -937,15 +1161,15 @@ Object {
       "loc": SourceLocation {
         "end": Position {
           "column": 1,
-          "index": 948,
-          "line": 17,
+          "index": 989,
+          "line": 21,
         },
         "filename": undefined,
         "identifierName": undefined,
         "start": Position {
           "column": 32,
-          "index": 788,
-          "line": 13,
+          "index": 829,
+          "line": 17,
         },
       },
       "name": "sales_by_product",
@@ -960,15 +1184,15 @@ Object {
       "loc": SourceLocation {
         "end": Position {
           "column": 1,
-          "index": 1347,
-          "line": 29,
+          "index": 1388,
+          "line": 33,
         },
         "filename": undefined,
         "identifierName": undefined,
         "start": Position {
           "column": 23,
-          "index": 1205,
-          "line": 25,
+          "index": 1246,
+          "line": 29,
         },
       },
       "name": "product",
@@ -981,15 +1205,15 @@ Object {
       "loc": SourceLocation {
         "end": Position {
           "column": 1,
-          "index": 1769,
-          "line": 41,
+          "index": 1810,
+          "line": 45,
         },
         "filename": undefined,
         "identifierName": undefined,
         "start": Position {
           "column": 27,
-          "index": 1619,
-          "line": 37,
+          "index": 1660,
+          "line": 41,
         },
       },
       "name": "sales_total",
@@ -1148,18 +1372,60 @@ Object {
     },
     Object {
       "from": "0_sales_by_product$",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 21,
+          "index": 930,
+          "line": 20,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 2,
+          "index": 911,
+          "line": 20,
+        },
+      },
       "negs": Array [],
       "reason": "call",
       "to": "0_sales_by_product",
     },
     Object {
       "from": "0_product$",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 12,
+          "index": 1329,
+          "line": 32,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 2,
+          "index": 1319,
+          "line": 32,
+        },
+      },
       "negs": Array [],
       "reason": "call",
       "to": "0_product",
     },
     Object {
       "from": "0_sales_total$",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 16,
+          "index": 1751,
+          "line": 44,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 2,
+          "index": 1737,
+          "line": 44,
+        },
+      },
       "negs": Array [],
       "reason": "call",
       "to": "0_sales_total",
@@ -1181,6 +1447,20 @@ Object {
     },
     Object {
       "from": "1_product",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 48,
+          "index": 176,
+          "line": 4,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 39,
+          "index": 167,
+          "line": 4,
+        },
+      },
       "negs": Array [],
       "reason": "call",
       "to": "1_sales_by_product_",
@@ -1192,6 +1472,20 @@ Object {
     },
     Object {
       "from": "1_sales_by_product",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 37,
+          "index": 306,
+          "line": 7,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 2,
+          "index": 271,
+          "line": 7,
+        },
+      },
       "negs": Array [
         "product_in",
       ],
@@ -1200,6 +1494,20 @@ Object {
     },
     Object {
       "from": "1_sales_by_product",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 75,
+          "index": 344,
+          "line": 7,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 40,
+          "index": 309,
+          "line": 7,
+        },
+      },
       "negs": Array [
         "product_in",
       ],
@@ -1257,15 +1565,15 @@ Object {
       "loc": SourceLocation {
         "end": Position {
           "column": 1,
-          "index": 948,
-          "line": 17,
+          "index": 989,
+          "line": 21,
         },
         "filename": undefined,
         "identifierName": undefined,
         "start": Position {
           "column": 32,
-          "index": 788,
-          "line": 13,
+          "index": 829,
+          "line": 17,
         },
       },
       "name": "sales_by_product",
@@ -1280,15 +1588,15 @@ Object {
       "loc": SourceLocation {
         "end": Position {
           "column": 1,
-          "index": 1347,
-          "line": 29,
+          "index": 1388,
+          "line": 33,
         },
         "filename": undefined,
         "identifierName": undefined,
         "start": Position {
           "column": 23,
-          "index": 1205,
-          "line": 25,
+          "index": 1246,
+          "line": 29,
         },
       },
       "name": "product",
@@ -1301,15 +1609,15 @@ Object {
       "loc": SourceLocation {
         "end": Position {
           "column": 1,
-          "index": 1769,
-          "line": 41,
+          "index": 1810,
+          "line": 45,
         },
         "filename": undefined,
         "identifierName": undefined,
         "start": Position {
           "column": 27,
-          "index": 1619,
-          "line": 37,
+          "index": 1660,
+          "line": 41,
         },
       },
       "name": "sales_total",
@@ -1468,18 +1776,60 @@ Object {
     },
     Object {
       "from": "0_sales_by_product$",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 21,
+          "index": 930,
+          "line": 20,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 2,
+          "index": 911,
+          "line": 20,
+        },
+      },
       "negs": Array [],
       "reason": "call",
       "to": "0_sales_by_product",
     },
     Object {
       "from": "0_product$",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 12,
+          "index": 1329,
+          "line": 32,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 2,
+          "index": 1319,
+          "line": 32,
+        },
+      },
       "negs": Array [],
       "reason": "call",
       "to": "0_product",
     },
     Object {
       "from": "0_sales_total$",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 16,
+          "index": 1751,
+          "line": 44,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 2,
+          "index": 1737,
+          "line": 44,
+        },
+      },
       "negs": Array [],
       "reason": "call",
       "to": "0_sales_total",
@@ -1501,6 +1851,20 @@ Object {
     },
     Object {
       "from": "1_product",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 48,
+          "index": 176,
+          "line": 4,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 39,
+          "index": 167,
+          "line": 4,
+        },
+      },
       "negs": Array [],
       "reason": "call",
       "to": "1_sales_by_product_",
@@ -1512,6 +1876,20 @@ Object {
     },
     Object {
       "from": "1_sales_by_product",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 55,
+          "index": 324,
+          "line": 7,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 37,
+          "index": 306,
+          "line": 7,
+        },
+      },
       "negs": Array [
         "product_in",
       ],

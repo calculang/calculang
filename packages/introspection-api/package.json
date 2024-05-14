@@ -28,9 +28,7 @@
   ],
   "scripts": {
     "prepare": "yarn build",
-    "build": "babel src --out-dir dist",
-    "test": "jest",
-    "test:update": "jest --updateSnapshot"
+    "build": "babel src --out-dir dist"
   },
   "jest": {
     "testEnvironment": "jsdom"

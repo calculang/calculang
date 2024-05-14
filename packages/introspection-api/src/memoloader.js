@@ -40,7 +40,7 @@ export default async function loader(content, map, meta) {
   //debugger;
   this.cacheable(false);
 
-  console.log(this._module.rawRequest)
+  //console.log(this._module.rawRequest)
 
 
   
@@ -144,7 +144,7 @@ export default async function loader(content, map, meta) {
                 debugger
                 // find same resource and map of parent == parent, pretty complete?
                 // FAILING HERE because no ? in 0 case
-                console.log(this._compilation.options.entry)
+                //console.log(this._compilation.options.entry)
                 if (cul_scope_id != 0) {
                   /*mapped_parent_scope_id = Object.entries(child_introspection.cul_scope_ids_to_resource).filter(d => d[1].indexOf(resource_filename) != -1 &&
                   

@@ -108,11 +108,11 @@ export default async function loader(content, map, meta) {
 
     
     let pass = 'transform'
-    if (this.rootContext.includes("packages/introspection-api/dist") && cul_scope_id ==0) // replace with options stage:introspection
+    if (this.rootContext.includes("introspection-api/dist") && cul_scope_id ==0) // replace with options stage:introspection
     {
       global_state.memo_cul_scope_id_to_nomemo = { '0': 0 }
     }
-    if (this.rootContext.includes("packages/introspection-api/dist")) // replace with options stage:introspection
+    if (this.rootContext.includes("introspection-api/dist")) // replace with options stage:introspection
     {
       pass = 'introspection-api'
     }

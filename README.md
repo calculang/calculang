@@ -14,12 +14,12 @@ A language for calculations can integrate freely with **established best-practic
 
 ## 🐣 early calculang highlights ⚡
 
-Interact with some models made with ❤️ and calculang:
+Visit [calculang.dev](https://calculang.dev) for the official website and examples!
 
-- [Pension Calculator 🧓👴 🚧](https://observablehq.com/@declann/pensions-calculator-wip?collection=@declann/calculang)
-- [some SaaS cashflows 💸](https://observablehq.com/@declann/some-cashflows?collection=@declann/calculang)
-- [loan validator 🕵️ (dev 📓)](https://observablehq.com/@declann/loan-validator-dev?collection=@declann/calculang)
-- more in [my ObservableHQ collection](https://observablehq.com/collection/@declann/calculang) including ferns, donuts and pi estimation models!
+I post about calculang and sometimes models using calculang on my [CalcWithDec](https://calcwithdec.dev/) blog.
+
+My (older) [ObservableHQ collection](https://observablehq.com/collection/@declann/calculang) including additional models including ferns, donuts and pi estimation models!
+
 
 ## follow calculang 📫
 
@@ -40,17 +40,17 @@ npm install --save-dev @calculang/calculang-js
 Compilation:
 
 ```shell
-cul-js compile entrypoint.cul.js --no-implicit-input-functions --no-memo --target=umd
+cul-js compile entrypoint.cul.js
 ```
 
 This creates `entrypoint.js` (alongside entrypoint.cul.js). This is a UMD Javascript bundle, with sourcemap `entrypoint.js.map`.
 
-Change `--no-memo` to `--memo` to turn on memoization. Memoization typically **dramatically** helps execution of models - but is only designed for non-modular models now.
+Use the `--memo` option to turn on memoization. Memoization typically **dramatically** helps execution of models.
 
 Introspection:
 
 ```shell
-cul-js introspect entrypoint.cul.js --no-implicit-input-functions --no-memo
+cul-js introspect entrypoint.cul.js
 ```
 
 Graph, using `dot` command from graphviz (install separately):
@@ -59,8 +59,6 @@ Graph, using `dot` command from graphviz (install separately):
 cul-js dot entrypoint.cul.js | dot -Tsvg > temp.svg
 start temp.svg
 ```
-
-Note: `--no-*` options to `cul-js` above are concerned with forward-compatability, they don't currently matter.
 
 ## design principles/features
 
@@ -112,9 +110,9 @@ Post: alt. implementations? e.g. Rust?
 
 ## help wanted
 
-Extension authors for browsers/VSCode. These can be independent projects. Similar Re integrations (incl. Excel).
+Extension authors for browsers/VSCode. These can be independent projects. Similar Re integrations (incl. Excel, Python & notebooks, Julia & Pluto.jl).
 
-Frontend developers for blog/websites and community model frontends.
+Frontend developers for blog/websites and community model frontends including tools.
 
 Community models and web apps, vizualisations/explorables (calculang.party?).
 

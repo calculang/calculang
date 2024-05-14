@@ -71,7 +71,7 @@ program
   .description('compile entrypoint.cul.js to entrypoint.js')
   .action(async (entrypoint, options) => {
 
-    // TODO issue #123
+    // to do --memo, we first need to output introspection information for a nomemo copy:
 
     // use fs.fileCopy to copy -nomemo
     // call compiler on that entrypoint With memo option turned off
@@ -84,12 +84,10 @@ program
 
         // then call regular compiler
         // vs. just call & save introspection-api
-        await introspection(nomemo, { memo:false} /** TODO make this nomemo */)
+        await introspection(nomemo, { memo:false})
           .then((d) => {
             fs.writeFileSync(path.dirname(entrypoint) +
             path.sep + path.basename(entrypoint, '.cul.js') + '-nomemo.introspection.json', (stringify_introspection_info(d)));
-            //console.log(process.cwd());
-            //console.log('options were: ' + JSON.stringify(options));
           })
           .catch((e) => {
             console.log(e);

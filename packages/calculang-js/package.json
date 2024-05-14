@@ -1,6 +1,6 @@
 {
   "name": "@calculang/calculang-js",
-  "version": "0.1.0-alpha.6-dev2023",
+  "version": "0.1.0-alpha.6",
   "bin": {
     "cul-js": "./bin/index.js"
   },

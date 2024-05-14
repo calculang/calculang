@@ -14,6 +14,11 @@ You should have received a copy of the GNU Affero General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 */
 
+// developing this to support modularity is last big development for Webpack implementation
+// it's messy code, though it was tested/applied very heavily and worked.
+// Since Webpack implementation will be superseded I'm not tidying it up now
+// So ignore comments which are my notes during development.
+
 import path from 'path';
 import fs from 'fs';
 
@@ -75,7 +80,7 @@ export default async function loader(content, map, meta) {
     // TODO
     // seems like OK to use iteration order in introspection-api run, and re-use it in the calculang-js run
     // not sure why process order would not be consistent in calculang-js so that iteration hack works there too?
-    global_state.memo_to_nomemo = { "0": 0, "2": 1 , "3":2, "5":3, "8": 4, "10": 5}; // TODO replace this static
+    //global_state.memo_to_nomemo = { "0": 0, "2": 1 , "3":2, "5":3, "8": 4, "10": 5}; // TODO replace this static
 
 
 
@@ -103,11 +108,11 @@ export default async function loader(content, map, meta) {
 
     
     let pass = 'transform'
-    if (this.rootContext == "/home/declan/MESSING/GitHub/calculang/packages/introspection-api/dist" && cul_scope_id ==0) // replace with options stage:introspection
+    if (this.rootContext.includes("packages/introspection-api/dist") && cul_scope_id ==0) // replace with options stage:introspection
     {
       global_state.memo_cul_scope_id_to_nomemo = { '0': 0 }
     }
-    if (this.rootContext == "/home/declan/MESSING/GitHub/calculang/packages/introspection-api/dist") // replace with options stage:introspection
+    if (this.rootContext.includes("packages/introspection-api/dist")) // replace with options stage:introspection
     {
       pass = 'introspection-api'
     }
@@ -177,34 +182,29 @@ export default async function loader(content, map, meta) {
 
     // KNOWN EDGECASE: PAGES WITHOUT FUNCTION DEFINITIONS E.G. ONLY IMPORT-EXPORT
 
-    if (1) {
-      // BUG? units_ memoized in scope 2? JUST do not add to to_memo
-      to_memo = Object.values(child_introspection.cul_functions).filter(
-        (d) =>
-          d.reason != 'input definition' && // bring this in?
-          d.reason != 'implicit import' &&
-          d.reason != 'explicit import (renamed)' &&
-          d.cul_scope_id == criteria2 && //+global_state.memo_to_nomemo[cul_scope_id] && //*/ && // referring to child introspection call
-          d.name.charAt(d.name.length - 1) != '$' // don't memo the memo. Alt: don't create cul_function for it? <-- prob never matters
-      ).map(d => ({ ...d, name: d.reason.indexOf('renamed') != -1 ? d.name.slice(0,-1) : d.name /* I need to reverse-engineer names ! */}));
+    // BUG? units_ memoized in scope 2? JUST do not add to to_memo
+    to_memo = Object.values(child_introspection.cul_functions).filter(
+      (d) =>
+        d.reason != 'input definition' && // bring this in?
+        d.reason != 'implicit import' &&
+        d.reason != 'explicit import (renamed)' &&
+        d.cul_scope_id == criteria2 && //+global_state.memo_to_nomemo[cul_scope_id] && //*/ && // referring to child introspection call
+        d.name.charAt(d.name.length - 1) != '$' // don't memo the memo. Alt: don't create cul_function for it? <-- prob never matters
+    ).map(d => ({ ...d, name: d.reason.indexOf('renamed') != -1 ? d.name.slice(0,-1) : d.name /* I need to reverse-engineer names ! */}));
 
 
-      dont_memo = Object.values(child_introspection.cul_functions).filter(
-        (d) =>
-          ((d.reason == 'input definition') || // bring this in?
-          (d.reason == 'implicit import')) &&
-          d.reason.indexOf('renamed') == -1 &&
-          d.cul_scope_id == criteria2 && //+global_state.memo_to_nomemo[cul_scope_id] && //*/ && // referring to child introspection call
-          d.name.charAt(d.name.length - 1) != '$' // don't memo the memo. Alt: don't create cul_function for it? <-- prob never matters
-      );
-      // debugger; // how come some results are scope 0 with _?
-      // nothing has cul_scope_id=0 in another case, hence problem
-    } else {
-      to_memo = [{ name: "revenue" }, { name: "price" }, { name: "units" }]
-    }
+    dont_memo = Object.values(child_introspection.cul_functions).filter(
+      (d) =>
+        ((d.reason == 'input definition') || // bring this in?
+        (d.reason == 'implicit import')) &&
+        d.reason.indexOf('renamed') == -1 &&
+        d.cul_scope_id == criteria2 && //+global_state.memo_to_nomemo[cul_scope_id] && //*/ && // referring to child introspection call
+        d.name.charAt(d.name.length - 1) != '$' // don't memo the memo. Alt: don't create cul_function for it? <-- prob never matters
+    );
+    // debugger; // how come some results are scope 0 with _?
+    // nothing has cul_scope_id=0 in another case, hence problem
+
     
-    debugger
-    /// ra
     global_state.memo_map[cul_scope_id] = iteration
 
     iteration++;
@@ -264,6 +264,6 @@ export const ${d.name} = (a) => {
     ${generated}
     `;
     // consider for issue #34 console.log(return_val);
-    return return_val; // everything is wrong in this!!!
+    return return_val;
   }
 }

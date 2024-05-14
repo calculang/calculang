@@ -77,7 +77,19 @@
       "to": "1_num",
       "from": "1_num$",
       "reason": "call",
-      "negs": []
+      "negs": [],
+      "loc": {
+        "start": {
+          "line": 3,
+          "column": 25,
+          "index": 68
+        },
+        "end": {
+          "line": 3,
+          "column": 31,
+          "index": 74
+        }
+      }
     },
     {
       "to": "2_num",

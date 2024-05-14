@@ -181,7 +181,19 @@
       "to": "0_num",
       "from": "0_num$",
       "reason": "call",
-      "negs": []
+      "negs": [],
+      "loc": {
+        "start": {
+          "line": 20,
+          "column": 2,
+          "index": 738
+        },
+        "end": {
+          "line": 20,
+          "column": 8,
+          "index": 744
+        }
+      }
     },
     {
       "to": "1_num",
@@ -207,7 +219,19 @@
       "to": "2_num_",
       "from": "2_num$",
       "reason": "call",
-      "negs": []
+      "negs": [],
+      "loc": {
+        "start": {
+          "line": 20,
+          "column": 2,
+          "index": 734
+        },
+        "end": {
+          "line": 20,
+          "column": 8,
+          "index": 740
+        }
+      }
     },
     {
       "to": "3_num",
@@ -223,7 +247,19 @@
       "to": "3_num_",
       "from": "3_num$",
       "reason": "call",
-      "negs": []
+      "negs": [],
+      "loc": {
+        "start": {
+          "line": 3,
+          "column": 25,
+          "index": 68
+        },
+        "end": {
+          "line": 3,
+          "column": 31,
+          "index": 74
+        }
+      }
     },
     {
       "to": "4_num",
@@ -239,7 +275,19 @@
       "to": "4_num_",
       "from": "4_num$",
       "reason": "call",
-      "negs": []
+      "negs": [],
+      "loc": {
+        "start": {
+          "line": 20,
+          "column": 2,
+          "index": 734
+        },
+        "end": {
+          "line": 20,
+          "column": 8,
+          "index": 740
+        }
+      }
     },
     {
       "to": "5_num",

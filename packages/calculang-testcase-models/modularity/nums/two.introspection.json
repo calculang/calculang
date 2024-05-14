@@ -1,0 +1,203 @@
+{
+  "cul_functions": {
+    "0_num$": {
+      "cul_scope_id": 0,
+      "name": "num$",
+      "imported": "num_",
+      "cul_source_scope_id": 1,
+      "reason": "explicit import",
+      "inputs": []
+    },
+    "0_num": {
+      "cul_scope_id": 0,
+      "name": "num",
+      "cul_source_scope_id": 0,
+      "reason": "definition",
+      "loc": {
+        "start": {
+          "line": 17,
+          "column": 19,
+          "index": 664
+        },
+        "end": {
+          "line": 21,
+          "column": 1,
+          "index": 798
+        }
+      },
+      "inputs": []
+    },
+    "1_num": {
+      "cul_scope_id": 1,
+      "name": "num",
+      "cul_source_scope_id": 0,
+      "reason": "implicit import",
+      "inputs": []
+    },
+    "1_num$": {
+      "cul_scope_id": 1,
+      "name": "num$",
+      "imported": "num_",
+      "cul_source_scope_id": 2,
+      "reason": "explicit import",
+      "inputs": []
+    },
+    "1_num_": {
+      "cul_scope_id": 1,
+      "name": "num_",
+      "cul_source_scope_id": 1,
+      "reason": "definition (renamed)",
+      "loc": {
+        "start": {
+          "line": 3,
+          "column": 19,
+          "index": 62
+        },
+        "end": {
+          "line": 3,
+          "column": 35,
+          "index": 78
+        }
+      },
+      "inputs": []
+    },
+    "2_num": {
+      "cul_scope_id": 2,
+      "name": "num",
+      "cul_source_scope_id": 0,
+      "reason": "implicit import",
+      "inputs": []
+    },
+    "2_num$": {
+      "cul_scope_id": 2,
+      "name": "num$",
+      "imported": "num_",
+      "cul_source_scope_id": 3,
+      "reason": "explicit import",
+      "inputs": []
+    },
+    "2_num_": {
+      "cul_scope_id": 2,
+      "name": "num_",
+      "cul_source_scope_id": 2,
+      "reason": "definition (renamed)",
+      "loc": {
+        "start": {
+          "line": 17,
+          "column": 19,
+          "index": 665
+        },
+        "end": {
+          "line": 21,
+          "column": 1,
+          "index": 799
+        }
+      },
+      "inputs": []
+    },
+    "3_num": {
+      "cul_scope_id": 3,
+      "name": "num",
+      "cul_source_scope_id": 0,
+      "reason": "implicit import",
+      "inputs": []
+    },
+    "3_num_": {
+      "cul_scope_id": 3,
+      "name": "num_",
+      "cul_source_scope_id": 3,
+      "reason": "definition (renamed)",
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 19,
+          "index": 19
+        },
+        "end": {
+          "line": 1,
+          "column": 26,
+          "index": 26
+        }
+      },
+      "inputs": []
+    }
+  },
+  "cul_links": [
+    {
+      "to": "0_num$",
+      "from": "1_num_",
+      "reason": "explicit import"
+    },
+    {
+      "to": "0_num",
+      "from": "0_num$",
+      "reason": "call",
+      "negs": []
+    },
+    {
+      "to": "1_num",
+      "from": "0_num",
+      "reason": "implicit import"
+    },
+    {
+      "to": "1_num$",
+      "from": "2_num_",
+      "reason": "explicit import"
+    },
+    {
+      "to": "1_num_",
+      "from": "1_num$",
+      "reason": "call",
+      "negs": []
+    },
+    {
+      "to": "2_num",
+      "from": "0_num",
+      "reason": "implicit import"
+    },
+    {
+      "to": "2_num$",
+      "from": "3_num_",
+      "reason": "explicit import"
+    },
+    {
+      "to": "2_num_",
+      "from": "2_num$",
+      "reason": "call",
+      "negs": []
+    },
+    {
+      "to": "3_num",
+      "from": "0_num",
+      "reason": "implicit import"
+    }
+  ],
+  "cul_scope_ids_to_resource": {
+    "0": "./two.cul.js",
+    "1": "./two.cul.js?+memoed&cul_scope_id=1&cul_parent_scope_id=0",
+    "2": "./one.cul?cul_scope_id=2&cul_parent_scope_id=1",
+    "3": "./one.cul.js?&+memoed&cul_scope_id=3&cul_parent_scope_id=2"
+  },
+  "import_sources_to_resource": {
+    "0_./two.cul.js?+memoed": "./two.cul.js?+memoed&cul_scope_id=1&cul_parent_scope_id=0",
+    "1_./one.cul": "./one.cul?cul_scope_id=2&cul_parent_scope_id=1",
+    "2_./one.cul.js?&+memoed": "./one.cul.js?&+memoed&cul_scope_id=3&cul_parent_scope_id=2"
+  },
+  "cul_input_map": {
+    "0_num$": [],
+    "0_num": [],
+    "1_num": [],
+    "1_num$": [],
+    "1_num_": [],
+    "2_num": [],
+    "2_num$": [],
+    "2_num_": [],
+    "3_num": [],
+    "3_num_": []
+  },
+  "dot": "digraph {\n  \"0_num$\" [cul_scope_id=0,name=\"num$\",imported=num_,cul_source_scope_id=1,reason=\"explicit import\",inputs=\"\",label=\"0_num$ inputs: \"]\n  \"0_num\" [cul_scope_id=0,name=num,cul_source_scope_id=0,reason=definition,loc=\"[object Object]\",inputs=\"\",label=\"0_num inputs: \"]\n  \"1_num\" [cul_scope_id=1,name=num,cul_source_scope_id=0,reason=\"implicit import\",inputs=\"\",label=\"1_num inputs: \"]\n  \"1_num$\" [cul_scope_id=1,name=\"num$\",imported=num_,cul_source_scope_id=2,reason=\"explicit import\",inputs=\"\",label=\"1_num$ inputs: \"]\n  \"1_num_\" [cul_scope_id=1,name=num_,cul_source_scope_id=1,reason=\"definition (renamed)\",loc=\"[object Object]\",inputs=\"\",label=\"1_num_ inputs: \"]\n  \"2_num\" [cul_scope_id=2,name=num,cul_source_scope_id=0,reason=\"implicit import\",inputs=\"\",label=\"2_num inputs: \"]\n  \"2_num$\" [cul_scope_id=2,name=\"num$\",imported=num_,cul_source_scope_id=3,reason=\"explicit import\",inputs=\"\",label=\"2_num$ inputs: \"]\n  \"2_num_\" [cul_scope_id=2,name=num_,cul_source_scope_id=2,reason=\"definition (renamed)\",loc=\"[object Object]\",inputs=\"\",label=\"2_num_ inputs: \"]\n  \"3_num\" [cul_scope_id=3,name=num,cul_source_scope_id=0,reason=\"implicit import\",inputs=\"\",label=\"3_num inputs: \"]\n  \"3_num_\" [cul_scope_id=3,name=num_,cul_source_scope_id=3,reason=\"definition (renamed)\",loc=\"[object Object]\",inputs=\"\",label=\"3_num_ inputs: \"]\n  \"1_num_\" -> \"0_num$\" [value=\"[object Object]\",label=\"explicit import\"]\n  \"0_num$\" -> \"0_num\" [value=\"[object Object]\",label=\"call -\"]\n  \"0_num\" -> \"1_num\" [value=\"[object Object]\",label=\"implicit import\"]\n  \"2_num_\" -> \"1_num$\" [value=\"[object Object]\",label=\"explicit import\"]\n  \"1_num$\" -> \"1_num_\" [value=\"[object Object]\",label=\"call -\"]\n  \"0_num\" -> \"2_num\" [value=\"[object Object]\",label=\"implicit import\"]\n  \"3_num_\" -> \"2_num$\" [value=\"[object Object]\",label=\"explicit import\"]\n  \"2_num$\" -> \"2_num_\" [value=\"[object Object]\",label=\"call -\"]\n  \"0_num\" -> \"3_num\" [value=\"[object Object]\",label=\"implicit import\"]\n}\n",
+  "memo_map": {
+    "0": 0,
+    "2": 1
+  }
+}

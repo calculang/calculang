@@ -1,0 +1,262 @@
+{
+  "cul_functions": {
+    "0_revenue": {
+      "cul_scope_id": 0,
+      "name": "revenue",
+      "cul_source_scope_id": 0,
+      "reason": "definition",
+      "loc": {
+        "start": {
+          "line": 1,
+          "column": 23,
+          "index": 23
+        },
+        "end": {
+          "line": 3,
+          "column": 1,
+          "index": 60
+        }
+      },
+      "inputs": [
+        "units_in",
+        "price_in"
+      ]
+    },
+    "0_costs": {
+      "cul_scope_id": 0,
+      "name": "costs",
+      "cul_source_scope_id": 0,
+      "reason": "definition",
+      "loc": {
+        "start": {
+          "line": 6,
+          "column": 21,
+          "index": 123
+        },
+        "end": {
+          "line": 6,
+          "column": 40,
+          "index": 142
+        }
+      },
+      "inputs": [
+        "units_in"
+      ]
+    },
+    "0_profit": {
+      "cul_scope_id": 0,
+      "name": "profit",
+      "cul_source_scope_id": 0,
+      "reason": "definition",
+      "loc": {
+        "start": {
+          "line": 8,
+          "column": 22,
+          "index": 167
+        },
+        "end": {
+          "line": 8,
+          "column": 47,
+          "index": 192
+        }
+      },
+      "inputs": [
+        "units_in",
+        "price_in"
+      ]
+    },
+    "0_units": {
+      "cul_scope_id": 0,
+      "name": "units",
+      "cul_source_scope_id": 0,
+      "reason": "definition",
+      "loc": {
+        "start": {
+          "line": 11,
+          "column": 21,
+          "index": 226
+        },
+        "end": {
+          "line": 11,
+          "column": 35,
+          "index": 240
+        }
+      },
+      "inputs": [
+        "units_in"
+      ]
+    },
+    "0_units_in": {
+      "cul_scope_id": 0,
+      "name": "units_in",
+      "cul_source_scope_id": 0,
+      "reason": "input definition",
+      "inputs": [
+        "units_in"
+      ]
+    },
+    "0_price": {
+      "cul_scope_id": 0,
+      "name": "price",
+      "cul_source_scope_id": 0,
+      "reason": "definition",
+      "loc": {
+        "start": {
+          "line": 12,
+          "column": 21,
+          "index": 263
+        },
+        "end": {
+          "line": 12,
+          "column": 35,
+          "index": 277
+        }
+      },
+      "inputs": [
+        "price_in"
+      ]
+    },
+    "0_price_in": {
+      "cul_scope_id": 0,
+      "name": "price_in",
+      "cul_source_scope_id": 0,
+      "reason": "input definition",
+      "inputs": [
+        "price_in"
+      ]
+    }
+  },
+  "cul_links": [
+    {
+      "to": "0_revenue",
+      "from": "0_units",
+      "reason": "call",
+      "negs": [],
+      "loc": {
+        "start": {
+          "line": 2,
+          "column": 9,
+          "index": 40
+        },
+        "end": {
+          "line": 2,
+          "column": 16,
+          "index": 47
+        }
+      }
+    },
+    {
+      "to": "0_revenue",
+      "from": "0_price",
+      "reason": "call",
+      "negs": [],
+      "loc": {
+        "start": {
+          "line": 2,
+          "column": 19,
+          "index": 50
+        },
+        "end": {
+          "line": 2,
+          "column": 26,
+          "index": 57
+        }
+      }
+    },
+    {
+      "to": "0_costs",
+      "from": "0_units",
+      "reason": "call",
+      "negs": [],
+      "loc": {
+        "start": {
+          "line": 6,
+          "column": 33,
+          "index": 135
+        },
+        "end": {
+          "line": 6,
+          "column": 40,
+          "index": 142
+        }
+      }
+    },
+    {
+      "to": "0_profit",
+      "from": "0_revenue",
+      "reason": "call",
+      "negs": [],
+      "loc": {
+        "start": {
+          "line": 8,
+          "column": 28,
+          "index": 173
+        },
+        "end": {
+          "line": 8,
+          "column": 37,
+          "index": 182
+        }
+      }
+    },
+    {
+      "to": "0_profit",
+      "from": "0_costs",
+      "reason": "call",
+      "negs": [],
+      "loc": {
+        "start": {
+          "line": 8,
+          "column": 40,
+          "index": 185
+        },
+        "end": {
+          "line": 8,
+          "column": 47,
+          "index": 192
+        }
+      }
+    },
+    {
+      "to": "0_units",
+      "from": "0_units_in",
+      "reason": "input"
+    },
+    {
+      "to": "0_price",
+      "from": "0_price_in",
+      "reason": "input"
+    }
+  ],
+  "cul_scope_ids_to_resource": {
+    "0": "./base.cul.js"
+  },
+  "import_sources_to_resource": {},
+  "cul_input_map": {
+    "0_revenue": [
+      "units_in",
+      "price_in"
+    ],
+    "0_costs": [
+      "units_in"
+    ],
+    "0_profit": [
+      "units_in",
+      "price_in"
+    ],
+    "0_units": [
+      "units_in"
+    ],
+    "0_units_in": [
+      "units_in"
+    ],
+    "0_price": [
+      "price_in"
+    ],
+    "0_price_in": [
+      "price_in"
+    ]
+  },
+  "dot": "digraph {\n  \"0_revenue\" [cul_scope_id=0,name=revenue,cul_source_scope_id=0,reason=definition,loc=\"[object Object]\",inputs=\"units_in,price_in\",label=\"0_revenue inputs: units_in,price_in\"]\n  \"0_costs\" [cul_scope_id=0,name=costs,cul_source_scope_id=0,reason=definition,loc=\"[object Object]\",inputs=units_in,label=\"0_costs inputs: units_in\"]\n  \"0_profit\" [cul_scope_id=0,name=profit,cul_source_scope_id=0,reason=definition,loc=\"[object Object]\",inputs=\"units_in,price_in\",label=\"0_profit inputs: units_in,price_in\"]\n  \"0_units\" [cul_scope_id=0,name=units,cul_source_scope_id=0,reason=definition,loc=\"[object Object]\",inputs=units_in,label=\"0_units inputs: units_in\"]\n  \"0_units_in\" [cul_scope_id=0,name=units_in,cul_source_scope_id=0,reason=\"input definition\",inputs=units_in,label=\"0_units_in inputs: units_in\"]\n  \"0_price\" [cul_scope_id=0,name=price,cul_source_scope_id=0,reason=definition,loc=\"[object Object]\",inputs=price_in,label=\"0_price inputs: price_in\"]\n  \"0_price_in\" [cul_scope_id=0,name=price_in,cul_source_scope_id=0,reason=\"input definition\",inputs=price_in,label=\"0_price_in inputs: price_in\"]\n  \"0_units\" -> \"0_revenue\" [value=\"[object Object]\",label=\"call -\"]\n  \"0_price\" -> \"0_revenue\" [value=\"[object Object]\",label=\"call -\"]\n  \"0_units\" -> \"0_costs\" [value=\"[object Object]\",label=\"call -\"]\n  \"0_revenue\" -> \"0_profit\" [value=\"[object Object]\",label=\"call -\"]\n  \"0_costs\" -> \"0_profit\" [value=\"[object Object]\",label=\"call -\"]\n  \"0_units_in\" -> \"0_units\" [value=\"[object Object]\",label=\"input +units_in\"]\n  \"0_price_in\" -> \"0_price\" [value=\"[object Object]\",label=\"input +price_in\"]\n}\n",
+  "memo_map": {}
+}

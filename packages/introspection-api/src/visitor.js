@@ -142,7 +142,11 @@ export default ({ types: t }) => ({
           }
         );
       },
-      exit() {
+      exit(path) {
+        // exclude anon fns, as above, closes #143
+        var name = path.parent.id?.name;
+        if (name == undefined) return;
+
         parentfn = undefined;
         parentfnOrig = undefined;
       },
@@ -213,14 +217,14 @@ export default ({ types: t }) => ({
 
       // counter logic breaks on memo of impactsAB case (only on memo why?)
       // and empty specifiers must indicate broken logic in memoloader.js
-      if (global_state.location.length == 1) debugger;
+      //if (global_state.location.length == 1) debugger;
 
-      if (
+      /*if (
         global_state.cul_scope_ids_to_resource.has(
           global_state.cul_scope_id_counter
         )
       )
-        debugger;
+        debugger;*/
 
       global_state.cul_scope_ids_to_resource.set(
         global_state.cul_scope_id_counter,
@@ -326,6 +330,7 @@ export default ({ types: t }) => ({
         from: `${state.opts.cul_scope_id}_${path.node.callee.name}`, // TODO develop logic for method calls (console.log=undefined) result.push({obj}) ignore
         reason: 'call',
         negs,
+        loc: path.node.loc
       });
     },
   },

@@ -54,6 +54,8 @@ export default (entrypoint, options = {}) => {
       filename: 'bundle.js',
       libraryTarget: 'commonjs2', // doesn't matter
     },
+    parallelism: 1,
+    //mode: 'none',
     optimization: {
       minimize: false,
       //runtimeChunk: true, results in a 0.bundle.js without bootstrap, just model code bundled as jsonP

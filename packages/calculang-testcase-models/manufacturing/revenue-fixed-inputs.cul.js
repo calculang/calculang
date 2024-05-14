@@ -1,5 +1,5 @@
-import { revenue } from './base.cul';
-export { revenue };
+import { revenue, profit, costs } from './base.cul';
+export { revenue, profit, costs };
 
 export const units = () => 100;
 export const price = () => 500;

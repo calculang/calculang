@@ -4,6 +4,16 @@ A standalone compiler for calculang: doesn't depend node or webpack, and can be 
 
 Does have other dependencies: `@babel/standalone` and `@dagrejs/graphlib`. (todo pin dagre version, SHA hashes, or bundle these)
 
+## Limitations
+
+Using in Node results in this error:
+
+```
+Error [ERR_NETWORK_IMPORT_DISALLOWED]: import of 'blob:nodedata:75f5174d-2f62-4264-b5f1-9ac696aa3392' by https://cdn.jsdelivr.net/gh/declann/calculang-js-browser-dev@main/calculang.js is not supported: only relative and absolute specifiers are supported.
+```
+
+Considering moving import in compiler to data URL instead of to blob URLs.
+
 ## Future
 
 Probably... This package will replace a lot of code `calculang-js`. Since it includes the `introspection-api`, that package will be deprecated and removed entirely (unless I decide to split this package similar to before).

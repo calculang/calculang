@@ -896,7 +896,7 @@ export const compile = async ({entrypoint, fs, memo = true}) => {
   //const u = URL.createObjectURL(new Blob([bundle], { type: "text/javascript" }))
   //console.log(`creating ${u}`)
   const data_uri_prefix =         "data:" + "text/javascript" + ";base64,";
-  const u = data_uri_prefix + Buffer.from(bundle).toString('base64')
+  const u = data_uri_prefix + btoa(bundle)//(node) Buffer.from(bundle).toString('base64')
   
   const model = await import(u)
   

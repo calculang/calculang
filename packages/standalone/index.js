@@ -488,42 +488,6 @@ export const introspection = async (entrypoint, fs) => {
 }
 
 
-// alternative patterns?
-// see e.g. doimport https://observablehq.com/@kreijstal/import-global-as-esm
-
-export const packageCalculang_new = async (bundledIntoOne) => {
-
-  let compiled = URL.createObjectURL(
-    new Blob(
-      [bundledIntoOne],
-      { type: "text/javascript" }
-    )
-  )
-  
-  let ret = await import(compiled)
-  URL.revokeObjectURL(compiled)
-  return ret
-}
-
-/*export const compileWithBells = async (cul, options = {memo: true}) => {
-
-  const compiled = options.memo ? compileWithMemo(cul) : compile(cul);
-
-  const introspection = introspection2(cul)
-
-  const url = URL.createObjectURL(
-    new Blob(
-      [compiled.code],
-      { type: "text/javascript" }
-    )
-  )
-  
-  let ret = await import(url)
-  URL.revokeObjectURL(url)
-
-  return { module: ret, code: compiled.code, map: compiled.map, introspection }
-}*/
-
 // for now only entrypoint compiled
 export const compile_new = (entrypoint, fs, introspection) => {
 
@@ -917,6 +881,9 @@ function has$1(obj, key) {
   return out;
 
 }
+
+// alternative import patterns?
+// see e.g. doimport https://observablehq.com/@kreijstal/import-global-as-esm
 
 // fs are the only contents the compiler can read
 // remote URLs won't be fetched (yet)

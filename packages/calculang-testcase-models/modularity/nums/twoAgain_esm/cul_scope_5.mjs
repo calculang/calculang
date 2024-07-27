@@ -1,0 +1,1 @@
+import { num } from "./cul_scope_0.mjs";export const num_ = ({}) => 1;

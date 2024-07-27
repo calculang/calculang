@@ -7,7 +7,7 @@ test.each([
   'manufacturing/base-constants', // test a constant
   'manufacturing/price-change-reconciliation',
   'manufacturing/revenue-fixed-inputs',
-  'manufacturing/impactsAB',
+  'manufacturing/impactsAB', // is this failing sometimes because of random ordering somehow, is it related to prev. instances of compiler run? (because I don't reproduce inconsistencies in own command run). Looks more like the webpack processing order simply changed => updating snapshot
   'manufacturing/revenue-with-demand-curve',
   'manufacturing/simple-neg-A',
   'manufacturing/simple-neg-B',

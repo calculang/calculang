@@ -1,0 +1,1 @@
+{"version":3,"names":["num_","num$","num"],"sources":["two.cul.js"],"sourcesContent":["import { num_ as num$ } from './one.cul';\n\nexport const num = () => num$() + 1;"],"mappings":"8CAAA,SAASA,IAAI,IAAIC,IAAI,QAAQ,gDAAW;;AAExC,OAAO,MAAMC,IAAG,GAAGA,CAAA,OAAMD,IAAI,IAAE,GAAG,CAAC"}

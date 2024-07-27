@@ -3,6 +3,37 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.1.0-alpha.8](https://github.com/calculang/calculang/compare/v0.1.0-alpha.7...v0.1.0-alpha.8) (2024-05-14)
+
+
+### Bug Fixes
+
+* bug in ref used for memoloader logic ([aa943d1](https://github.com/calculang/calculang/commit/aa943d14c2c39c3f10cf91bcb349f30291f13750)), closes [#117](https://github.com/calculang/calculang/issues/117) [#143](https://github.com/calculang/calculang/issues/143) [#130](https://github.com/calculang/calculang/issues/130)
+
+
+
+
+
+# [0.1.0-alpha.7](https://github.com/calculang/calculang/compare/v0.1.0-alpha.6...v0.1.0-alpha.7) (2024-05-14)
+
+**Note:** Version bump only for package calculang
+
+
+
+
+
+# [0.1.0-alpha.6](https://github.com/calculang/calculang/compare/v0.1.0-alpha.5...v0.1.0-alpha.6) (2023-04-28)
+
+
+### Features
+
+* "esm" output (replaces 'verbose' output and corrects source references) ([dc5499f](https://github.com/calculang/calculang/commit/dc5499f1e5e01d47b1f7df8eb5b3d08ee2ec1352))
+* error reporting: support clearer elinting of esm output ([#70](https://github.com/calculang/calculang/issues/70)) ([1e9ff66](https://github.com/calculang/calculang/commit/1e9ff66ea80ce7158b0e4d37da20d176b12e2d83)), closes [#62](https://github.com/calculang/calculang/issues/62)
+
+
+
+
+
 # [0.1.0-alpha.5](https://github.com/calculang/calculang/compare/v0.1.0-alpha.4...v0.1.0-alpha.5) (2022-02-05)
 
 

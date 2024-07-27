@@ -1,0 +1,1617 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`modularity/join/join 1`] = `
+Object {
+  "cul_functions": Map {
+    "0_order" => Object {
+      "cul_scope_id": 0,
+      "cul_source_scope_id": 1,
+      "imported": "order",
+      "inputs": Array [
+        "order_in",
+      ],
+      "name": "order",
+      "reason": "explicit import",
+    },
+    "0_customer" => Object {
+      "cul_scope_id": 0,
+      "cul_source_scope_id": 1,
+      "imported": "customer",
+      "inputs": Array [
+        "order_in",
+      ],
+      "name": "customer",
+      "reason": "explicit import",
+    },
+    "0_item" => Object {
+      "cul_scope_id": 0,
+      "cul_source_scope_id": 1,
+      "imported": "item",
+      "inputs": Array [
+        "order_in",
+      ],
+      "name": "item",
+      "reason": "explicit import",
+    },
+    "0_name" => Object {
+      "cul_scope_id": 0,
+      "cul_source_scope_id": 2,
+      "imported": "name",
+      "inputs": Array [
+        "order_in",
+      ],
+      "name": "name",
+      "reason": "explicit import",
+    },
+    "0_rating" => Object {
+      "cul_scope_id": 0,
+      "cul_source_scope_id": 2,
+      "imported": "rating",
+      "inputs": Array [
+        "order_in",
+      ],
+      "name": "rating",
+      "reason": "explicit import",
+    },
+    "0_sales_price" => Object {
+      "cul_scope_id": 0,
+      "cul_source_scope_id": 3,
+      "imported": "sales_price",
+      "inputs": Array [
+        "order_in",
+      ],
+      "name": "sales_price",
+      "reason": "explicit import",
+    },
+    "1_name" => Object {
+      "cul_scope_id": 1,
+      "cul_source_scope_id": 2,
+      "inputs": Array [
+        "order_in",
+      ],
+      "name": "name",
+      "reason": "implicit import",
+    },
+    "1_rating" => Object {
+      "cul_scope_id": 1,
+      "cul_source_scope_id": 2,
+      "inputs": Array [
+        "order_in",
+      ],
+      "name": "rating",
+      "reason": "implicit import",
+    },
+    "1_sales_price" => Object {
+      "cul_scope_id": 1,
+      "cul_source_scope_id": 3,
+      "inputs": Array [
+        "order_in",
+      ],
+      "name": "sales_price",
+      "reason": "implicit import",
+    },
+    "1_table" => Object {
+      "cul_scope_id": 1,
+      "cul_source_scope_id": 1,
+      "inputs": Array [],
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 1,
+          "index": 150,
+          "line": 5,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 21,
+          "index": 21,
+          "line": 1,
+        },
+      },
+      "name": "table",
+      "reason": "definition",
+    },
+    "1_order" => Object {
+      "cul_scope_id": 1,
+      "cul_source_scope_id": 1,
+      "inputs": Array [
+        "order_in",
+      ],
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 35,
+          "index": 188,
+          "line": 7,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 21,
+          "index": 174,
+          "line": 7,
+        },
+      },
+      "name": "order",
+      "reason": "definition",
+    },
+    "1_order_in" => Object {
+      "cul_scope_id": 1,
+      "cul_source_scope_id": 1,
+      "inputs": Array [
+        "order_in",
+      ],
+      "name": "order_in",
+      "reason": "input definition",
+    },
+    "1_order_row" => Object {
+      "cul_scope_id": 1,
+      "cul_source_scope_id": 1,
+      "inputs": Array [
+        "order_in",
+      ],
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 68,
+          "index": 258,
+          "line": 8,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 25,
+          "index": 215,
+          "line": 8,
+        },
+      },
+      "name": "order_row",
+      "reason": "definition",
+    },
+    "1_customer" => Object {
+      "cul_scope_id": 1,
+      "cul_source_scope_id": 1,
+      "inputs": Array [
+        "order_in",
+      ],
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 50,
+          "index": 309,
+          "line": 9,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 24,
+          "index": 283,
+          "line": 9,
+        },
+      },
+      "name": "customer",
+      "reason": "definition",
+    },
+    "1_item" => Object {
+      "cul_scope_id": 1,
+      "cul_source_scope_id": 1,
+      "inputs": Array [
+        "order_in",
+      ],
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 42,
+          "index": 353,
+          "line": 10,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 20,
+          "index": 331,
+          "line": 10,
+        },
+      },
+      "name": "item",
+      "reason": "definition",
+    },
+    "3_order" => Object {
+      "cul_scope_id": 3,
+      "cul_source_scope_id": 1,
+      "inputs": Array [
+        "order_in",
+      ],
+      "name": "order",
+      "reason": "implicit import",
+    },
+    "3_customer" => Object {
+      "cul_scope_id": 3,
+      "cul_source_scope_id": 1,
+      "inputs": Array [
+        "order_in",
+      ],
+      "name": "customer",
+      "reason": "implicit import",
+    },
+    "3_item" => Object {
+      "cul_scope_id": 3,
+      "cul_source_scope_id": 1,
+      "inputs": Array [
+        "order_in",
+      ],
+      "name": "item",
+      "reason": "implicit import",
+    },
+    "3_name" => Object {
+      "cul_scope_id": 3,
+      "cul_source_scope_id": 2,
+      "inputs": Array [
+        "order_in",
+      ],
+      "name": "name",
+      "reason": "implicit import",
+    },
+    "3_rating" => Object {
+      "cul_scope_id": 3,
+      "cul_source_scope_id": 2,
+      "inputs": Array [
+        "order_in",
+      ],
+      "name": "rating",
+      "reason": "implicit import",
+    },
+    "3_table" => Object {
+      "cul_scope_id": 3,
+      "cul_source_scope_id": 3,
+      "inputs": Array [],
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 1,
+          "index": 98,
+          "line": 4,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 21,
+          "index": 21,
+          "line": 1,
+        },
+      },
+      "name": "table",
+      "reason": "definition",
+    },
+    "3_item_" => Object {
+      "cul_scope_id": 3,
+      "cul_source_scope_id": 3,
+      "inputs": Array [
+        "item_in",
+      ],
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 33,
+          "index": 134,
+          "line": 6,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 20,
+          "index": 121,
+          "line": 6,
+        },
+      },
+      "name": "item_",
+      "reason": "definition (renamed)",
+    },
+    "3_item_in" => Object {
+      "cul_scope_id": 3,
+      "cul_source_scope_id": 3,
+      "inputs": Array [
+        "item_in",
+      ],
+      "name": "item_in",
+      "reason": "input definition",
+    },
+    "3_item_row" => Object {
+      "cul_scope_id": 3,
+      "cul_source_scope_id": 3,
+      "inputs": Array [
+        "order_in",
+      ],
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 65,
+          "index": 201,
+          "line": 7,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 24,
+          "index": 160,
+          "line": 7,
+        },
+      },
+      "name": "item_row",
+      "reason": "definition",
+    },
+    "3_sales_price" => Object {
+      "cul_scope_id": 3,
+      "cul_source_scope_id": 3,
+      "inputs": Array [
+        "order_in",
+      ],
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 55,
+          "index": 257,
+          "line": 8,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 27,
+          "index": 229,
+          "line": 8,
+        },
+      },
+      "name": "sales_price",
+      "reason": "definition",
+    },
+    "2_order" => Object {
+      "cul_scope_id": 2,
+      "cul_source_scope_id": 1,
+      "inputs": Array [
+        "order_in",
+      ],
+      "name": "order",
+      "reason": "implicit import",
+    },
+    "2_customer" => Object {
+      "cul_scope_id": 2,
+      "cul_source_scope_id": 1,
+      "inputs": Array [
+        "order_in",
+      ],
+      "name": "customer",
+      "reason": "implicit import",
+    },
+    "2_item" => Object {
+      "cul_scope_id": 2,
+      "cul_source_scope_id": 1,
+      "inputs": Array [
+        "order_in",
+      ],
+      "name": "item",
+      "reason": "implicit import",
+    },
+    "2_sales_price" => Object {
+      "cul_scope_id": 2,
+      "cul_source_scope_id": 3,
+      "inputs": Array [
+        "order_in",
+      ],
+      "name": "sales_price",
+      "reason": "implicit import",
+    },
+    "2_table" => Object {
+      "cul_scope_id": 2,
+      "cul_source_scope_id": 2,
+      "inputs": Array [],
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 1,
+          "index": 125,
+          "line": 5,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 21,
+          "index": 21,
+          "line": 1,
+        },
+      },
+      "name": "table",
+      "reason": "definition",
+    },
+    "2_customer_" => Object {
+      "cul_scope_id": 2,
+      "cul_source_scope_id": 2,
+      "inputs": Array [
+        "customer_in",
+      ],
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 41,
+          "index": 169,
+          "line": 7,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 24,
+          "index": 152,
+          "line": 7,
+        },
+      },
+      "name": "customer_",
+      "reason": "definition (renamed)",
+    },
+    "2_customer_in" => Object {
+      "cul_scope_id": 2,
+      "cul_source_scope_id": 2,
+      "inputs": Array [
+        "customer_in",
+      ],
+      "name": "customer_in",
+      "reason": "input definition",
+    },
+    "2_customer_row" => Object {
+      "cul_scope_id": 2,
+      "cul_source_scope_id": 2,
+      "inputs": Array [
+        "order_in",
+      ],
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 77,
+          "index": 248,
+          "line": 8,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 28,
+          "index": 199,
+          "line": 8,
+        },
+      },
+      "name": "customer_row",
+      "reason": "definition",
+    },
+    "2_name" => Object {
+      "cul_scope_id": 2,
+      "cul_source_scope_id": 2,
+      "inputs": Array [
+        "order_in",
+      ],
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 45,
+          "index": 294,
+          "line": 9,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 20,
+          "index": 269,
+          "line": 9,
+        },
+      },
+      "name": "name",
+      "reason": "definition",
+    },
+    "2_rating" => Object {
+      "cul_scope_id": 2,
+      "cul_source_scope_id": 2,
+      "inputs": Array [
+        "order_in",
+      ],
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 49,
+          "index": 345,
+          "line": 10,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 22,
+          "index": 318,
+          "line": 10,
+        },
+      },
+      "name": "rating",
+      "reason": "definition",
+    },
+  },
+  "cul_input_map": Map {
+    "0_order" => Set {
+      "order_in",
+    },
+    "0_customer" => Set {
+      "order_in",
+    },
+    "0_item" => Set {
+      "order_in",
+    },
+    "0_name" => Set {
+      "order_in",
+    },
+    "0_rating" => Set {
+      "order_in",
+    },
+    "0_sales_price" => Set {
+      "order_in",
+    },
+    "1_name" => Set {
+      "order_in",
+    },
+    "1_rating" => Set {
+      "order_in",
+    },
+    "1_sales_price" => Set {
+      "order_in",
+    },
+    "1_table" => Set {},
+    "1_order" => Set {
+      "order_in",
+    },
+    "1_order_in" => Set {
+      "order_in",
+    },
+    "1_order_row" => Set {
+      "order_in",
+    },
+    "1_customer" => Set {
+      "order_in",
+    },
+    "1_item" => Set {
+      "order_in",
+    },
+    "3_order" => Set {
+      "order_in",
+    },
+    "3_customer" => Set {
+      "order_in",
+    },
+    "3_item" => Set {
+      "order_in",
+    },
+    "3_name" => Set {
+      "order_in",
+    },
+    "3_rating" => Set {
+      "order_in",
+    },
+    "3_table" => Set {},
+    "3_item_" => Set {
+      "item_in",
+    },
+    "3_item_in" => Set {
+      "item_in",
+    },
+    "3_item_row" => Set {
+      "order_in",
+    },
+    "3_sales_price" => Set {
+      "order_in",
+    },
+    "2_order" => Set {
+      "order_in",
+    },
+    "2_customer" => Set {
+      "order_in",
+    },
+    "2_item" => Set {
+      "order_in",
+    },
+    "2_sales_price" => Set {
+      "order_in",
+    },
+    "2_table" => Set {},
+    "2_customer_" => Set {
+      "customer_in",
+    },
+    "2_customer_in" => Set {
+      "customer_in",
+    },
+    "2_customer_row" => Set {
+      "order_in",
+    },
+    "2_name" => Set {
+      "order_in",
+    },
+    "2_rating" => Set {
+      "order_in",
+    },
+  },
+  "cul_links": Set {
+    Object {
+      "from": "1_order",
+      "reason": "explicit import",
+      "to": "0_order",
+    },
+    Object {
+      "from": "1_customer",
+      "reason": "explicit import",
+      "to": "0_customer",
+    },
+    Object {
+      "from": "1_item",
+      "reason": "explicit import",
+      "to": "0_item",
+    },
+    Object {
+      "from": "2_name",
+      "reason": "explicit import",
+      "to": "0_name",
+    },
+    Object {
+      "from": "2_rating",
+      "reason": "explicit import",
+      "to": "0_rating",
+    },
+    Object {
+      "from": "3_sales_price",
+      "reason": "explicit import",
+      "to": "0_sales_price",
+    },
+    Object {
+      "from": "2_name",
+      "reason": "implicit import",
+      "to": "1_name",
+    },
+    Object {
+      "from": "2_rating",
+      "reason": "implicit import",
+      "to": "1_rating",
+    },
+    Object {
+      "from": "3_sales_price",
+      "reason": "implicit import",
+      "to": "1_sales_price",
+    },
+    Object {
+      "from": "1_order_in",
+      "reason": "input",
+      "to": "1_order",
+    },
+    Object {
+      "from": "1_table",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 38,
+          "index": 228,
+          "line": 8,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 31,
+          "index": 221,
+          "line": 8,
+        },
+      },
+      "negs": Array [],
+      "reason": "call",
+      "to": "1_order_row",
+    },
+    Object {
+      "from": "1_order",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 67,
+          "index": 257,
+          "line": 8,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 60,
+          "index": 250,
+          "line": 8,
+        },
+      },
+      "negs": Array [],
+      "reason": "call",
+      "to": "1_order_row",
+    },
+    Object {
+      "from": "1_order_row",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 41,
+          "index": 300,
+          "line": 9,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 30,
+          "index": 289,
+          "line": 9,
+        },
+      },
+      "negs": Array [],
+      "reason": "call",
+      "to": "1_customer",
+    },
+    Object {
+      "from": "1_order_row",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 37,
+          "index": 348,
+          "line": 10,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 26,
+          "index": 337,
+          "line": 10,
+        },
+      },
+      "negs": Array [],
+      "reason": "call",
+      "to": "1_item",
+    },
+    Object {
+      "from": "1_order",
+      "reason": "implicit import",
+      "to": "3_order",
+    },
+    Object {
+      "from": "1_customer",
+      "reason": "implicit import",
+      "to": "3_customer",
+    },
+    Object {
+      "from": "1_item",
+      "reason": "implicit import",
+      "to": "3_item",
+    },
+    Object {
+      "from": "2_name",
+      "reason": "implicit import",
+      "to": "3_name",
+    },
+    Object {
+      "from": "2_rating",
+      "reason": "implicit import",
+      "to": "3_rating",
+    },
+    Object {
+      "from": "3_item_in",
+      "reason": "input",
+      "to": "3_item_",
+    },
+    Object {
+      "from": "3_table",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 37,
+          "index": 173,
+          "line": 7,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 30,
+          "index": 166,
+          "line": 7,
+        },
+      },
+      "negs": Array [],
+      "reason": "call",
+      "to": "3_item_row",
+    },
+    Object {
+      "from": "3_item",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 64,
+          "index": 200,
+          "line": 7,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 58,
+          "index": 194,
+          "line": 7,
+        },
+      },
+      "negs": Array [],
+      "reason": "call",
+      "to": "3_item_row",
+    },
+    Object {
+      "from": "3_item_row",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 43,
+          "index": 245,
+          "line": 8,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 33,
+          "index": 235,
+          "line": 8,
+        },
+      },
+      "negs": Array [],
+      "reason": "call",
+      "to": "3_sales_price",
+    },
+    Object {
+      "from": "1_order",
+      "reason": "implicit import",
+      "to": "2_order",
+    },
+    Object {
+      "from": "1_customer",
+      "reason": "implicit import",
+      "to": "2_customer",
+    },
+    Object {
+      "from": "1_item",
+      "reason": "implicit import",
+      "to": "2_item",
+    },
+    Object {
+      "from": "3_sales_price",
+      "reason": "implicit import",
+      "to": "2_sales_price",
+    },
+    Object {
+      "from": "2_customer_in",
+      "reason": "input",
+      "to": "2_customer_",
+    },
+    Object {
+      "from": "2_table",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 41,
+          "index": 212,
+          "line": 8,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 34,
+          "index": 205,
+          "line": 8,
+        },
+      },
+      "negs": Array [],
+      "reason": "call",
+      "to": "2_customer_row",
+    },
+    Object {
+      "from": "2_customer",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 76,
+          "index": 247,
+          "line": 8,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 66,
+          "index": 237,
+          "line": 8,
+        },
+      },
+      "negs": Array [],
+      "reason": "call",
+      "to": "2_customer_row",
+    },
+    Object {
+      "from": "2_customer_row",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 40,
+          "index": 289,
+          "line": 9,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 26,
+          "index": 275,
+          "line": 9,
+        },
+      },
+      "negs": Array [],
+      "reason": "call",
+      "to": "2_name",
+    },
+    Object {
+      "from": "2_customer_row",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 42,
+          "index": 338,
+          "line": 10,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 28,
+          "index": 324,
+          "line": 10,
+        },
+      },
+      "negs": Array [],
+      "reason": "call",
+      "to": "2_rating",
+    },
+  },
+  "cul_scope_ids_to_resource": Map {
+    0 => "./join.cul.js",
+    1 => "./orders.cul.js?cul_scope_id=1&cul_parent_scope_id=0",
+    2 => "./customers.cul.js?cul_scope_id=2&cul_parent_scope_id=0",
+    3 => "./items.cul.js?cul_scope_id=3&cul_parent_scope_id=0",
+  },
+  "import_sources_to_resource": Map {
+    "0_./orders.cul.js" => "./orders.cul.js?cul_scope_id=1&cul_parent_scope_id=0",
+    "0_./customers.cul.js" => "./customers.cul.js?cul_scope_id=2&cul_parent_scope_id=0",
+    "0_./items.cul.js" => "./items.cul.js?cul_scope_id=3&cul_parent_scope_id=0",
+  },
+}
+`;
+
+exports[`modularity/nums/one 1`] = `
+Object {
+  "cul_functions": Map {
+    "0_num" => Object {
+      "cul_scope_id": 0,
+      "cul_source_scope_id": 0,
+      "inputs": Array [],
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 26,
+          "index": 26,
+          "line": 1,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 19,
+          "index": 19,
+          "line": 1,
+        },
+      },
+      "name": "num",
+      "reason": "definition",
+    },
+  },
+  "cul_input_map": Map {
+    "0_num" => Set {},
+  },
+  "cul_links": Set {},
+  "cul_scope_ids_to_resource": Map {
+    0 => "./one.cul.js",
+  },
+  "import_sources_to_resource": Map {},
+}
+`;
+
+exports[`modularity/nums/three 1`] = `
+Object {
+  "cul_functions": Map {
+    "0_num$" => Object {
+      "cul_scope_id": 0,
+      "cul_source_scope_id": 1,
+      "imported": "num_",
+      "inputs": Array [],
+      "name": "num$",
+      "reason": "explicit import",
+    },
+    "0_num" => Object {
+      "cul_scope_id": 0,
+      "cul_source_scope_id": 0,
+      "inputs": Array [],
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 35,
+          "index": 78,
+          "line": 3,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 19,
+          "index": 62,
+          "line": 3,
+        },
+      },
+      "name": "num",
+      "reason": "definition",
+    },
+    "1_num" => Object {
+      "cul_scope_id": 1,
+      "cul_source_scope_id": 0,
+      "inputs": Array [],
+      "name": "num",
+      "reason": "implicit import",
+    },
+    "1_num$" => Object {
+      "cul_scope_id": 1,
+      "cul_source_scope_id": 2,
+      "imported": "num_",
+      "inputs": Array [],
+      "name": "num$",
+      "reason": "explicit import",
+    },
+    "1_num_" => Object {
+      "cul_scope_id": 1,
+      "cul_source_scope_id": 1,
+      "inputs": Array [],
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 35,
+          "index": 78,
+          "line": 3,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 19,
+          "index": 62,
+          "line": 3,
+        },
+      },
+      "name": "num_",
+      "reason": "definition (renamed)",
+    },
+    "2_num" => Object {
+      "cul_scope_id": 2,
+      "cul_source_scope_id": 0,
+      "inputs": Array [],
+      "name": "num",
+      "reason": "implicit import",
+    },
+    "2_num_" => Object {
+      "cul_scope_id": 2,
+      "cul_source_scope_id": 2,
+      "inputs": Array [],
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 26,
+          "index": 26,
+          "line": 1,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 19,
+          "index": 19,
+          "line": 1,
+        },
+      },
+      "name": "num_",
+      "reason": "definition (renamed)",
+    },
+  },
+  "cul_input_map": Map {
+    "0_num$" => Set {},
+    "0_num" => Set {},
+    "1_num" => Set {},
+    "1_num$" => Set {},
+    "1_num_" => Set {},
+    "2_num" => Set {},
+    "2_num_" => Set {},
+  },
+  "cul_links": Set {
+    Object {
+      "from": "1_num_",
+      "reason": "explicit import",
+      "to": "0_num$",
+    },
+    Object {
+      "from": "0_num$",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 31,
+          "index": 74,
+          "line": 3,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 25,
+          "index": 68,
+          "line": 3,
+        },
+      },
+      "negs": Array [],
+      "reason": "call",
+      "to": "0_num",
+    },
+    Object {
+      "from": "0_num",
+      "reason": "implicit import",
+      "to": "1_num",
+    },
+    Object {
+      "from": "2_num_",
+      "reason": "explicit import",
+      "to": "1_num$",
+    },
+    Object {
+      "from": "1_num$",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 31,
+          "index": 74,
+          "line": 3,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 25,
+          "index": 68,
+          "line": 3,
+        },
+      },
+      "negs": Array [],
+      "reason": "call",
+      "to": "1_num_",
+    },
+    Object {
+      "from": "0_num",
+      "reason": "implicit import",
+      "to": "2_num",
+    },
+  },
+  "cul_scope_ids_to_resource": Map {
+    0 => "./three.cul.js",
+    1 => "./two.cul?cul_scope_id=1&cul_parent_scope_id=0",
+    2 => "./one.cul?cul_scope_id=2&cul_parent_scope_id=1",
+  },
+  "import_sources_to_resource": Map {
+    "0_./two.cul" => "./two.cul?cul_scope_id=1&cul_parent_scope_id=0",
+    "1_./one.cul" => "./one.cul?cul_scope_id=2&cul_parent_scope_id=1",
+  },
+}
+`;
+
+exports[`modularity/nums/threeAgain 1`] = `
+Object {
+  "cul_functions": Map {
+    "0_num$" => Object {
+      "cul_scope_id": 0,
+      "cul_source_scope_id": 1,
+      "imported": "num_",
+      "inputs": Array [],
+      "name": "num$",
+      "reason": "explicit import",
+    },
+    "0_num" => Object {
+      "cul_scope_id": 0,
+      "cul_source_scope_id": 0,
+      "inputs": Array [],
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 35,
+          "index": 83,
+          "line": 3,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 19,
+          "index": 67,
+          "line": 3,
+        },
+      },
+      "name": "num",
+      "reason": "definition",
+    },
+    "1_num" => Object {
+      "cul_scope_id": 1,
+      "cul_source_scope_id": 0,
+      "inputs": Array [],
+      "name": "num",
+      "reason": "implicit import",
+    },
+    "1_num_" => Object {
+      "cul_scope_id": 1,
+      "cul_source_scope_id": 2,
+      "imported": "num_",
+      "inputs": Array [],
+      "name": "num_",
+      "reason": "explicit import (renamed)",
+    },
+    "2_num" => Object {
+      "cul_scope_id": 2,
+      "cul_source_scope_id": 0,
+      "inputs": Array [],
+      "name": "num",
+      "reason": "implicit import",
+    },
+    "2_num$" => Object {
+      "cul_scope_id": 2,
+      "cul_source_scope_id": 3,
+      "imported": "num_",
+      "inputs": Array [],
+      "name": "num$",
+      "reason": "explicit import",
+    },
+    "2_num_" => Object {
+      "cul_scope_id": 2,
+      "cul_source_scope_id": 2,
+      "inputs": Array [],
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 35,
+          "index": 78,
+          "line": 3,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 19,
+          "index": 62,
+          "line": 3,
+        },
+      },
+      "name": "num_",
+      "reason": "definition (renamed)",
+    },
+    "3_num" => Object {
+      "cul_scope_id": 3,
+      "cul_source_scope_id": 0,
+      "inputs": Array [],
+      "name": "num",
+      "reason": "implicit import",
+    },
+    "3_num_" => Object {
+      "cul_scope_id": 3,
+      "cul_source_scope_id": 3,
+      "inputs": Array [],
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 26,
+          "index": 26,
+          "line": 1,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 19,
+          "index": 19,
+          "line": 1,
+        },
+      },
+      "name": "num_",
+      "reason": "definition (renamed)",
+    },
+  },
+  "cul_input_map": Map {
+    "0_num$" => Set {},
+    "0_num" => Set {},
+    "1_num" => Set {},
+    "1_num_" => Set {},
+    "2_num" => Set {},
+    "2_num$" => Set {},
+    "2_num_" => Set {},
+    "3_num" => Set {},
+    "3_num_" => Set {},
+  },
+  "cul_links": Set {
+    Object {
+      "from": "1_num_",
+      "reason": "explicit import",
+      "to": "0_num$",
+    },
+    Object {
+      "from": "0_num$",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 35,
+          "index": 83,
+          "line": 3,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 29,
+          "index": 77,
+          "line": 3,
+        },
+      },
+      "negs": Array [],
+      "reason": "call",
+      "to": "0_num",
+    },
+    Object {
+      "from": "0_num",
+      "reason": "implicit import",
+      "to": "1_num",
+    },
+    Object {
+      "from": "2_num_",
+      "reason": "explicit import (renamed)",
+      "to": "1_num_",
+    },
+    Object {
+      "from": "0_num",
+      "reason": "implicit import",
+      "to": "2_num",
+    },
+    Object {
+      "from": "3_num_",
+      "reason": "explicit import",
+      "to": "2_num$",
+    },
+    Object {
+      "from": "2_num$",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 31,
+          "index": 74,
+          "line": 3,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 25,
+          "index": 68,
+          "line": 3,
+        },
+      },
+      "negs": Array [],
+      "reason": "call",
+      "to": "2_num_",
+    },
+    Object {
+      "from": "0_num",
+      "reason": "implicit import",
+      "to": "3_num",
+    },
+  },
+  "cul_scope_ids_to_resource": Map {
+    0 => "./threeAgain.cul.js",
+    1 => "./twoAgain.cul?cul_scope_id=1&cul_parent_scope_id=0",
+    2 => "./two.cul.js?cul_scope_id=2&cul_parent_scope_id=1",
+    3 => "./one.cul?cul_scope_id=3&cul_parent_scope_id=2",
+  },
+  "import_sources_to_resource": Map {
+    "0_./twoAgain.cul" => "./twoAgain.cul?cul_scope_id=1&cul_parent_scope_id=0",
+    "1_./two.cul.js" => "./two.cul.js?cul_scope_id=2&cul_parent_scope_id=1",
+    "2_./one.cul" => "./one.cul?cul_scope_id=3&cul_parent_scope_id=2",
+  },
+}
+`;
+
+exports[`modularity/nums/two 1`] = `
+Object {
+  "cul_functions": Map {
+    "0_num$" => Object {
+      "cul_scope_id": 0,
+      "cul_source_scope_id": 1,
+      "imported": "num_",
+      "inputs": Array [],
+      "name": "num$",
+      "reason": "explicit import",
+    },
+    "0_num" => Object {
+      "cul_scope_id": 0,
+      "cul_source_scope_id": 0,
+      "inputs": Array [],
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 35,
+          "index": 78,
+          "line": 3,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 19,
+          "index": 62,
+          "line": 3,
+        },
+      },
+      "name": "num",
+      "reason": "definition",
+    },
+    "1_num" => Object {
+      "cul_scope_id": 1,
+      "cul_source_scope_id": 0,
+      "inputs": Array [],
+      "name": "num",
+      "reason": "implicit import",
+    },
+    "1_num_" => Object {
+      "cul_scope_id": 1,
+      "cul_source_scope_id": 1,
+      "inputs": Array [],
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 26,
+          "index": 26,
+          "line": 1,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 19,
+          "index": 19,
+          "line": 1,
+        },
+      },
+      "name": "num_",
+      "reason": "definition (renamed)",
+    },
+  },
+  "cul_input_map": Map {
+    "0_num$" => Set {},
+    "0_num" => Set {},
+    "1_num" => Set {},
+    "1_num_" => Set {},
+  },
+  "cul_links": Set {
+    Object {
+      "from": "1_num_",
+      "reason": "explicit import",
+      "to": "0_num$",
+    },
+    Object {
+      "from": "0_num$",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 31,
+          "index": 74,
+          "line": 3,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 25,
+          "index": 68,
+          "line": 3,
+        },
+      },
+      "negs": Array [],
+      "reason": "call",
+      "to": "0_num",
+    },
+    Object {
+      "from": "0_num",
+      "reason": "implicit import",
+      "to": "1_num",
+    },
+  },
+  "cul_scope_ids_to_resource": Map {
+    0 => "./two.cul.js",
+    1 => "./one.cul?cul_scope_id=1&cul_parent_scope_id=0",
+  },
+  "import_sources_to_resource": Map {
+    "0_./one.cul" => "./one.cul?cul_scope_id=1&cul_parent_scope_id=0",
+  },
+}
+`;
+
+exports[`modularity/nums/twoAgain 1`] = `
+Object {
+  "cul_functions": Map {
+    "0_num" => Object {
+      "cul_scope_id": 0,
+      "cul_source_scope_id": 1,
+      "imported": "num",
+      "inputs": Array [],
+      "name": "num",
+      "reason": "explicit import",
+    },
+    "1_num$" => Object {
+      "cul_scope_id": 1,
+      "cul_source_scope_id": 2,
+      "imported": "num_",
+      "inputs": Array [],
+      "name": "num$",
+      "reason": "explicit import",
+    },
+    "1_num" => Object {
+      "cul_scope_id": 1,
+      "cul_source_scope_id": 1,
+      "inputs": Array [],
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 35,
+          "index": 78,
+          "line": 3,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 19,
+          "index": 62,
+          "line": 3,
+        },
+      },
+      "name": "num",
+      "reason": "definition",
+    },
+    "2_num" => Object {
+      "cul_scope_id": 2,
+      "cul_source_scope_id": 1,
+      "inputs": Array [],
+      "name": "num",
+      "reason": "implicit import",
+    },
+    "2_num_" => Object {
+      "cul_scope_id": 2,
+      "cul_source_scope_id": 2,
+      "inputs": Array [],
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 26,
+          "index": 26,
+          "line": 1,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 19,
+          "index": 19,
+          "line": 1,
+        },
+      },
+      "name": "num_",
+      "reason": "definition (renamed)",
+    },
+  },
+  "cul_input_map": Map {
+    "0_num" => Set {},
+    "1_num$" => Set {},
+    "1_num" => Set {},
+    "2_num" => Set {},
+    "2_num_" => Set {},
+  },
+  "cul_links": Set {
+    Object {
+      "from": "1_num",
+      "reason": "explicit import",
+      "to": "0_num",
+    },
+    Object {
+      "from": "2_num_",
+      "reason": "explicit import",
+      "to": "1_num$",
+    },
+    Object {
+      "from": "1_num$",
+      "loc": SourceLocation {
+        "end": Position {
+          "column": 31,
+          "index": 74,
+          "line": 3,
+        },
+        "filename": undefined,
+        "identifierName": undefined,
+        "start": Position {
+          "column": 25,
+          "index": 68,
+          "line": 3,
+        },
+      },
+      "negs": Array [],
+      "reason": "call",
+      "to": "1_num",
+    },
+    Object {
+      "from": "1_num",
+      "reason": "implicit import",
+      "to": "2_num",
+    },
+  },
+  "cul_scope_ids_to_resource": Map {
+    0 => "./twoAgain.cul.js",
+    1 => "./two.cul.js?cul_scope_id=1&cul_parent_scope_id=0",
+    2 => "./one.cul?cul_scope_id=2&cul_parent_scope_id=1",
+  },
+  "import_sources_to_resource": Map {
+    "0_./two.cul.js" => "./two.cul.js?cul_scope_id=1&cul_parent_scope_id=0",
+    "1_./one.cul" => "./one.cul?cul_scope_id=2&cul_parent_scope_id=1",
+  },
+}
+`;

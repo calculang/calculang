@@ -107,15 +107,16 @@ export default ({ types: t }) => ({
           // now references to the function need to be updated
           [...global_state.cul_functions.values()]
             .filter(
-              (d) =>
+              (d) => 
                 d.imported /* I need imported here */ == name &&
-                d.reason.indexOf('explicit import') != -1 &&
+                (d.reason.indexOf('explicit import') != -1) && // function is imported explicitly
                 d.cul_scope_id == opts.cul_parent_scope_id // new, post-working/tests
+              && d.cul_source_scope_id == opts.cul_scope_id // Nov 2023 #117
             )
             .forEach((d) => {
               global_state.cul_functions.set(`${d.cul_scope_id}_${d.name}`, {
                 ...d,
-                imported: d.imported + '_',
+                imported: d.imported + '_', // here. Only do this when? 
               });
               global_state.cul_links.forEach((dd) => {
                 if (
@@ -137,10 +138,15 @@ export default ({ types: t }) => ({
             name: path.parent.id.name,
             cul_source_scope_id: opts.cul_scope_id,
             reason,
+            loc: path.node.loc
           }
         );
       },
-      exit() {
+      exit(path) {
+        // exclude anon fns, as above, closes #143
+        var name = path.parent.id?.name;
+        if (name == undefined) return;
+
         parentfn = undefined;
         parentfnOrig = undefined;
       },
@@ -211,14 +217,14 @@ export default ({ types: t }) => ({
 
       // counter logic breaks on memo of impactsAB case (only on memo why?)
       // and empty specifiers must indicate broken logic in memoloader.js
-      if (global_state.location.length == 1) debugger;
+      //if (global_state.location.length == 1) debugger;
 
-      if (
+      /*if (
         global_state.cul_scope_ids_to_resource.has(
           global_state.cul_scope_id_counter
         )
       )
-        debugger;
+        debugger;*/
 
       global_state.cul_scope_ids_to_resource.set(
         global_state.cul_scope_id_counter,
@@ -324,6 +330,7 @@ export default ({ types: t }) => ({
         from: `${state.opts.cul_scope_id}_${path.node.callee.name}`, // TODO develop logic for method calls (console.log=undefined) result.push({obj}) ignore
         reason: 'call',
         negs,
+        loc: path.node.loc
       });
     },
   },

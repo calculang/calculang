@@ -25,7 +25,7 @@ const compiler = require('@calculang/calculang-js').default;
 
 const stringify_introspection_info = (d) => {
   // https://gist.github.com/lukehorvat/133e2293ba6ae96a35ba
-  let cul_functions = Array.from(d.cul_functions).reduce(
+  let cul_functions = Array.from(d.cul_functions).reduce( // TODO sort here!!
     (obj, [key, value]) => Object.assign(obj, { [key]: value }), // Be careful! Maps can have non-String keys; object literals can't.
     {}
   );
@@ -42,6 +42,7 @@ const stringify_introspection_info = (d) => {
     (obj, [key, value]) => Object.assign(obj, { [key]: value }), // Be careful! Maps can have non-String keys; object literals can't.
     {}
   );
+  let memo_map = d.memo_map;
 
   let cul_input_map = Array.from(d.cul_input_map).reduce(
     (obj, [key, value]) => Object.assign(obj, { [key]: [...value.values()] }), // Be careful! Maps can have non-String keys; object literals can't.
@@ -56,6 +57,7 @@ const stringify_introspection_info = (d) => {
       import_sources_to_resource,
       cul_input_map,
       dot: d.dot,
+      memo_map
     },
     null,
     2
@@ -65,9 +67,41 @@ const stringify_introspection_info = (d) => {
 program
   .version(require('../package.json').version) // reveals version of calculang-js, not introspection, problem?
   .command('compile <entrypoint.cul.js>')
-  .option('--memo', 'memoization (only designed for non-modular models now)')
+  .option('--memo', 'memoization')
   .description('compile entrypoint.cul.js to entrypoint.js')
-  .action((entrypoint, options) => {
+  .action(async (entrypoint, options) => {
+
+    // to do --memo, we first need to output introspection information for a nomemo copy:
+
+    // use fs.fileCopy to copy -nomemo
+    // call compiler on that entrypoint With memo option turned off
+    var nomemo = path.dirname(entrypoint) +
+                  path.sep + path.basename(entrypoint, '.cul.js') + '-nomemo.cul.js'
+    await fs.copyFileSync(entrypoint, nomemo, fs.constants.COPYFILE_FICLONE)
+  
+      {
+        // done
+
+        // then call regular compiler
+        // vs. just call & save introspection-api
+        await introspection(nomemo, { memo:false})
+          .then((d) => {
+            fs.writeFileSync(path.dirname(entrypoint) +
+            path.sep + path.basename(entrypoint, '.cul.js') + '-nomemo.introspection.json', (stringify_introspection_info(d)));
+          })
+          .catch((e) => {
+            console.log(e);
+          });
+      }
+
+    // regressions expected???
+    // compile... cp (overwrite), compile...
+    // expect -nomemo-nomemo but otherwise, it's solid
+    // memo option not used for -nomemo. So result the same, if as defined above.
+
+
+    // this runs BEFORE the stuff above
+    // so compile happens immediate, but should be AFTER ABOVE
     compiler(entrypoint, options)
       .then((d) => {
         fs.writeFileSync(

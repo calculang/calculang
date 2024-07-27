@@ -25,8 +25,8 @@
     "build": "lerna run build",
     "test": "jest --reporters=default --runInBand",
     "test:update": "jest --reporters=default --runInBand --updateSnapshot",
-    "compileall:nomemo": "run-for-every-file --src ./packages/calculang-testcase-models/manufacturing/ --file \"**/*.cul.js\" --run \"cul-js compile {{src-file}}\"",
-    "compileall:memo": "run-for-every-file --src ./packages/calculang-testcase-models/manufacturing/ --file \"**/*.cul.js\" --run \"cul-js compile --memo {{src-file}}\"",
+    "CAREFULcompileall:nomemo": "run-for-every-file --src ./packages/calculang-testcase-models/manufacturing/ --file \"**/*.cul.js\" --run \"cul-js compile {{src-file}}\"",
+    "CAREFULcompileall:memo": "run-for-every-file --src ./packages/calculang-testcase-models/manufacturing/ --file \"**/*.cul.js\" --run \"cul-js compile --memo {{src-file}}\"",
     "compileall:clean": "run-for-every-file --src ./packages/calculang-testcase-models/manufacturing/ --file \"**/*.js*\" --not-file \"**/*.cul.js\" --not-file \"**/some-checks.js\" --run \"shx rm {{src-file}}\"",
     "somechecks": "node ./packages/calculang-testcase-models/manufacturing/some-checks.js",
     "publish:monorepo": "yarn build && lerna version --conventional-prerelease && lerna publish from-git",
@@ -51,5 +51,6 @@
     "rimraf": "^3.0.2",
     "run-for-every-file": "^1.1.0",
     "shx": "^0.3.3"
-  }
+  },
+  "packageManager": "yarn@1.22.19"
 }

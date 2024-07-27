@@ -749,7 +749,7 @@ export const calls_fromDefinition = (introspection) => ([...introspection.cul_li
   .map(d => ({ ...d, cul_scope_id: d.to.split('_')[0] /* TODO add this in introspection cul_links? */ }))
 )
 
-
+// todo consider converting import specifiers into data uris instead of removing and concating
 // sourcemaps will break: need to merge 2x maps due to replacements
 export const bundleIntoOne = (compiled, introspection, memoize) => {
 
@@ -893,8 +893,10 @@ export const compile = async ({entrypoint, fs, memo = true}) => {
   const compiled = await compile_new(entrypoint, fs, introspection_a);
   const bundle = bundleIntoOne(compiled, introspection_a, memo);
   
-  const u = URL.createObjectURL(new Blob([bundle], { type: "text/javascript" }))
-  console.log(`creating ${u}`)
+  //const u = URL.createObjectURL(new Blob([bundle], { type: "text/javascript" }))
+  //console.log(`creating ${u}`)
+  const data_uri_prefix =         "data:" + "text/javascript" + ";base64,";
+  const u = data_uri_prefix + Buffer.from(bundle).toString('base64')
   
   const model = await import(u)
   

@@ -897,7 +897,9 @@ export const compile = async ({entrypoint, fs, memo = true}) => {
   //console.log(`creating ${u}`)
   const data_uri_prefix =         "data:" + "text/javascript" + ";base64,";
   const u = data_uri_prefix + btoa(bundle)//(node) Buffer.from(bundle).toString('base64')
-  
+  // https://developer.mozilla.org/en-US/docs/Glossary/Base64#javascript_support
+  // Read Note and The "Unicode Problem" - TOFIX
+
   const model = await import(u)
   
   return {

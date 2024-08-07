@@ -889,6 +889,8 @@ function has$1(obj, key) {
 // remote URLs won't be fetched (yet)
 // instead: fetch them in code that calls compile
 export const compile = async ({entrypoint, fs, memo = true}) => {
+  // NOTE: although not tidy, introspection, compile_new etc. is exported
+  // TODO tidy up those APIs
   const introspection_a = await introspection(entrypoint, fs);
   const compiled = await compile_new(entrypoint, fs, introspection_a);
   const bundle = bundleIntoOne(compiled, introspection_a, memo);
@@ -904,6 +906,7 @@ export const compile = async ({entrypoint, fs, memo = true}) => {
   
   return {
     introspection: introspection_a,
+    compilations: compiled, // Babel output for each scope transform (including sourcemap: used e.g. for reactive workings navigation)
     js: model
   }
 }

@@ -841,7 +841,10 @@ export const bundleIntoOne = (compiled, introspection, memoize) => {
 // only when memoize on and not an input HACKY?
   + (memoize ? ([...introspection.cul_functions.values()].filter(d => (d.reason == 'definition' || d.reason == 'definition (renamed)') && formulae_not_inputs.includes(d.name)).map(d => {
     const y = `({${[...introspection.cul_input_map.get(d.cul_scope_id+'_'+d.name)].join(', ')}})`;
-    return `export const s${d.cul_scope_id}_${d.name}$m = memoize(s${d.cul_scope_id}_${d.name}$, ${has_memo_hash ? "s0_memo_hash$" : "JSON.stringify"});
+    //return `export const s${d.cul_scope_id}_${d.name}$m = memoize(s${d.cul_scope_id}_${d.name}$, ${has_memo_hash ? `s0_memo_hash$("${d.name}")` : "JSON.stringify"});
+//export const s${d.cul_scope_id}_${d.name} = ${y} => s${d.cul_scope_id}_${d.name}$m${y}`;
+//return `export const s${d.cul_scope_id}_${d.name}$m = memoize(s${d.cul_scope_id}_${d.name}$, ${has_memo_hash ? `s0_memo_hash$("${d.name}")` : `${y} => Object.values(${y}).join(',')`});
+return `export const s${d.cul_scope_id}_${d.name}$m = memoize(s${d.cul_scope_id}_${d.name}$, ${has_memo_hash ? `s0_memo_hash$("${d.name}")` : `${y} => Object.values(${y}).toString()`}); // DN moved memo_hash to be formulaname => hash function
 export const s${d.cul_scope_id}_${d.name} = ${y} => s${d.cul_scope_id}_${d.name}$m${y}`;
   }).join('\n\n')) + `
   // from https://cdn.jsdelivr.net/npm/underscore@1.13.6/underscore-esm.js
@@ -850,7 +853,7 @@ export const s${d.cul_scope_id}_${d.name} = ${y} => s${d.cul_scope_id}_${d.name}
   function memoize(func, hasher) {
     var memoize = function(key) {
       var cache = memoize.cache;
-      var address = '' + (hasher ? hasher.apply(this, arguments) : key);
+      var address = (hasher ? hasher.apply(this, arguments) : key); // DN removed forced string coersion, undo?
       if (!has$1(cache, address)) cache[address] = func.apply(this, arguments);
       return cache[address];
     };

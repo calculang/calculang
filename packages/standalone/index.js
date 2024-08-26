@@ -912,6 +912,7 @@ export const compile = async ({entrypoint, fs, memo = true}) => {
   return {
     introspection: introspection_a,
     compilations: compiled, // Babel output for each scope transform (including sourcemap: used e.g. for reactive workings navigation)
-    js: model
+    js: model, // poss. change to model
+    bundle // poss. change to code?
   }
 }

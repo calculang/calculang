@@ -751,11 +751,12 @@ export const introspection = async (entrypoint, fs) => {
     next.forEach(async cul_scope_id => {
       let u = global_state.cul_scope_ids_to_resource.get(cul_scope_id).split('?'); // i guess only one of these
       let s = new URLSearchParams(u[1])
-      await introspection_(u[0], fs, { cul_scope_id: +s.get('cul_scope_id'), cul_parent_scope_id: +s.get('cul_parent_scope_id') })
+      await introspection_(u[0], fs0, { cul_scope_id: +s.get('cul_scope_id'), cul_parent_scope_id: +s.get('cul_parent_scope_id') })
     })
   }
 
-  await introspection_(entrypoint, fs, { cul_scope_id: 0, cul_parent_scope_id: -1 });
+  await introspection_(entrypoint, fs0, { cul_scope_id: 0, cul_parent_scope_id: -1 });
+  global_state.fs0 = fs0;
 
 
   let introspection = global_state
@@ -1290,7 +1291,7 @@ export const compile = async ({entrypoint, fs, memo = true}) => {
   if (fs) introspection_a = await introspection(entrypoint, fs);
   else introspection_a = await introspection("entry.cul.js", {'entry.cul.js': await (await fetch(entrypoint)).text() }); // TODO move fetching into pre_introspection pass
   let compiled;
-  if (fs) compiled = await compile_new(entrypoint, fs, introspection_a); // entrypoint=url works if I just configure fs here
+  if (fs) compiled = await compile_new(entrypoint, introspection_a.fs0, introspection_a); // entrypoint=url works if I just configure fs here
   else  compiled = await compile_new("entry.cul.js", {'entry.cul.js': await (await fetch(entrypoint)).text() }, introspection_a); // entrypoint=url works if I just configure fs here
   const bundle = bundleIntoOne(compiled, introspection_a, memo);
   

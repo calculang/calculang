@@ -42,6 +42,168 @@ export const introspection = async (entrypoint, fs) => {
     cul_input_map: new Map(), // map of <cul_scope_id>_<name> -> set of inputs
   }, parentfn, parentfnOrig
 
+  // TODO pass to populate cul_scope_ids_to_resource for complete compilation
+  // pre_introspection
+
+  async function pre_introspection_(entrypoint, fs, opts /* {cul_scope_id, cul_parent_scope_id} */) {
+
+    let state = ({ opts })
+
+    let next = []; // next imports to traverse
+
+
+    // pass to know order to traverse.
+    // must be own pass because introspection shouldn't process a scope
+    // without previous scopes being complete.
+    // ex-Webpack ensured this
+    let code = fs ? fs[entrypoint] : await (await fetch(entrypoint)).text();
+
+    Babel.transform(code, {
+      plugins: [
+        [({ types }) =>
+        ({
+          name: 'calculang-pre-introspection-visitor',
+          visitor: {
+            Program: {
+              enter() {
+                if (opts.cul_scope_id == 0) {
+                  global_state.cul_scope_ids_to_resource.set(
+                    0,
+                    entrypoint
+                  );
+                }
+
+                // merge scopes logic (create implicit imports) // TODO param -merge, used where?
+                // no merging for entry point // TODO make this a default for a merge param?
+                if (opts.cul_scope_id != 0) {
+                  // don't do entrypoint, todo also don't do on namespace import case
+                  // merge definitions in parent scope which aren't sourced in current scope
+                  [...global_state.cul_functions.values()]
+                    .filter(
+                      (d) =>
+                        d.cul_scope_id == opts.cul_parent_scope_id &&
+                        d.cul_source_scope_id != opts.cul_scope_id &&
+                        d.name[d.name.length - 1] != '_' && // don't inherit modified fns
+                        d.reason != 'input definition' // is this a bad exclusion? /*&&
+                      //d.reason != 'definition (renamed)'*/
+                    )
+                    .forEach((d) => {
+                      // create definition in current scope
+                      global_state.cul_functions.set(
+                        `${opts.cul_scope_id}_${d.name}`,
+                        {
+                          cul_scope_id: opts.cul_scope_id,
+                          name: d.name,
+                          cul_source_scope_id: d.cul_source_scope_id,
+                          reason: 'implicit import',
+                        }
+                      );
+                      // create link to source
+                      global_state.cul_links.add({
+                        to: `${opts.cul_scope_id}_${d.name}`,
+                        from: `${d.cul_source_scope_id}_${d.name}`,
+                        reason: 'implicit import',
+                      });
+                    });
+                }
+              },
+              exit() { },
+            },
+
+
+            // TODO
+            ImportDeclaration(path) {
+              if (!path.node.source.value.includes('.cul')) return;
+
+              var q = `${path.node.source.value.includes('?') ? '&' : '?'
+                }cul_scope_id=${++global_state.cul_scope_id_counter}&cul_parent_scope_id=${opts.cul_scope_id
+                }`
+
+              global_state.cul_scope_ids_to_resource.set(
+                global_state.cul_scope_id_counter,
+                path.node.source.value
+                  .replace(/cul_scope_id=\d+/, '')
+                  .replace(/cul_parent_scope_id=\d+/, '') // vs do this in code/memoloader?
+                + q
+              );
+              next.push(global_state.cul_scope_id_counter)
+
+
+              // import_sources_to_resource (basically a dictionary) used to ensure same source in a scope doesn't lead to diff scope ids eff being used
+              var l = global_state.import_sources_to_resource.get(
+                `${opts.cul_scope_id}_${path.node.source.value}`
+              );
+
+              if (l != undefined) path.node.source.value = l;
+              else {
+                global_state.import_sources_to_resource.set(
+                  `${opts.cul_scope_id}_${path.node.source.value}`,
+                  path.node.source.value
+                    .replace(/cul_scope_id=\d+/, '')
+                    .replace(/cul_parent_scope_id=\d+/, '') + q
+                );
+                path.node.source.value =
+                  path.node.source.value
+                    .replace(/cul_scope_id=\d+/, '')
+                    .replace(/cul_parent_scope_id=\d+/, '') + q;
+              }
+
+
+              // for each import (specifier cases), create a definition in current scope, and link to source (explicit imports)
+              // TODO ImportNamespaceSpecifier/all_cul case create hint instead and do this in graph build
+              path.node.specifiers.forEach((d) => {
+                // no implicits exclusion because imports not actually added in introspection-api pass (see Program visitor)
+
+                // is rename here necessary given its in calculang-js that it matters?
+                const rename = global_state.cul_functions.has(
+                  `${opts.cul_scope_id}_${d.local.name}`
+                ); // this is false despite revenue now being an implicit import from EP
+                if (rename) d.local.name += '_'; // only update the local name, imported name is altered if necessary by the logic where rename happens in Function
+                global_state.cul_functions.set(`${opts.cul_scope_id}_${d.local.name}`, {
+                  cul_scope_id: opts.cul_scope_id,
+                  name: d.local.name,
+                  imported: d.imported.name,
+                  cul_source_scope_id: global_state.cul_scope_id_counter,
+                  reason: `explicit import${rename ? ' (renamed)' : ''}`, // todo make distinction about local/imported renames?
+                });
+                // and create link
+                global_state.cul_links.add({
+                  to: `${opts.cul_scope_id}_${d.local.name}`,
+                  from: `${global_state.cul_scope_id_counter}_${d.imported.name}`, // ? fails on import addMonths from 'date-fns/esm/addMonths' ?
+                  reason: 'explicit import', // todo " (renamed)"? prob not necessary as implied by modifiers in to/from
+                });
+              });
+            },
+
+          }
+        })
+        ]]
+    });
+
+    //[...global_state.cul_scope_ids_to_resource].filter(d => d[0] > opts.cul_scope_id).forEach(d => {
+    next.forEach(async cul_scope_id => {
+      let u = global_state.cul_scope_ids_to_resource.get(cul_scope_id).split('?'); // i guess only one of these
+      let s = new URLSearchParams(u[1])
+      await pre_introspection_(u[0], fs, { cul_scope_id: +s.get('cul_scope_id'), cul_parent_scope_id: +s.get('cul_parent_scope_id') })
+    })
+  }
+
+  await pre_introspection_(entrypoint, fs, { cul_scope_id: 0, cul_parent_scope_id: -1 });
+
+  // reset selected bits
+  global_state.cul_functions = new Map() // map of <cul_scope_id>_<name> -> {cul_scope_id, name, inputs (array), cul_source_scope_id, reason=definition|definition (renamed)|input definition|explicit import}
+  global_state.cul_links = new Set() // Array sometimes !!! // calls, imports, renames go here: Set of { to, from, reason=call|explicit import|implicit import }
+  global_state.cul_scope_id_counter = 0
+  global_state.cul_parent_scope_id = 0
+  //global_state.cul_scope_ids_to_resource = new Map()
+  global_state.import_sources_to_resource = new Map()
+  global_state.cul_input_map = new Map() // map of <cul_scope_id>_<name> -> set of inputs
+  
+  parentfn = undefined
+  parentfnOrig = undefined
+
+
+
   async function introspection_(entrypoint, fs, opts /* {cul_scope_id, cul_parent_scope_id} */) {
     //global_state.cul_scope_id_counter = 0;
     //let cul_scope_id = global_state.cul_scope_id_counter
@@ -70,10 +232,10 @@ export const introspection = async (entrypoint, fs) => {
             Program: {
               enter() {
                 if (opts.cul_scope_id == 0) {
-                  global_state.cul_scope_ids_to_resource.set(
+                  /*global_state.cul_scope_ids_to_resource.set(
                     0,
                     entrypoint
-                  );
+                  );*/ // OFF done in pre_introspection
                 }
 
                 // merge scopes logic (create implicit imports) // TODO param -merge, used where?
@@ -229,13 +391,13 @@ export const introspection = async (entrypoint, fs) => {
                 }cul_scope_id=${++global_state.cul_scope_id_counter}&cul_parent_scope_id=${opts.cul_scope_id
                 }`
 
-              global_state.cul_scope_ids_to_resource.set(
+              /*global_state.cul_scope_ids_to_resource.set(
                 global_state.cul_scope_id_counter,
                 path.node.source.value
                   .replace(/cul_scope_id=\d+/, '')
                   .replace(/cul_parent_scope_id=\d+/, '') // vs do this in code/memoloader?
                 + q
-              );
+              );*/  // OFF done in pre_introspection
               next.push(global_state.cul_scope_id_counter)
 
 
@@ -898,7 +1060,7 @@ export const compile = async ({entrypoint, fs, memo = true}) => {
   // TODO tidy up those APIs
   let introspection_a;
   if (fs) introspection_a = await introspection(entrypoint, fs);
-  else introspection_a = await introspection("entry.cul.js", {'entry.cul.js': await (await fetch(entrypoint)).text() });
+  else introspection_a = await introspection("entry.cul.js", {'entry.cul.js': await (await fetch(entrypoint)).text() }); // TODO move fetching into pre_introspection pass
   let compiled;
   if (fs) compiled = await compile_new(entrypoint, fs, introspection_a); // entrypoint=url works if I just configure fs here
   else  compiled = await compile_new("entry.cul.js", {'entry.cul.js': await (await fetch(entrypoint)).text() }, introspection_a); // entrypoint=url works if I just configure fs here

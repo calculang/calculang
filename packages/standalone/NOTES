@@ -11,7 +11,7 @@ DEV PLAN
 making pre_introspection pass to do:
   - ~~build of cul_scope_ids_to_resource~~
   - init of fs0
-    - if poss do fetching to populate fs
+    - if poss do fetching to populate fs LATER
 
 after pass then do depth-first:
   - populate fs1. Apply applicable `replacements` (at first none)

@@ -255,9 +255,14 @@ export const introspection = async (entrypoint, fs) => {
                   // exclude own definitions?
                   // do I need to do a little_introspection_ here ? all_cul interference? (replacements not done) TODO
                   const specifiers = path.node.specifiers.map(d => d.imported.name)
-//debugger;
+
+                  // not fs0
+                  const locals = [...(little_introspection_(file, fs)).cul_functions].filter(([k,d]) => d.cul_scope_id == 0).map(([k,v]) => v.name) // 0 filter prob doesnt matter
+
                   scopes_to_list.get(associated_cul_scope_id).forEach(d => {
-                    if (!specifiers.includes(d))
+                    
+                    
+                    if (!specifiers.includes(d) && !locals.includes(d))
                       path.node.specifiers.push(types.importSpecifier(types.identifier(d), types.identifier(d)))
                   })
 
@@ -280,7 +285,9 @@ export const introspection = async (entrypoint, fs) => {
     // record list of fns for parents that might need them
     console.log('setting')
     console.log('setting scopes_to_list', +s, [...(little_introspection_(file, fs0)).cul_functions].filter(([k,d]) => d.cul_scope_id == 0).map(([k,v]) => v.name)) // removed await/async on little_introspection_ because it wasn't populated above when needed
+    // fs0:
     scopes_to_list.set(+s, [...(little_introspection_(file, fs0)).cul_functions].filter(([k,d]) => d.cul_scope_id == 0).map(([k,v]) => v.name))
+  
 
     // little_introspection_ should be recursive? No because everything must be explicit imported into file, except all_cul, which is already replaced
 

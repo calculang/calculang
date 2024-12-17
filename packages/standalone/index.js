@@ -40,7 +40,10 @@ export const introspection = async (entrypoint, fs) => {
     cul_scope_ids_to_resource: new Map(),
     import_sources_to_resource: new Map(),
     cul_input_map: new Map(), // map of <cul_scope_id>_<name> -> set of inputs
+    scope_graph: new G.Graph()
   }, parentfn, parentfnOrig
+
+  global_state.scope_graph.setNode("0") // entrypoint
 
   // TODO pass to populate cul_scope_ids_to_resource for complete compilation
   // pre_introspection
@@ -58,6 +61,7 @@ export const introspection = async (entrypoint, fs) => {
     // ex-Webpack ensured this
     let code = fs ? fs[entrypoint] : await (await fetch(entrypoint)).text();
 
+    // CHOICES to make graph for all_cul replacement collection, make graph directly in visior or make it from cul_scope_ids_to_resource
     Babel.transform(code, {
       plugins: [
         [({ types }) =>
@@ -126,6 +130,9 @@ export const introspection = async (entrypoint, fs) => {
                   .replace(/cul_parent_scope_id=\d+/, '') // vs do this in code/memoloader?
                 + q
               );
+              // graph edit here???
+              global_state.scope_graph.setNode(String(global_state.cul_scope_id_counter))
+              global_state.scope_graph.setEdge(String(opts.cul_scope_id), String(global_state.cul_scope_id_counter)) // Edges going TO parent
               next.push(global_state.cul_scope_id_counter)
 
 
@@ -189,6 +196,8 @@ export const introspection = async (entrypoint, fs) => {
   }
 
   await pre_introspection_(entrypoint, fs, { cul_scope_id: 0, cul_parent_scope_id: -1 });
+
+  console.log('depth first?', alg.postorder(global_state.scope_graph, "0")) // WORKING
 
   // reset selected bits
   global_state.cul_functions = new Map() // map of <cul_scope_id>_<name> -> {cul_scope_id, name, inputs (array), cul_source_scope_id, reason=definition|definition (renamed)|input definition|explicit import}

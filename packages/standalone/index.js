@@ -199,13 +199,15 @@ export const introspection = async (entrypoint, fs) => {
 
   console.log('depth first?', alg.postorder(global_state.scope_graph, "0")) // WORKING
 
+  // TODO set fs0 in depth-first order (reverse above) by doing replacement (0 initially) and populate little_introspections
+
   // reset selected bits
   global_state.cul_functions = new Map() // map of <cul_scope_id>_<name> -> {cul_scope_id, name, inputs (array), cul_source_scope_id, reason=definition|definition (renamed)|input definition|explicit import}
   global_state.cul_links = new Set() // Array sometimes !!! // calls, imports, renames go here: Set of { to, from, reason=call|explicit import|implicit import }
   global_state.cul_scope_id_counter = 0
   global_state.cul_parent_scope_id = 0
   //global_state.cul_scope_ids_to_resource = new Map()
-  global_state.import_sources_to_resource = new Map()
+  //global_state.import_sources_to_resource = new Map()
   global_state.cul_input_map = new Map() // map of <cul_scope_id>_<name> -> set of inputs
   
   parentfn = undefined
@@ -535,12 +537,12 @@ export const introspection = async (entrypoint, fs) => {
 
               if (l != undefined) path.node.source.value = l;
               else {
-                global_state.import_sources_to_resource.set(
+                /*global_state.import_sources_to_resource.set(
                   `${opts.cul_scope_id}_${path.node.source.value}`,
                   path.node.source.value
                     .replace(/cul_scope_id=\d+/, '')
                     .replace(/cul_parent_scope_id=\d+/, '') + q
-                );
+                );*/ // hoisted to pre_introspection
                 path.node.source.value =
                   path.node.source.value
                     .replace(/cul_scope_id=\d+/, '')

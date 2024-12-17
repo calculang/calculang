@@ -38,7 +38,7 @@ export const introspection = async (entrypoint, fs) => {
     cul_scope_id_counter: 0,
     cul_parent_scope_id: 0,
     cul_scope_ids_to_resource: new Map(),
-    import_sources_to_resource: new Map(),
+    import_sources_to_resource: new Map(), // needed+this lets me associate any cul import statement with associated cul scope
     cul_input_map: new Map(), // map of <cul_scope_id>_<name> -> set of inputs
     scope_graph: new G.Graph()
   }, parentfn, parentfnOrig
@@ -198,6 +198,34 @@ export const introspection = async (entrypoint, fs) => {
   await pre_introspection_(entrypoint, fs, { cul_scope_id: 0, cul_parent_scope_id: -1 });
 
   console.log('depth first?', alg.postorder(global_state.scope_graph, "0")) // WORKING
+
+  let fs0 = {};
+
+  alg.postorder(global_state.scope_graph, "0").forEach(s => {
+
+    const file = global_state.cul_scope_ids_to_resource.get(+s).split('?')[0]
+
+    fs0[file] = Babel.transform(fs[file], {
+      generatorOpts: { /*compact: true*/ retainLines: true }, // prob dont matter here
+      sourceMaps: false,
+      plugins: [
+        [
+          ({ types }) => ({
+            name: 'all_cul replacement',
+            visitor: {
+
+              // TODO
+
+            }
+          })
+        ]]
+
+    }).code
+
+    // todo:
+    // fs0[file] = ..
+    console.log('fs0', fs0)
+  })
 
   // TODO set fs0 in depth-first order (reverse above) by doing replacement (0 initially) and populate little_introspections
 

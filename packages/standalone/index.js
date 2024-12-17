@@ -896,8 +896,12 @@ function has$1(obj, key) {
 export const compile = async ({entrypoint, fs, memo = true}) => {
   // NOTE: although not tidy, introspection, compile_new etc. is exported
   // TODO tidy up those APIs
-  const introspection_a = await introspection(entrypoint, fs);
-  const compiled = await compile_new(entrypoint, fs, introspection_a);
+  let introspection_a;
+  if (fs) introspection_a = await introspection(entrypoint, fs);
+  else introspection_a = await introspection("entry.cul.js", {'entry.cul.js': await (await fetch(entrypoint)).text() });
+  let compiled;
+  if (fs) compiled = await compile_new(entrypoint, fs, introspection_a); // entrypoint=url works if I just configure fs here
+  else  compiled = await compile_new("entry.cul.js", {'entry.cul.js': await (await fetch(entrypoint)).text() }, introspection_a); // entrypoint=url works if I just configure fs here
   const bundle = bundleIntoOne(compiled, introspection_a, memo);
   
   //const u = URL.createObjectURL(new Blob([bundle], { type: "text/javascript" }))

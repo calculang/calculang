@@ -1,0 +1,4 @@
+
+In ImportDeclaration I include 'local renames' for specifiers: This is necessary for threading I guess, but it's a FALSE FRIEND (or at least incomplete) for doing import X as X_orig: KEEP DOING import X_ as X_orig
+
+AND I must ONLY do the _ as thing IF I WILL HAVE A NEW DEFINITION TO REPLACE IT (or rename will not happen)

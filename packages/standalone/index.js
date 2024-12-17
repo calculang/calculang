@@ -242,26 +242,9 @@ export const introspection = async (entrypoint, fs) => {
                 const associated_cul_scope_id = new URLSearchParams(l.split("?")[1]).get('cul_scope_id')
 
                 console.log(path.node.specifiers)
-                debugger;
+                path.node.specifiers.push(types.importSpecifier(types.identifier('helloWorld'), types.identifier('helloWorld')))
 
                 
-
-  
-                /*if (l != undefined) path.node.source.value = l; // doesn't matter
-                else {
-                  local_state.import_sources_to_resource.set(
-                    `${opts.cul_scope_id}_${path.node.source.value}`,
-                    path.node.source.value
-                      .replace(/cul_scope_id=\d+/, '')
-                      .replace(/cul_parent_scope_id=\d+/, '') + q
-                  );
-                  path.node.source.value =
-                    path.node.source.value
-                      .replace(/cul_scope_id=\d+/, '')
-                      .replace(/cul_parent_scope_id=\d+/, '') + q;
-                }*/
-
-
               }
 
             }
@@ -280,6 +263,8 @@ export const introspection = async (entrypoint, fs) => {
 
     console.log('scopes_to_list', scopes_to_list)
   })
+
+  console.log('fs0', fs0)
 
   // TODO set fs0 in depth-first order (reverse above) by doing replacement (0 initially) and populate little_introspections
 

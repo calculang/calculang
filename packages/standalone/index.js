@@ -242,7 +242,10 @@ export const introspection = async (entrypoint, fs) => {
                 const associated_cul_scope_id = new URLSearchParams(l.split("?")[1]).get('cul_scope_id')
 
                 console.log(path.node.specifiers)
-                path.node.specifiers.push(types.importSpecifier(types.identifier('helloWorld'), types.identifier('helloWorld')))
+                //path.node.specifiers.push(types.importSpecifier(types.identifier('helloWorld'), types.identifier('helloWorld')))
+
+                //debugger
+                if(path.node.specifiers.some(d => d.imported.name == 'all_cul')) console.log('all_cul triggered');
 
                 
               }

@@ -49,7 +49,7 @@ export const introspection = async (entrypoint, fs) => {
   // TODO pass to populate cul_scope_ids_to_resource for complete compilation
   // pre_introspection
 
-  async function pre_introspection_(entrypoint, fs, opts /* {cul_scope_id, cul_parent_scope_id} */) {
+  function pre_introspection_(entrypoint, fs, opts /* {cul_scope_id, cul_parent_scope_id} */) {
 
     let state = ({ opts })
 
@@ -60,7 +60,7 @@ export const introspection = async (entrypoint, fs) => {
     // must be own pass because introspection shouldn't process a scope
     // without previous scopes being complete.
     // ex-Webpack ensured this
-    let code = fs ? fs[entrypoint] : await (await fetch(entrypoint)).text();
+    let code = fs[entrypoint]//fs ? fs[entrypoint] : await (await fetch(entrypoint)).text();
 
     // CHOICES to make graph for all_cul replacement collection, make graph directly in visior or make it from cul_scope_ids_to_resource
     Babel.transform(code, {
@@ -192,11 +192,11 @@ export const introspection = async (entrypoint, fs) => {
     next.forEach(async cul_scope_id => {
       let u = global_state.cul_scope_ids_to_resource.get(cul_scope_id).split('?'); // i guess only one of these
       let s = new URLSearchParams(u[1])
-      await pre_introspection_(u[0], fs, { cul_scope_id: +s.get('cul_scope_id'), cul_parent_scope_id: +s.get('cul_parent_scope_id') })
+      pre_introspection_(u[0], fs, { cul_scope_id: +s.get('cul_scope_id'), cul_parent_scope_id: +s.get('cul_parent_scope_id') })
     })
   }
 
-  await pre_introspection_(entrypoint, fs, { cul_scope_id: 0, cul_parent_scope_id: -1 });
+  pre_introspection_(entrypoint, fs, { cul_scope_id: 0, cul_parent_scope_id: -1 });
 
   console.log('depth first?', alg.postorder(global_state.scope_graph, "0")) // WORKING
 
@@ -205,7 +205,9 @@ export const introspection = async (entrypoint, fs) => {
 
   // note: all_cul is further reason in calculang you MUST only have a single import statement per unique import
 
-  alg.postorder(global_state.scope_graph, "0").forEach(async s => {
+  alg.postorder(global_state.scope_graph, "0").forEach(s => {
+
+    debugger;
 
     const file = global_state.cul_scope_ids_to_resource.get(+s).split('?')[0] // TOFIX: not robust to custom query patterns in imports
 
@@ -239,13 +241,25 @@ export const introspection = async (entrypoint, fs) => {
 
                 if (l == undefined) console.error(`didnt expect that`);
 
-                const associated_cul_scope_id = new URLSearchParams(l.split("?")[1]).get('cul_scope_id')
+                const associated_cul_scope_id = +(new URLSearchParams(l.split("?")[1]).get('cul_scope_id'))
 
                 console.log(path.node.specifiers)
                 //path.node.specifiers.push(types.importSpecifier(types.identifier('helloWorld'), types.identifier('helloWorld')))
 
                 //debugger
-                if(path.node.specifiers.some(d => d.imported.name == 'all_cul')) console.log('all_cul triggered');
+                if(path.node.specifiers.some(d => d.imported.name == 'all_cul')) {
+                  console.log('all_cul triggered');
+
+                  // TODO logic for replacement
+                  // exclude own definitions?
+                  // do I need to do a little_introspection_ here ? all_cul interference? (replacements not done) TODO
+                  const specifiers = path.node.specifiers.map(d => d.imported.name)
+//debugger;
+                  scopes_to_list.get(associated_cul_scope_id).forEach(d => {
+                    if (!specifiers.includes(d))
+                      path.node.specifiers.push(types.importSpecifier(types.identifier(d), types.identifier(d)))
+                  })
+                }
 
                 
               }
@@ -260,7 +274,9 @@ export const introspection = async (entrypoint, fs) => {
     //console.log('ggg', [...(await little_introspection_(file, fs0)).cul_functions])
 
     // record list of fns for parents that might need them
-    scopes_to_list.set(+s, [...(await little_introspection_(file, fs0)).cul_functions].filter(([k,d]) => d.cul_scope_id == 0).map(([k,v]) => v.name))
+    console.log('setting')
+    console.log('setting scopes_to_list', +s, [...(little_introspection_(file, fs0)).cul_functions].filter(([k,d]) => d.cul_scope_id == 0).map(([k,v]) => v.name)) // removed await/async on little_introspection_ because it wasn't populated above when needed
+    scopes_to_list.set(+s, [...(little_introspection_(file, fs0)).cul_functions].filter(([k,d]) => d.cul_scope_id == 0).map(([k,v]) => v.name))
 
     // little_introspection_ should be recursive? No because everything must be explicit imported into file, except all_cul, which is already replaced
 
@@ -285,7 +301,9 @@ export const introspection = async (entrypoint, fs) => {
 
 
   // a copy of introspection for just one file and just for function list extraction, without mutating global_state
-  async function little_introspection_(entrypoint, fs) {
+
+  // moved from Async because event loop timing things meaning scope_to_list wasn't populated when it was needed
+  function little_introspection_(entrypoint, fs) {
     const opts = {cul_scope_id:0}
 
 
@@ -293,7 +311,7 @@ export const introspection = async (entrypoint, fs) => {
     // must be own pass because introspection shouldn't process a scope
     // without previous scopes being complete.
     // ex-Webpack ensured this
-    let code = fs ? fs[entrypoint] : await (await fetch(entrypoint)).text();
+    let code = fs[entrypoint] //: await (await fetch(entrypoint)).text();
 
     let local_state = {
       cul_functions: new Map(), // map of <cul_scope_id>_<name> -> {cul_scope_id, name, inputs (array), cul_source_scope_id, reason=definition|definition (renamed)|input definition|explicit import}

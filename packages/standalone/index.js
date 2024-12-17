@@ -207,7 +207,6 @@ export const introspection = async (entrypoint, fs) => {
 
   alg.postorder(global_state.scope_graph, "0").forEach(s => {
 
-    debugger;
 
     const file = global_state.cul_scope_ids_to_resource.get(+s).split('?')[0] // TOFIX: not robust to custom query patterns in imports
 
@@ -247,10 +246,12 @@ export const introspection = async (entrypoint, fs) => {
                 //path.node.specifiers.push(types.importSpecifier(types.identifier('helloWorld'), types.identifier('helloWorld')))
 
                 //debugger
+
+                // TODO:
+                // and additional filter for things defined here (another little_introspection_ call)
                 if(path.node.specifiers.some(d => d.imported.name == 'all_cul')) {
                   console.log('all_cul triggered');
 
-                  // TODO logic for replacement
                   // exclude own definitions?
                   // do I need to do a little_introspection_ here ? all_cul interference? (replacements not done) TODO
                   const specifiers = path.node.specifiers.map(d => d.imported.name)
@@ -259,6 +260,9 @@ export const introspection = async (entrypoint, fs) => {
                     if (!specifiers.includes(d))
                       path.node.specifiers.push(types.importSpecifier(types.identifier(d), types.identifier(d)))
                   })
+
+                  path.node.specifiers = path.node.specifiers.filter(d => d.imported.name != 'all_cul')
+                  //vs: path.node.specifiers.splice(path.node.specifiers.findIndex(d => ..))
                 }
 
                 

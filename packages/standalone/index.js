@@ -218,7 +218,51 @@ export const introspection = async (entrypoint, fs) => {
             name: 'all_cul replacement',
             visitor: {
 
-              // TODO
+              // TODO use scopes_to_list to make replacements
+              ImportDeclaration(path) {
+                if (!path.node.source.value.includes('.cul')) return;
+
+                // I need to do totally different logic here:
+                // I need to work from import_sources_to_resource
+  
+                /*var q = `${path.node.source.value.includes('?') ? '&' : '?'
+                  }cul_scope_id=${++local_state.cul_scope_id_counter}&cul_parent_scope_id=${opts.cul_scope_id
+                  }`
+  */
+  
+                // import_sources_to_resource (basically a dictionary) used to ensure same source in a scope doesn't lead to diff scope ids eff being used
+
+
+                var l = global_state.import_sources_to_resource.get(
+                  `${+s}_${path.node.source.value}`
+                );
+
+                if (l == undefined) console.error(`didnt expect that`);
+
+                const associated_cul_scope_id = new URLSearchParams(l.split("?")[1]).get('cul_scope_id')
+
+                console.log(path.node.specifiers)
+                debugger;
+
+                
+
+  
+                /*if (l != undefined) path.node.source.value = l; // doesn't matter
+                else {
+                  local_state.import_sources_to_resource.set(
+                    `${opts.cul_scope_id}_${path.node.source.value}`,
+                    path.node.source.value
+                      .replace(/cul_scope_id=\d+/, '')
+                      .replace(/cul_parent_scope_id=\d+/, '') + q
+                  );
+                  path.node.source.value =
+                    path.node.source.value
+                      .replace(/cul_scope_id=\d+/, '')
+                      .replace(/cul_parent_scope_id=\d+/, '') + q;
+                }*/
+
+
+              }
 
             }
           })

@@ -24,6 +24,7 @@ import * as Babel from 'https://cdn.jsdelivr.net/npm/@babel/standalone@7.24.10/+
 
 // Framework-only
 
+// TODO fix up fetch/url support. When I do that, do async blocks become more isolated?
 
 import * as G from 'https://cdn.jsdelivr.net/npm/@dagrejs/graphlib/+esm'
 //const G = await require("@dagrejs/graphlib")
@@ -200,10 +201,13 @@ export const introspection = async (entrypoint, fs) => {
   console.log('depth first?', alg.postorder(global_state.scope_graph, "0")) // WORKING
 
   let fs0 = {};
+  let scopes_to_list = new Map(); // list of fns for all_cul potential replacement
 
-  alg.postorder(global_state.scope_graph, "0").forEach(s => {
+  // note: all_cul is further reason in calculang you MUST only have a single import statement per unique import
 
-    const file = global_state.cul_scope_ids_to_resource.get(+s).split('?')[0]
+  alg.postorder(global_state.scope_graph, "0").forEach(async s => {
+
+    const file = global_state.cul_scope_ids_to_resource.get(+s).split('?')[0] // TOFIX: not robust to custom query patterns in imports
 
     fs0[file] = Babel.transform(fs[file], {
       generatorOpts: { /*compact: true*/ retainLines: true }, // prob dont matter here
@@ -222,9 +226,15 @@ export const introspection = async (entrypoint, fs) => {
 
     }).code
 
-    // todo:
-    // fs0[file] = ..
-    console.log('fs0', fs0)
+    //debugger;
+    //console.log('ggg', [...(await little_introspection_(file, fs0)).cul_functions])
+
+    // record list of fns for parents that might need them
+    scopes_to_list.set(+s, [...(await little_introspection_(file, fs0)).cul_functions].filter(([k,d]) => d.cul_scope_id == 0).map(([k,v]) => v.name))
+
+    // little_introspection_ should be recursive? No because everything must be explicit imported into file, except all_cul, which is already replaced
+
+    console.log('scopes_to_list', scopes_to_list)
   })
 
   // TODO set fs0 in depth-first order (reverse above) by doing replacement (0 initially) and populate little_introspections

@@ -1262,13 +1262,15 @@ function has$1(obj, key) {
 
   // is this approach better than fromDefinition type change ???? how reliable cul_source_scope_id for explicit imports?
 
+  // can all_cul work be much simpler by thread type logic here?
+
   // ORDER IS IMPORTANT
   + [...introspection.cul_functions.values()].sort((a,b) => b.cul_scope_id-a.cul_scope_id).filter(d => d.cul_scope_id != 0 && (d.reason == 'explicit import' || d.reason == 'explicit import (renamed)')).map(d => `export const s${d.cul_scope_id}_${d.name} = s${d.cul_source_scope_id}_${d.imported}`).join(";\n") + '\n\n\n'
 
   + [...introspection.cul_functions.values()].filter(d => d.cul_scope_id == 0 && (d.reason == 'explicit import' || d.reason == 'explicit import (renamed)')).map(d => `export const ${d.name} = s${d.cul_source_scope_id}_${d.imported}`).join(";\n") + '\n\n\n'
 
 
-+ "\n\n\n\n////////// defaults: ////\n\n"
++ "\n\n\n\n////////// defaults (imports above tho): ////\n\n"
     + [...introspection.cul_functions.values()].filter(d => d.cul_scope_id == 0 && d.reason == 'definition').map(d => `export const ${d.name} = s0_${d.name}`).join(";\n") + '\n\n\n'
 
     
@@ -1289,10 +1291,10 @@ export const compile = async ({entrypoint, fs, memo = true}) => {
   // TODO tidy up those APIs
   let introspection_a;
   if (fs) introspection_a = await introspection(entrypoint, fs);
-  else introspection_a = await introspection("entry.cul.js", {'entry.cul.js': await (await fetch(entrypoint)).text() }); // TODO move fetching into pre_introspection pass
+  //else introspection_a = await introspection("entry.cul.js", {'entry.cul.js': await (await fetch(entrypoint)).text() }); // TODO move fetching into pre_introspection pass
   let compiled;
   if (fs) compiled = await compile_new(entrypoint, introspection_a.fs0, introspection_a); // entrypoint=url works if I just configure fs here
-  else  compiled = await compile_new("entry.cul.js", {'entry.cul.js': await (await fetch(entrypoint)).text() }, introspection_a); // entrypoint=url works if I just configure fs here
+  //else  compiled = await compile_new("entry.cul.js", {'entry.cul.js': await (await fetch(entrypoint)).text() }, introspection_a); // entrypoint=url works if I just configure fs here
   const bundle = bundleIntoOne(compiled, introspection_a, memo);
   
   //const u = URL.createObjectURL(new Blob([bundle], { type: "text/javascript" }))

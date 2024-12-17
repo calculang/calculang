@@ -204,7 +204,6 @@ export const introspection = async (entrypoint, fs) => {
 
 
   // a copy of introspection for just one file and just for function list extraction, without mutating global_state
-  // TODO remove mutation
   async function little_introspection_(entrypoint, fs) {
     const opts = {cul_scope_id:0}
 

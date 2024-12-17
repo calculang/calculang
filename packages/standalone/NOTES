@@ -19,3 +19,13 @@ after pass then do depth-first:
   - Populate cul_scope_id -> array of names into `replacements`
 
 make fs1 = make all_cul replacements
+
+
+---
+
+DONE?
+
+When using old apis
+![alt text](image.png)
+
+make sure compile uses fs0 result (hooked into https://finding-calculang-foc.netlify.app/editor shortly)

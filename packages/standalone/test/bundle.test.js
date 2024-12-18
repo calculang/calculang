@@ -1,6 +1,9 @@
 import { expect, describe, it } from 'vitest';
+import { resolve } from 'node:path';
 
 import {compile} from '../index.js';
+
+const cwd = import.meta.dirname;
 
 describe('bundle output', () => {
   it('shop should match expecte', async () => {
@@ -30,3 +33,20 @@ export const expenses = () => expenses_in;
   });
 })
 
+
+// TODO, maybe directory better?
+// pattern from mosaic
+async function bundleTest(entrypoint, files) {
+  let fs = {};
+
+  files.forEach(f => {
+    //fs[]
+  })
+  const specPath = resolve(cwd, `specs/${name}.js`);
+  const htmlPath = resolve(cwd, `output/${name}.html`);
+  const { default: run } = await import(specPath);
+  const mc = new Coordinator(nodeConnector(), { logger: null });
+  const el = await run(createAPIContext({ coordinator: mc }));
+  await clientsReady(el);
+  await expect(el.outerHTML).toMatchFileSnapshot(htmlPath);
+}

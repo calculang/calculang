@@ -22,10 +22,11 @@ export const purchase_price = () => purchase_price_in;
 export const units = () => units_in; // 7 * 20000 - sales_price() * 20000;
 export const expenses = () => expenses_in;
 `
-      }
+      },
+      memo: false
     });
 
-    expect(m.bundle).toMatchFileSnapshot('./shop.bundle.js');
+    expect(m.bundle).toMatchFileSnapshot('./bundles/shop.bundle.js');
   });
 })
 

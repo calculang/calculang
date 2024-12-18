@@ -7,6 +7,7 @@
   "type": "module",
   "scripts": {
     "test": "vitest run",
+    "test:update": "vitest run --update",
     "test:watch": "vitest",
     "test:coverage": "#vitest run --coverage",
     "download": "curl https://cdn.jsdelivr.net/npm/@babel/standalone@7.24.10/babel.js/+esm | head -n -1 > babel.mjs && curl https://cdn.jsdelivr.net/npm/@dagrejs/graphlib@2.2.4/+esm | head -n -1 > graphlib.mjs # last line is sourcemap: remove for vitest",

@@ -198,6 +198,18 @@ export const introspection = async (entrypoint, fs) => {
     })
   }
 
+  //debugger
+  //fs = fs ? fs : {[entrypoint]: await (await fetch(entrypoint)).text()};
+  if (fs == undefined) {
+    //debugger
+    //const aaaa = 
+    fs = ({
+      [entrypoint]: await (await fetch(entrypoint)).text()
+    });
+    //debugger;
+    //entrypoint = 'entry.cul.js'
+  }
+
   pre_introspection_(entrypoint, fs, { cul_scope_id: 0, cul_parent_scope_id: -1 });
 
   console.log('depth first?', alg.postorder(global_state.scope_graph, "0")) // WORKING
@@ -1290,12 +1302,17 @@ function has$1(obj, key) {
 // instead: fetch them in code that calls compile
 export const compile = async ({entrypoint, fs, memo = true}) => {
   // NOTE: although not tidy, introspection, compile_new etc. is exported
+  if (fs == undefined) {
+    fs = ({
+      [entrypoint]: await (await fetch(entrypoint)).text()
+    });
+  }
   // TODO tidy up those APIs
   let introspection_a;
-  if (fs) introspection_a = await introspection(entrypoint, fs);
+  introspection_a = await introspection(entrypoint, fs);
   //else introspection_a = await introspection("entry.cul.js", {'entry.cul.js': await (await fetch(entrypoint)).text() }); // TODO move fetching into pre_introspection pass
   let compiled;
-  if (fs) compiled = await compile_new(entrypoint, introspection_a.fs0, introspection_a); // entrypoint=url works if I just configure fs here
+  compiled = await compile_new(entrypoint, introspection_a.fs0, introspection_a); // entrypoint=url works if I just configure fs here
   //else  compiled = await compile_new("entry.cul.js", {'entry.cul.js': await (await fetch(entrypoint)).text() }, introspection_a); // entrypoint=url works if I just configure fs here
   const bundle = bundleIntoOne(compiled, introspection_a, memo);
   

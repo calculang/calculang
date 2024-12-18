@@ -16,7 +16,8 @@
 //import {require} from "https://cdn.jsdelivr.net/npm/d3-require/+esm";
 
 //import * as Babel from 'https://unpkg.com/@babel/standalone/babel.js';
-import * as Babel from 'https://cdn.jsdelivr.net/npm/@babel/standalone@7.24.10/+esm' // moved to latest 26/6, still pinning
+import * as Babel from './babel.mjs'
+//import * as Babel from 'https://cdn.jsdelivr.net/npm/@babel/standalone@7.24.10/+esm' // moved to latest 26/6, still pinning
 //const Babel = await require("@babel/standalone")
 
 
@@ -26,7 +27,8 @@ import * as Babel from 'https://cdn.jsdelivr.net/npm/@babel/standalone@7.24.10/+
 
 // TODO fix up fetch/url support. When I do that, do async blocks become more isolated?
 
-import * as G from 'https://cdn.jsdelivr.net/npm/@dagrejs/graphlib/+esm'
+import * as G from './graphlib.mjs' //  TODO PR esm output?
+//import * as G from 'https://cdn.jsdelivr.net/npm/@dagrejs/graphlib/+esm'
 //const G = await require("@dagrejs/graphlib")
 const alg = G.alg;
 

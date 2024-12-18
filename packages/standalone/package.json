@@ -1,3 +1,22 @@
 {
-  "type": "module"
+  "name": "@calculang/standalone",
+  "version": "0.1.0-alpha.0",
+  "description": "A standalone compiler for calculang, which can be imported directly into modern browsers",
+  "license": "AGPL-3.0-only",
+  "author": "Declan Naughton",
+  "type": "module",
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "#vitest run --coverage",
+    "download": "curl https://cdn.jsdelivr.net/npm/@babel/standalone@7.24.10/babel.js/+esm | head -n -1 > babel.mjs && curl https://cdn.jsdelivr.net/npm/@dagrejs/graphlib@2.2.4/+esm | head -n -1 > graphlib.mjs # last line is sourcemap: remove for vitest",
+    "downloadBAD": "curl -o babel.js https://cdn.jsdelivr.net/npm/@babel/standalone@7.24.10/babel.js?+esm && curl -o babel.js.map https://cdn.jsdelivr.net/npm/@babel/standalone@7.24.10/babel.js.map?+esm && curl https://cdn.jsdelivr.net/npm/@dagrejs/graphlib@2.2.4/+esm | head -n -1 > graphlib.mjs # last line is sourcemap: remove for vitest"
+  },
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "devDependencies": {
+    "vitest": "^2.1.8"
+  }
 }

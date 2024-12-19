@@ -212,7 +212,7 @@ export const introspection = async (entrypoint, fs) => {
 
   pre_introspection_(entrypoint, fs, { cul_scope_id: 0, cul_parent_scope_id: -1 });
 
-  console.log('depth first?', alg.postorder(global_state.scope_graph, "0")) // WORKING
+  //console.log('depth first?', alg.postorder(global_state.scope_graph, "0")) // WORKING
 
   let fs0 = {};
   let scopes_to_list = new Map(); // list of fns for all_cul potential replacement
@@ -256,7 +256,7 @@ export const introspection = async (entrypoint, fs) => {
 
                 const associated_cul_scope_id = +(new URLSearchParams(l.split("?")[1]).get('cul_scope_id'))
 
-                console.log(path.node.specifiers)
+                //console.log(path.node.specifiers)
                 //path.node.specifiers.push(types.importSpecifier(types.identifier('helloWorld'), types.identifier('helloWorld')))
 
                 //debugger
@@ -264,7 +264,7 @@ export const introspection = async (entrypoint, fs) => {
                 // TODO:
                 // and additional filter for things defined here (another little_introspection_ call)
                 if(path.node.specifiers.some(d => d.imported.name == 'all_cul')) {
-                  console.log('all_cul triggered');
+                  //console.log('all_cul triggered');
 
                   // exclude own definitions?
                   // do I need to do a little_introspection_ here ? all_cul interference? (replacements not done) TODO
@@ -297,18 +297,18 @@ export const introspection = async (entrypoint, fs) => {
     //console.log('ggg', [...(await little_introspection_(file, fs0)).cul_functions])
 
     // record list of fns for parents that might need them
-    console.log('setting')
-    console.log('setting scopes_to_list', +s, [...(little_introspection_(file, fs0)).cul_functions].filter(([k,d]) => d.cul_scope_id == 0).map(([k,v]) => v.name)) // removed await/async on little_introspection_ because it wasn't populated above when needed
+    //console.log('setting')
+    //console.log('setting scopes_to_list', +s, [...(little_introspection_(file, fs0)).cul_functions].filter(([k,d]) => d.cul_scope_id == 0).map(([k,v]) => v.name)) // removed await/async on little_introspection_ because it wasn't populated above when needed
     // fs0:
-    scopes_to_list.set(+s, [...(little_introspection_(file, fs0)).cul_functions].filter(([k,d]) => d.cul_scope_id == 0).map(([k,v]) => v.name))
+    scopes_to_list.set(+s, [...(little_introspection_(file, fs0)).cul_functions].filter(([k,d]) => d.cul_scope_id == 0 && d.name.slice(-1) != "_" /* in other places do i use reason approach? */).map(([k,v]) => v.name))
   
 
     // little_introspection_ should be recursive? No because everything must be explicit imported into file, except all_cul, which is already replaced
 
-    console.log('scopes_to_list', scopes_to_list)
+    //console.log('scopes_to_list', scopes_to_list)
   })
 
-  console.log('fs0', fs0)
+  //console.log('fs0', fs0)
 
   // TODO set fs0 in depth-first order (reverse above) by doing replacement (0 initially) and populate little_introspections
 
@@ -535,6 +535,7 @@ export const introspection = async (entrypoint, fs) => {
                   parentfn += '_'; // update this one, not Orig
                   reason = 'definition (renamed)'; // do this even when implicit import was blocked? or where E explicit import in parent for _
 
+                  // When a fn is renamed, rename things that points to it in the immediate parents (only explicit imports applicable)
                   // now references to the function need to be updated
                   [...global_state.cul_functions.values()]
                     .filter(
@@ -542,7 +543,7 @@ export const introspection = async (entrypoint, fs) => {
                         d.imported /* I need imported here */ == name &&
                         (d.reason.indexOf('explicit import') != -1) && // function is imported explicitly
                         d.cul_scope_id == opts.cul_parent_scope_id // new, post-working/tests
-                        && d.cul_source_scope_id == opts.cul_scope_id // Nov 2023 #117
+                        && d.cul_source_scope_id == opts.cul_scope_id // Nov 2023 #117   This only picks up one level of explicit imports, so I add rename for ImportDeclaration too
                     )
                     .forEach((d) => {
                       global_state.cul_functions.set(`${d.cul_scope_id}_${d.name}`, {
@@ -680,7 +681,43 @@ export const introspection = async (entrypoint, fs) => {
                 const rename = global_state.cul_functions.has(
                   `${opts.cul_scope_id}_${d.local.name}`
                 ); // this is false despite revenue now being an implicit import from EP
-                if (rename) d.local.name += '_'; // only update the local name, imported name is altered if necessary by the logic where rename happens in Function
+                if (rename) {
+                  let name = d.local.name;
+                  d.local.name += '_'; // only update the local name, imported name is altered if necessary by the logic where rename happens in Function   BUT WHEN THIS HAPPENS I NEED TO UPDATE IMPORTS THAT source THIS
+
+
+                  // when an import is renamed, I want to rename things that point to it (recursively - TODO traverse cul_links - but only doing once now). Applicable things: explicit imports
+//debugger;
+                  // NOTE: no renaming has happened in cul_functions yet when debugger stopped here
+                  // TODO this needs to be recursive (only once needed for my testcase but see tests)
+                  [...global_state.cul_functions.values()]
+                    .filter(
+                      (d) =>
+                        d.imported /* I need imported here */ == name &&
+                        (d.reason.indexOf('explicit import') != -1) && // function is imported explicitly
+                        d.cul_scope_id == opts.cul_parent_scope_id // new, post-working/tests
+                        && (d.imported.slice(-1) != "_") // exclude a_ as a_orig
+                        && d.cul_source_scope_id == opts.cul_scope_id // Nov 2023 #117   This only picks up one level of explicit imports
+                        
+                    )
+                    .forEach((d) => {
+                      //debugger
+                      global_state.cul_functions.set(`${d.cul_scope_id}_${d.name}`, {
+                        ...d,
+                        imported: d.imported + '_', // here. Only do this when? 
+                      });
+                      global_state.cul_links.forEach((dd) => {
+                        if (
+                          dd.to == `${d.cul_scope_id}_${d.name}` &&
+                          dd.reason == 'explicit import' // -> indexOf?
+                        ) {
+                          dd.from += '_'; // add (renamed)?
+                          dd.reason += ' (renamed)';
+                        }
+                      });
+                    });
+
+                }
                 global_state.cul_functions.set(`${opts.cul_scope_id}_${d.local.name}`, {
                   cul_scope_id: opts.cul_scope_id,
                   name: d.local.name,
@@ -1127,6 +1164,28 @@ export const calls_fromDefinition = (introspection) => ([...introspection.cul_li
       [...introspection.cul_links].filter((e) => e.to == d.fromDefinition)[0].from
       :
       d.fromDefinition
+  })) // this may be excessive; should also be replaced by cul_links traversal ??
+
+  .map((d) => ({
+    ...d,
+    fromDefinition: introspection.cul_functions.get(d.fromDefinition).reason.includes(
+      "import"
+    )
+      ?
+      [...introspection.cul_links].filter((e) => e.to == d.fromDefinition)[0].from
+      :
+      d.fromDefinition
+  }))
+
+  .map((d) => ({
+    ...d,
+    fromDefinition: introspection.cul_functions.get(d.fromDefinition).reason.includes(
+      "import"
+    )
+      ?
+      [...introspection.cul_links].filter((e) => e.to == d.fromDefinition)[0].from
+      :
+      d.fromDefinition
   }))
 
   .map((d) => ({
@@ -1275,6 +1334,7 @@ function has$1(obj, key) {
 ` : '')
 
   // is this approach better than fromDefinition type change ???? how reliable cul_source_scope_id for explicit imports?
+  // is cul_source_scope_id weak because it doesn't travel multiple layers like fromDefinition does?
 
   // can all_cul work be much simpler by thread type logic here?
 
@@ -1313,6 +1373,7 @@ export const compile = async ({entrypoint, fs, memo = true}) => {
   //else introspection_a = await introspection("entry.cul.js", {'entry.cul.js': await (await fetch(entrypoint)).text() }); // TODO move fetching into pre_introspection pass
   let compiled;
   compiled = await compile_new(entrypoint, introspection_a.fs0, introspection_a); // entrypoint=url works if I just configure fs here
+  //debugger;
   //else  compiled = await compile_new("entry.cul.js", {'entry.cul.js': await (await fetch(entrypoint)).text() }, introspection_a); // entrypoint=url works if I just configure fs here
   const bundle = bundleIntoOne(compiled, introspection_a, memo);
   

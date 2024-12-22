@@ -15,8 +15,8 @@ export async function pre_fetch(entrypoint) {
     fs[entrypoint] = (await readFile(resolve(resolved), 'utf8'))//.toString('ascii')
 
     let code = fs[entrypoint]
-    let dirname_parent = dirname(entrypoint)
-
+    let dirname_parent = dirname(resolved)
+    
     // CHOICES to make graph for all_cul replacement collection, make graph directly in visior or make it from cul_scope_ids_to_resource
     Babel.transform(code, {
       plugins: [

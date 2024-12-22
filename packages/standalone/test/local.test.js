@@ -10,14 +10,26 @@ describe('local fetch', async () => {
 
   it('a', async () => {
     await expect(JSON.stringify(
-      await pre_fetch('a.cul.js')
+      await pre_fetch('./test/cul/a.cul.js')
       , null, 2)).toMatchFileSnapshot('./local/a');
   })
 
   it('aa', async () => {
     await expect(JSON.stringify(
-      await pre_fetch('aa.cul.js')
+      await pre_fetch('./test/cul/aa.cul.js')
     , null, 2)).toMatchFileSnapshot('./local/aa');
+  })
+
+  it('aa2', async () => {
+    await expect(JSON.stringify(
+      await pre_fetch('./test/cul/aa2.cul.js')
+    , null, 2)).toMatchFileSnapshot('./local/aa2');
+  })
+
+  it('aa3', async () => {
+    await expect(JSON.stringify(
+      await pre_fetch('./test/cul/aa3.cul.js')
+    , null, 2)).toMatchFileSnapshot('./local/aa3');
   })
 
   // I need to use nodejs api, developing index2.js in calculang-js

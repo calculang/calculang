@@ -1,0 +1,5 @@
+{
+  "./test/cul/aa3.cul.js": "import { all_cul } from './a/a3.cul.js'\n\nexport const b = () => 10;",
+  "./a/a3.cul.js": "import { c } from '../c.cul.js'\n\nexport const d = () => c();",
+  "../c.cul.js": "export const c = () => 100;"
+}

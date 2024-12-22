@@ -1,0 +1,1 @@
+export const a = () => "a/a.cul.js"

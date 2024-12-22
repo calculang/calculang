@@ -1,4 +1,5 @@
 
+import { pre_fetch } from './pre_fetch.mjs'
 import { compile } from '../../standalone/index.js'
 
 import yargs from 'yargs'
@@ -7,13 +8,14 @@ import { hideBin } from 'yargs/helpers'
 
 yargs(hideBin(process.argv))
   .command('compile <url>', 'todo', () => {}, async (argv) => {
-    console.info(argv)
+    //console.info(argv)
+    
+    const fs = await pre_fetch(argv.url)
+    
     console.log(
       (await compile({
-        entrypoint: 'e',
-        fs: {
-          'e': `export const a = () => a_in;`
-        },
+        entrypoint: argv.url,
+        fs,
         memo: false
       })).bundle
     )

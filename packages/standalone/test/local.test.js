@@ -6,23 +6,18 @@ import { pre_fetch } from '../../calculang-js/bin/pre_fetch.mjs'
 
 const cwd = import.meta.dirname;
 
-describe('local fetch', () => {
+describe('local fetch', async () => {
 
   it('a', async () => {
-    expect(
+    await expect(JSON.stringify(
       await pre_fetch('a.cul.js')
-    ).toMatchFileSnapshot('./local/a');
+      , null, 2)).toMatchFileSnapshot('./local/a');
   })
 
   it('aa', async () => {
-    const t = await pre_fetch('aa.cul.js')
-    console.log('thing', t)
-    expect(
-      //JSON.stringify(
-      //JSON.stringify(t)
-      t
-    //)
-  ).toMatchFileSnapshot('./local/aa');
+    await expect(JSON.stringify(
+      await pre_fetch('aa.cul.js')
+    , null, 2)).toMatchFileSnapshot('./local/aa');
   })
 
   // I need to use nodejs api, developing index2.js in calculang-js

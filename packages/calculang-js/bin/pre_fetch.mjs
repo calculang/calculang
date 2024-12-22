@@ -12,7 +12,7 @@ export async function pre_fetch(entrypoint) {
   let fs = {}
 
   async function pre_fetch_(entrypoint) {
-    fs[entrypoint] = (await readFile(resolve(entrypoint), 'utf8')).toString('ascii')
+    fs[entrypoint] = (await readFile(resolve(entrypoint), 'utf8'))//.toString('ascii')
 
     let code = fs[entrypoint]
 
@@ -27,7 +27,6 @@ export async function pre_fetch(entrypoint) {
               if (!path.node.source.value.includes('.cul')) return;
 
               next.push({resource: path.node.source.value}) // TODO track resource base?
-
             },
 
           }
@@ -35,18 +34,13 @@ export async function pre_fetch(entrypoint) {
         ]]
     });
 
-    console.log('next', next)
-
-    next.forEach(async ({resource}) => {
-      await pre_fetch_(resource)
-    })
+    for (const n of next) {
+      if (!fs.hasOwnProperty(n.resource))
+        await pre_fetch_(n.resource)
+    }
   }
 
   await pre_fetch_(entrypoint)
-
-  console.log('next', next) // this makes a difference : async issues?
-
-  console.log('fs', fs)
 
   return fs
 }

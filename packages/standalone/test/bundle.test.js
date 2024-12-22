@@ -5,7 +5,7 @@ import {compile} from '../index.js';
 
 const cwd = import.meta.dirname;
 
-describe('bundle output', () => {
+describe('bundle output', async () => {
   it('shop should match expected', async () => {
     const m = await compile({
       entrypoint: 'entry.cul.js',
@@ -29,7 +29,7 @@ export const expenses = () => expenses_in;
       memo: false
     });
 
-    expect(m.bundle).toMatchFileSnapshot('./bundles/shop.bundle.js');
+    await expect(m.bundle).toMatchFileSnapshot('./bundles/shop.bundle.js');
   });
 
 
@@ -39,7 +39,7 @@ export const expenses = () => expenses_in;
       memo: false
     });
 
-    expect(m.bundle).toMatchFileSnapshot('./bundles/savings.bundle.js');
+    await expect(m.bundle).toMatchFileSnapshot('./bundles/savings.bundle.js');
   });
 })
 

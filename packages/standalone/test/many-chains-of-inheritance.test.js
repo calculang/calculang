@@ -9,7 +9,7 @@ const cwd = import.meta.dirname;
 // Replacing very precise lists by all_cul leads to a greater need for these cases to work
 // TOFIX traversal so that remaining test will work: for now fail is OK (but will confuse)
 
-describe('bundle output', () => {
+describe('bundle output', async () => {
   it('inheritance chain that should work and pass', async () => {
     const m = await compile({
       entrypoint: 'zero.cul.js',

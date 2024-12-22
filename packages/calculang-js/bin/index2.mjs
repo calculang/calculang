@@ -11,6 +11,8 @@ yargs(hideBin(process.argv))
     //console.info(argv)
     
     const fs = await pre_fetch(argv.url)
+
+    console.log(fs)
     
     console.log(
       (await compile({

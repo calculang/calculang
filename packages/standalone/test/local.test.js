@@ -8,11 +8,21 @@ const cwd = import.meta.dirname;
 
 describe('local fetch', () => {
 
-  it('d', async () => {
+  it('a', async () => {
     expect(
-      await pre_fetch(cwd + '/a.cul.js')
-    ).toMatchFileSnapshot('./fss/d.bundle.js');
+      await pre_fetch('a.cul.js')
+    ).toMatchFileSnapshot('./local/a');
+  })
 
+  it('aa', async () => {
+    const t = await pre_fetch('aa.cul.js')
+    console.log('thing', t)
+    expect(
+      //JSON.stringify(
+      //JSON.stringify(t)
+      t
+    //)
+  ).toMatchFileSnapshot('./local/aa');
   })
 
   // I need to use nodejs api, developing index2.js in calculang-js

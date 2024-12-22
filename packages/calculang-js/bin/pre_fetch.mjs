@@ -1,4 +1,5 @@
 
+import {resolve} from 'node:path'
 import {readFile} from 'node:fs/promises'
 
 import * as Babel from '../../standalone/babel.mjs' // but I can conditionally use node api - prob a bad idea?
@@ -8,11 +9,10 @@ export async function pre_fetch(entrypoint) {
 
   let next = []; // next imports to traverse
 
-  let fs = {hello: 'worffld'};
-  fs['fdsa'] = 'ff'
+  let fs = {}
 
   async function pre_fetch_(entrypoint) {
-    fs[entrypoint] = await readFile(entrypoint, 'utf8')
+    fs[entrypoint] = (await readFile(resolve(entrypoint), 'utf8')).toString('ascii')
 
     let code = fs[entrypoint]
 
@@ -26,7 +26,7 @@ export async function pre_fetch(entrypoint) {
             ImportDeclaration(path) {
               if (!path.node.source.value.includes('.cul')) return;
 
-              next.push({resource: path.node.source}) // TODO track resource base?
+              next.push({resource: path.node.source.value}) // TODO track resource base?
 
             },
 
@@ -34,13 +34,19 @@ export async function pre_fetch(entrypoint) {
         })
         ]]
     });
-}
 
-  pre_fetch_(entrypoint)
+    console.log('next', next)
 
-  next.forEach(async ({resource}) => {
-    await pre_fetch_(resource)
-  })
+    next.forEach(async ({resource}) => {
+      await pre_fetch_(resource)
+    })
+  }
+
+  await pre_fetch_(entrypoint)
+
+  console.log('next', next)
+
+  console.log(fs)
 
   return fs
 }

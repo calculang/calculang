@@ -44,9 +44,9 @@ export async function pre_fetch(entrypoint) {
 
   await pre_fetch_(entrypoint)
 
-  console.log('next', next)
+  console.log('next', next) // this makes a difference : async issues?
 
-  console.log(fs)
+  console.log('fs', fs)
 
   return fs
 }

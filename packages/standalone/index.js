@@ -27,6 +27,16 @@ import * as Babel from './babel.mjs'
 
 // TODO fix up fetch/url support. When I do that, do async blocks become more isolated?
 
+// To implement all_cul replacement there are now a few passes over calculang code here (plus one WIP/outside here to prefetch cul).
+//                WHICH PASS TO WORK FROM TO BUILD prefetch?
+// 1. pre_introspection_ : to build scope graph [next iteration]
+// 2. depth-first all_cul replacement, storing new code in fs0 (using/storing results from a little_introspection call in scopes_to_list)
+// 3. introspection_ : traverse code from top to create introspection information [next iteration]
+// 4. compile_new : uses introspection information to compile each source file
+// 5. Finally bundleIntoOne does function/call renaming, remove .cul import/export declarations, and concatenates resulting code
+
+// TODO refactor shared parts
+
 import * as G from './graphlib.mjs' //  TODO PR esm output?
 //import * as G from 'https://cdn.jsdelivr.net/npm/@dagrejs/graphlib/+esm'
 //const G = await require("@dagrejs/graphlib")

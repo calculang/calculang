@@ -11,3 +11,33 @@ There are 2 levels of support for URLs
 
 To implement 2 consider cheap/shallow integration. Cheap=just a new pass (new fs0) should work.
 Possibly DX by (entrypoint or fs) => resolved fs. LATER consider if really needs to be new pass
+
+
+---
+
+If new pass, then I can have sep. pass for URL (fetch) and for local FS (node function). Make the node function for vitest
+So, make this first as local testing development? Call it... entrypointToFS.
+
+If I do this with node APIs, then how much of calculang logic needs to be used?
+
+---
+
+ALL IMPLEMENTATIONS can fetch URLs and URLs relative to their scope base URL (recycle fs/resource ref?)
+
+But only using node API => command can I START COMPILING USING LOCAL REFERENCES.
+
+To serve these local models, just host them: then the URL becomes the reference that any compiler can use.
+
+---
+
+Sources can transition Local -> Remote but not easily Remote -> Local - is this OK?
+
+And they can transition Remote -> other Remote
+
+Does the compiler ever need to know?
+
+Do I keep JS import compatability? (necessary for memo and other things)
+
+YES I guess: because I should only fetch/cache *.cul requests
+
+

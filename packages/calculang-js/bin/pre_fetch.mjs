@@ -1,0 +1,46 @@
+
+import {readFile} from 'node:fs/promises'
+
+import * as Babel from '../../standalone/babel.mjs' // but I can conditionally use node api - prob a bad idea?
+
+// returns fs
+export async function pre_fetch(entrypoint) {
+
+  let next = []; // next imports to traverse
+
+  let fs = {hello: 'worffld'};
+  fs['fdsa'] = 'ff'
+
+  async function pre_fetch_(entrypoint) {
+    fs[entrypoint] = await readFile(entrypoint, 'utf8')
+
+    let code = fs[entrypoint]
+
+    // CHOICES to make graph for all_cul replacement collection, make graph directly in visior or make it from cul_scope_ids_to_resource
+    Babel.transform(code, {
+      plugins: [
+        [({ types }) =>
+        ({
+          name: 'calculang-pre-fetching-visitor',
+          visitor: {
+            ImportDeclaration(path) {
+              if (!path.node.source.value.includes('.cul')) return;
+
+              next.push({resource: path.node.source}) // TODO track resource base?
+
+            },
+
+          }
+        })
+        ]]
+    });
+}
+
+  pre_fetch_(entrypoint)
+
+  next.forEach(async ({resource}) => {
+    await pre_fetch_(resource)
+  })
+
+  return fs
+}

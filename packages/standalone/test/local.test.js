@@ -32,6 +32,12 @@ describe('local fetch', async () => {
     , null, 2).replaceAll(cwd,'$CWD')).toMatchFileSnapshot('./local/aa3');
   })
 
+  it('aa4', async () => {
+    await expect(JSON.stringify(
+      await pre_fetch('./test/cul/aa4.cul.js') // this test is Strictly contrived for a pre_fetch case
+    , null, 2).replaceAll(cwd,'$CWD')).toMatchFileSnapshot('./local/aa4');
+  })
+
   // I need to use nodejs api, developing index2.js in calculang-js
 
   /*it('compile savings from LOCAL url should match expected', async () => {

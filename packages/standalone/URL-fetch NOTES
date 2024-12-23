@@ -47,3 +47,9 @@ Structure for local fetch working. TODO track basenames etc. DONE
 NOTE ./a.cul.js in one reference can differ to another (remote reference OR different local folders), so will I need to rename or use scope-specific fs entries? Or keep this as an open issue?
 
 ---
+
+pre_fetch is WORKING
+
+TODO integrate it with compile command and API or how exactly?
+
+JUST WIRING TODO and more complete end-end testing

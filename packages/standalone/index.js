@@ -1370,6 +1370,8 @@ function has$1(obj, key) {
 // fs are the only contents the compiler can read
 // remote URLs won't be fetched (yet)
 // instead: fetch them in code that calls compile
+
+// TODO remove async
 export const compile = async ({entrypoint, fs, memo = true}) => {
   // NOTE: although not tidy, introspection, compile_new etc. is exported
   if (fs == undefined) {

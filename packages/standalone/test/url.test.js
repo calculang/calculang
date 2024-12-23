@@ -6,8 +6,6 @@ import { pre_fetch } from '../../calculang-js/bin/pre_fetch.mjs'
 
 const cwd = import.meta.dirname;
 
-// TODO test remote URLs importing remote URLs
-
 describe('remote fetch', async () => {
 
   it('import-url', async () => {
@@ -27,5 +25,7 @@ describe('remote fetch', async () => {
       await pre_fetch('./test/cul/import-url3.cul.js')
       , null, 2).replaceAll(cwd,'$CWD')).toMatchFileSnapshot('./local/import-url3');
   })
+
+  // TODO add tests accross remote domains or directories (base url should be updating appropriately)
 
 })

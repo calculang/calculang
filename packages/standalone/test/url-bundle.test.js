@@ -2,7 +2,7 @@ import { expect, describe, it } from 'vitest';
 import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-import { pre_fetch } from '../../calculang-js/bin/pre_fetch.mjs'
+import { pre_fetch } from '@calculang/calculang-js/bin/pre_fetch.mjs'
 import {compile} from '../index.js';
 
 

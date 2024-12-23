@@ -3,7 +3,7 @@
   "version": "0.1.0-alpha.8",
   "type": "module",
   "bin": {
-    "cul-js": "./bin/index2.js"
+    "cul-js": "./bin/index.mjs"
   },
   "main": "dist/compiler.js",
   "license": "AGPL-3.0-only",
@@ -32,7 +32,6 @@
     "bin"
   ],
   "scripts": {
-    "prepare": "yarn build",
     "build": "babel src --out-dir dist"
   },
   "jest": {
@@ -47,6 +46,7 @@
     "@babel/core": "^7.15.8",
     "@babel/preset-env": "^7.15.8",
     "@calculang/introspection-api": "0.1.0-alpha.8",
+    "@calculang/standalone": "^0.1.0-alpha.0",
     "commander": "^8.2.0",
     "graphlib": "^2.1.8",
     "loader-utils": "^2.0.0",

@@ -2,7 +2,7 @@ import { expect, describe, it } from 'vitest';
 import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-import { pre_fetch } from '../../calculang-js/bin/pre_fetch.mjs'
+import { pre_fetch } from '@calculang/calculang-js/bin/pre_fetch.mjs'
 
 const cwd = import.meta.dirname;
 
@@ -38,7 +38,7 @@ describe('local fetch', async () => {
     , null, 2).replaceAll(cwd,'$CWD')).toMatchFileSnapshot('./local/aa4');
   })
 
-  // I need to use nodejs api, developing index2.js in calculang-js
+  // I need to use nodejs api, developing index.js in calculang-js
 
   /*it('compile savings from LOCAL url should match expected', async () => {
     const m = await compile({

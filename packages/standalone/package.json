@@ -19,5 +19,8 @@
   },
   "devDependencies": {
     "vitest": "^2.1.8"
+  },
+  "dependencies": {
+    "@calculang/calculang-js": "^0.1.0-alpha.8"
   }
 }

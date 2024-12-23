@@ -3,7 +3,7 @@
   "version": "0.1.0-alpha.8",
   "type": "module",
   "bin": {
-    "cul-js": "./bin/index.js"
+    "cul-js": "./bin/index2.js"
   },
   "main": "dist/compiler.js",
   "license": "AGPL-3.0-only",

@@ -11,10 +11,28 @@ export async function pre_fetch(entrypoint) {
 
   let fs = {}
 
-  async function pre_fetch_(entrypoint, resolved) {
-    let start = (await readFile(resolve(resolved), 'utf8'))//.toString('ascii')
+  function isUrl(url) {
+    try {
+      new URL(url)
+      return true
+    } catch(e) {
+      return false
+    }
+  }
 
-    let dirname_parent = dirname(resolved)
+  async function pre_fetch_(entrypoint, resolved) { // should i be getting to file:// urls in all cases for better consistency?
+    let start, isUrlParent, dirname_parent;
+
+    if (isUrl(resolved)) {
+      start = await (await fetch(resolved)).text()
+      isUrlParent = true
+      dirname_parent = resolved.replace(/\/[^/]*$/, '/') // remove last slash on
+    } else { // path path
+      start = (await readFile(resolve(resolved), 'utf8'))//.toString('ascii')
+      isUrlParent = false
+      dirname_parent = dirname(resolved)
+    }
+
     
     // CHOICES to make graph for all_cul replacement collection, make graph directly in visior or make it from cul_scope_ids_to_resource
     fs[resolved] = Babel.transform(start, {
@@ -26,7 +44,22 @@ export async function pre_fetch(entrypoint) {
             ImportDeclaration(path) {
               if (!path.node.source.value.includes('.cul')) return;
               
-              const resolved = resolve(dirname_parent, path.node.source.value)
+              //let resolved2;
+              //if (isUrlHere) resolved = 'TODO' // I need to consider if New reference is a url here
+                //resolved = ;
+              //else resolved = resolve(dirname_parent, path.node.source.value);
+
+              if (isUrl(path.node.source.value)) {
+                resolved = new URL(path.node.source.value).toString()
+              } else {
+                if (isUrlParent) {
+                  //console.log('debug', resolved, path.node.source.value)
+                  resolved = new URL(path.node.source.value, resolved /* or dirname_parent: not necessary here */).toString()
+                } else {
+                  resolved = resolve(dirname_parent, path.node.source.value);
+                }
+              }
+
               path.node.source.value = resolved
 
               next.push({resource: path.node.source.value, resolved}) // this seems to work TODO remote URLs

@@ -1,0 +1,4 @@
+{
+  "./test/cul/import-url.cul.js": "import { all_cul } from 'https://calculang.dev/models/savings/savings.cul.js';\nexport const interest_rate = () => 0.1; // override interest rate",
+  "https://calculang.dev/models/savings/savings.cul.js": "export const balance = () => {\n  if (year() < 0) return 0;else if (year() == 0) return deposits();else return balance({\n    year_in: year() - 1\n  }) + deposits() + interest();\n};\nexport const deposits = () => {\n  if (year() >= 0 && year() < duration()) return annual_payment();else return 0;\n};\nexport const interest = () => {\n  if (year() == 0) return 0;else return balance({\n    year_in: year() - 1\n  }) * interest_rate();\n};\n\n// inputs:\nexport const year = () => year_in;\nexport const annual_payment = () => annual_payment_in;\nexport const duration = () => duration_in; // years\nexport const interest_rate = () => interest_rate_in; // annual"
+}

@@ -43,7 +43,7 @@ YES I guess: because I should only fetch/cache *.cul requests
 
 ---
 
-Structure for local fetch working. TODO track basenames etc.
-NOTE ./a.cul.js in one reference can differ to another (remote reference), so will I need to rename or use scope-specific fs entries? Or keep this as an open issue?
+Structure for local fetch working. TODO track basenames etc. DONE
+NOTE ./a.cul.js in one reference can differ to another (remote reference OR different local folders), so will I need to rename or use scope-specific fs entries? Or keep this as an open issue?
 
 ---

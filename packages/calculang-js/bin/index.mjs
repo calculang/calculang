@@ -1,12 +1,14 @@
 #!/usr/bin/env node
 
 import { pre_fetch } from './pre_fetch.mjs'
-import { compile, introspection } from '@calculang/standalone'
+import { bundleIntoOne, compile_new, introspection } from '@calculang/standalone'
 
 import yargs from 'yargs'
 import { hideBin } from 'yargs/helpers'
 
 import packagejson from '../package.json' with { type: "json" };
+
+// cwd not always the cwd but the root of project - FIX?
 
 const stringify_introspection_info = (d) => {
   // https://gist.github.com/lukehorvat/133e2293ba6ae96a35ba
@@ -52,24 +54,48 @@ const stringify_introspection_info = (d) => {
 
 yargs(hideBin(process.argv))
   .version(packagejson.version)
-  .command('compile <url>', 'todo', () => {}, async (argv) => {
+  .command('compile <url>', 'compile and output to stdout',
+    (yargs) => {
+      // return ?
+      yargs.option('memo', {
+        alias: 'm',
+        type: 'boolean',
+        description: 'Enable memoization',
+        default: true
+      });
+    },
+    async (argv) => {
     
-    const fs = await pre_fetch(argv.url)
+      const fs = await pre_fetch({entrypoint:argv.url})
+      const entrypoint = argv.url
 
-    //console.log(fs)
-    
-    console.log(
-      (await compile({
-        entrypoint: argv.url,
-        fs,
-        memo: false
-      })).bundle
-    )
+      let introspection_a;
+      introspection_a = await introspection(entrypoint, fs);
+      //else introspection_a = await introspection("entry.cul.js", {'entry.cul.js': await (await fetch(entrypoint)).text() }); // TODO move fetching into pre_introspection pass
+      let compiled;
+      compiled = await compile_new(entrypoint, introspection_a.fs0, introspection_a); // entrypoint=url works if I just configure fs here
+      //debugger;
+      //else  compiled = await compile_new("entry.cul.js", {'entry.cul.js': await (await fetch(entrypoint)).text() }, introspection_a); // entrypoint=url works if I just configure fs here
+      const bundle = bundleIntoOne(compiled, introspection_a, argv.memo);
+
+      console.log(bundle)
+
+
+
+      //console.log(fs)
+      
+      /*console.log(
+        (await compile({
+          entrypoint: argv.url,
+          fs,
+          memo: argv.memo
+        })).bundle
+      )*/
   })
   .command('introspection <url>', 'todo', () => {}, async (argv) => {
     //console.info(argv)
     
-    const fs = await pre_fetch(argv.url)
+    const fs = await pre_fetch({entrypoint:argv.url})
 
     //console.log(fs)
     //console.log(argv.url)

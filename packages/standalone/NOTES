@@ -29,3 +29,13 @@ When using old apis
 ![alt text](image.png)
 
 make sure compile uses fs0 result (hooked into https://finding-calculang-foc.netlify.app/editor shortly)
+
+---
+
+Requirement: NOW I NEED TO HAVE .cul.js AND NOT .cul (fixed this in calculang.dev) to compile from command
+  - is this bad?
+
+---
+
+TODO output ESM again? (memo no longer matters) and tidy up calculang.dev ?
+Do this AFTER fixing APIs

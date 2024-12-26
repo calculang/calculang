@@ -31,9 +31,6 @@
     "dist",
     "bin"
   ],
-  "scripts": {
-    "build": "babel src --out-dir dist"
-  },
   "jest": {
     "testEnvironment": "node"
   },

@@ -5,8 +5,9 @@ import {readFile} from 'node:fs/promises'
 import * as Babel from '../../standalone/babel.mjs' // but I can conditionally use node api - prob a bad idea?
 
 // returns fs. fs uses global references except for entrypoint and updates code to use global references. This is essential because e.g. ./base.cul.js can refer to different files depending on file/model structure
-export async function pre_fetch(entrypoint) {
+export async function pre_fetch({url, source}) {
 
+  //console.log(source)
   let next = []; // next imports to traverse
 
   let fs = {}
@@ -20,17 +21,24 @@ export async function pre_fetch(entrypoint) {
     }
   }
 
-  async function pre_fetch_(entrypoint, resolved) { // should i be getting to file:// urls in all cases for better consistency?
+  async function pre_fetch_(entrypoint, source, resolved) { // should i be getting to file:// urls in all cases for better consistency?
     let start, isUrlParent, dirname_parent;
 
-    if (isUrl(resolved)) {
-      start = await (await fetch(resolved)).text()
-      isUrlParent = true
-      dirname_parent = resolved.replace(/\/[^/]*$/, '/') // remove last slash on
-    } else { // path path
-      start = (await readFile(resolve(resolved), 'utf8'))//.toString('ascii')
-      isUrlParent = false
-      dirname_parent = dirname(resolved)
+    if (source) { // only poss for initial
+      start = source;
+      entrypoint = 'source.cul.js';
+      isUrlParent = false // might mean local urls work?
+      dirname_parent = '.'//dirname(resolved) // 
+    } else {
+      if (isUrl(resolved)) {
+        start = await (await fetch(resolved)).text()
+        isUrlParent = true
+        dirname_parent = resolved.replace(/\/[^/]*$/, '/') // remove last slash on
+      } else { // path path
+        start = (await readFile(resolve(resolved), 'utf8'))//.toString('ascii')
+        isUrlParent = false
+        dirname_parent = dirname(resolved)
+      }
     }
 
     
@@ -42,7 +50,7 @@ export async function pre_fetch(entrypoint) {
           name: 'calculang-pre-fetching-visitor',
           visitor: {
             ImportDeclaration(path) {
-              if (!path.node.source.value.includes('.cul')) return;
+              if (!path.node.source.value.includes('.cul.js')) return;
               
               //let resolved2;
               //if (isUrlHere) resolved = 'TODO' // I need to consider if New reference is a url here
@@ -72,11 +80,14 @@ export async function pre_fetch(entrypoint) {
 
     for (const n of next) {
       if (!fs.hasOwnProperty(n.resource))
-        await pre_fetch_(n.resource, n.resolved)
+        await pre_fetch_(n.resource, undefined, n.resolved)
     }
   }
 
-  await pre_fetch_(entrypoint, entrypoint)
+  if (!source)
+    await pre_fetch_(entrypoint, undefined, entrypoint)
+  else
+    await pre_fetch_(undefined, source, 'source.cul.js')
 
   return fs
 }

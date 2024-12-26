@@ -33,7 +33,7 @@ import * as Babel from './babel.mjs'
 // 2. depth-first all_cul replacement, storing new code in fs0 (using/storing results from a little_introspection call in scopes_to_list)
 // 3. introspection_ : traverse code from top to create introspection information [next iteration]
 // 4. compile_new : uses introspection information to compile each source file
-// 5. Finally bundleIntoOne does function/call renaming, remove .cul import/export declarations, and concatenates resulting code
+// 5. Finally bundleIntoOne does function/call renaming, remove .cul.js import/export declarations, and concatenates resulting code
 
 // TODO refactor shared parts
 
@@ -41,6 +41,9 @@ import * as G from './graphlib.mjs' //  TODO PR esm output?
 //import * as G from 'https://cdn.jsdelivr.net/npm/@dagrejs/graphlib/+esm'
 //const G = await require("@dagrejs/graphlib")
 const alg = G.alg;
+
+// strict .cul.js extension because file references must be precise now - prefering consistency
+
 
 // I used 2 for the original here
 export const introspection = async (entrypoint, fs) => {
@@ -130,7 +133,7 @@ export const introspection = async (entrypoint, fs) => {
 
             // TODO
             ImportDeclaration(path) {
-              if (!path.node.source.value.includes('.cul')) return;
+              if (!path.node.source.value.includes('.cul.js')) return;
 
               var q = `${path.node.source.value.includes('?') ? '&' : '?'
                 }cul_scope_id=${++global_state.cul_scope_id_counter}&cul_parent_scope_id=${opts.cul_scope_id
@@ -235,7 +238,7 @@ export const introspection = async (entrypoint, fs) => {
     const file = global_state.cul_scope_ids_to_resource.get(+s).split('?')[0] // TOFIX: not robust to custom query patterns in imports
 
     fs0[file] = Babel.transform(fs[file], {
-      generatorOpts: { /*compact: true*/ retainLines: true }, // prob dont matter here
+      generatorOpts: { compact: true, retainLines: true }, // prob dont matter here
       sourceMaps: false,
       plugins: [
         [
@@ -245,7 +248,7 @@ export const introspection = async (entrypoint, fs) => {
 
               // TODO use scopes_to_list to make replacements
               ImportDeclaration(path) {
-                if (!path.node.source.value.includes('.cul')) return;
+                if (!path.node.source.value.includes('.cul.js')) return;
 
                 // I need to do totally different logic here:
                 // I need to work from import_sources_to_resource
@@ -395,7 +398,7 @@ export const introspection = async (entrypoint, fs) => {
 
             // TODO
             ImportDeclaration(path) {
-              if (!path.node.source.value.includes('.cul')) return;
+              if (!path.node.source.value.includes('.cul.js')) return;
 
               var q = `${path.node.source.value.includes('?') ? '&' : '?'
                 }cul_scope_id=${++local_state.cul_scope_id_counter}&cul_parent_scope_id=${opts.cul_scope_id
@@ -638,7 +641,7 @@ export const introspection = async (entrypoint, fs) => {
 
             // TODO
             ImportDeclaration(path) {
-              if (!path.node.source.value.includes('.cul')) return;
+              if (!path.node.source.value.includes('.cul.js')) return;
 
               var q = `${path.node.source.value.includes('?') ? '&' : '?'
                 }cul_scope_id=${++global_state.cul_scope_id_counter}&cul_parent_scope_id=${opts.cul_scope_id
@@ -950,7 +953,7 @@ export const compile_new = (entrypoint, fs, introspection) => {
 
     return Babel.transform(fs[introspection.cul_scope_ids_to_resource.get(cul_scope_id).split('?')[0]], {
       //presets: ["es2015", "react"],
-      generatorOpts: { compact: false, concise: false, retainLines: true },
+      generatorOpts: { compact: true, retainLines: true },
       sourceMaps: true,
       plugins: [
         [
@@ -1246,7 +1249,7 @@ export const bundleIntoOne = (compiled, introspection, memoize) => {
 
     compiled2.push(Babel.transform(input.code, {
       //presets: ["es2015", "react"],
-      generatorOpts: { /*compact: true*/ retainLines: true },
+      generatorOpts: { /*compact: true, This makes a mess*/ retainLines: true },
       sourceMaps: false,
       plugins: [
         [
@@ -1259,7 +1262,7 @@ export const bundleIntoOne = (compiled, introspection, memoize) => {
                 })
               },*/
               ImportDeclaration(path) {
-                if (!path.node.source.value.includes('.cul')) return;
+                if (!path.node.source.value.includes('.cul.js')) return;
                 path.remove();
                 //debugger;//
 

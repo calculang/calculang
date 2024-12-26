@@ -3,7 +3,7 @@
 
 
 
-// if I use all_cul here I get a Babel parse error VarRedeclaration
+// if I use all_cul1 here I get a Babel parse error VarRedeclaration
 //"https://calculang.dev/models/taxes-pensions/pension-calculator.cul.js"; // BUG TOFIX TODO I can't do ?v=x etc.
 
 export const s0_balance = ({ year_in, principal_in, i_in, missed_repayment_year_in, skip_interest_in, term_in }) => {

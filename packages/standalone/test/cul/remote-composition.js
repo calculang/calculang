@@ -18,7 +18,7 @@ const fs = await pre_fetch({source: `
                     import {all_cul, balance_ as balance_orig} from "https://raw.githubusercontent.com/declann/calculang-loan-validator/refs/heads/main/models/simple-loan.cul.js";
 
                     // if I use all_cul here I get a Babel parse error VarRedeclaration
-                    import { all_cul_a /* see #159 */ } from "https://glcdn.githack.com/declann/calculang.dev/-/raw/main/models/taxes-pensions/pension-calculator.cul.js" //"https://calculang.dev/models/taxes-pensions/pension-calculator.cul.js"; // BUG TOFIX TODO I can't do ?v=x etc.
+                    import { all_cul /* see #159 */ } from "https://glcdn.githack.com/declann/calculang.dev/-/raw/main/models/taxes-pensions/pension-calculator.cul.js" //"https://calculang.dev/models/taxes-pensions/pension-calculator.cul.js"; // BUG TOFIX TODO I can't do ?v=x etc.
 
                     export const balance = () => {
                       if (year() == 5) return balance_orig() + 100_000; // TODO check interest values?

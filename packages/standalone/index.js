@@ -1262,7 +1262,7 @@ export const bundleIntoOne = (compiled, introspection, memoize) => {
                 })
               },*/
               ImportDeclaration(path) {
-                if (!path.node.source.value.includes('.cul.js')) return;
+                if (!(path.node.source.value.includes('.cul.js') || path.node.source.value == 'source')) return;
                 path.remove();
                 //debugger;//
 

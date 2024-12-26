@@ -66,7 +66,7 @@ yargs(hideBin(process.argv))
     },
     async (argv) => {
     
-      const fs = await pre_fetch({entrypoint:argv.url})
+      const fs = await pre_fetch(argv.url)
       const entrypoint = argv.url
 
       let introspection_a;
@@ -95,7 +95,7 @@ yargs(hideBin(process.argv))
   .command('introspection <url>', 'todo', () => {}, async (argv) => {
     //console.info(argv)
     
-    const fs = await pre_fetch({entrypoint:argv.url})
+    const fs = await pre_fetch(argv.url)
 
     //console.log(fs)
     //console.log(argv.url)

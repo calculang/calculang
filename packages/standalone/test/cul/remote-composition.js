@@ -43,6 +43,8 @@ const fs = await pre_fetch({source: `
 
   `})
 
+  console.log(fs)
+
 /*const model = await compile({
   entrypoint: 'source.cul.js',
   fs,
@@ -50,9 +52,9 @@ const fs = await pre_fetch({source: `
 })*/
 
       let introspection_a;
-      introspection_a = await introspection('source.cul.js', fs);
+      introspection_a = await introspection('source', fs);
 
-const compiled = compile_new('source.cul.js', introspection_a.fs0, introspection_a)
+const compiled = compile_new('source', introspection_a.fs0, introspection_a)
 
 const bundle = bundleIntoOne(compiled, introspection_a, true);
 

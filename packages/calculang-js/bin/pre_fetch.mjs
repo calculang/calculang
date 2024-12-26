@@ -5,12 +5,27 @@ import {readFile} from 'node:fs/promises'
 import * as Babel from '../../standalone/babel.mjs' // but I can conditionally use node api - prob a bad idea?
 
 // returns fs. fs uses global references except for entrypoint and updates code to use global references. This is essential because e.g. ./base.cul.js can refer to different files depending on file/model structure
-export async function pre_fetch({url, source}) {
+export async function pre_fetch(input /* url (string) or else { source: `<code>` } */) {
+
+  let url, source, fsOut = {};
+
+  if (typeof input === 'string') {
+    // string => URL or local file
+    url = input;
+    source = null;
+  } else if (typeof input === 'object' && input !== null) {
+    fsOut = input
+  } else {
+    throw new TypeError('Input must be either a URL string or an object containing `url` and `source`.');
+  }
+
+
+
 
   //console.log(source)
   let next = []; // next imports to traverse
 
-  let fs = {}
+  //let fsOut = {}
 
   function isUrl(url) {
     try {
@@ -21,30 +36,36 @@ export async function pre_fetch({url, source}) {
     }
   }
 
-  async function pre_fetch_(entrypoint, source, resolved) { // should i be getting to file:// urls in all cases for better consistency?
-    let start, isUrlParent, dirname_parent;
+  async function pre_fetch_(input) { // should i be getting to file:// urls in all cases for better consistency?
+    let start, isUrlParent, dirname_parent, resolved = input;
 
-    if (source) { // only poss for initial
-      start = source;
-      entrypoint = 'source.cul.js';
+    if (typeof input === 'string') {
+      // string => URL or local file
+      if (isUrl(input)) {
+        start = await (await fetch(input)).text()
+        isUrlParent = true
+        dirname_parent = input.replace(/\/[^/]*$/, '/') // remove last slash on
+      } else { // path path
+        start = (await readFile(resolve(input), 'utf8'))//.toString('ascii')
+        isUrlParent = false
+        dirname_parent = dirname(input)
+      }
+
+    } else if (typeof input === 'object' && input !== null) {
+      // TODO OPTIONALLY TAKE OTHER FILES FROM HERE (not needed b/c pre_fetch_ call on next conditions on presence)
+      // No: I do need this, and all code must run here (or else no all_cul replacement etc)
+      start = input.source;
+      resolved = 'source';
       isUrlParent = false // might mean local urls work?
       dirname_parent = '.'//dirname(resolved) // 
     } else {
-      if (isUrl(resolved)) {
-        start = await (await fetch(resolved)).text()
-        isUrlParent = true
-        dirname_parent = resolved.replace(/\/[^/]*$/, '/') // remove last slash on
-      } else { // path path
-        start = (await readFile(resolve(resolved), 'utf8'))//.toString('ascii')
-        isUrlParent = false
-        dirname_parent = dirname(resolved)
-      }
+      throw new TypeError('input must be either a URL string or an object containing `source`');
     }
 
     
     // CHOICES to make graph for all_cul replacement collection, make graph directly in visior or make it from cul_scope_ids_to_resource
     let c = 0
-    fs[resolved] = Babel.transform(start.replaceAll('all_cul', () => `all_cul${c++}`), {
+    fsOut[resolved] = Babel.transform(start.replaceAll('all_cul', () => `all_cul${c++}`), {
       //errorRecovery: true, (not exposed: see #159)
       plugins: [
         [({ types }) =>
@@ -81,15 +102,16 @@ export async function pre_fetch({url, source}) {
     }).code;
 
     for (const n of next) {
-      if (!fs.hasOwnProperty(n.resource))
-        await pre_fetch_(n.resource, undefined, n.resolved)
+      if (!fsOut.hasOwnProperty(n.resource))
+        await pre_fetch_(n.resource)
     }
   }
 
-  if (!source)
+  await pre_fetch_(input)
+  /*if (!source)
     await pre_fetch_(entrypoint, undefined, entrypoint)
   else
-    await pre_fetch_(undefined, source, 'source.cul.js')
+    await pre_fetch_(undefined, fsOut, 'source')*/
 
-  return fs
+  return fsOut
 }

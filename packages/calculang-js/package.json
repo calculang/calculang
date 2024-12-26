@@ -7,6 +7,12 @@
   },
   "main": "dist/compiler.js",
   "license": "AGPL-3.0-only",
+  "scripts": {
+    "test": "vitest run",
+    "test:update": "vitest run --update",
+    "test:watch": "vitest",
+    "test:coverage": "#vitest run --coverage"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/calculang/calculang.git",

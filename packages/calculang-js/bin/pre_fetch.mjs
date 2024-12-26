@@ -44,6 +44,7 @@ export async function pre_fetch({url, source}) {
     
     // CHOICES to make graph for all_cul replacement collection, make graph directly in visior or make it from cul_scope_ids_to_resource
     fs[resolved] = Babel.transform(start, {
+      //errorRecovery: true, (not exposed: see #159)
       plugins: [
         [({ types }) =>
         ({

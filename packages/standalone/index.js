@@ -276,7 +276,7 @@ export const introspection = async (entrypoint, fs) => {
 
                 // TODO:
                 // and additional filter for things defined here (another little_introspection_ call)
-                if(path.node.specifiers.some(d => d.imported.name == 'all_cul')) {
+                if(path.node.specifiers.some(d => d.imported.name.startsWith('all_cul'))) {
                   //console.log('all_cul triggered');
 
                   // exclude own definitions?
@@ -293,7 +293,7 @@ export const introspection = async (entrypoint, fs) => {
                       path.node.specifiers.push(types.importSpecifier(types.identifier(d), types.identifier(d)))
                   })
 
-                  path.node.specifiers = path.node.specifiers.filter(d => d.imported.name != 'all_cul')
+                  path.node.specifiers = path.node.specifiers.filter(d => !d.imported.name.startsWith('all_cul'))
                   //vs: path.node.specifiers.splice(path.node.specifiers.findIndex(d => ..))
                 }
 

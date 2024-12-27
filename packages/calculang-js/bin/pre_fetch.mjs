@@ -2,6 +2,9 @@
 import {dirname, resolve} from 'node:path'
 import {readFile} from 'node:fs/promises' // Relying on NodeJS APIs to read from local FS
 
+// this ONLY does pre-fetching of URLS/FS files
+// AND replaces all_cul with all_culx
+
 import * as Babel from '../../standalone/babel.mjs' // but I can conditionally use node api - prob a bad idea?
 
 // returns fs. fs uses global references except for entrypoint and updates code to use global references. This is essential because e.g. ./base.cul.js can refer to different files depending on file/model structure

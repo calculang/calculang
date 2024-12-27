@@ -1,6 +1,6 @@
 
 import {dirname, resolve} from 'node:path'
-import {readFile} from 'node:fs/promises'
+import {readFile} from 'node:fs/promises' // Relying on NodeJS APIs to read from local FS
 
 import * as Babel from '../../standalone/babel.mjs' // but I can conditionally use node api - prob a bad idea?
 
@@ -14,7 +14,7 @@ export async function pre_fetch(input /* url (string) or else { source: `<code>`
     url = input;
     source = null;
   } else if (typeof input === 'object' && input !== null) {
-    fsOut = input
+    fsOut = {...input}
   } else {
     throw new TypeError('Input must be either a URL string or an object containing `url` and `source`.');
   }
@@ -85,15 +85,20 @@ export async function pre_fetch(input /* url (string) or else { source: `<code>`
               } else {
                 if (isUrlParent) {
                   //console.log('debug', resolved, path.node.source.value)
-                  resolved = new URL(path.node.source.value, resolved /* or dirname_parent: not necessary here */).toString()
+                  // but I only want this to happen 
+                  //if (!fsOut.hasOwnProperty(resolved))
+                    resolved = new URL(path.node.source.value, resolved /* or dirname_parent: not necessary here */).toString()
                 } else {
-                  resolved = resolve(dirname_parent, path.node.source.value);
+                  if (!fsOut.hasOwnProperty(resolved))
+                    resolved = resolve(dirname_parent, path.node.source.value);
                 }
               }
 
-              path.node.source.value = resolved
+              if (!fsOut.hasOwnProperty(path.node.source.value))
+                path.node.source.value = resolved
 
-              next.push({resource: path.node.source.value, resolved}) // this seems to work TODO remote URLs
+              if (!fsOut.hasOwnProperty(path.node.source.value))
+                next.push({resource: path.node.source.value/*, resolved*/}) // this seems to work TODO remote URLs
             },
 
           }

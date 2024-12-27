@@ -1,0 +1,4 @@
+{
+  "source": "import { b } from 'b.cul.js';\nexport const a = () => a_in;",
+  "b.cul.js": "export const b = () => \"b\";"
+}

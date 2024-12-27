@@ -10,12 +10,12 @@ describe('local source files', async () => {
       , null, 2)).toMatchFileSnapshot('./snapshots/a.snapshot');
   })
 
-  /*it('b', async () => {
+  it('b', async () => {
     await expect(JSON.stringify(
       await pre_fetch({ source: `import { b } from 'b.cul.js'; export const a = () => a_in;`,
                         'b.cul.js': `export const b = () => "b";`
        })
-      , null, 2).toMatchFileSnapshot('./snapshots/b.snapshot');
-  })*/
+      , null, 2)).toMatchFileSnapshot('./snapshots/b.snapshot');
+  })
 
 })

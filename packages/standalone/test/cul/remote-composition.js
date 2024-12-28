@@ -7,13 +7,13 @@ import { writeFile } from 'node:fs/promises'
 // I can better encapsulate calcs by calling the api and overriding in here, OR use notebooks
 
 import { compile, compile_new, bundleIntoOne, introspection } from '../../index.js'; 
-import { pre_fetch } from '@calculang/calculang-js/bin/pre_fetch.mjs';
+import { pre_fetch } from '@calculang/calculang-js/bin/pre_fetch.node.mjs';
 
 //import { repayment_amount, capital_repayment, interest_repayment } from './url-loan.js'
 
 // TODO pre_fetch Depends on a url (local/remote) SO I need the Sourcecode option DONE
 // For impacts I want to enter many sources so fs again!
-const fs = await pre_fetch({source: `
+const fs = await pre_fetch({'entrypoint.cul.js': `
   
                     import {all_cul, balance_ as balance_orig} from "https://raw.githubusercontent.com/declann/calculang-loan-validator/refs/heads/main/models/simple-loan.cul.js";
 
@@ -46,15 +46,15 @@ const fs = await pre_fetch({source: `
   console.log(fs)
 
 /*const model = await compile({
-  entrypoint: 'source.cul.js',
+  entrypoint: 'entrypoint.cul.js.cul.js',
   fs,
   memo: true
 })*/
 
       let introspection_a;
-      introspection_a = await introspection('source', fs);
+      introspection_a = await introspection('entrypoint.cul.js', fs);
 
-const compiled = compile_new('source', introspection_a.fs0, introspection_a)
+const compiled = compile_new('entrypoint.cul.js', introspection_a.fs0, introspection_a)
 
 const bundle = bundleIntoOne(compiled, introspection_a, true);
 
@@ -64,6 +64,7 @@ const bundle = bundleIntoOne(compiled, introspection_a, true);
 
 await writeFile('remote-composition.bundle.js', bundleIntoOne(compiled, introspection_a, false))
 
+// TODO import objectURL of a Blob (supports unicode; better debugging)
 const data_uri_prefix =         "data:" + "text/javascript" + ";base64,";
 const u = data_uri_prefix + btoa(bundle)//(node) Buffer.from(bundle).toString('base64')
 

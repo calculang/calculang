@@ -42,6 +42,13 @@ import * as G from './graphlib.mjs' //  TODO PR esm output?
 //const G = await require("@dagrejs/graphlib")
 const alg = G.alg;
 
+const generatorOpts = {retainLines: true, experimental_preserveFormat: true, compact: false, concise: false}//{ compact: false, concise: false, retainLines: true }//{ compact: false, retainLines: true }
+const parserOpts = { tokens: true, createParenthesizedExpressions: true }
+// experimental_preserveFormat switched Off for sourcemap generation because its sourcemaps appear to be buggy
+// Report this when I output sourcemaps from cli?
+// I use experimental_preserveFormat used to prevent threading sourcemaps or alternative coding for pre- processing being done now
+
+
 // strict .cul.js extension because file references must be precise now - prefering consistency
 
 
@@ -79,6 +86,8 @@ export const introspection = async (entrypoint, fs) => {
 
     // CHOICES to make graph for all_cul replacement collection, make graph directly in visior or make it from cul_scope_ids_to_resource
     Babel.transform(code, {
+      generatorOpts,
+      parserOpts,
       plugins: [
         [({ types }) =>
         ({
@@ -237,9 +246,13 @@ export const introspection = async (entrypoint, fs) => {
 
     const file = global_state.cul_scope_ids_to_resource.get(+s).split('?')[0] // TOFIX: not robust to custom query patterns in imports
 
+    //fs0[file] = fs[file]
+
     fs0[file] = Babel.transform(fs[file], {
-      generatorOpts: { compact: true, retainLines: true }, // prob dont matter here
-      sourceMaps: false,
+      generatorOpts,
+      parserOpts, //: { compact: false, retainLines: true }, // prob dont matter here
+      sourceMaps: false, // MAYBE because fs0 is different now (specifically: `if (condition) return 'a';\nelse return ...` hoists else!) I need to keep sourcemaps and thread through CONFIRMED alt. do a ligher/faster replacement? This will affect interactive perf surely
+      // ALTERNATIVELY...
       plugins: [
         [
           ({ types }) => ({
@@ -276,7 +289,10 @@ export const introspection = async (entrypoint, fs) => {
 
                 // TODO:
                 // and additional filter for things defined here (another little_introspection_ call)
-                if(path.node.specifiers.some(d => d.imported.name.startsWith('all_cul'))) {
+                if(path.node.specifiers.some(d => d.imported.name.startsWith('all_cul'))) { // take all_cul specifier loc and replace with joined string
+
+                  const all_cul_loc_start = path.node.specifiers.find(d => d.imported.name.startsWith('all_cul')).loc.start.index
+                  const all_cul_loc_end = path.node.specifiers.find(d => d.imported.name.startsWith('all_cul')).loc.end.index // i need this because can be all_culxy
                   //console.log('all_cul triggered');
 
                   // exclude own definitions?
@@ -291,6 +307,8 @@ export const introspection = async (entrypoint, fs) => {
                     
                     if (!specifiers.includes(d) && !locals.includes(d))
                       path.node.specifiers.push(types.importSpecifier(types.identifier(d), types.identifier(d)))
+
+                    debugger;
                   })
 
                   path.node.specifiers = path.node.specifiers.filter(d => !d.imported.name.startsWith('all_cul'))
@@ -305,6 +323,8 @@ export const introspection = async (entrypoint, fs) => {
         ]]
 
     }).code
+
+    console.log('DECLAN: fs0', fs0)
 
     //debugger;
     //console.log('ggg', [...(await little_introspection_(file, fs0)).cul_functions])
@@ -363,6 +383,8 @@ export const introspection = async (entrypoint, fs) => {
   
 
     Babel.transform(code, {
+      generatorOpts,
+      parserOpts,
       plugins: [
         [({ types }) =>
         ({
@@ -479,6 +501,8 @@ export const introspection = async (entrypoint, fs) => {
     let code = fs ? fs[entrypoint] : await (await fetch(entrypoint)).text();
 
     Babel.transform(code, {
+      generatorOpts,
+      parserOpts,
       plugins: [
         [({ types }) =>
         ({
@@ -953,7 +977,8 @@ export const compile_new = (entrypoint, fs, introspection) => {
 
     return Babel.transform(fs[introspection.cul_scope_ids_to_resource.get(cul_scope_id).split('?')[0]], {
       //presets: ["es2015", "react"],
-      generatorOpts: { compact: true, retainLines: true },
+      generatorOpts: {...generatorOpts, experimental_preserveFormat: false},
+      //parserOpts, //: { compact: false, concise: false, retainLines: true },
       sourceMaps: true,
       plugins: [
         [
@@ -1249,7 +1274,8 @@ export const bundleIntoOne = (compiled, introspection, memoize) => {
 
     compiled2.push(Babel.transform(input.code, {
       //presets: ["es2015", "react"],
-      generatorOpts: { /*compact: true, This makes a mess*/ retainLines: true },
+      generatorOpts: {...generatorOpts, experimental_preserveFormat: false},
+      //parserOpts, //: { compact: false, concise: false, retainLines: true },
       sourceMaps: false,
       plugins: [
         [
@@ -1262,7 +1288,7 @@ export const bundleIntoOne = (compiled, introspection, memoize) => {
                 })
               },*/
               ImportDeclaration(path) {
-                if (!(path.node.source.value.includes('.cul.js') || path.node.source.value == 'source')) return;
+                if (!(path.node.source.value.includes('.cul.js')/* || path.node.source.value == 'source'*/)) return;
                 path.remove();
                 //debugger;//
 
@@ -1392,6 +1418,8 @@ export const compile = async ({entrypoint, fs, memo = true}) => {
   //else  compiled = await compile_new("entry.cul.js", {'entry.cul.js': await (await fetch(entrypoint)).text() }, introspection_a); // entrypoint=url works if I just configure fs here
   const bundle = bundleIntoOne(compiled, introspection_a, memo);
   
+  // I think I moved to btoa to test on bun and deno. But createObjectURL on a Blob is clearly better for node and browsers! (and what mosaic/dev/index.html does to load asmToESM output)
+  // + do \n//# sourceURL=${identifier}.js at end of blob content => predictable debugging?
   //const u = URL.createObjectURL(new Blob([bundle], { type: "text/javascript" }))
   //console.log(`creating ${u}`)
   const data_uri_prefix =         "data:" + "text/javascript" + ";base64,";
@@ -1408,3 +1436,24 @@ export const compile = async ({entrypoint, fs, memo = true}) => {
     bundle // poss. change to code?
   }
 }
+
+
+// TODO API revive this (now copied in lots of places)? Blobs versus data uris?
+
+
+// alternative patterns?
+// see e.g. doimport https://observablehq.com/@kreijstal/import-global-as-esm
+
+/*export const packageCalculang_new = async (bundledIntoOne) => {
+
+  let compiled = URL.createObjectURL(
+    new Blob(
+      [bundledIntoOne],
+      { type: "text/javascript" }
+    )
+  )
+  
+  let ret = await import(compiled)
+  URL.revokeObjectURL(compiled)
+  return ret
+}*/

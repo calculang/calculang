@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { pre_fetch } from './pre_fetch.mjs'
+import { pre_fetch } from './pre_fetch.node.mjs'
 import { bundleIntoOne, compile_new, introspection } from '@calculang/standalone'
 
 import yargs from 'yargs'

@@ -1,3 +1,5 @@
+// TODO permit strings!!
+
 // THE TEST FOR THIS IS IMPORTS INTO WORKERS
 
 // I wonder if flechette is faster for ipc as cols?: I used this in development of a lot of things

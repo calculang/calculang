@@ -1,6 +1,6 @@
-# calcudata experiments
+# calcudata
 
-Static data from calculang models.
+Static data from calculang models. Not prescribed (you can call JS bundle in ordinary JS way)
 
 test a change wo update of version
 

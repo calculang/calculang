@@ -308,7 +308,7 @@ export const introspection = async (entrypoint, fs) => {
                     if (!specifiers.includes(d) && !locals.includes(d))
                       path.node.specifiers.push(types.importSpecifier(types.identifier(d), types.identifier(d)))
 
-                    debugger;
+                    //debugger;
                   })
 
                   path.node.specifiers = path.node.specifiers.filter(d => !d.imported.name.startsWith('all_cul'))

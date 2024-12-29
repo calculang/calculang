@@ -6,6 +6,7 @@
   "author": "Declan Naughton",
   "type": "module",
   "scripts": {
+    "serve": "npx http-server --cors -c-1 -p 9999 .",
     "test": "vitest run",
     "test:update": "vitest run --update",
     "test:watch": "vitest",

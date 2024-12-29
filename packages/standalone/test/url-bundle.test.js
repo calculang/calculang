@@ -2,7 +2,10 @@ import { expect, describe, it } from 'vitest';
 import { resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
-import { pre_fetch } from '@calculang/calculang-js/bin/pre_fetch.node.mjs'
+import { pre_fetch } from '@calculang/calculang-js/bin/pre_fetch.node.mjs' // TODO test standalone pre_fetch also
+
+import { pre_fetch as pre_fetch_web } from '../pre_fetch.mjs' // TODO test standalone pre_fetch also
+
 import {compile} from '../index.js';
 
 
@@ -34,5 +37,15 @@ describe('remote fetch and bundle', async () => {
     })).bundle).toMatchFileSnapshot('./bundles/import-url3.bundle.js');
   })
   // TODO add tests accross remote domains or directories (base url should be updating appropriately)
+
+
+
+  /*it('import-url-dta-TA', async () => {
+    await expect((await compile({
+      entrypoint: './test/cul/import-url-dta-TA.cul.js',
+      fs: await pre_fetch_web({'./test/cul/import-url-dta-TA.cul.js': }), // I'd need to do a readFile here to properly test. Issue definitely in pre_fetch with object provided: more tests for this? e.g. pre_fetch_bundle.test.js
+      memo: false
+    })).bundle).toMatchFileSnapshot('./bundles/import-url-dta-TA.bundle.js');
+  })*/
 
 })

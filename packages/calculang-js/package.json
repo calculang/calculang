@@ -8,6 +8,7 @@
   "main": "dist/compiler.js",
   "license": "AGPL-3.0-only",
   "scripts": {
+    "cul-js": "cul-js",
     "test": "vitest run",
     "test:update": "vitest run --update",
     "test:watch": "vitest",

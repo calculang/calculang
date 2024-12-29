@@ -1,0 +1,40 @@
+{
+  "name": "calcudata",
+  "main": "./dist/index.js",
+  "module": "./dist/index.mjs",
+  "types": "./dist/index.d.ts",
+  "version": "0.4.0",
+  "license": "AGPL-3.0-only",
+  "description": "querying static data from calculang models",
+  "scripts": {
+    "build": "npm run clean && tsup",
+    "test": "#jest TODO move to vitest - what about .. TS? surely ok?",
+    "clean": "rimraf dist",
+    "coverage": "npm test -- --coverage"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/calculang/calculang.git",
+    "directory": "packages/calcudata"
+  },
+  "homepage": "https://github.com/calculang/calculang/tree/main/packages/calcudata",
+  "keywords": [
+    "calculang"
+  ],
+  "author": "Declan Naughton",
+  "bugs": {
+    "url": "https://github.com/declann/calcudata-experiments/issues"
+  },
+  "devDependencies": {
+    "@types/jest": "^29.5.12",
+    "jest": "^29.7.0",
+    "rimraf": "^6.0.1",
+    "ts-jest": "^29.2.5",
+    "ts-node": "^10.9.2",
+    "tsup": "^8.2.4",
+    "typescript": "^5.5.4"
+  },
+  "dependencies": {
+    "arquero": "^6.0.1"
+  }
+}

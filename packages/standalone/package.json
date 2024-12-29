@@ -15,6 +15,12 @@
     "downloadBAD": "curl -o babel.js https://cdn.jsdelivr.net/npm/@babel/standalone@7.24.10/babel.js?+esm && curl -o babel.js.map https://cdn.jsdelivr.net/npm/@babel/standalone@7.24.10/babel.js.map?+esm && curl https://cdn.jsdelivr.net/npm/@dagrejs/graphlib@2.2.4/+esm | head -n -1 > graphlib.mjs # last line is sourcemap: remove for vitest"
   },
   "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/calculang/calculang.git",
+    "directory": "packages/standalone"
+  },
+  "homepage": "https://github.com/calculang/calculang/tree/main/packages/standalone",
   "directories": {
     "test": "test"
   },

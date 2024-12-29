@@ -8,6 +8,7 @@
   "description": "querying static data from calculang models",
   "scripts": {
     "build": "npm run clean && tsup",
+    "download": "curl https://cdn.jsdelivr.net/npm/arquero@7.2.0/+esm | head -n -1 > ./src/imports/arquero.mjs && curl https://cdn.jsdelivr.net/npm/@uwdata/flechette@1.1.1/dist/flechette.mjs/+esm | head -n -1 > ./src/imports/flechette.mjs # last line is sourcemap: remove for vitest",
     "test": "#jest TODO move to vitest - what about .. TS? surely ok?",
     "clean": "rimraf dist",
     "coverage": "npm test -- --coverage"
@@ -35,6 +36,6 @@
     "typescript": "^5.5.4"
   },
   "dependencies": {
-    "arquero": "^6.0.1"
+    "arquero": "^7.2.0"
   }
 }

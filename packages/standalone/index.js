@@ -324,7 +324,7 @@ export const introspection = async (entrypoint, fs) => {
 
     }).code
 
-    console.log('DECLAN: fs0', fs0)
+    //console.log('DECLAN: fs0', fs0)
 
     //debugger;
     //console.log('ggg', [...(await little_introspection_(file, fs0)).cul_functions])

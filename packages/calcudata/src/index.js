@@ -11,7 +11,7 @@ const aq = (typeof window === 'undefined') ? await import('arquero') : await imp
 
 
 // https://stackoverflow.com/questions/18957972/cartesian-product-of-objects-in-javascript
-export const cartesianProduct = (input, current) => {
+const cartesianProduct = (input, current) => {
   if (!input || !input.length) { return []; }
 
   var head = input[0];

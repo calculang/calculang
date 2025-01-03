@@ -1,8 +1,7 @@
 {
-  "name": "calcudata",
-  "main": "./dist/index.js",
-  "module": "./dist/index.mjs",
-  "types": "./dist/index.d.ts",
+  "name": "@calculang/calcudata",
+  "type": "module",
+  "main": "src/index.js",
   "version": "0.4.0",
   "license": "AGPL-3.0-only",
   "description": "querying static data from calculang models",

@@ -177,6 +177,8 @@ const input_domains = ${JSON.stringify(input_domains)}; // order matters
 
 export const lookup_fields = () => [${Object.keys(input_domains).map(d => d.slice(0,-3)+'()').join(',')}]
 
+export const lookup_fields_index = () => [${Object.keys(input_domains).map(d => `input_domains['${d}'].findIndex(${d.slice(0,-3)}())`).join(',')}] // just call this indexes?
+
 export const index = () => {
   /*input_domains.entries().reduce((a,v, i) => {
     return a + v[1].indexOf()

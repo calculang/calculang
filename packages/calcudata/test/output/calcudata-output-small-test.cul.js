@@ -39,11 +39,14 @@ const input_domains = {"a_in":[1,2,5],"b_in":[1,2,3,4,5]}; // order matters
 
 export const lookup_fields = () => [a(),b()]
 
-export const lookup_fields_index = () => [[1,2,5].findIndex(a()),[1,2,3,4,5].findIndex(b())] // just call this indexes? 
+export const lookup_fields_index = () => [[1,2,5].indexOf(a()),[1,2,3,4,5].indexOf(b())] // just call this indexes? 
 
 const cardinalities = () => [3,5]
 
+export const cardinality_factors = () => [...cardinalities()].reverse().reduce((a,v) => [...a, v*a[a.length-1]],[1]).reverse().slice(1)
+
 export const index = () => {
+  return lookup_fields_index().reduce((a,v, i) => a + v*cardinality_factors()[i], 0)
   /*input_domains.entries().reduce((a,v, i) => {
     return a + v[1].indexOf()
     }, 0)*/

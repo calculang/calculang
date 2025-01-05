@@ -177,11 +177,14 @@ const input_domains = ${JSON.stringify(input_domains)}; // order matters
 
 export const lookup_fields = () => [${Object.keys(input_domains).map(d => d.slice(0,-3)+'()').join(',')}]
 
-export const lookup_fields_index = () => [${Object.entries(input_domains).map(([k,v]) => JSON.stringify(v)+`.findIndex(${k.slice(0,-3)}())`).join(',')}] // just call this indexes? 
+export const lookup_fields_index = () => [${Object.entries(input_domains).map(([k,v]) => JSON.stringify(v)+`.indexOf(${k.slice(0,-3)}())`).join(',')}] // just call this indexes? 
 
 const cardinalities = () => [${Object.values(input_domains).map(d => d.length).join(',')}]
 
+export const cardinality_factors = () => [...cardinalities()].reverse().reduce((a,v) => [...a, v*a[a.length-1]],[1]).reverse().slice(1)
+
 export const index = () => {
+  return lookup_fields_index().reduce((a,v, i) => a + v*cardinality_factors()[i], 0)
   /*input_domains.entries().reduce((a,v, i) => {
     return a + v[1].indexOf()
     }, 0)*/

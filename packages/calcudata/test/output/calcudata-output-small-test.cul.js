@@ -39,7 +39,9 @@ const input_domains = {"a_in":[1,2,5],"b_in":[1,2,3,4,5]}; // order matters
 
 export const lookup_fields = () => [a(),b()]
 
-export const lookup_fields_index = () => [input_domains['a_in'].findIndex(a()),input_domains['b_in'].findIndex(b())] // just call this indexes?
+export const lookup_fields_index = () => [input_domains['a_in'].findIndex(a()),input_domains['b_in'].findIndex(b())] // just call this indexes? Just put arrays in here?
+
+const cardinalities = () => [3,5]
 
 export const index = () => {
   /*input_domains.entries().reduce((a,v, i) => {

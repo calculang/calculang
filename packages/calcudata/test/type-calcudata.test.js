@@ -16,7 +16,7 @@ describe("type calcudata output is valid", () => {
           a_in: [1,2,5],
           b_in: [1,2,3,4,5]
         },
-        outputs: ['a', 'square']
+        outputs: ['square'] // a here is bad: double counted
       })
     ).toMatchFileSnapshot('./output/calcudata-output-small-test.cul.js')
   })

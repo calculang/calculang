@@ -163,7 +163,7 @@ console.log(table.getChild('random_seed_in').at(0));*/
 // each key is an input
 
 ${
-  Object.keys(input_domains).reduce((a,i) => a +`export const ${i} = () => ${i}_in;
+  Object.keys(input_domains).reduce((a,i) => a +`export const ${i.slice(0,-3)} = () => ${i};
   `,"")
 }
 
@@ -177,7 +177,7 @@ const input_domains = ${JSON.stringify(input_domains)}; // order matters
 
 export const lookup_fields = () => [${Object.keys(input_domains).map(d => d.slice(0,-3)+'()').join(',')}]
 
-export const lookup_fields_index = () => [${Object.keys(input_domains).map(d => `input_domains['${d}'].findIndex(${d.slice(0,-3)}())`).join(',')}] // just call this indexes? Just put arrays in here?
+export const lookup_fields_index = () => [${Object.entries(input_domains).map(([k,v]) => JSON.stringify(v)+`.findIndex(${k.slice(0,-3)}())`).join(',')}] // just call this indexes? 
 
 const cardinalities = () => [${Object.values(input_domains).map(d => d.length).join(',')}]
 

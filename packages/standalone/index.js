@@ -788,6 +788,8 @@ export const introspection = async (entrypoint, fs) => {
 
               if (path.node.arguments?.length == 0 && path.node.callee.name == undefined) return;
 
+              //if (parentfn == undefined) return; // top-level calls like console.log(/* cul call */)
+
 
               // BUG ? getting multiple links in set for individual calls. These differ when negs differ
               // does neg logic need to apply over all?
@@ -943,7 +945,7 @@ export const introspection = async (entrypoint, fs) => {
           .reduce((a, v) => [...a, ...v], [])
           .includes(neg_in);
 
-        if (!result) introspection.cul_input_map.get(d).delete(neg_in);
+        if ((!result) &&  introspection.cul_input_map.has(d) /* support top-level calls e.g. console.log(sales({...})) in testing */) introspection.cul_input_map.get(d).delete(neg_in);
       });
     });
   });
@@ -1302,6 +1304,8 @@ export const bundleIntoOne = (compiled, introspection, memoize) => {
                   path.remove();
               },
               CallExpression(path) { // TODO audit after old code, if I am properly conditioning on calculang logic
+
+                // relies on consistency including order! with introspection/compile logic
 
                 if (
                   !introspection.cul_input_map.has(

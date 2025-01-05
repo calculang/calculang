@@ -3,4 +3,5 @@ dist
 .env
 .DS_Store
 coverage
-test
+#test
+worker.html

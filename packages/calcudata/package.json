@@ -6,9 +6,11 @@
   "license": "AGPL-3.0-only",
   "description": "querying static data from calculang models",
   "scripts": {
+    "test": "vitest run",
+    "test:update": "vitest run --update",
+    "test:watch": "vitest",
     "build": "npm run clean && tsup",
     "download": "curl https://cdn.jsdelivr.net/npm/arquero@7.2.0/+esm | head -n -1 > ./src/imports/arquero.mjs && curl https://cdn.jsdelivr.net/npm/@uwdata/flechette@1.1.1/dist/flechette.mjs/+esm | head -n -1 > ./src/imports/flechette.mjs # last line is sourcemap: remove for vitest",
-    "test": "#jest TODO move to vitest - what about .. TS? surely ok?",
     "clean": "rimraf dist",
     "coverage": "npm test -- --coverage"
   },
@@ -35,6 +37,7 @@
     "typescript": "^5.5.4"
   },
   "dependencies": {
-    "arquero": "^7.2.0"
+    "arquero": "^7.2.0",
+    "vitest": "^2.1.8"
   }
 }

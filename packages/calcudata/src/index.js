@@ -56,7 +56,7 @@ function copy(obj) {
 // if you prefer an input in the output, you can provide it as a domain (even if it should have a fixed value)
 // alternatively just join afterwards
 export const calcudata = ({
-  type = 'objects', // or 'arrow', 'arrow-ipc' or 'arquero' maybe Or "load-calculang"
+  type = 'objects', // or 'arrow', 'arrow-ipc' or 'arquero' maybe Or "calculang" (dynamic save/load)
   models,
   input_domains /*Bug should be array*/,
   input_cursors,
@@ -126,6 +126,77 @@ export const calcudata = ({
     table1 = table0.fold(outputs, { as: ["formula", "value"] })
   else
     table1 = table0
+
+  if (type == 'calculang') {
+    if (orientation == 'rows')
+      console.error('Rows not permitted for calculang type output from calcudata')
+    
+    return `
+    const aq = (typeof window === 'undefined') ? await import('arquero') : await import('https://esm.sh/arquero@7.2.0') // Is this all I needed for node+browser+worker compat?
+
+const flechette = (typeof window === 'undefined') ? await import('@uwdata/flechette') : await import('https://esm.sh/@uwdata/flechette') // Is this all I needed for node+browser+worker compat?
+
+
+const arr = ${JSON.stringify(Array.from( // uncertain about this approach for perf ? s/t in flechette etc.?
+  calcudata({
+  type:'arrow-ipc',
+  models, input_domains, input_cursors, outputs, orientation: 'columns'
+})))}
+
+
+const u = new Uint8Array(arr)
+
+//console.log(u)
+
+// arquero works too
+//console.log(aq.fromArrow(u))
+
+const table = flechette.tableFromIPC(u)
+
+/*
+
+console.log(JSON.stringify(table.schema.fields, 0, 2));
+
+// random access pattern: E s/t better?
+console.log(table.getChild('random_seed_in').at(0));*/
+
+// each key is an input
+
+export const random_seed = () => random_seed_in;
+
+// TODO loop through input_domains
+
+// I need to calc an index
+
+export const index = () => random_seed();
+// TODO
+
+// see: https://observablehq.com/@jheer/from-apache-arrow-to-javascript-objects
+export const row = () => table.get(index())
+
+// each output fns like this:
+
+${
+  outputs.reduce((v,o) => `export const ${o} = () => row().${o};
+  `+v,"")
+}
+
+
+/*export const policy_term = () => {
+  //return table.getChild('policy_term').at(index())
+  return row().policy_term
+}*/
+
+// this is only allowed with memo:false, due to order of memo bundle output
+//console.log(policy_term({random_seed_in:1}))
+// calculang calls outside 
+
+// console.log()
+
+// run this with
+// : npx cul-js compile ./simulate-ul-nb-pvs-OUT-CALCUDATA.cul.js --memo=false | node --input-type=module
+`
+  }
 
   if (type == 'arquero')
     return table1

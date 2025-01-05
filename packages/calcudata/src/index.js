@@ -162,13 +162,27 @@ console.log(table.getChild('random_seed_in').at(0));*/
 
 // each key is an input
 
+${
+  Object.keys(input_domains).reduce((a,i) => a +`export const ${i} = () => ${i}_in;
+  `,"")
+}
+
 export const random_seed = () => random_seed_in;
 
 // TODO loop through input_domains
 
 // I need to calc an index
 
-export const index = () => random_seed();
+const input_domains = ${JSON.stringify(input_domains)}; // order matters
+
+export const lookup_fields = () => [${Object.keys(input_domains).map(d => d.slice(0,-3)+'()').join(',')}]
+
+export const index = () => {
+  /*input_domains.entries().reduce((a,v, i) => {
+    return a + v[1].indexOf()
+    }, 0)*/
+  
+};
 // TODO
 
 // see: https://observablehq.com/@jheer/from-apache-arrow-to-javascript-objects
@@ -176,9 +190,10 @@ export const row = () => table.get(index())
 
 // each output fns like this:
 
+
 ${
-  outputs.reduce((v,o) => `export const ${o} = () => row().${o};
-  `+v,"")
+  outputs.reduce((a,o) => `export const ${o} = () => row().${o};
+  `+a,"")
 }
 
 

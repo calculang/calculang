@@ -127,7 +127,7 @@ export const calcudata = ({
   else
     table1 = table0
 
-  if (type == 'calculang') {
+  if (type == 'calculang') { // TODO include audit info, poss. incl. model contents (deff version of hash)
     if (orientation == 'rows')
       console.error('Rows not permitted for calculang type output from calcudata')
     

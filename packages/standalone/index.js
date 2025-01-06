@@ -17,6 +17,9 @@
 
 //import * as Babel from 'https://unpkg.com/@babel/standalone/babel.js';
 import * as Babel from './babel.mjs'
+
+import * as eslint from './eslint-linter-browserify.mjs'
+
 //import * as Babel from 'https://cdn.jsdelivr.net/npm/@babel/standalone@7.24.10/+esm' // moved to latest 26/6, still pinning
 //const Babel = await require("@babel/standalone")
 
@@ -977,7 +980,7 @@ export const compile_new = (entrypoint, fs, introspection) => {
     
     //let code = ((fs) && fs[entrypoint]) ? fs[entrypoint] : await (await fetch(entrypoint)).text();
 
-    return Babel.transform(fs[introspection.cul_scope_ids_to_resource.get(cul_scope_id).split('?')[0]], {
+    let return_code = Babel.transform(fs[introspection.cul_scope_ids_to_resource.get(cul_scope_id).split('?')[0]], {
       //presets: ["es2015", "react"],
       generatorOpts: {...generatorOpts, experimental_preserveFormat: false},
       //parserOpts, //: { compact: false, concise: false, retainLines: true },
@@ -1127,6 +1130,43 @@ export const compile_new = (entrypoint, fs, introspection) => {
           }), { params: { cul_scope_id } }
         ]]
     })
+
+    // TODO more development on linting
+
+    const linter = new eslint.Linter();
+
+    const messages = linter.verify(return_code.code, {
+      languageOptions: {
+        parserOptions: {
+          ecmaVersion: 2022, // ?  2022 here: https://github.com/UziTech/eslint-linter-browserify/blob/4844787ed5fe4f9173fc694d7df9bc161b15fb46/example/script.js
+          sourceType: "module"
+        }},    
+      rules: { // from s-p editor
+        semi: ["warn", "always"],
+        //"no-undef": ["error", "never"], // this is a key rule for calculang, but is easier to use on JS (because of intentional undefined inputs in _in convention)
+        "func-style": ["error", "expression"],
+        "consistent-return": ["error"], // not as good as forcing a return ..
+        // no-unused-expressions works in some cases but not others?
+        // bug whenever a = () => {b()}, but b()*3 works
+        "no-unused-expressions": ["error"], // doesn't catch when there are calls because doesn't know about purity ..
+        "prefer-const": "warn",
+        /*"no-restricted-syntax": [ // OFF as this should run on .cul.js to work, see #126
+          // docs https://eslint.org/docs/latest/rules/no-restricted-syntax
+          "error",
+          {
+            message: "calculang: don't pollute the _ namespace",
+            selector:
+              "ImportDeclaration[source.value=/cul_scope_/] > ImportSpecifier[local.name=/_$/]"
+            // converted to esm => match cul_scope_x rather than .cul
+          } // test with import {create as confetti_} from "https://cdn.jsdelivr.net/npm/canvas-confetti/+esm?cul_scope_id=3";
+        ]*/
+      }
+    }, { filename: "abc.mjs" });
+
+    console.warn('LINT OUTPUT DX', messages);
+
+
+    return return_code
   }
 
   // LAST STEP? replace imports with blobs?

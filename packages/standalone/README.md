@@ -46,3 +46,7 @@ NOTE: this still requires a modern browser and imports Javascript code from NPM/
 - [Metal](https://finding-calculang-foc.netlify.app/editor)
 
 - [Posts on my blog](https://calcwithdec.dev/) (the recent ones)
+
+## Software Included
+
+This repo and use of `@calculang/standalone` includes code from [eslint-linter-browserify](https://github.com/UziTech/eslint-linter-browserify) (MIT license), [babel](https://github.com/babel/babel/tree/main) (MIT license), [dagrejs](https://github.com/dagrejs/graphlib#readme) (MIT license), underscore (MIT license).

@@ -29,7 +29,7 @@ export const a = () => a_in;
   export const b = () => b_in;
   
 
-export const random_seed = () => random_seed_in;
+//export const random_seed = () => random_seed_in;
 
 // TODO loop through input_domains
 

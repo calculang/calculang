@@ -10,6 +10,7 @@ import packagejson from '../package.json' with { type: "json" };
 
 // cwd not always the cwd but the root of project - FIX?
 
+// refactor this so other tools can use it  - diff file, export/import. e.g. copying into ade87
 const stringify_introspection_info = (d) => {
   // https://gist.github.com/lukehorvat/133e2293ba6ae96a35ba
   let cul_functions = Array.from(d.cul_functions).reduce( // TODO sort here!!

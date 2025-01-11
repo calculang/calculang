@@ -827,6 +827,11 @@ export const introspection = async (entrypoint, fs) => {
                 Object.keys(path.scope.getAllBindings()).filter((d) => /_in?$/.test(d))
               ); // push defined _ins in scope (no filter for dependence)
 
+              // this might be done too quickly:
+              //if (global_state.cul_functions.has(`${state.opts.cul_scope_id}_${parentfn}_`)) parentfn = parentfn + "_";
+
+
+
               global_state.cul_links.add({
                 to: `${state.opts.cul_scope_id}_${parentfn}`,
                 from: `${state.opts.cul_scope_id}_${path.node.callee.name}`, // TODO develop logic for method calls (console.log=undefined) result.push({obj}) ignore

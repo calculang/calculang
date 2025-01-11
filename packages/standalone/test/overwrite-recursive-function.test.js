@@ -28,5 +28,6 @@ describe('overwrite recursive function THIS IS BAD OUTPUT', async () => {
       memo: false
     });
     await expect(m.bundle).toMatchFileSnapshot('./bundles/overwrite-recursive-function.bundle.js');
+    await expect(m.introspection).toMatchFileSnapshot('./bundles/overwrite-recursive-function.introspection.json');
   });
 })

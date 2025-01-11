@@ -14,7 +14,7 @@ export const s1_factor = ({}) => 0.9;
 export const s1_t = ({ t_in }) => t_in;
 export const s1_thing_ = ({ t_in }) => {
   if (s1_t({ t_in }) <= 0) return 1;else
-  return s1_thing_({ t_in: s1_t({ t_in }) - 1 }) * s1_factor({});
+  return s0_thing({ t_in: s1_t({ t_in }) - 1 }) * s1_factor({});
 };
 
 

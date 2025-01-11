@@ -9,8 +9,8 @@ const cwd = import.meta.dirname;
 // Replacing very precise lists by all_cul leads to a greater need for these cases to work
 // TOFIX traversal so that remaining test will work: for now fail is OK (but will confuse)
 
-describe('overwrite recursive function THIS IS BAD OUTPUT', async () => {
-  it('should work', async () => {
+describe('overwrite recursive function', async () => {
+  it('should maintain recursive relationships', async () => { // this is essential e.g. multif
     const m = await compile({
       entrypoint: 'entrypoint.cul.js',
       fs: {

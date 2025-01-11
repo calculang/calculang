@@ -831,6 +831,8 @@ export const introspection = async (entrypoint, fs) => {
               //if (global_state.cul_functions.has(`${state.opts.cul_scope_id}_${parentfn}_`)) parentfn = parentfn + "_";
 
 
+              // recursive calls to self: maintain the recursive relationship
+              if (parentfn == `${path.node.callee.name}_`) path.node.callee.name += '_'
 
               global_state.cul_links.add({
                 to: `${state.opts.cul_scope_id}_${parentfn}`,

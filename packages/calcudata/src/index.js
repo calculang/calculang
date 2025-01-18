@@ -7,7 +7,8 @@
 
 //const aq = import("./imports/arquero.mjs");
 
-const aq = (typeof window === 'undefined') ? await import('arquero') : await import('https://esm.sh/arquero@7.2.0') // Is this all I needed for node+browser+worker compat?
+// https://stackoverflow.com/a/18002694
+const aq = (typeof window !== 'undefined' || (typeof WorkerGlobalScope !== 'undefined' && self instanceof WorkerGlobalScope)) ? await import('https://esm.sh/arquero@7.2.0') : await import('arquero') // Is this all I needed for node+browser+worker compat?
 
 
 // https://stackoverflow.com/questions/18957972/cartesian-product-of-objects-in-javascript

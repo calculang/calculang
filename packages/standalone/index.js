@@ -1108,6 +1108,9 @@ export const compile_new = (entrypoint, fs, introspection) => {
                 )
                   return; // ignore non-cul calls
 
+                // TODO ADD THE def_ PART OF FUNCTION CODE ABOVE: ONLY NEEDED IN COMPILER
+                // TODO CONSIDER ADDING BREAKING TEST FIRST?
+
                 const ins = [
                   ...introspection.cul_input_map.get(
                     `${state.opts.params.cul_scope_id}_${path.node.callee.name}`

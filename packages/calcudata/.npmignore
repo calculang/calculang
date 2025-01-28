@@ -1,0 +1,8 @@
+node_modules
+#/src
+.env
+.DS_Store
+tsconfig.json
+tsup.config.ts
+coverage
+test

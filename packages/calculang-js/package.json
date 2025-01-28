@@ -1,18 +1,26 @@
 {
   "name": "@calculang/calculang-js",
   "version": "0.1.0-alpha.8",
+  "type": "module",
   "bin": {
-    "cul-js": "./bin/index.js"
+    "cul-js": "./bin/index.mjs"
   },
   "main": "dist/compiler.js",
   "license": "AGPL-3.0-only",
+  "scripts": {
+    "cul-js": "cul-js",
+    "test": "vitest run",
+    "test:update": "vitest run --update",
+    "test:watch": "vitest",
+    "test:coverage": "#vitest run --coverage"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/calculang/calculang.git",
     "directory": "packages/calculang-js"
   },
   "homepage": "https://github.com/calculang/calculang/tree/main/packages/calculang-js",
-  "author": "Declan Naughton working for DCN Consulting",
+  "author": "Declan Naughton",
   "keywords": [
     "calculang",
     "calculations",
@@ -30,10 +38,6 @@
     "dist",
     "bin"
   ],
-  "scripts": {
-    "prepare": "yarn build",
-    "build": "babel src --out-dir dist"
-  },
   "jest": {
     "testEnvironment": "node"
   },
@@ -46,11 +50,13 @@
     "@babel/core": "^7.15.8",
     "@babel/preset-env": "^7.15.8",
     "@calculang/introspection-api": "0.1.0-alpha.8",
+    "@calculang/standalone": "^0.1.0-alpha.0",
     "commander": "^8.2.0",
     "graphlib": "^2.1.8",
     "loader-utils": "^2.0.0",
     "memfs": "^3.3.0",
-    "webpack": "^4.46.0"
+    "webpack": "^4.46.0",
+    "yargs": "^17.7.2"
   },
   "gitHead": "077b87f352a37c848c15b8e6db5ae23e45b0df74"
 }

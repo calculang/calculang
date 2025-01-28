@@ -1,0 +1,41 @@
+
+In ImportDeclaration I include 'local renames' for specifiers: This is necessary for threading I guess, but it's a FALSE FRIEND (or at least incomplete) for doing import X as X_orig: KEEP DOING import X_ as X_orig
+
+AND I must ONLY do the _ as thing IF I WILL HAVE A NEW DEFINITION TO REPLACE IT (or rename will not happen)
+
+
+---
+
+DEV PLAN
+
+making pre_introspection pass to do:
+  - ~~build of cul_scope_ids_to_resource~~
+  - init of fs0
+    - if poss do fetching to populate fs LATER
+
+after pass then do depth-first:
+  - populate fs1. Apply applicable `replacements` (at first none)
+  - construct function list by calling introspection with fs1 but pointing to X
+  - Populate cul_scope_id -> array of names into `replacements`
+
+make fs1 = make all_cul replacements
+
+
+---
+
+DONE?
+
+When using old apis
+![alt text](image.png)
+
+make sure compile uses fs0 result (hooked into https://finding-calculang-foc.netlify.app/editor shortly)
+
+---
+
+Requirement: NOW I NEED TO HAVE .cul.js AND NOT .cul (fixed this in calculang.dev) to compile from command
+  - is this bad?
+
+---
+
+TODO output ESM again? (memo no longer matters) and tidy up calculang.dev ?
+Do this AFTER fixing APIs

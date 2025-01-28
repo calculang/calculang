@@ -1,0 +1,34 @@
+{
+  "name": "@calculang/standalone",
+  "version": "0.1.0-alpha.0",
+  "description": "A standalone compiler for calculang, which can be imported directly into modern browsers",
+  "license": "AGPL-3.0-only",
+  "author": "Declan Naughton",
+  "type": "module",
+  "scripts": {
+    "serve": "npx http-server --cors -c-1 -p 9999 .",
+    "test": "vitest run",
+    "test:update": "vitest run --update",
+    "test:watch": "vitest",
+    "test:coverage": "#vitest run --coverage",
+    "download": "curl https://cdn.jsdelivr.net/npm/eslint-linter-browserify@9.17.0/linter.mjs/+esm | head -n -1 > eslint-linter-browserify.mjs && curl https://cdn.jsdelivr.net/npm/@babel/standalone@7.26.4/babel.js/+esm | head -n -1 > babel.mjs && curl https://cdn.jsdelivr.net/npm/@dagrejs/graphlib@2.2.4/+esm | head -n -1 > graphlib.mjs # last line is sourcemap: remove for vitest",
+    "downloadBAD": "curl -o babel.js https://cdn.jsdelivr.net/npm/@babel/standalone@7.24.10/babel.js?+esm && curl -o babel.js.map https://cdn.jsdelivr.net/npm/@babel/standalone@7.24.10/babel.js.map?+esm && curl https://cdn.jsdelivr.net/npm/@dagrejs/graphlib@2.2.4/+esm | head -n -1 > graphlib.mjs # last line is sourcemap: remove for vitest"
+  },
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/calculang/calculang.git",
+    "directory": "packages/standalone"
+  },
+  "homepage": "https://github.com/calculang/calculang/tree/main/packages/standalone",
+  "directories": {
+    "test": "test"
+  },
+  "devDependencies": {
+    "vitest": "^2.1.8"
+  },
+  "dependencies": {
+    "@calculang/calculang-js": "^0.1.0-alpha.8",
+    "underscore": "^1.13.7"
+  }
+}

@@ -12,7 +12,11 @@ A language for calculations also generalises more readily than more rigid system
 
 A language for calculations can integrate freely with **established best-practice development, testing, and controls approach and tooling** for languages.
 
-## 🐣 early calculang highlights ⚡
+## chronicles of calculang (Feb 2025) ⚡
+
+See the note [chronicles of calculang](https://calculang.dev/#chronicles-of-calculang-feb-2025-published-work-and-status) on [calculang.dev](https://calculang.dev) for some recent progress and status update.
+
+## examples
 
 Visit [calculang.dev](https://calculang.dev) for the official website and examples!
 
@@ -23,7 +27,7 @@ My (older) [ObservableHQ collection](https://observablehq.com/collection/@declan
 
 ## follow calculang 📫
 
-For calculang updates follow [@calculang](https://twitter.com/calculang) on Twitter, or follow [@calculang@fosstodon.org](https://fosstodon.org/@calculang) from any(!) [Mastodon](https://joinmastodon.org/) server 🐘
+For calculang updates follow [@calculang](https://twitter.com/calculang) on Twitter, or follow [@calculang@fosstodon.org](https://fosstodon.org/@calculang) from any(!) [Mastodon](https://joinmastodon.org/) server 🐘 (I mainly post of Mastodon)
 
 ## compiler
 

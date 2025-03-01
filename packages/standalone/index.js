@@ -1317,12 +1317,14 @@ export const bundleIntoOne = (compiled, introspection, memoize) => {
 
   const calls = calls_fromDefinition(introspection)
 
+    let fns = []
 
   compiled.map((d, i) => ({ ...d, cul_scope_id: i }))/*.reverse()*/.forEach(input => {
 
     // put cul_
     const calls_scoped = calls.filter(d => d.cul_scope_id == input.cul_scope_id)
     let call_count = 0
+
 
     compiled2.push(Babel.transform(input.code, {
       //presets: ["es2015", "react"],
@@ -1381,6 +1383,8 @@ export const bundleIntoOne = (compiled, introspection, memoize) => {
 
                 if (introspection.cul_functions.has(input.cul_scope_id + '_' + name))
                   path.parent.id.name = 's' + input.cul_scope_id + '_' + name + ((memoize && formulae_not_inputs.includes(path.parent.id.name)) ? '$' : '')
+
+                fns.push(path.parent.id.name)
               }
 
 
@@ -1391,7 +1395,7 @@ export const bundleIntoOne = (compiled, introspection, memoize) => {
     }))
   })
 
-  const out = compiled2.reduce((a, v, i) => a + "\n////////////// cul scope id " + i + " //////////\n\n" + v.code + "\n\n\n", "") 
+  const out = "let model = {}; /* for worker use */\n\n\n" + compiled2.reduce((a, v, i) => a + "\n////////////// cul scope id " + i + " //////////\n\n" + v.code + "\n\n\n", "") 
 
 
 
@@ -1402,7 +1406,8 @@ export const bundleIntoOne = (compiled, introspection, memoize) => {
 //export const s${d.cul_scope_id}_${d.name} = ${y} => s${d.cul_scope_id}_${d.name}$m${y}`;
 //return `export const s${d.cul_scope_id}_${d.name}$m = memoize(s${d.cul_scope_id}_${d.name}$, ${has_memo_hash ? `s0_memo_hash$("${d.name}")` : `${y} => Object.values(${y}).join(',')`});
 return `export const s${d.cul_scope_id}_${d.name}$m = memoize(s${d.cul_scope_id}_${d.name}$, ${has_memo_hash ? `s0_memo_hash$("${d.name}")` : `${y} => Object.values(${y}).toString()`}); // DN moved memo_hash to be formulaname => hash function
-export const s${d.cul_scope_id}_${d.name} = ${y} => s${d.cul_scope_id}_${d.name}$m${y}`;
+export const s${d.cul_scope_id}_${d.name} = ${y} => s${d.cul_scope_id}_${d.name}$m${y}
+model['s${d.cul_scope_id}_${d.name}'] = s${d.cul_scope_id}_${d.name}`;
   }).join('\n\n')) + `
   // from https://cdn.jsdelivr.net/npm/underscore@1.13.6/underscore-esm.js
 
@@ -1432,13 +1437,18 @@ function has$1(obj, key) {
   // can all_cul work be much simpler by thread type logic here?
 
   // ORDER IS IMPORTANT
-  + [...introspection.cul_functions.values()].sort((a,b) => b.cul_scope_id-a.cul_scope_id).filter(d => d.cul_scope_id != 0 && (d.reason == 'explicit import' || d.reason == 'explicit import (renamed)')).map(d => `export const s${d.cul_scope_id}_${d.name} = s${d.cul_source_scope_id}_${d.imported}`).join(";\n") + '\n\n\n'
+  + [...introspection.cul_functions.values()].sort((a,b) => b.cul_scope_id-a.cul_scope_id).filter(d => d.cul_scope_id != 0 && (d.reason == 'explicit import' || d.reason == 'explicit import (renamed)')).map(d => `export const s${d.cul_scope_id}_${d.name} = s${d.cul_source_scope_id}_${d.imported}; model['s${d.cul_scope_id}_${d.name}'] = s${d.cul_scope_id}_${d.name}`).join(";\n") + '\n\n\n'
 
-  + [...introspection.cul_functions.values()].filter(d => d.cul_scope_id == 0 && (d.reason == 'explicit import' || d.reason == 'explicit import (renamed)')).map(d => `export const ${d.name} = s${d.cul_source_scope_id}_${d.imported}`).join(";\n") + '\n\n\n'
+  + [...introspection.cul_functions.values()].filter(d => d.cul_scope_id == 0 && (d.reason == 'explicit import' || d.reason == 'explicit import (renamed)')).map(d => `export const ${d.name} = s${d.cul_source_scope_id}_${d.imported}; model['${d.name}'] = ${d.name}; `).join(";\n") + '\n\n\n'
 
 
 + "\n\n\n\n////////// defaults (imports above tho): ////\n\n"
-    + [...introspection.cul_functions.values()].filter(d => d.cul_scope_id == 0 && d.reason == 'definition').map(d => `export const ${d.name} = s0_${d.name}`).join(";\n") + '\n\n\n'
+    + [...introspection.cul_functions.values()].filter(d => d.cul_scope_id == 0 && d.reason == 'definition').map(d => `export const ${d.name} = s0_${d.name}; model['${d.name}'] = ${d.name}`).join(";\n") + '\n\n\n'
+
+    // for workers flows
+    + fns.map(d => `model['${d}'] = ${d};`).join('\n')
+
+    + '\n\n'
 
     
 

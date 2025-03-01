@@ -1,4 +1,7 @@
- 
+// This replaces all_cul by call_cul<number> because all_cul can't appear twice in JS imports
+// and this approach mitigates hacking babel (but if there's a nice way to change its error reporting we should do that)
+
+
 //import {dirname, resolve} from 'node:path'
 //import {readFile} from 'node:fs/promises' // Relying on NodeJS APIs to read from local FS
 

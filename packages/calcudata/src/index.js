@@ -1,4 +1,6 @@
-// TODO permit strings!!
+
+
+// TODO pull error handling from star.ipynb?
 
 // THE TEST FOR THIS IS IMPORTS INTO WORKERS
 

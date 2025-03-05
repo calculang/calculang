@@ -8,6 +8,8 @@
 // this ONLY does pre-fetching of URLS/FS files
 // AND replaces all_cul with all_culx
 
+// TODO add test for object with different entrypoint
+
 import * as Babel from './babel.mjs' // but I can conditionally use node api - prob a bad idea?
 
 const generatorOpts = {retainLines: true, experimental_preserveFormat: true, compact: false, concise: false}//{ compact: false, concise: false, retainLines: true }//{ compact: false, retainLines: true }
@@ -15,7 +17,7 @@ const parserOpts = { tokens: true, createParenthesizedExpressions: true }
 
 
 // returns fs. fs uses global references except for entrypoint and updates code to use global references. This is essential because e.g. ./base.cul.js can refer to different files depending on file/model structure
-export async function pre_fetch(input /* url (string) or else { 'entrypoint.cul.js': `<code>` } */) {
+export async function pre_fetch(input /* url (string) or else { 'entrypoint.cul.js': `<code>` } */, entrypoint = 'entrypoint.cul.js') {
 
   let url, source, fsOut = {};
 
@@ -27,7 +29,7 @@ export async function pre_fetch(input /* url (string) or else { 'entrypoint.cul.
     fsOut = {...input}
   } else {
     // TODO update this?
-    throw new TypeError('Input must be either a URL string or an object containing `entrypoint.cul.js`');
+    throw new TypeError('Input must be either a URL string or an object containing `entrypoint.cul.js` or other entrypoint (specify as second param)');
   }
 
 
@@ -47,7 +49,7 @@ export async function pre_fetch(input /* url (string) or else { 'entrypoint.cul.
     }
   }
 
-  async function pre_fetch_(input) { // should i be getting to file:// urls in all cases for better consistency?
+  async function pre_fetch_(input, entrypoint) { // should i be getting to file:// urls in all cases for better consistency?
     let start, isUrlParent, dirname_parent, resolved = input;
 
     if (typeof input === 'string') {
@@ -66,12 +68,12 @@ export async function pre_fetch(input /* url (string) or else { 'entrypoint.cul.
     } else if (typeof input === 'object' && input !== null) {
       // TODO OPTIONALLY TAKE OTHER FILES FROM HERE (not needed b/c pre_fetch_ call on next conditions on presence)
       // No: I do need this, and all code must run here (or else no all_cul replacement etc)
-      start = input['entrypoint.cul.js'];
-      resolved = 'entrypoint.cul.js';
+      start = input[entrypoint];
+      resolved = entrypoint//'entrypoint.cul.js';
       isUrlParent = false // might mean local urls work?
       dirname_parent = '.'//dirname(resolved) // 
     } else {
-      throw new TypeError('input must be either a URL string or an object containing `entrypoint.cul.js`');
+      throw new TypeError('Input must be either a URL string or an object containing `entrypoint.cul.js` or other entrypoint (specify as second param)');
     }
 
     
@@ -123,11 +125,11 @@ export async function pre_fetch(input /* url (string) or else { 'entrypoint.cul.
 
     for (const n of next) {
       if (!fsOut.hasOwnProperty(n.resource))
-        await pre_fetch_(n.resource)
+        await pre_fetch_(n.resource, entrypoint)
     }
   }
 
-  await pre_fetch_(input)
+  await pre_fetch_(input, entrypoint)
   /*if (!source)
     await pre_fetch_(entrypoint, undefined, entrypoint)
   else

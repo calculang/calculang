@@ -1191,7 +1191,10 @@ export const compile_new = (entrypoint, fs, introspection) => {
 
 
 export const calls_fromDefinition = (introspection) => ([...introspection.cul_links].filter((d) => d.reason == "call" /* && !d.from.includes("undefined") ORDER GTEES NEEDED*/)
-  .map((d) => ({
+  .map((d) => {
+    if (!introspection.cul_functions.has(d.from))
+      console.error('calculang: cul function not present: ', d.from)
+    return ({
     ...d,
     fromDefinition: introspection.cul_functions.get(d.from).reason.includes(
       "import"
@@ -1200,7 +1203,7 @@ export const calls_fromDefinition = (introspection) => ([...introspection.cul_li
       [...introspection.cul_links].filter((e) => e.to == d.from)[0].from
       :
       d.from
-  }))
+  })})
   // THE REST LOOKUP ON fromDefinition AND ARE COPIED; ABOVE IS DIFFERENT !
   .map((d) => ({
     ...d,

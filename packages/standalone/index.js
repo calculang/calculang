@@ -1398,7 +1398,7 @@ export const bundleIntoOne = (compiled, introspection, memoize) => {
     }))
   })
 
-  const out = "let model = {}; /* for worker use */\n\n\n" + compiled2.reduce((a, v, i) => a + "\n////////////// cul scope id " + i + " //////////\n\n" + v.code + "\n\n\n", "") 
+  const out = /* model=for worker use */"let model = {}; \n\n\n" + compiled2.reduce((a, v, i) => a + "\n////////////// cul scope id " + i + " //////////\n\n" + v.code + "\n\n\n", "") 
 
 
 
@@ -1408,7 +1408,7 @@ export const bundleIntoOne = (compiled, introspection, memoize) => {
     //return `export const s${d.cul_scope_id}_${d.name}$m = memoize(s${d.cul_scope_id}_${d.name}$, ${has_memo_hash ? `s0_memo_hash$("${d.name}")` : "JSON.stringify"});
 //export const s${d.cul_scope_id}_${d.name} = ${y} => s${d.cul_scope_id}_${d.name}$m${y}`;
 //return `export const s${d.cul_scope_id}_${d.name}$m = memoize(s${d.cul_scope_id}_${d.name}$, ${has_memo_hash ? `s0_memo_hash$("${d.name}")` : `${y} => Object.values(${y}).join(',')`});
-return `export const s${d.cul_scope_id}_${d.name}$m = memoize(s${d.cul_scope_id}_${d.name}$, ${has_memo_hash ? `s0_memo_hash$("${d.name}")` : `${y} => Object.values(${y}).toString()`}); // DN moved memo_hash to be formulaname => hash function
+return `export const s${d.cul_scope_id}_${d.name}$m = memoize(s${d.cul_scope_id}_${d.name}$, ${has_memo_hash ? `s0_memo_hash$("${d.name}")` : /* DN moved memo_hash to be formulaname => hash function */`${y} => Object.values(${y}).toString()`}); 
 export const s${d.cul_scope_id}_${d.name} = ${y} => s${d.cul_scope_id}_${d.name}$m${y}
 model['s${d.cul_scope_id}_${d.name}'] = s${d.cul_scope_id}_${d.name}`;
   }).join('\n\n')) + `

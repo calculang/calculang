@@ -31,7 +31,7 @@ For calculang updates follow [@calculang](https://twitter.com/calculang) on Twit
 
 ## compiler
 
-`cul-js` CLI compiles calculang into Javascript and provides information about the resulting model (introspection).
+`cul-js` CLI compiles calculang into Javascript and provides information about the resulting model (introspection). (new: use the experimental `all_cul` branch for a compiler that works in your browser)
 
 ## usage
 
@@ -102,7 +102,7 @@ This interaction, done carefully, opens up many usecases. Not least, integration
 
 Initial implementation scales better conceptually vs. practically, but is nonetheless useful for an array of simple applications and carefully bounded problems beyond that.
 
-This is another way of saying: some technical creativity helps to get the most out of the existing implementation. Careful interation with Javascript leaves enormous scope open here!
+This is another way of saying: some technical creativity helps to get the most out of the existing implementation. Careful interaction with Javascript leaves enormous scope open here!
 
 ## roadmap
 
@@ -118,7 +118,7 @@ Extension authors for browsers/VSCode. These can be independent projects. Simila
 
 Frontend developers for blog/websites and community model frontends including tools.
 
-Community models and web apps, vizualisations/explorables (calculang.party?).
+Community models and web apps, visualizations/explorables (calculang.party?).
 
 All developers to get feedback/discuss/think re motivation and implementation/technical improvements.
 

@@ -1,4 +1,6 @@
- 
+// TODO consider traversal issues fixed 23/3/25 for browser code
+
+
 import {dirname, resolve} from 'node:path'
 import {readFile} from 'node:fs/promises' // Relying on NodeJS APIs to read from local FS
 

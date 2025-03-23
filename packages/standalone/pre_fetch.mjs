@@ -36,7 +36,7 @@ export async function pre_fetch(input /* url (string) or else { 'entrypoint.cul.
 
 
   //console.log(source)
-  let next = []; // next imports to traverse
+  //let next = []; // next imports to traverse
 
   //let fsOut = {}
 
@@ -51,7 +51,9 @@ export async function pre_fetch(input /* url (string) or else { 'entrypoint.cul.
 
   async function pre_fetch_(input, entrypoint) { // should i be getting to file:// urls in all cases for better consistency?
     let start, isUrlParent, dirname_parent, resolved = input;
+    let next = []
 
+    //console.log('input: ', input)
     if (typeof input === 'string') {
       // string => URL or local file
       if (isUrl(input)) {
@@ -59,7 +61,11 @@ export async function pre_fetch(input /* url (string) or else { 'entrypoint.cul.
         isUrlParent = true
         dirname_parent = input.replace(/\/[^/]*$/, '/') // remove last slash on
       } else { // path path
-        console.error('cant read local FS from web apis!')
+        // I need to be able to lookup the original fs object, but I cant?
+        start = fsOut[input]
+        resolved = input
+        isUrlParent = false
+        //console.error('cant read local FS from web apis!')
         //start = (await readFile(resolve(input), 'utf8'))//.toString('ascii')
         //isUrlParent = false
         //dirname_parent = dirname(input)
@@ -114,7 +120,8 @@ export async function pre_fetch(input /* url (string) or else { 'entrypoint.cul.
               if (!fsOut.hasOwnProperty(path.node.source.value))
                 path.node.source.value = resolved
 
-              if (!fsOut.hasOwnProperty(path.node.source.value))
+              // I should ALWAYS pre_fetch an import?
+              //if (!fsOut.hasOwnProperty(path.node.source.value))
                 next.push({resource: path.node.source.value/*, resolved*/}) // this seems to work TODO remote URLs
             },
 
@@ -124,9 +131,11 @@ export async function pre_fetch(input /* url (string) or else { 'entrypoint.cul.
     }).code; // assigning this directly without keeping sourcemap for inputSourceMap is bad. ALT just store resolutions? OR replace without using babel output?
 
     for (const n of next) {
-      if (!fsOut.hasOwnProperty(n.resource))
+      // shouldnt be condititional?
+      //if (!fsOut.hasOwnProperty(n.resource))
         await pre_fetch_(n.resource, entrypoint)
     }
+    
   }
 
   await pre_fetch_(input, entrypoint)

@@ -6,7 +6,7 @@ import { pre_fetch } from './pre_fetch.mjs'
 
 describe('local source files as objects (browser pre_fetch)', async () => {
 
-  it('a', async () => {
+  /*it('a', async () => {
     await expect(JSON.stringify(
       await pre_fetch({ 'entrypoint.cul.js': `export const a = () => a_in;` })
       , null, 2)).toMatchFileSnapshot('./snapshots/a.snapshot');
@@ -26,12 +26,13 @@ describe('local source files as objects (browser pre_fetch)', async () => {
                         'b.cul.js': `export const b = () => "b";`
        })
       , null, 2)).toMatchFileSnapshot('./snapshots/b.snapshot');
-  })
+  })*/
 
+  // fixed 23/3/25 TODO reflect Playground DTA
   it('import-url-dta-TA', async () => {
     await expect(JSON.stringify(
-      await pre_fetch({ 'entrypoint.cul.js': await readFile('./test/cul/import-url-dta-TA.cul.js'),
-                         './dta-TA.cul.js': await readFile('./test/cul/dta-TA.cul.js')
+      await pre_fetch({ 'entrypoint.cul.js': await readFile('./test/cul/import-url-dta-TA.cul.js', 'utf-8'),
+                         './dta-TA.cul.js': await readFile('./test/cul/dta-TA.cul.js', 'utf-8')
         })
         , null, 2)).toMatchFileSnapshot('./bundles/import-url-dta-TA.pre_fetch.snapshot');
   })

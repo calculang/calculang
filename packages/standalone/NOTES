@@ -1,3 +1,16 @@
+pre_fetch doesn't traverse entire fs object - FIXED?
+
+---
+
+LATER:
+
+I want to eliminate refactor on all_cul import whenever I override functions (possibly too cosmetic?)
+I can use import { all_cul as _A } from './..'.
+Potentially this improves all_cul00 issues? If I force different as. But users may want to import into same _thing? Then interim module works
+
+Consider on https://finding-calculang-foc.netlify.app/editor
+
+---
 
 In ImportDeclaration I include 'local renames' for specifiers: This is necessary for threading I guess, but it's a FALSE FRIEND (or at least incomplete) for doing import X as X_orig: KEEP DOING import X_ as X_orig
 

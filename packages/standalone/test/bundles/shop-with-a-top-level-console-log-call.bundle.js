@@ -1,3 +1,6 @@
+let model = {}; 
+
+
 
 ////////////// cul scope id 0 //////////
 
@@ -31,12 +34,20 @@ console.log(s0_sales({ units_in: 10, sales_price_in: 10 })); // <-- TESTING THIS
 
 ////////// defaults (imports above tho): ////
 
-export const sales = s0_sales;
-export const purchases = s0_purchases;
-export const profit = s0_profit;
-export const sales_price = s0_sales_price;
-export const purchase_price = s0_purchase_price;
-export const units = s0_units;
-export const expenses = s0_expenses
+export const sales = s0_sales; model['sales'] = sales;
+export const purchases = s0_purchases; model['purchases'] = purchases;
+export const profit = s0_profit; model['profit'] = profit;
+export const sales_price = s0_sales_price; model['sales_price'] = sales_price;
+export const purchase_price = s0_purchase_price; model['purchase_price'] = purchase_price;
+export const units = s0_units; model['units'] = units;
+export const expenses = s0_expenses; model['expenses'] = expenses
 
+
+model['s0_sales'] = s0_sales;
+model['s0_purchases'] = s0_purchases;
+model['s0_profit'] = s0_profit;
+model['s0_sales_price'] = s0_sales_price;
+model['s0_purchase_price'] = s0_purchase_price;
+model['s0_units'] = s0_units;
+model['s0_expenses'] = s0_expenses;
 

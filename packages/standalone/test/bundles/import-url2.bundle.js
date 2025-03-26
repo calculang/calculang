@@ -1,3 +1,6 @@
+let model = {}; 
+
+
 
 ////////////// cul scope id 0 //////////
 
@@ -52,27 +55,27 @@ export const s3_duration_ = ({ duration_in }) => duration_in; // years
 export const s3_interest_rate_ = ({ interest_rate_in }) => interest_rate_in; // annual
 
 
-export const s2_balance = s3_balance;
-export const s2_deposits = s3_deposits;
-export const s2_interest = s3_interest;
-export const s1_balance = s2_balance;
-export const s1_deposits = s2_deposits;
-export const s1_interest = s2_interest;
-export const s1_duration = s2_duration;
-export const s1_interest_rate_expected = s2_interest_rate_;
-export const s1_annual_payment = s2_annual_payment
+export const s2_balance = s3_balance; model['s2_balance'] = s2_balance;
+export const s2_deposits = s3_deposits; model['s2_deposits'] = s2_deposits;
+export const s2_interest = s3_interest; model['s2_interest'] = s2_interest;
+export const s1_balance = s2_balance; model['s1_balance'] = s1_balance;
+export const s1_deposits = s2_deposits; model['s1_deposits'] = s1_deposits;
+export const s1_interest = s2_interest; model['s1_interest'] = s1_interest;
+export const s1_duration = s2_duration; model['s1_duration'] = s1_duration;
+export const s1_interest_rate_expected = s2_interest_rate_; model['s1_interest_rate_expected'] = s1_interest_rate_expected;
+export const s1_annual_payment = s2_annual_payment; model['s1_annual_payment'] = s1_annual_payment
 
 
-export const actual_interest_rates_orig = s1_actual_interest_rates_;
-export const balance = s1_balance;
-export const deposits = s1_deposits;
-export const interest = s1_interest;
-export const duration = s1_duration;
-export const interest_rate_expected = s1_interest_rate_expected;
-export const annual_payment = s1_annual_payment;
-export const year = s1_year;
-export const actual_interest_rate_co = s1_actual_interest_rate_co;
-export const interest_rate = s1_interest_rate
+export const actual_interest_rates_orig = s1_actual_interest_rates_; model['actual_interest_rates_orig'] = actual_interest_rates_orig; ;
+export const balance = s1_balance; model['balance'] = balance; ;
+export const deposits = s1_deposits; model['deposits'] = deposits; ;
+export const interest = s1_interest; model['interest'] = interest; ;
+export const duration = s1_duration; model['duration'] = duration; ;
+export const interest_rate_expected = s1_interest_rate_expected; model['interest_rate_expected'] = interest_rate_expected; ;
+export const annual_payment = s1_annual_payment; model['annual_payment'] = annual_payment; ;
+export const year = s1_year; model['year'] = year; ;
+export const actual_interest_rate_co = s1_actual_interest_rate_co; model['actual_interest_rate_co'] = actual_interest_rate_co; ;
+export const interest_rate = s1_interest_rate; model['interest_rate'] = interest_rate; 
 
 
 
@@ -81,6 +84,22 @@ export const interest_rate = s1_interest_rate
 
 ////////// defaults (imports above tho): ////
 
-export const actual_interest_rates = s0_actual_interest_rates
+export const actual_interest_rates = s0_actual_interest_rates; model['actual_interest_rates'] = actual_interest_rates
 
+
+model['s0_actual_interest_rates'] = s0_actual_interest_rates;
+model['s1_year'] = s1_year;
+model['s1_actual_interest_rates_'] = s1_actual_interest_rates_;
+model['s1_actual_interest_rate_co'] = s1_actual_interest_rate_co;
+model['s1_interest_rate'] = s1_interest_rate;
+model['s2_annual_payment'] = s2_annual_payment;
+model['s2_duration'] = s2_duration;
+model['s2_interest_rate_'] = s2_interest_rate_;
+model['s3_balance'] = s3_balance;
+model['s3_deposits'] = s3_deposits;
+model['s3_interest'] = s3_interest;
+model['s3_year_'] = s3_year_;
+model['s3_annual_payment_'] = s3_annual_payment_;
+model['s3_duration_'] = s3_duration_;
+model['s3_interest_rate_'] = s3_interest_rate_;
 

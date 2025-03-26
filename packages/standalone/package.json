@@ -25,6 +25,7 @@
     "test": "test"
   },
   "devDependencies": {
+    "@vitest/ui": "^2.1.8",
     "vitest": "^2.1.8"
   },
   "dependencies": {

@@ -1,3 +1,6 @@
+let model = {}; 
+
+
 
 ////////////// cul scope id 0 //////////
 
@@ -21,7 +24,7 @@ export const s1_thing_ = ({ t_in }) => {
 
 
 
-export const thing_single = s1_thing_
+export const thing_single = s1_thing_; model['thing_single'] = thing_single; 
 
 
 
@@ -30,6 +33,11 @@ export const thing_single = s1_thing_
 
 ////////// defaults (imports above tho): ////
 
-export const thing = s0_thing
+export const thing = s0_thing; model['thing'] = thing
 
+
+model['s0_thing'] = s0_thing;
+model['s1_factor'] = s1_factor;
+model['s1_t'] = s1_t;
+model['s1_thing_'] = s1_thing_;
 

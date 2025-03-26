@@ -1,3 +1,6 @@
+let model = {}; 
+
+
 
 ////////////// cul scope id 0 //////////
 
@@ -32,12 +35,12 @@ export const s1_interest_rate_ = ({ interest_rate_in }) => interest_rate_in; // 
 
 
 
-export const balance = s1_balance;
-export const deposits = s1_deposits;
-export const interest = s1_interest;
-export const year = s1_year;
-export const annual_payment = s1_annual_payment;
-export const duration = s1_duration
+export const balance = s1_balance; model['balance'] = balance; ;
+export const deposits = s1_deposits; model['deposits'] = deposits; ;
+export const interest = s1_interest; model['interest'] = interest; ;
+export const year = s1_year; model['year'] = year; ;
+export const annual_payment = s1_annual_payment; model['annual_payment'] = annual_payment; ;
+export const duration = s1_duration; model['duration'] = duration; 
 
 
 
@@ -46,6 +49,15 @@ export const duration = s1_duration
 
 ////////// defaults (imports above tho): ////
 
-export const interest_rate = s0_interest_rate
+export const interest_rate = s0_interest_rate; model['interest_rate'] = interest_rate
 
+
+model['s0_interest_rate'] = s0_interest_rate;
+model['s1_balance'] = s1_balance;
+model['s1_deposits'] = s1_deposits;
+model['s1_interest'] = s1_interest;
+model['s1_year'] = s1_year;
+model['s1_annual_payment'] = s1_annual_payment;
+model['s1_duration'] = s1_duration;
+model['s1_interest_rate_'] = s1_interest_rate_;
 

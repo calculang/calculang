@@ -1,0 +1,5 @@
+{
+  "entrypoint.cul.js": "import {all_cul0} from 'abcd.cul.js'",
+  "abcd.cul.js": "import {all_cul0} from 'abc.cul.js'; export const d = () => a() + b() + c();",
+  "abc.cul.js": "export const a = () => 1; export const b = () => 1; export const c = () => c_in;"
+}

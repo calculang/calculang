@@ -40,7 +40,8 @@ export const deposits = s1_deposits; model['deposits'] = deposits; ;
 export const interest = s1_interest; model['interest'] = interest; ;
 export const year = s1_year; model['year'] = year; ;
 export const annual_payment = s1_annual_payment; model['annual_payment'] = annual_payment; ;
-export const duration = s1_duration; model['duration'] = duration; 
+export const duration = s1_duration; model['duration'] = duration; ;
+export const interest_rate_orig = s1_interest_rate_; model['interest_rate_orig'] = interest_rate_orig; 
 
 
 

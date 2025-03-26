@@ -292,7 +292,8 @@ export const introspection = async (entrypoint, fs) => {
 
                 // TODO:
                 // and additional filter for things defined here (another little_introspection_ call)
-                if(path.node.specifiers.some(d => d.imported.name.startsWith('all_cul'))) { // take all_cul specifier loc and replace with joined string
+                const all_cul_as = /* e.g. _orig or all_cul if nothing specified for as */ (path.node.specifiers.find(d => d.imported.name.startsWith('all_cul')))?.local?.name
+                if(all_cul_as != undefined) { // take all_cul specifier loc and replace with joined string
 
                   const all_cul_loc_start = path.node.specifiers.find(d => d.imported.name.startsWith('all_cul')).loc.start.index
                   const all_cul_loc_end = path.node.specifiers.find(d => d.imported.name.startsWith('all_cul')).loc.end.index // i need this because can be all_culxy
@@ -311,7 +312,11 @@ export const introspection = async (entrypoint, fs) => {
                     if (!specifiers.includes(d) && !locals.includes(d))
                       path.node.specifiers.push(types.importSpecifier(types.identifier(d), types.identifier(d)))
 
-                    //debugger;
+                    // with all_cul as _XYZ : I want to suffix overlapping formulas by _XYZ (default _orig)
+                    //if (!all_cul_as.includes('all_cul')) // exclude import {all_cul[0..]} only capture as by local matching this condition
+                    if (!specifiers.includes(d) && !specifiers.includes(d+'_') && locals.includes(d))
+                      path.node.specifiers.push(types.importSpecifier(types.identifier(d+(all_cul_as.includes('all_cul' /* no as */) ? '_orig' : all_cul_as /* default to _orig: safe or bad and disable this without rename (see alt. condition above) */)), types.identifier(d+'_')))
+
                   })
 
                   path.node.specifiers = path.node.specifiers.filter(d => !d.imported.name.startsWith('all_cul'))

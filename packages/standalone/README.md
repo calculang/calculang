@@ -12,6 +12,8 @@ Before these changes, they will live side-by-side.
 
 ## Usage
 
+TODO: `pre_fetch` is outside of compile process but is necessary for multiple all_cul support currently
+
 In modern browsers:
 
 ```js

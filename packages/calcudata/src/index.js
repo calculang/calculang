@@ -122,6 +122,9 @@ export const calcudata = ({
 
   }*/
 
+  if (type == 'objects' && orientation == 'columns')
+    return out // early exit to avoid arquero (dynamic Function code generation => doesn't run in cf)
+
   const table0 = aq.table(out)
   let table1
 
@@ -129,6 +132,7 @@ export const calcudata = ({
     table1 = table0.fold(outputs, { as: ["formula", "value"] })
   else
     table1 = table0
+
 
   if (type == 'calculang') { // TODO include audit info, poss. incl. model contents (deff version of hash)
     if (orientation == 'rows')

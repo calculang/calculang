@@ -122,8 +122,9 @@ export const calcudata = ({
 
   }*/
 
-  if (type == 'objects' && orientation == 'columns')
+  if (type == 'arrays' && orientation == 'columns')
     return out // early exit to avoid arquero (dynamic Function code generation => doesn't run in cf)
+  // arrays format is {x_in: [...], output1: [...] and input_cursor_id etc.}...
 
   const table0 = aq.table(out)
   let table1

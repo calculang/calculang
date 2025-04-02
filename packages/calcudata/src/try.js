@@ -9,9 +9,6 @@
 
 //const aq = import("./imports/arquero.mjs");
 
-import { calcudata_try } from './try';
-export {calcudata_try};
-
 // https://stackoverflow.com/a/18002694
 const aq = (typeof window !== 'undefined' || (typeof WorkerGlobalScope !== 'undefined' && self instanceof WorkerGlobalScope)) ? await import('https://esm.sh/arquero@7.2.0') : await import('arquero') // Is this all I needed for node+browser+worker compat?
 
@@ -61,7 +58,7 @@ function copy(obj) {
 // cursor inputs are not included in output: only domain inputs
 // if you prefer an input in the output, you can provide it as a domain (even if it should have a fixed value)
 // alternatively just join afterwards
-export const calcudata = ({
+export const calcudata_try = ({
   type = 'objects', // or 'arrow', 'arrow-ipc' or 'arquero' maybe Or "calculang" (dynamic save/load)
   models,
   input_domains /*Bug should be array*/,
@@ -104,7 +101,15 @@ export const calcudata = ({
   out['input_cursor_id'] = cp.map(d => d.input_cursor_id)
 
   outputs.forEach(f => {
-    out[f] = cp.map(d => models[d.model_id][f](d))
+    out[f] = cp.map(d => {
+      let o = 999.99;
+      try {
+        o = models[d.model_id][f](d)
+      } catch(e) {
+        console.log('DN error', e)
+      }
+      return o
+  })
   })
 
   //console.log(out)

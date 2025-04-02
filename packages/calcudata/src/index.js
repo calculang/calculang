@@ -9,7 +9,7 @@
 
 //const aq = import("./imports/arquero.mjs");
 
-import { calcudata_try } from './try';
+import { calcudata_try } from './try.js';
 export {calcudata_try};
 
 // https://stackoverflow.com/a/18002694

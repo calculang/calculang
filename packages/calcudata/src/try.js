@@ -106,7 +106,7 @@ export const calcudata_try = ({
       try {
         o = models[d.model_id][f](d)
       } catch(e) {
-        console.log('DN error', e)
+        console.log('DN error formula is', f, 'error is', e)
       }
       return o
   })

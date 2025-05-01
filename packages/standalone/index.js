@@ -1198,7 +1198,9 @@ export const compile_new = (entrypoint, fs, introspection) => {
 export const calls_fromDefinition = (introspection) => ([...introspection.cul_links].filter((d) => d.reason == "call" /* && !d.from.includes("undefined") ORDER GTEES NEEDED*/)
   .map((d) => {
     if (!introspection.cul_functions.has(d.from))
-      console.error('calculang: cul function not present: ', d.from)
+      console.error('calculang: cul function not present (d.from): ', d.from)
+    if (!introspection.cul_functions.has(d.fromDefinition))
+      console.error('calculang: cul function not present (d.fromDefinition): ', d.fromDefinition)
     return ({
     ...d,
     fromDefinition: introspection.cul_functions.get(d.from).reason.includes(

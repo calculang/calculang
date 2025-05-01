@@ -1199,8 +1199,6 @@ export const calls_fromDefinition = (introspection) => ([...introspection.cul_li
   .map((d) => {
     if (!introspection.cul_functions.has(d.from))
       console.error('calculang: cul function not present (d.from): ', d.from)
-    if (!introspection.cul_functions.has(d.fromDefinition))
-      console.error('calculang: cul function not present (d.fromDefinition): ', d.fromDefinition)
     return ({
     ...d,
     fromDefinition: introspection.cul_functions.get(d.from).reason.includes(
@@ -1212,7 +1210,10 @@ export const calls_fromDefinition = (introspection) => ([...introspection.cul_li
       d.from
   })})
   // THE REST LOOKUP ON fromDefinition AND ARE COPIED; ABOVE IS DIFFERENT !
-  .map((d) => ({
+  .map((d) => {
+    if (!introspection.cul_functions.has(d.fromDefinition))
+      console.error('calculang: cul function not present (d.fromDefinition): ', d.fromDefinition)
+    return ({
     ...d,
     fromDefinition: introspection.cul_functions.get(d.fromDefinition).reason.includes(
       "import"
@@ -1221,7 +1222,7 @@ export const calls_fromDefinition = (introspection) => ([...introspection.cul_li
       [...introspection.cul_links].filter((e) => e.to == d.fromDefinition)[0].from
       :
       d.fromDefinition
-  }))
+  })})
 
   .map((d) => ({
     ...d,

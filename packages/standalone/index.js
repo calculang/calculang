@@ -244,6 +244,17 @@ export const introspection = async (entrypoint, fs) => {
 
   // note: all_cul is further reason in calculang you MUST only have a single import statement per unique import
 
+  // all_cul creates a clash risk if genuine definitions have same name as imported functions but end in one of these characters
+  // Fut: use Greek characters? No: an issue at least for vitest
+  // Symbols are out?
+
+  // Temporary change: fut: find a better solution (like random 4-characters), consider source map issues/manipulation!
+  const charset = 'wxyzabcdefghijklmnopqrstuv' //'αβγδεζηθικλμνξοπρστυφχψω'// 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'.split('');
+  const scope_id_to_char = (scope_id) => {
+    if (scope_id < 0 || scope_id > charset.length-1) throw new RangeError(`scope_id must be between 0 and ${charset.length-1} due to charset mapping feature`);
+    return charset[scope_id];
+  }
+
   alg.postorder(global_state.scope_graph, "0").forEach(s => {
 
 
@@ -259,7 +270,7 @@ export const introspection = async (entrypoint, fs) => {
       plugins: [
         [
           ({ types }) => ({
-            name: 'all_cul replacement',
+            name: 'all_cul replacement AND quietly rename calls to _ to _scopeid (mapped to Char)', // map scopeid to a single character to avoid sourcemap complexity
             visitor: {
 
               // TODO use scopes_to_list to make replacements
@@ -315,7 +326,7 @@ export const introspection = async (entrypoint, fs) => {
                     // with all_cul as _XYZ : I want to suffix overlapping formulas by _XYZ (default _orig)
                     //if (!all_cul_as.includes('all_cul')) // exclude import {all_cul[0..]} only capture as by local matching this condition
                     if (!specifiers.includes(d) && !specifiers.includes(d+'_') && locals.includes(d))
-                      path.node.specifiers.push(types.importSpecifier(types.identifier(d+(all_cul_as.includes('all_cul' /* no as */) ? '_orig' : all_cul_as /* default to _orig: safe or bad and disable this without rename (see alt. condition above) */)), types.identifier(d+'_')))
+                      path.node.specifiers.push(types.importSpecifier(types.identifier(d+(all_cul_as.includes('all_cul' /* no as */) ? `${scope_id_to_char(+s)}` : all_cul_as /* default to _orig: safe or bad and disable this without rename (see alt. condition above) */)), types.identifier(d+'_')))
 
                   })
 
@@ -324,7 +335,52 @@ export const introspection = async (entrypoint, fs) => {
                 }
 
                 
+              },
+
+
+
+              // CallExpression: rename ends with _ to _scopeid (mapped to char)
+              // This change is to avoid import all_cul import all_cul causing dupe _orig definitions when there is overlap (testing)
+              // Fut: possibly don't implicitly propagate?
+
+              // What if... _orig is specified, should this code run? I don't see the harm (will affect error reporting)
+
+
+              CallExpression(path) {
+
+
+                // All-out borrowing exclusions from introspection_ (compile_new_ requires introspection info)
+
+
+              // not using Functions or cul_functions, I guess because of sequencing?
+              // there can be e.g.   return keys_stream_function()().filter((d) => d.frame == f());
+              // I need ()() last call to return
+
+              if (path.node.arguments?.length == 0 && path.node.callee.name == undefined) return;
+
+              //if (parentfn == undefined) return; // top-level calls like console.log(/* cul call */)
+
+
+              // BUG ? getting multiple links in set for individual calls. These differ when negs differ
+              // does neg logic need to apply over all?
+              // i.e. some dupe links in graph that are invisible
+
+              // cul calls never have >1 argument
+              if (path.node.arguments?.length > 1) return;
+              // if cul calls have 1 argument, its an ObjectExpression
+              if (
+                path.node.arguments?.length == 1 &&
+                path.node.arguments[0].type != 'ObjectExpression'
+              )
+                return; // result.push({obj}) doesn't return....
+
+                // to avoid sourcemap manipulation important to maintain same # characters
+                if (path.node.callee.name.slice(-1) == '_')
+                  path.node.callee.name = path.node.callee.name.slice(0, -1) + scope_id_to_char(+s);
               }
+
+
+
 
             }
           })
@@ -868,6 +924,8 @@ export const introspection = async (entrypoint, fs) => {
 
   // TODO graph processing here
 
+  // todo put g and/or g1, into introspection, as i put scope_graph into it? (does that work?)
+
   var g = new G.Graph({ multigraph: true });
   var g1 = new G.Graph({ multigraph: true });
 
@@ -914,7 +972,7 @@ export const introspection = async (entrypoint, fs) => {
       introspection.cul_input_map.set(k,
         new Set(
           alg
-            .postorder(g1, k)
+            .postorder(g1, k) // notice: postorder or preorder is not actually important; I'm just processing a big list anyways, maybe there is an optimisation here?
             .filter((d) => g.node(d)?.reason == "input definition") // non JS has no reason e.g. reporting Table, but get excluded. Could lookup cul_functions)
             .map((d) => g.node(d).name)
         ))

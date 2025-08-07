@@ -1378,7 +1378,7 @@ export const bundleIntoOne = (compiled, introspection, memoize) => {
 
   // memoize code
   const inputs = [...introspection.cul_functions.values()].filter(d => d.reason == 'input definition').map(d => d.name).sort()
-  const formulae_not_inputs = [...introspection.cul_functions.values()].filter(d => d != "memo_hash" && d.reason == 'definition' && inputs.indexOf(d.name + '_in') == -1 && d.name.indexOf('function') == -1).map(d => d.name)
+  const formulae_not_inputs = [...introspection.cul_functions.values()].filter(d => d != "memo_hash" && d.reason.includes('definition') /*&& inputs.indexOf(d.name + '_in') == -1 Mat 2025 DO MEMO INPUTS (cache workings) */ && d.name.indexOf('function') == -1).map(d => d.name)
   const has_memo_hash = introspection.cul_functions.has("0_memo_hash") // all_cul will create issue here?
 
   const compiled2 = []

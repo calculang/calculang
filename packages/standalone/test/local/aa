@@ -1,0 +1,4 @@
+{
+  "./test/cul/aa.cul.js": "import { a } from \"$CWD/cul/a.cul.js\"; // TODO I need this to work Without test\n\nexport const aa = () => 100;",
+  "$CWD/cul/a.cul.js": "export const a = () => 10;"
+}

@@ -1,0 +1,4 @@
+{
+  "entrypoint.cul.js": "import { b } from 'b.cul.js'; export const a = () => a_in;",
+  "b.cul.js": "export const b = () => \"b\";"
+}

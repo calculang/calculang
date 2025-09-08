@@ -6,17 +6,15 @@ If you are keen to help the project in some other way or are unsure how, feel fr
 
 ## monorepo
 
-calculang repository is a monorepo, using [yarn workspaces](https://yarnpkg.com/lang/en/docs/workspaces/) and [lerna](https://github.com/lerna/lerna) to manage multiple packages.
+calculang repository is a monorepo, including multiple packages.
 
 For an overview of all packages, see the [calculang `/packages` folder](/packages).
 
-## build
+## build instructions
 
 1. clone `https://github.com/calculang/calculang`
-2. run `yarn` to install required packages
-3. `yarn run build` to build all packages
-4. `yarn run bootstrap` to bootstrap packages (install dependencies and link cross-dependencies)
-5. `yarn run test` to run the tests
+1. run `npm i` to install dependencies
+1. run `npm test` to run the test suite
 
 ## on licensing, for contributions/pull requests
 

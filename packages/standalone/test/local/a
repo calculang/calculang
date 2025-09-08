@@ -1,0 +1,3 @@
+{
+  "./test/cul/a.cul.js": "export const a = () => 10;"
+}

@@ -1,0 +1,35 @@
+{
+	"cul input": {
+		"scope": "javascript",
+		"prefix": "culin",
+		"body": [
+			"export const $1 = () => $1_in"
+		]
+	},
+	"cul function": {
+		"scope": "javascript",
+		"prefix": "cul",
+		"body": [
+			"export const $1 = () => $2"
+		]
+	},
+	"cul prev": {
+		"scope": "javascript",
+		"prefix": "prev",
+		"body": [
+			"$1({$2_in:$2() - 1})"
+		]
+	},
+	"cul accumulator": {
+		"scope": "javascript",
+		"prefix": "culacc",
+		"body": [
+			"export const $1 = () => {",
+			"  if ($2() == 0) return 0;",
+			"  else return $1({ $2_in: $2() - 1 }) + d$1();",
+			"}",
+			"",
+			"export const d$1 = () => $3"
+		]
+	}
+}

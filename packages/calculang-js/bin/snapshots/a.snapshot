@@ -1,0 +1,3 @@
+{
+  "entrypoint.cul.js": "export const a = () => a_in;"
+}

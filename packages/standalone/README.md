@@ -4,15 +4,21 @@ A standalone compiler for calculang: doesn't depend node or webpack, and can be 
 
 Does have other dependencies: `@babel/standalone` and `@dagrejs/graphlib`. (todo pin dagre version, SHA hashes, or bundle these)
 
+This branch and not the main branch is the development version that I use in publicly shared models.
+
 ## Future
 
-Probably... This package will replace a lot of code `calculang-js`. Since it includes the `introspection-api`, that package will be deprecated and removed entirely (unless I decide to split this package similar to before).
+This package will replace **a lot of code** in `calculang-js`. Since it includes the `introspection-api`, that package will be deprecated and removed entirely (unless I decide to split this package similar to before).
 
-Before these changes, they will live side-by-side.
+Before those changes, they will live side-by-side.
 
 ## Usage
 
-TODO: `pre_fetch` is outside of compile process but is necessary for multiple all_cul support currently
+<details><summary>TODO</summary>summary>
+
+`pre_fetch` is outside of compile process but is necessary for multiple all_cul support currently
+
+</details>
 
 In modern browsers:
 
@@ -45,10 +51,18 @@ NOTE: this still requires a modern browser and imports Javascript code from NPM/
 
 ## Examples
 
-- [Metal](https://finding-calculang-foc.netlify.app/editor)
-
 - [Posts on my blog](https://calcwithdec.dev/) (the recent ones)
+
+### environments
+
+- [ActuarialPlayground.com](https://actuarialplayground.com)
+- [HowMuchIs13BillionEuros.com](https://howmuchis13billioneuros.com/)
+- draft [calculang-metal editor](https://finding-calculang-foc.netlify.app/editor)
 
 ## Software Included
 
 This repo and use of `@calculang/standalone` includes code from [eslint-linter-browserify](https://github.com/UziTech/eslint-linter-browserify) (MIT license), [babel](https://github.com/babel/babel/tree/main) (MIT license), [dagrejs](https://github.com/dagrejs/graphlib#readme) (MIT license), underscore (MIT license).
+
+## License
+
+This package is licensed under the AGPLv3 or later. For licensing questions or concerns reach out to [Declan](https://calcwithdec.dev/about).
